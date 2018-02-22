@@ -3,11 +3,15 @@ Student Materials for CS121 - Computer Science I.
 
 All code in this repository may be used in your programming projects with appropriate citation.
 
-## examples
-- Book and in-class examples for each chapter.
-
 ## activities
-- Source code and starter files for in-class activites
+- Starter files for in-class activites
+
+## examples
+- Book and in-class examples organized by chapter (Java Foundations)
 
 ## projects
-- Project starter files.
+- Starter files for projects 
+
+## resources
+- Shared code libraries and resources that are used across multiple activities / projects
+

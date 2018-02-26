@@ -8,7 +8,8 @@ import javax.swing.JPanel;
  * Lesson 11: Activity - for Loops
  * 
  * @author CS121 Instructors
- * @version Fall 2018
+ * @version [semester] 
+ * @author [your name]  
  */
 @SuppressWarnings("serial")
 public class CheckerBoard extends JPanel
@@ -24,8 +25,9 @@ public class CheckerBoard extends JPanel
 		setPreferredSize(new Dimension(500, 500));
 	}
 
-	/* (non-Javadoc)
-	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	/**
+	 *  Draws the checker board.
+	 *  @param page Graphics context
 	 */
 	public void paintComponent(Graphics page)
 	{

@@ -31,15 +31,14 @@ public class CheckerBoard extends JPanel
 	 */
 	public void paintComponent(Graphics page)
 	{
-		int x = 0, y = 0;
-
 		int width = getWidth();
 		int height = getHeight();
 
-		int boxWidth = width/NUM_ROWS;
-		int boxHeight = height/NUM_COLS;
+		int boxWidth = (int) Math.ceil((double) width/NUM_ROWS);
+		int boxHeight = (int) Math.ceil((double) height/NUM_COLS);
 
-		// TODO: Your code here.	
+		page.setColor(Color.RED);
+		page.fillRect(0, 0, boxWidth, boxHeight);
 	}
 
 	/**

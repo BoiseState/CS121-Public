@@ -64,7 +64,7 @@ public class MyAvatar extends JPanel
 		
 		Color grassGreen = new Color (60,80,38);
 		g.setColor(grassGreen);
-		g.fillRect(0, grassYOffset, getWidth(), getHeight() - grassYOffset);
+		g.fillRect(0, grassYOffset, currentWidth, currentHeight - grassYOffset);
 	}
 
 

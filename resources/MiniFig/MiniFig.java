@@ -72,6 +72,7 @@ public class MiniFig
 		this(canvas,1.0,midX,topY);
 	}
 	
+	
 	/**
 	 * @param canvas Graphics canvas on which to draw the MiniFig
 	 * @param scaleFactor Decimal scaler to resize MiniFig
@@ -92,6 +93,26 @@ public class MiniFig
 		initializeLegs();
 		initializeArms();
 		initializeHands();
+	}
+	
+	/**
+	 * Constructor for a new MiniFig with a fixed size
+	 * @param canvas Graphics canvas on which to draw the MiniFig
+	 * @param anchor The MiniFig anchor point is located at the top, center of the MiniFig
+	 */
+	public MiniFig(Graphics canvas, Point anchor)
+	{
+		this(canvas,anchor.x,anchor.y);
+	}
+	
+	/**
+	 * Constructor for a new MiniFig with a fixed size
+	 * @param canvas Graphics canvas on which to draw the MiniFig
+	 * @param anchor The MiniFig anchor point is located at the top, center of the MiniFig
+	 */
+	public MiniFig(Graphics canvas, double scaleFactor, Point anchor)
+	{
+		this(canvas,scaleFactor,anchor.x,anchor.y);
 	}
 	
 	/**

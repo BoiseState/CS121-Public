@@ -1,20 +1,17 @@
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Polygon;
 import java.awt.Color;
 
 /**
- * A starting point for creating a new graphical program
+ * Represents a MiniFig graphical object.
+ * <p>
+ * <img alt="MiniFig blueprint" src="../../resources/MiniFig/minifig-blueprint.jpg" width="90%">
+ * </p>
  * @author Luke Hindman
  */
-@SuppressWarnings("serial")
 public class MiniFig
-{
-	/* Define the initial height and width of the MiniFig */
-	private final int DESIGN_HEIGHT = 450;
-	private final int DESIGN_WIDTH = 300;
-	
+{	
 	/* General attributes for the MiniFig as a whole */
 	private Graphics canvas;  //Graphics context on which to draw the MiniFig
 	private int mid,top; //X,Y coordinates for the anchor point of the MiniFig
@@ -108,6 +105,7 @@ public class MiniFig
 	/**
 	 * Constructor for a new MiniFig with a fixed size
 	 * @param canvas Graphics canvas on which to draw the MiniFig
+	 * @param scaleFactor Decimal scaler to resize MiniFig
 	 * @param anchor The MiniFig anchor point is located at the top, center of the MiniFig
 	 */
 	public MiniFig(Graphics canvas, double scaleFactor, Point anchor)

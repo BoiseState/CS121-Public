@@ -6,7 +6,7 @@ import java.awt.Color;
 /**
  * Represents a MiniFig graphical object.
  * <p>
- * <img alt="MiniFig blueprint" src="../../resources/MiniFig/minifig-blueprint.jpg" width="90%">
+ * <img alt="MiniFig blueprint" src="https://github.com/BoiseState/CS121-Public/blob/master/resources/MiniFig/minifig-blueprint.jpg?raw=true" width="90%">
  * </p>
  * @author Luke Hindman
  */

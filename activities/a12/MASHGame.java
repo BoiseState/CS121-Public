@@ -28,19 +28,19 @@ public class MASHGame {
 		homeList.add("shack");
 		homeList.add("house");
 
-		/* TODO: Add items to femaleSpouseList */
+		/* TODO: 1. Add items to femaleSpouseList */
 
 
-		/* TODO: Add items to maleSpouseList */
+		/* TODO: 2. Add items to maleSpouseList */
 
 
-		/* TODO: Add items to occupationList */
+		/* TODO: 3. Add items to occupationList */
 		
 
-		/* TODO: Add items to transportationList */
+		/* TODO: 4. Add items to transportationList */
 
 
-		/* TODO: Add items to hometownList */
+		/* TODO: 5. Add items to hometownList */
 		
 		
 		/* Print the database */
@@ -51,19 +51,19 @@ public class MASHGame {
 		}
 		System.out.println();
 		
-		/* TODO: Print the items in the femaleSpouseList using the ArrayList toString() method */
+		/* TODO: 6. Print the items in the femaleSpouseList using the ArrayList toString() method */
 		
 		
-		/* TODO: Print the items in the maleSpouseList using a for loop (IE: use indexes to print items ) */
+		/* TODO: 7. Print the items in the maleSpouseList using a for loop (IE: use indexes to print items ) */
 
 		
-		/* TODO: Print the items in the occupationList using the ArrayList iterator and a while loop */
+		/* TODO: 8. Print the items in the occupationList using the ArrayList iterator and a while loop */
 
 		
-		/* TODO: Print the items in the transportationList using a foreach loop */
+		/* TODO: 9. Print the items in the transportationList using a foreach loop */
 
 		
-		/* TODO: Print the items in the hometownList using the method of your choice */
+		/* TODO: 10. Print the items in the hometownList using the method of your choice */
 		
 		
 		System.out.println("----------------------------------------------------------------------------");
@@ -80,7 +80,7 @@ public class MASHGame {
 		Random rand = new Random();
 		String firstHome = homeList.get(rand.nextInt(homeList.size()));	
 		
-		/* TODO: Use rand object to select each of the following future 
+		/* TODO: 11. Use rand object to select each of the following future 
 		 * components from above lists. 
 		 * */
 		String secondHome = "?";
@@ -88,7 +88,7 @@ public class MASHGame {
 		String transportation = "?";
 		String hometown = "?";
 		
-		/* TODO: Use the coin to determine whether player's spouse is male or female, 
+		/* TODO: 12. Use the coin to determine whether player's spouse is male or female, 
 		 * then randomly select spouse from the cooresponding list.
 		 */
 		boolean coin = rand.nextBoolean();

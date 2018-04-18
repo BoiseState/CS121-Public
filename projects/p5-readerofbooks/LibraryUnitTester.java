@@ -23,6 +23,8 @@ public class LibraryUnitTester {
 		
 		testToStringMethod();
 		
+		testLoadLibraryFromCSVMethod();
+		
 		System.exit(status);
 	}
 	
@@ -310,6 +312,64 @@ public class LibraryUnitTester {
 		}
 	}
 	
+	
+	private static void testLoadLibraryFromCSVMethod()
+	{
+		/* Define variables for the test */
+		
+		String csvImportFile = "etext/booklist.csv";
+
+		String testName = "testLoadLibraryFromCSVMethod";		
+		boolean testPassed = true;
+		String testResults = "";
+		try
+		{
+			/* Create a new book object */
+			Library littleLibrary = new Library();
+			
+			/* Test loading 3 books from csv file*/ 
+			String subtest = testName + " - Load three books";
+			
+			littleLibrary.loadLibraryFromCSV(csvImportFile);
+			
+			ArrayList<Book> value = littleLibrary.getBooks();
+			
+			if (value.size() == 3){
+					testResults += subTestPass(subtest);		
+			} else {
+				testResults += subTestFailure(subtest, "3", Integer.toString(value.size()));
+				testPassed = false;
+			}
+			
+			/* Test that all books are loaded completely (are valid) */
+			subtest = testName + " - Validate books are complete";
+			boolean booksAreValid = true;
+			for (Book b: littleLibrary.getBooks()) {
+				if (! b.isValid() ) {
+					booksAreValid = false;
+				}
+			}
+			if (booksAreValid) {
+				testResults += subTestPass(subtest);
+			} else {
+				testResults += subTestFailure(subtest,"All loaded books are valid", "One or more loaded books are not valid");
+				testPassed = false;
+			}
+		}
+		catch (Exception e)
+		{
+			testResults += subTestFailure(testName, "Test Execution", "Exception thrown. ");
+			testResults += e.toString();
+			testPassed = false;
+			e.printStackTrace();
+		}
+		
+		if (testPassed) {
+			pass(testName,testResults);
+		} else {
+			fail(testName,testResults);
+		}
+	}
 	
 	
 	private static Book getAliceInWonderland() {

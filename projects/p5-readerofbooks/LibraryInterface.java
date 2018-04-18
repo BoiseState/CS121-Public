@@ -45,7 +45,13 @@ public interface LibraryInterface {
 	 */
 	public String toString();
 	
-	
+	/**
+	 * Populate the library with books from the specified CSV formated text file
+	 * Format:
+	 *     title, author, genre, filepath
+	 * @param csvFilename Text file with CSV formated book data
+	 */
+	public void loadLibraryFromCSV(String csvFilename);	
 		
 
 }

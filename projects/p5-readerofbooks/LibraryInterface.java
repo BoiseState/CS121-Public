@@ -5,7 +5,7 @@ import java.util.ArrayList;
  */
 
 /**
- * @author platypus
+ * @author Luke Hindman
  *
  */
 public interface LibraryInterface {

@@ -3,7 +3,7 @@
  */
 
 /**
- * @author platypus
+ * @author Luke Hindman
  *
  */
 public interface BookInterface {

@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * 
  * @author mvail
  * @author marissa
- * @author lhindman
+ * @author Luke Hindman
  */
 public class LibraryUnitTester {
 	

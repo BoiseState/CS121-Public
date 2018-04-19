@@ -5,7 +5,7 @@ import java.util.Scanner;
  * 
  * @author mvail
  * @author marissa
- * @author lhindman
+ * @author Luke Hindman
  */
 public class BookUnitTester
 {	

@@ -31,7 +31,27 @@ public class Song
 	private int playTime; // in seconds
 	private String filePath;
 	private int playCount;
+	private String album;
+	private boolean metadataOnly;
 
+	/**
+	 * Constructor: Builds a metadata only song using the given parameters.
+	 * 
+	 * @param title
+	 *            song's title
+	 * @param artist
+	 *            song's artist
+	 * @param filePath
+	 *            song's album
+	 * @param playTime
+	 *            song's length in seconds
+
+	 */
+	public Song(String title, String artist, String album, int playTime)
+	{
+		this(title,artist,album,playTime,null);
+	}
+	
 	/**
 	 * Constructor: Builds a song using the given parameters.
 	 * 
@@ -46,22 +66,37 @@ public class Song
 	 */
 	public Song(String title, String artist, int playTime, String filePath)
 	{
+		this(title,artist,null,playTime,filePath);
+	}
+	
+	/**
+	 * Constructor: Builds a song using the given parameters.
+	 * 
+	 * @param title
+	 *            song's title
+	 * @param artist
+	 *            song's artist
+	 * @param album
+	 *            song's album
+	 * @param playTime
+	 *            song's length in seconds
+	 * @param filePath
+	 *            song file to load
+	 */
+	public Song(String title, String artist, String album, int playTime, String filePath)
+	{
 		this.title = title;
 		this.artist = artist;
+		this.album = album;
 		this.playTime = playTime;
 		this.filePath = filePath;
 		this.playCount = 0;
 
-		String fullPath = new File(filePath).getAbsolutePath();
-		try
-		{
-			this.clip = Applet.newAudioClip(new URL("file:" + fullPath));
-		}
-		catch (Exception e)
-		{
-			System.out.println("Error loading sound clip for " + fullPath);
-			System.out.println(e.getMessage());
-		}
+		/* Use a private helper method to load 
+		 * the clip and set the metadataOnly flag
+		 * if an invalid filename is specified.
+		 */
+		this.loadClip();
 	}
 	
 	/**
@@ -105,6 +140,24 @@ public class Song
 	}
 
 	/**
+	 * Returns the album of this <code>Song</code>.
+	 * 
+	 * @return the album
+	 */
+	public String getAlbum() {
+		return album;
+	}
+
+	/**
+	 * Sets the album of this <code>Song</code>.
+	 * 
+	 * @param album the album to set
+	 */
+	public void setAlbum(String album) {
+		this.album = album;
+	}
+
+	/**
 	 * Returns the play time of this <code>Song</code> in seconds.
 	 * 
 	 * @return the playTime
@@ -142,6 +195,11 @@ public class Song
 	public void setFilePath(String path)
 	{
 		this.filePath = path;
+		/* Use a private helper method to load 
+		 * the clip and set the metadataOnly flag
+		 * if an invalid filename is specified.
+		 */
+		this.loadClip();
 	}
 
 	/**
@@ -176,6 +234,32 @@ public class Song
 			clip.stop();
 		}
 	}
+	
+	/**
+	 * Private helper method
+	 * Load the song file and create clip. If file does not exist or an error
+	 *    occurs, revert to metadata only.
+	 */
+	
+	private void loadClip() {
+		this.metadataOnly = false;
+		
+		if (filePath == null) {
+			this.metadataOnly = true;
+		} else {
+			String fullPath = new File(filePath).getAbsolutePath();
+			try
+			{
+				this.clip = Applet.newAudioClip(new URL("file:" + fullPath));
+			}
+			catch (Exception e)
+			{
+				System.out.println("Error loading sound clip for " + fullPath);
+				System.out.println(e.getMessage());
+				this.metadataOnly = true;
+			}
+		}
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -185,6 +269,16 @@ public class Song
 	@Override
 	public String toString()
 	{
-		return String.format("%-20s %-20s %-25s %10d", title, artist, filePath, playTime);
+		String output = "";
+		if (this.metadataOnly) {
+			output = String.format("%-30s %-20s %-30s %5d", (title.length()<30?title:title.substring(0, 27) + "..."),
+					(artist.length()<20?artist:artist.substring(0, 17) + "..."),
+					(album.length()<30?album:album.substring(0, 27) + "..."), 
+					playTime);
+		} else {
+			output = String.format("%-20s %-20s %-25s %10d", title, artist, filePath, playTime);
+		}
+		
+		return output;
 	}
 }

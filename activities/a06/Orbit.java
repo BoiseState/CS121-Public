@@ -57,17 +57,25 @@ public class Orbit extends JPanel
 		int earthRadius = Math.min(width/5, height/5);
 		int earthX = width / 2;
 		int earthY = height / 2;
+
+		// HINT: If you end up with a solid circle of objects surrounding your earth instead of a single object
+		//       smoothly circling it, try drawing a filled rectangle to blank the window each time paintComponent()
+		//       is called.
 		
 		// Draw earth
 		g.drawImage(EARTH_ICON.getImage(), earthX-earthRadius, earthY-earthRadius, earthRadius*2, earthRadius*2, null);
 		
 		// TODO: Define orbit radius
+		// HINT: What is the different between radius and diameter?
 		
 		// TODO: Draw orbit path
 		
 		// TODO: Define the radius of your object
 		
 		// TODO: Calculate x and y using Math.sin and Math.cos.
+		// HINT: The Math.sin and Math.cos methods use radians for the parameter units. orbitTheta is in degrees.  
+		//       Try using the Math.toRadians() method to convert orbitTheta from degrees to radians. This will 
+		//       smooth out the orbit of your object.
 		
 		// TODO: Draw your object as an oval with a random color.
 		

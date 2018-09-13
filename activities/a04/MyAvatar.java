@@ -22,7 +22,7 @@ public class MyAvatar extends JPanel
 	/**
 	 * Draws the picture in the panel. This is where all of your
 	 * code will go.
-	 * @param g Our graphics canvas.
+	 * @param canvas The drawing area of the window.
 	 */
 	public void paintComponent (Graphics g)
 	{
@@ -47,24 +47,40 @@ public class MyAvatar extends JPanel
 		// TODO: 1. Instantiate a new Point object called "anchor". Use "mid" as your x value and
 		//       "top" as your y value.
 		
-		// TODO: 2. Instantiate a new MiniFig object. Use the MiniFig constructor with the following
-		//       parameters: MiniFig(Graphics canvas, double scaleFactor, Point anchor)
+		// TODO: 2. Instantiate a new MiniFig object and give the reference variable a name of a person, 
+		//       such as "bob". Use the MiniFig constructor with the following
+		//       parameters: MiniFig( canvas, scaleFactor, anchor)
 		
-		// TODO: 3. Create a new Color object.
+		// TODO: 3. Create a new custom Color object. An example is shown below.
 		
 		// TODO: 4. Invoke the setTorsoColor(Color color) method on your MiniFig instance.
-		//          Use your color object as a parameter to change the shirt color.
+		//       Use your color object as a parameter to change the shirt color.
+		//       This lets you change the color of "bob's" shirt. :)
 		
-		// TODO: 5. Invoke the draw() method on your MiniFig instance.
+		// TODO: 5. Invoke the draw() method on your MiniFig instance. This is where "bob" is displayed on the screen.
 		
-		// TODO: 6: Use the getBaseMidPoint() method to find the the base mid point of your
-		//       avatar. Replace the hard-coded value of grassYOffset with the y value 
+		// TODO: 6. Use the getBaseMidPoint() method to find the the base mid point of your
+		//       MiniFig. This method returns a Point object that represents the x,y coordinates at the
+		//       base of the MiniFig, right between its feet. 
+		//       Replace the hard-coded value of grassYOffset with the y value 
 		//       of the returned point.
 		int grassYOffset = 400;
 		
 		Color grassGreen = new Color (60,80,38);
 		g.setColor(grassGreen);
 		g.fillRect(0, grassYOffset, currentWidth, currentHeight - grassYOffset);
+
+		// TODO: 7. Create an Alias of for your MiniFig object and change the torso color of the alias
+		//       If in step 2 you used the variable name "bob" use, you can create an alias named robert
+		//       using the following:
+		//       MiniFig robert = bob;
+		//       robert.setTorsoColor(Color.RED);
+
+		
+	        // TODO: 8. Comment out the draw statement under TODO item 5 and then draw the original MiniFig 
+		//       again.  If you used the variable name "bob" is would simply be the following:
+		//       bob.draw();
+		//       What color is Bob's Shirt?  Why?
 	}
 
 

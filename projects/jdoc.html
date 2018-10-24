@@ -1,0 +1,118 @@
+<html>
+<head>
+   <title>javadoc</title>
+</head>
+<body text="#000000" bgcolor="lightyellow" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+
+<h1>Program Documentation Tool: javadoc</h1>
+
+<p>One of the tools that comes with the standard Java installation is a
+program called <a
+href="http://docs.oracle.com/javase/7/docs/technotes/guides/javadoc/index.html">javadoc</a> which will
+generate documentation similar to that for the 
+<a href="http://docs.oracle.com/javase/7/docs/api/">Java API</a> 
+documentation.  
+
+<p>Basically, you use a special kind of comment, which looks almost like the
+usual multi-line comments, to put the information you want to appear in the
+documentation into your program text.  The documentation utility uses these
+comments along with the class and method signatures to generate the
+documentation.  
+
+<h3>Javadoc Comments</h3>
+
+<p>A javadoc comment is preceded by the characters <tt>/**</tt>
+and terminated by a <tt>*/</tt>.  All the text inside is considered to be part
+of the documentation. You can format javadoc comments by using standard HTML 
+tags. 
+
+<p>Javadoc comments should be placed immediately before the part of the program
+that they describe.  Typically, you will have such a comment immediately befor
+each class or interface header, method signature or member variable
+declaration.  By default the utility only shows information for public
+components.
+
+<h3><a name="tags" />Documentation Tags</h3>
+
+<p>There are some special tags you can use within your javadoc comments to
+indicate specific types of information.  A partial list appears below; see the
+official documentation for others.
+
+<table width="80%" border=1>
+<tr><td><b>Tag</b></td><td><b>Location</b></td><td><b>Effect</b></td></tr>
+<tr><td>@author</td><td>class comment</td><td>Lists author(s) of code in
+documentation if -author option is used.</td></tr>
+<tr><td>@version</td><td>class comment</td><td>Requires the -version option 
+to be used.</td></tr>
+<tr><td></td><td></td><td></td></tr>
+<tr><td>@param</td><td>method comment</td><td>Used to explain method
+parameters.</td></tr>
+<tr><td>@return</td><td>method comment</td><td>Used to explain the return
+value of a method</td></tr>
+<tr><td>@throws</td><td>method comment</td><td>Used to list exceptions thrown
+by the method.</td></tr>
+</table>
+
+<hr>
+
+<h3>Generating the Documentation</h3>
+
+<p>On onyx, you generate documentation for a group of Java classes by typing the
+command
+<br>
+<blockquote>javadoc -author -version -d html/ *.java
+</blockquote>
+<br>
+This will put the html files into a directory called html which you should
+create first.  There will be a file called index.html which lists all the
+classes and one file for each class.
+</p>
+<p>In Eclipse, you can use the <tt>Generate Javadoc</tt> option from the 
+<tt>Project</tt> menu.
+</p>
+
+<hr>
+
+<h3>Example</h3>
+
+<pre>
+/**
+ * The Widget class represents a widget in a standard Thingamajig.
+ *
+ * @author Sam Stoodent
+ * @version 1.0 CS121 Fall 2025
+ */
+public class Widget {
+
+  /**
+   * Carries out the central function of a Widget
+   *
+   * @param rotations number of widget rotations, positive values are clockwise turns,
+   *   negative values are counterclockwise turns
+   * @param pushes number of widget pushes, must be a positive integer
+   * @return widget output
+   * @throws InvalidInputsException
+   */
+  public double doWidgetStuff(double rotations, int pushes) throws InvalidInputsException {
+    // regular single-line comment
+    ...statements...
+
+    /*
+     * regular block comment
+     */
+    ...more statements...
+  }
+}
+</pre>
+
+<hr>
+
+<h3>Utilities for other languages</h3>
+
+<p>A utility called 
+<a href="http://www.cppdoc.com/">CppDoc</a> documents
+C++ programs using basically the same
+syntax as javadoc for specifying what goes into the documentation.
+
+</body>
+</html>

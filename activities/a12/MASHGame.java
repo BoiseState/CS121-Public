@@ -95,7 +95,7 @@ public class MASHGame {
 		String spouse = "?";
 
 		/* Randomly choose number of years player will be married */
-		int yearsOfMarriage = rand.nextInt(30);
+		int yearsOfMarriage = rand.nextInt(30) + 1;
 
 
 		/* Print the player's future*/

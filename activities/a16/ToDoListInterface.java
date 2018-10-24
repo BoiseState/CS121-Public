@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * 
  * Interface for a ToDoList.
  * 
- * @author marissa
+ * @author marissa, mvail
  * @version Fall 2018
  */
 public interface ToDoListInterface
@@ -21,6 +21,12 @@ public interface ToDoListInterface
 	 * @param task The task to add.
 	 */
 	public void addTask(Task task);
+
+	/**
+	 * Adds a task with the given description to this list.
+	 * @param description Description of the task to add.
+	 */
+        public void addTask(String description);
 
 	/**
 	 * Returns the next incomplete task with the highest priority.  

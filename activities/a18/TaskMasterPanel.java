@@ -1,4 +1,5 @@
 import javax.swing.JPanel;
+import java.awt.Dimension;
 
 /**
  * Lesson 18-19: Activity - Task Master GUI
@@ -19,6 +20,6 @@ public class TaskMasterPanel extends JPanel
 	 */
 	public TaskMasterPanel()
 	{
-		
+		this.setPreferredSize(new Dimension(500, 400));		
 	}
 }

@@ -10,7 +10,7 @@ public interface TicTacToe {
 	public static enum Winner {X, O, TIE, IN_PROGRESS};
 	
 	/**
-	 * Reset the game. It is the player's turn.
+	 * Reset the game. It is player X's turn.
 	 */
 	public void newGame();
 	

@@ -3,7 +3,7 @@
  */
 
 /**
- * @author platypus
+ * @author Luke Hindman
  *
  */
 public interface BookInterface {
@@ -19,6 +19,10 @@ public interface BookInterface {
 	public String getGenre();
 	
 	public void setGenre(String genre);
+
+	public String getFilename();
+	
+	public void setFilename(String filename);
 	
 	/**
 	 * Ensure all the attributes are set (not null) 

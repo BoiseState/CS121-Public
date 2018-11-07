@@ -45,7 +45,7 @@ public class BookUnitTester
 		try
 		{
 			String subtest = testName + " - new Book(\"" + title +",\"" + author + "\")";
-			Book goodBook = new Book(title,author);
+			BookInterface goodBook = new Book(title,author);
 
 			testResults += subTestPass(subtest);
 
@@ -78,7 +78,7 @@ public class BookUnitTester
 		try
 		{
 			/* Create a new book object */
-			Book goodBook = new Book(title,author);
+			BookInterface goodBook = new Book(title,author);
 			
 			/* Test setAuthor() and getAuthor() */ 
 			String subtest = testName + " - author";
@@ -168,7 +168,7 @@ public class BookUnitTester
 		try
 		{
 			String subtest = testName + " - Book is valid ";
-			Book goodBook = new Book(title,author);
+			BookInterface goodBook = new Book(title,author);
 			goodBook.setGenre(genre);
 			goodBook.setFilename(filename);
 			if (goodBook.isValid()) {
@@ -268,7 +268,7 @@ public class BookUnitTester
 		try
 		{
 			String subtest = testName + " - toString() includes author ";
-			Book goodBook = new Book(title,author);
+			BookInterface goodBook = new Book(title,author);
 			goodBook.setGenre(genre);
 			goodBook.setFilename(filename);
 			String value = goodBook.toString();
@@ -316,7 +316,7 @@ public class BookUnitTester
 		try
 		{
 			String subtest = testName + " - Check line count ";
-			Book goodBook = new Book(title,author);
+			BookInterface goodBook = new Book(title,author);
 			goodBook.setGenre(genre);
 			goodBook.setFilename(filename);
 			

@@ -38,7 +38,7 @@ public class LibraryUnitTester {
 		try
 		{
 			String subtest = testName + " - new Library()";
-			Library littleLibrary = new Library();
+			LibraryInterface littleLibrary = new Library();
 			
 			testResults += subTestPass(subtest);
 
@@ -70,7 +70,7 @@ public class LibraryUnitTester {
 		try
 		{
 			/* Create a new book object */
-			Library littleLibrary = new Library();
+			LibraryInterface littleLibrary = new Library();
 			
 			/* Test add/get single book */ 
 			String subtest = testName + " - add/get single book";
@@ -142,7 +142,7 @@ public class LibraryUnitTester {
 		try
 		{
 			/* Create a new book object */
-			Library littleLibrary = new Library();
+			LibraryInterface littleLibrary = new Library();
 			
 			/* Test add/get single book */ 
 			String subtest = testName + " - Remove multiple books";
@@ -213,7 +213,7 @@ public class LibraryUnitTester {
 		try
 		{
 			/* Create a new book object */
-			Library littleLibrary = new Library();
+			LibraryInterface littleLibrary = new Library();
 			
 			/* Test adding 3 books and check number of books is 3 */ 
 			String subtest = testName + " - Number of books";
@@ -271,7 +271,7 @@ public class LibraryUnitTester {
 		try
 		{
 			/* Create a new book object */
-			Library littleLibrary = new Library();
+			LibraryInterface littleLibrary = new Library();
 			
 			/* Test adding 3 books and check number of books is 3 */ 
 			

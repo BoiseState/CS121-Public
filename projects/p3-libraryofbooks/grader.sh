@@ -31,19 +31,19 @@ echo "------------------"
 echo "Testing Book.java "
 echo "------------------"
 
-javac BookUnitTesterGrader.java
+javac BookUnitTester.java
 if [ ! $? == 0 ] # Make sure the program built
 then
-  echo "FAIL reason: BookUnitTesterGrader.java did not compile"
+  echo "FAIL reason: BookUnitTester.java did not compile"
   exit 1
 fi
 
 echo
 
-timeout --foreground 5 java BookUnitTesterGrader
+timeout --foreground 5 java BookUnitTester
 if [ ! $? == 0 ] # Make sure the program exited with success
 then
-  echo "FAIL reason: BookUnitTesterGrader failed"
+  echo "FAIL reason: BookUnitTester failed"
   exit 1
 fi
 
@@ -54,19 +54,19 @@ echo "Testing Library.java "
 echo "---------------------"
 
 #cp data/LibraryUnitTesterGrader.java .
-javac LibraryUnitTesterGrader.java
+javac LibraryUnitTester.java
 if [ ! $? == 0 ] # Make sure the program built
 then
-  echo "FAIL reason: LibraryUnitTesterGrader.java did not compile"
+  echo "FAIL reason: LibraryUnitTester.java did not compile"
   exit 1
 fi
 
 echo
 
-timeout --foreground 5 java LibraryUnitTesterGrader
+timeout --foreground 5 java LibraryUnitTester
 if [ ! $? == 0 ] # Make sure the program exited with success
 then
-  echo "FAIL reason: LibraryUnitTesterGrader failed"
+  echo "FAIL reason: LibraryUnitTester failed"
   exit 1
 fi
 

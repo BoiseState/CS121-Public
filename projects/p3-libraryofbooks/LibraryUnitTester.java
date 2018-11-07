@@ -163,9 +163,11 @@ public class LibraryUnitTester {
 						testResults += subTestPass(subtest); 
 					} else {
 						testResults += subTestFailure(subtest, gettysburg.toString(), value.toString());
+						testPassed = false;
 					}
 				} else {
 					testResults += subTestFailure(subtest, gettysburg.toString(), value.toString());
+					testPassed = false;
 				}				
 			} else {
 				testResults += subTestFailure(subtest, alice.toString(), value.toString());

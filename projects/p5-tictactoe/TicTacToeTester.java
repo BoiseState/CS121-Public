@@ -2,6 +2,7 @@ import java.awt.Point;
 
 /**
  * A unit tester for classes that implement TicTacToe.  
+ * 
  * @author mvail
  */
 public class TicTacToeTester {
@@ -49,7 +50,7 @@ public class TicTacToeTester {
 			if (arg.equalsIgnoreCase("-a")) printFailuresOnly = false;
 			if (arg.equalsIgnoreCase("-m"))	printSectionSummaries = false;
 		}
-		EXPECTED_TOTAL_TESTS = 598;
+		EXPECTED_TOTAL_TESTS = 600;
 		totalTests = 0;
 	}
 
@@ -127,6 +128,8 @@ public class TicTacToeTester {
 		testX11O02X00O22X10O12(); //O wins - third col
 		testX01O00X10O11X21O22(); //O wins - first diagonal
 		testX00O11X10O20X21O02(); //O wins - second diagonal
+		//encapsulation tests
+		testEncapsulation();
 
 		// report final verdict
 		printFinalSummary();
@@ -1350,6 +1353,27 @@ public class TicTacToeTester {
 		}
 	}
 	
+	/////////////////////////////
+	// XXX Encapsulation Tests
+	/////////////////////////////
+	
+	private void testEncapsulation() {
+		String scenarioName = "testEncapsulation";
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
+		totalTests += 2;
+		try {
+			printTest("testGetGameGridEncapsulation", testGetGameGridEncapsulation());
+			printTest("testGetMovesEncapsulation", testGetMovesEncapsulation());			
+		} catch (Exception e) {
+			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
+			e.printStackTrace();
+		} finally {
+			if (printSectionSummaries) {
+				printSectionSummary("Section");
+			}
+		}
+	}	
+	
 	//////////////////////////
 	// XXX Game Builders
 	//////////////////////////
@@ -1867,6 +1891,38 @@ public class TicTacToeTester {
 		return result == expectedResult;
 	}
 
+	private boolean testGetGameGridEncapsulation() {
+		TicTacToe.Player[][] grid = {
+				{TicTacToe.Player.OPEN, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN},
+				{TicTacToe.Player.OPEN, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN},
+				{TicTacToe.Player.OPEN, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN}
+		};
+		boolean passed = false;
+		try {
+			TicTacToe game = newGame();			
+			game.getGameGrid()[0][0] = TicTacToe.Player.X;
+			passed = equivalentArrays(grid, game.getGameGrid());
+		} catch (Exception e) {
+			System.out.printf("%s caught unexpected %s\n", "testGetGameGridEncapsulation", e.toString());
+			e.printStackTrace();			
+		}
+		return passed;
+	}
+	
+	private boolean testGetMovesEncapsulation() {
+		Point[] gameMoves = {new Point(0,0)};
+		boolean passed = false;
+		try {
+			TicTacToe game = gameX00();
+			game.getMoves()[0] = new Point(1,2);
+			passed = equivalentArrays(gameMoves, game.getMoves());
+		} catch (Exception e) {
+			System.out.printf("%s caught unexpected %s\n", "testGetMovesEncapsulation", e.toString());
+			e.printStackTrace();			
+		}
+		return passed;
+	}
+	
 	//////////////////////////
 	// XXX HELPER METHODS
 	//////////////////////////

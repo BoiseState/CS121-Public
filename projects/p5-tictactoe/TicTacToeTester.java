@@ -148,9 +148,7 @@ public class TicTacToeTester {
 		Point[] newGameMoves = new Point[0];
 
 		String scenarioName = "testNewGame";
-		if (this.printSectionSummaries) {
-			System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		}	
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
 		totalTests += 23;
 		try {
 			printTest("testNewGame", testNewGame(newGame()));
@@ -195,9 +193,7 @@ public class TicTacToeTester {
 		Point[] moves = {new Point(0,0)};
 
 		String scenarioName = "testX00";
-		if (this.printSectionSummaries) {
-			System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		}
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
 		totalTests += 23;
 		try {
 			printTest("testNewGame", testNewGame(gameX00()));
@@ -242,9 +238,7 @@ public class TicTacToeTester {
 		Point[] moves = {new Point(0,0), new Point(1,0)};
 
 		String scenarioName = "testX00O10";
-		if (this.printSectionSummaries) {
-			System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		}
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
 		totalTests += 23;
 		try {
 			printTest("testNewGame", testNewGame(gameX00O10()));
@@ -289,9 +283,7 @@ public class TicTacToeTester {
 		Point[] moves = {new Point(0,0), new Point(1,0), new Point(1,1)};
 
 		String scenarioName = "testX00O10X11";
-		if (this.printSectionSummaries) {
-			System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		}
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
 		totalTests += 23;
 		try {
 			printTest("testNewGame", testNewGame(gameX00O10X11()));
@@ -337,9 +329,7 @@ public class TicTacToeTester {
 				new Point(2,2)};
 
 		String scenarioName = "testX00O10X11O22";
-		if (this.printSectionSummaries) {
-			System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		}
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
 		totalTests += 23;
 		try {
 			printTest("testNewGame", testNewGame(gameX00O10X11O22()));
@@ -385,9 +375,7 @@ public class TicTacToeTester {
 				new Point(2,2), new Point(0,2)};
 
 		String scenarioName = "testX00O10X11O22X02";
-		if (this.printSectionSummaries) {
-			System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		}
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
 		totalTests += 23;
 		try {
 			printTest("testNewGame", testNewGame(gameX00O10X11O22X02()));
@@ -433,9 +421,7 @@ public class TicTacToeTester {
 				new Point(2,2), new Point(0,2), new Point(0,1)};
 
 		String scenarioName = "testX00O10X11O22X02O01";
-		if (this.printSectionSummaries) {
-			System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		}
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
 		totalTests += 23;
 		try {
 			printTest("testNewGame", testNewGame(gameX00O10X11O22X02O01()));
@@ -481,9 +467,7 @@ public class TicTacToeTester {
 				new Point(2,2), new Point(0,2), new Point(0,1), new Point(2,1)};
 
 		String scenarioName = "testX00O10X11O22X02O01X21";
-		if (this.printSectionSummaries) {
-			System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		}
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
 		totalTests += 23;
 		try {
 			printTest("testNewGame", testNewGame(gameX00O10X11O22X02O01X21()));
@@ -529,9 +513,7 @@ public class TicTacToeTester {
 				new Point(2,2), new Point(0,2), new Point(0,1), new Point(2,1), new Point(2,0)};
 
 		String scenarioName = "testX00O10X11O22X02O01X21O20";
-		if (this.printSectionSummaries) {
-			System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		}
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
 		totalTests += 23;
 		try {
 			printTest("testNewGame", testNewGame(gameX00O10X11O22X02O01X21O20()));
@@ -579,9 +561,7 @@ public class TicTacToeTester {
 				new Point(2,0), new Point(1,2)};
 
 		String scenarioName = "testX00O10X11O22X02O01X21O20X12";
-		if (this.printSectionSummaries) {
-			System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		}
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
 		totalTests += 23;
 		try {
 			printTest("testNewGame", testNewGame(gameX00O10X11O22X02O01X21O20X12()));
@@ -630,9 +610,7 @@ public class TicTacToeTester {
 				new Point(2,2), new Point(0,1)};
 
 		String scenarioName = "testX02O10X00O22X01";
-		if (this.printSectionSummaries) {
-			System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		}
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
 		totalTests += 23;
 		try {
 			printTest("testNewGame", testNewGame(gameX02O10X00O22X01()));
@@ -679,9 +657,7 @@ public class TicTacToeTester {
 				new Point(2,2), new Point(1,2)};
 
 		String scenarioName = "testX11O00X10O22X12";
-		if (this.printSectionSummaries) {
-			System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		}
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
 		totalTests += 23;
 		try {
 			printTest("testNewGame", testNewGame(gameX11O00X10O22X12()));
@@ -728,9 +704,7 @@ public class TicTacToeTester {
 				new Point(1,2), new Point(2,1)};
 
 		String scenarioName = "testX22O00X20O12X21";
-		if (this.printSectionSummaries) {
-			System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		}
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
 		totalTests += 23;
 		try {
 			printTest("testNewGame", testNewGame(gameX22O00X20O12X21()));
@@ -777,9 +751,7 @@ public class TicTacToeTester {
 				new Point(1,2), new Point(1,0)};
 
 		String scenarioName = "testX00O11X20O12X10";
-		if (this.printSectionSummaries) {
-			System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		}
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
 		totalTests += 23;
 		try {
 			printTest("testNewGame", testNewGame(gameX00O11X20O12X10()));
@@ -826,9 +798,7 @@ public class TicTacToeTester {
 				new Point(1,2), new Point(1,1)};
 
 		String scenarioName = "testX01O10X21O12X11";
-		if (this.printSectionSummaries) {
-			System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		}
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
 		totalTests += 23;
 		try {
 			printTest("testNewGame", testNewGame(gameX01O10X21O12X11()));
@@ -875,9 +845,7 @@ public class TicTacToeTester {
 				new Point(2,1), new Point(2,2)};
 
 		String scenarioName = "testX12O11X02O21X22";
-		if (this.printSectionSummaries) {
-			System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		}
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
 		totalTests += 23;
 		try {
 			printTest("testNewGame", testNewGame(gameX12O11X02O21X22()));
@@ -924,9 +892,7 @@ public class TicTacToeTester {
 				new Point(1,2), new Point(0,0)};
 
 		String scenarioName = "testX11O02X22O12X00";
-		if (this.printSectionSummaries) {
-			System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		}
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
 		totalTests += 23;
 		try {
 			printTest("testNewGame", testNewGame(gameX11O02X22O12X00()));
@@ -973,9 +939,7 @@ public class TicTacToeTester {
 				new Point(0,0), new Point(0,2)};
 
 		String scenarioName = "testX20O01X11O00X02";
-		if (this.printSectionSummaries) {
-			System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		}
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
 		totalTests += 23;
 		try {
 			printTest("testNewGame", testNewGame(gameX20O01X11O00X02()));
@@ -1024,9 +988,7 @@ public class TicTacToeTester {
 				new Point(0,2), new Point(1,1), new Point(0,0)};
 
 		String scenarioName = "testX10O01X20O02X11O00";
-		if (this.printSectionSummaries) {
-			System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		}
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
 		totalTests += 23;
 		try {
 			printTest("testNewGame", testNewGame(gameX10O01X20O02X11O00()));
@@ -1073,9 +1035,7 @@ public class TicTacToeTester {
 				new Point(1,2), new Point(0,1), new Point(1,1)};
 
 		String scenarioName = "testX00O10X20O12X01O11";
-		if (this.printSectionSummaries) {
-			System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		}
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
 		totalTests += 23;
 		try {
 			printTest("testNewGame", testNewGame(gameX00O10X20O12X01O11()));
@@ -1122,9 +1082,7 @@ public class TicTacToeTester {
 				new Point(2,0), new Point(0,1), new Point(2,2)};
 
 		String scenarioName = "testX00O21X10O20X01O22";
-		if (this.printSectionSummaries) {
-			System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		}
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
 		totalTests += 23;
 		try {
 			printTest("testNewGame", testNewGame(gameX00O21X10O20X01O22()));
@@ -1171,9 +1129,7 @@ public class TicTacToeTester {
 				new Point(0,0), new Point(0,1), new Point(2,0)};
 
 		String scenarioName = "testX22O10X11O00X01O20";
-		if (this.printSectionSummaries) {
-			System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		}
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
 		totalTests += 23;
 		try {
 			printTest("testNewGame", testNewGame(gameX22O10X11O00X01O20()));
@@ -1220,9 +1176,7 @@ public class TicTacToeTester {
 				new Point(1,1), new Point(1,0), new Point(2,1)};
 
 		String scenarioName = "testX00O01X22O11X10O21";
-		if (this.printSectionSummaries) {
-			System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		}
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
 		totalTests += 23;
 		try {
 			printTest("testNewGame", testNewGame(gameX00O01X22O11X10O21()));
@@ -1269,9 +1223,7 @@ public class TicTacToeTester {
 				new Point(2,2), new Point(1,0), new Point(1,2)};
 
 		String scenarioName = "testX11O02X00O22X10O12";
-		if (this.printSectionSummaries) {
-			System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		}
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
 		totalTests += 23;
 		try {
 			printTest("testNewGame", testNewGame(gameX11O02X00O22X10O12()));
@@ -1318,9 +1270,7 @@ public class TicTacToeTester {
 				new Point(1,1), new Point(2,1), new Point(2,2)};
 
 		String scenarioName = "testX01O00X10O11X21O22";
-		if (this.printSectionSummaries) {
-			System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		}
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
 		totalTests += 23;
 		try {
 			printTest("testNewGame", testNewGame(gameX01O00X10O11X21O22()));
@@ -1367,9 +1317,7 @@ public class TicTacToeTester {
 				new Point(2,0), new Point(2,1), new Point(0,2)};
 
 		String scenarioName = "testX00O11X10O20X21O02";
-		if (this.printSectionSummaries) {
-			System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		}
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
 		totalTests += 23;
 		try {
 			printTest("testNewGame", testNewGame(gameX00O11X10O20X21O02()));
@@ -1411,9 +1359,7 @@ public class TicTacToeTester {
 	
 	private void testEncapsulation() {
 		String scenarioName = "testEncapsulation";
-		if (this.printSectionSummaries) {
-			System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		}
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
 		totalTests += 2;
 		try {
 			printTest("testGetGameGridEncapsulation", testGetGameGridEncapsulation());

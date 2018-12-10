@@ -40,6 +40,13 @@ public class TicTacToeTester {
 		// to avoid every method being static
 		TicTacToeTester tester = new TicTacToeTester(args);
 		tester.runTests();
+
+		// set a non-zero exit status if one or more tests fail 
+		if (tester.getFailures() > 0) {
+			System.exit(1);
+		} else {
+			System.exit(0);
+		}
 	}
 
 	/** tester constructor
@@ -1969,6 +1976,13 @@ public class TicTacToeTester {
 			}
 		}
 		return equivalent;
+	}
+
+	/** Get the number of failures that occurred in this test
+	 * @return number of tests that failed during testing
+	 */
+	public int getFailures() {
+		return this.failures;
 	}
 
 }// end class TicTacToeTester

@@ -71,15 +71,15 @@ public class MyAvatar extends JPanel
 		g.setColor(grassGreen);
 		g.fillRect(0, grassYOffset, currentWidth, currentHeight - grassYOffset);
 
-		// TODO: 7. Create an Alias of for your MiniFig object and change the torso color of the alias
-		//       If in step 2 you used the variable name "bob" use, you can create an alias named robert
+		// TODO: 7. Create an Alias of for your MiniFig object and change the torso color of the alias.
+		//       If in step 2 you used the variable name "bob", you can create an alias named "robert"
 		//       using the following:
 		//       MiniFig robert = bob;
 		//       robert.setTorsoColor(Color.RED);
 
 		
 	        // TODO: 8. Comment out the draw statement under TODO item 5 and then draw the original MiniFig 
-		//       again.  If you used the variable name "bob" is would simply be the following:
+		//       below. If you used the variable name "bob" is would simply be the following:
 		//       bob.draw();
 		//       What color is Bob's Shirt?  Why?
 	}

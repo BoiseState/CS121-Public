@@ -49,7 +49,7 @@ public class MyAvatar extends JPanel
 		
 		// TODO: 2. Instantiate a new MiniFig object and give the reference variable a name of a person, 
 		//       such as "bob". Use the MiniFig constructor with the following
-		//       parameters: MiniFig( canvas, scaleFactor, anchor)
+		//       parameters: MiniFig(g, scaleFactor, anchor)
 		
 		// TODO: 3. Create a new custom Color object. An example is shown below.
 		

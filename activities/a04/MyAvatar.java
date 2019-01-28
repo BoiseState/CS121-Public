@@ -59,7 +59,8 @@ public class MyAvatar extends JPanel
 		
 		// TODO: 5. Invoke the draw() method on your MiniFig instance. This is where "bob" is displayed on the screen.
 		
-		// TODO: 6. Use the getBaseMidPoint() method to find the the base mid point of your
+		// TODO: 6. Adjust the size of your Avatar's window. Notice how the avatar does not stay grounded
+		//       on the grass. To fix this, use the getBaseMidPoint() method to find the the base mid point of your
 		//       MiniFig. This method returns a Point object that represents the x,y coordinates at the
 		//       base of the MiniFig, right between its feet. 
 		//       Replace the hard-coded value of grassYOffset with the y value 

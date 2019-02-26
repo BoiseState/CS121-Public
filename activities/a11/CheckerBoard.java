@@ -34,8 +34,8 @@ public class CheckerBoard extends JPanel
 		int width = getWidth();
 		int height = getHeight();
 
-		int boxWidth = (int) Math.ceil((double) width/NUM_ROWS);
-		int boxHeight = (int) Math.ceil((double) height/NUM_COLS);
+		int boxWidth = (int) Math.ceil((double) width/NUM_COLS);
+		int boxHeight = (int) Math.ceil((double) height/NUM_ROWS);
 
 		page.setColor(Color.RED);
 		page.fillRect(0, 0, boxWidth, boxHeight);

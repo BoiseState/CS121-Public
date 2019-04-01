@@ -151,7 +151,7 @@ a
 Gettysburg Address
 Abraham Lincoln
 Historical
-data/etext/Gettysburg-Address.txt
+etext/Gettysburg-Address.txt
 p
 q
 END
@@ -175,7 +175,7 @@ a
 Gettysburg Address
 Abraham Lincoln
 Historical
-data/etext/Gettysburg-Address.txt
+etext/Gettysburg-Address.txt
 r
 0
 q
@@ -200,7 +200,7 @@ a
 Gettysburg Address
 Abraham Lincoln
 Historical
-data/etext/Gettysburg-Address.txt
+etext/Gettysburg-Address.txt
 p
 d
 0
@@ -227,12 +227,12 @@ a
 Gettysburg Address
 Abraham Lincoln
 Historical
-data/etext/Gettysburg-Address.txt
+etext/Gettysburg-Address.txt
 a
 Alice in Wonderland
 Lewis Carroll
 Trippy
-data/etext/Alice-in-Wonderland.txt
+etext/Alice-in-Wonderland.txt
 p
 q
 END
@@ -256,12 +256,12 @@ a
 Gettysburg Address
 Abraham Lincoln
 Historical
-data/etext/Gettysburg-Address.txt
+etext/Gettysburg-Address.txt
 a
 Alice in Wonderland
 Lewis Carroll
 Trippy
-data/etext/Alice-in-Wonderland.txt
+etext/Alice-in-Wonderland.txt
 r
 0
 q
@@ -286,12 +286,12 @@ a
 Gettysburg Address
 Abraham Lincoln
 Historical
-data/etext/Gettysburg-Address.txt
+etext/Gettysburg-Address.txt
 a
 Alice in Wonderland
 Lewis Carroll
 Trippy
-data/etext/noSuchFile.txt
+etext/noSuchFile.txt
 r
 1
 q
@@ -316,12 +316,12 @@ a
 Gettysburg Address
 Abraham Lincoln
 Historical
-data/etext/Gettysburg-Address.txt
+etext/Gettysburg-Address.txt
 a
 Alice in Wonderland
 Lewis Carroll
 Trippy
-data/etext/noSuchFile.txt
+etext/noSuchFile.txt
 d
 0
 p
@@ -347,12 +347,12 @@ a
 Gettysburg Address
 Abraham Lincoln
 Historical
-data/etext/Gettysburg-Address.txt
+etext/Gettysburg-Address.txt
 a
 Alice in Wonderland
 Lewis Carroll
 Trippy
-data/etext/noSuchFile.txt
+etext/noSuchFile.txt
 d
 1
 p

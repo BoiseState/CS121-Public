@@ -291,7 +291,7 @@ a
 Alice in Wonderland
 Lewis Carroll
 Trippy
-etext/Alice-in-Wonderland.txt
+etext/noSuchFile.txt
 r
 1
 q

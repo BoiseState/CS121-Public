@@ -291,7 +291,7 @@ a
 Alice in Wonderland
 Lewis Carroll
 Trippy
-etext/noSuchFile.txt
+etext/Alice-in-Wonderland.txt
 r
 1
 q
@@ -321,7 +321,7 @@ a
 Alice in Wonderland
 Lewis Carroll
 Trippy
-etext/noSuchFile.txt
+etext/Alice-in-Wonderland.txt
 d
 0
 p
@@ -352,7 +352,7 @@ a
 Alice in Wonderland
 Lewis Carroll
 Trippy
-etext/noSuchFile.txt
+etext/Alice-in-Wonderland.txt
 d
 1
 p

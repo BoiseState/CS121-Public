@@ -43,9 +43,11 @@ public interface TicTacToe {
 	/**
 	 * Get the sequence of moves, where even indexes correspond to the
 	 * first player's moves and odd indexes correspond to the second
-	 * player's moves.
+	 * player's moves. 
 	 * NOTE: Move rows are stored in the first coordinate, x, and move
-	 * columns are stored in the second coordinate, y.
+	 * columns are stored in the second coordinate, y. The length of the 
+	 * array must equal the number of moves (there are no empty/null
+	 * array elements).
 	 * Preserve encapsulation by returning a copy of the original data.
 	 * 
 	 * @return array showing the sequence of claimed positions

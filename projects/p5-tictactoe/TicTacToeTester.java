@@ -40,13 +40,6 @@ public class TicTacToeTester {
 		// to avoid every method being static
 		TicTacToeTester tester = new TicTacToeTester(args);
 		tester.runTests();
-
-		// set a non-zero exit status if one or more tests fail 
-		if (tester.getFailures() > 0) {
-			System.exit(1);
-		} else {
-			System.exit(0);
-		}
 	}
 
 	/** tester constructor
@@ -57,7 +50,7 @@ public class TicTacToeTester {
 			if (arg.equalsIgnoreCase("-a")) printFailuresOnly = false;
 			if (arg.equalsIgnoreCase("-m"))	printSectionSummaries = false;
 		}
-		EXPECTED_TOTAL_TESTS = 600;
+		EXPECTED_TOTAL_TESTS = 184;
 		totalTests = 0;
 	}
 
@@ -105,6 +98,7 @@ public class TicTacToeTester {
 
 	// XXX runTests()
 	//  see the blue box on the right of the scroll bar? the triple-X tag aids in navigating long files
+	
 	/** Run tests to confirm required functionality from list constructors and methods */
 	private void runTests() {
 		//brand new game
@@ -153,34 +147,20 @@ public class TicTacToeTester {
 				{TicTacToe.Player.OPEN, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN}
 		};
 		Point[] newGameMoves = new Point[0];
+		TicTacToe.Player lastPlayer = TicTacToe.Player.OPEN;
+		boolean gameOver = false;
 
 		String scenarioName = "testNewGame";
 		System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		totalTests += 23;
+		totalTests += 7;
 		try {
 			printTest("testNewGame", testNewGame(newGame()));
 			printTest("testGameOver", testGameOver(newGame(), Result.False));
 			printTest("testWinner", testWinner(newGame(), Result.InProgress));
 			printTest("testGetGameGrid", testGetGameGrid(newGame(), grid));
 			printTest("testGetMoves", testGetMoves(newGame(), newGameMoves));
-			printTest("testChooseX00", testChoose(newGame(), TicTacToe.Player.X, 0, 0, Result.True));
-			printTest("testChooseX01", testChoose(newGame(), TicTacToe.Player.X, 0, 1, Result.True));
-			printTest("testChooseX02", testChoose(newGame(), TicTacToe.Player.X, 0, 2, Result.True));
-			printTest("testChooseX10", testChoose(newGame(), TicTacToe.Player.X, 1, 0, Result.True));
-			printTest("testChooseX11", testChoose(newGame(), TicTacToe.Player.X, 1, 1, Result.True));
-			printTest("testChooseX12", testChoose(newGame(), TicTacToe.Player.X, 1, 2, Result.True));
-			printTest("testChooseX20", testChoose(newGame(), TicTacToe.Player.X, 2, 0, Result.True));
-			printTest("testChooseX21", testChoose(newGame(), TicTacToe.Player.X, 2, 1, Result.True));
-			printTest("testChooseX22", testChoose(newGame(), TicTacToe.Player.X, 2, 2, Result.True));
-			printTest("testChooseO00", testChoose(newGame(), TicTacToe.Player.O, 0, 0, Result.True));
-			printTest("testChooseO01", testChoose(newGame(), TicTacToe.Player.O, 0, 1, Result.True));
-			printTest("testChooseO02", testChoose(newGame(), TicTacToe.Player.O, 0, 2, Result.True));
-			printTest("testChooseO10", testChoose(newGame(), TicTacToe.Player.O, 1, 0, Result.True));
-			printTest("testChooseO11", testChoose(newGame(), TicTacToe.Player.O, 1, 1, Result.True));
-			printTest("testChooseO12", testChoose(newGame(), TicTacToe.Player.O, 1, 2, Result.True));
-			printTest("testChooseO20", testChoose(newGame(), TicTacToe.Player.O, 2, 0, Result.True));
-			printTest("testChooseO21", testChoose(newGame(), TicTacToe.Player.O, 2, 1, Result.True));
-			printTest("testChooseO22", testChoose(newGame(), TicTacToe.Player.O, 2, 2, Result.True));
+			printTest("testChoicesX", testChoices(newGame, TicTacToe.Player.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(newGame, TicTacToe.Player.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -190,7 +170,7 @@ public class TicTacToeTester {
 			}
 		}
 	}
-	
+
 	private void testX00() {
 		TicTacToe.Player[][] grid = {
 				{TicTacToe.Player.X, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN},
@@ -198,34 +178,20 @@ public class TicTacToeTester {
 				{TicTacToe.Player.OPEN, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN}
 		};
 		Point[] moves = {new Point(0,0)};
+		TicTacToe.Player lastPlayer = TicTacToe.Player.X;
+		boolean gameOver = false;
 
 		String scenarioName = "testX00";
 		System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		totalTests += 23;
+		totalTests += 7;
 		try {
 			printTest("testNewGame", testNewGame(gameX00()));
 			printTest("testGameOver", testGameOver(gameX00(), Result.False));
 			printTest("testWinner", testWinner(gameX00(), Result.InProgress));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00(), moves));
-			printTest("testChooseX00", testChoose(gameX00(), TicTacToe.Player.X, 0, 0, Result.False));
-			printTest("testChooseX01", testChoose(gameX00(), TicTacToe.Player.X, 0, 1, Result.True));
-			printTest("testChooseX02", testChoose(gameX00(), TicTacToe.Player.X, 0, 2, Result.True));
-			printTest("testChooseX10", testChoose(gameX00(), TicTacToe.Player.X, 1, 0, Result.True));
-			printTest("testChooseX11", testChoose(gameX00(), TicTacToe.Player.X, 1, 1, Result.True));
-			printTest("testChooseX12", testChoose(gameX00(), TicTacToe.Player.X, 1, 2, Result.True));
-			printTest("testChooseX20", testChoose(gameX00(), TicTacToe.Player.X, 2, 0, Result.True));
-			printTest("testChooseX21", testChoose(gameX00(), TicTacToe.Player.X, 2, 1, Result.True));
-			printTest("testChooseX22", testChoose(gameX00(), TicTacToe.Player.X, 2, 2, Result.True));
-			printTest("testChooseO00", testChoose(gameX00(), TicTacToe.Player.O, 0, 0, Result.False));
-			printTest("testChooseO01", testChoose(gameX00(), TicTacToe.Player.O, 0, 1, Result.True));
-			printTest("testChooseO02", testChoose(gameX00(), TicTacToe.Player.O, 0, 2, Result.True));
-			printTest("testChooseO10", testChoose(gameX00(), TicTacToe.Player.O, 1, 0, Result.True));
-			printTest("testChooseO11", testChoose(gameX00(), TicTacToe.Player.O, 1, 1, Result.True));
-			printTest("testChooseO12", testChoose(gameX00(), TicTacToe.Player.O, 1, 2, Result.True));
-			printTest("testChooseO20", testChoose(gameX00(), TicTacToe.Player.O, 2, 0, Result.True));
-			printTest("testChooseO21", testChoose(gameX00(), TicTacToe.Player.O, 2, 1, Result.True));
-			printTest("testChooseO22", testChoose(gameX00(), TicTacToe.Player.O, 2, 2, Result.True));
+			printTest("testChoicesX", testChoices(gameX00, TicTacToe.Player.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00, TicTacToe.Player.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -243,34 +209,20 @@ public class TicTacToeTester {
 				{TicTacToe.Player.OPEN, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN}
 		};
 		Point[] moves = {new Point(0,0), new Point(1,0)};
+		TicTacToe.Player lastPlayer = TicTacToe.Player.O;
+		boolean gameOver = false;
 
 		String scenarioName = "testX00O10";
 		System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		totalTests += 23;
+		totalTests += 7;
 		try {
 			printTest("testNewGame", testNewGame(gameX00O10()));
 			printTest("testGameOver", testGameOver(gameX00O10(), Result.False));
 			printTest("testWinner", testWinner(gameX00O10(), Result.InProgress));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O10(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O10(), moves));
-			printTest("testChooseX00", testChoose(gameX00O10(), TicTacToe.Player.X, 0, 0, Result.False));
-			printTest("testChooseX01", testChoose(gameX00O10(), TicTacToe.Player.X, 0, 1, Result.True));
-			printTest("testChooseX02", testChoose(gameX00O10(), TicTacToe.Player.X, 0, 2, Result.True));
-			printTest("testChooseX10", testChoose(gameX00O10(), TicTacToe.Player.X, 1, 0, Result.False));
-			printTest("testChooseX11", testChoose(gameX00O10(), TicTacToe.Player.X, 1, 1, Result.True));
-			printTest("testChooseX12", testChoose(gameX00O10(), TicTacToe.Player.X, 1, 2, Result.True));
-			printTest("testChooseX20", testChoose(gameX00O10(), TicTacToe.Player.X, 2, 0, Result.True));
-			printTest("testChooseX21", testChoose(gameX00O10(), TicTacToe.Player.X, 2, 1, Result.True));
-			printTest("testChooseX22", testChoose(gameX00O10(), TicTacToe.Player.X, 2, 2, Result.True));
-			printTest("testChooseO00", testChoose(gameX00O10(), TicTacToe.Player.O, 0, 0, Result.False));
-			printTest("testChooseO01", testChoose(gameX00O10(), TicTacToe.Player.O, 0, 1, Result.True));
-			printTest("testChooseO02", testChoose(gameX00O10(), TicTacToe.Player.O, 0, 2, Result.True));
-			printTest("testChooseO10", testChoose(gameX00O10(), TicTacToe.Player.O, 1, 0, Result.False));
-			printTest("testChooseO11", testChoose(gameX00O10(), TicTacToe.Player.O, 1, 1, Result.True));
-			printTest("testChooseO12", testChoose(gameX00O10(), TicTacToe.Player.O, 1, 2, Result.True));
-			printTest("testChooseO20", testChoose(gameX00O10(), TicTacToe.Player.O, 2, 0, Result.True));
-			printTest("testChooseO21", testChoose(gameX00O10(), TicTacToe.Player.O, 2, 1, Result.True));
-			printTest("testChooseO22", testChoose(gameX00O10(), TicTacToe.Player.O, 2, 2, Result.True));
+			printTest("testChoicesX", testChoices(gameX00O10, TicTacToe.Player.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00O10, TicTacToe.Player.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -288,34 +240,20 @@ public class TicTacToeTester {
 				{TicTacToe.Player.OPEN, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN}
 		};
 		Point[] moves = {new Point(0,0), new Point(1,0), new Point(1,1)};
+		TicTacToe.Player lastPlayer = TicTacToe.Player.X;
+		boolean gameOver = false;
 
 		String scenarioName = "testX00O10X11";
 		System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		totalTests += 23;
+		totalTests += 7;
 		try {
 			printTest("testNewGame", testNewGame(gameX00O10X11()));
 			printTest("testGameOver", testGameOver(gameX00O10X11(), Result.False));
 			printTest("testWinner", testWinner(gameX00O10X11(), Result.InProgress));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O10X11(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O10X11(), moves));
-			printTest("testChooseX00", testChoose(gameX00O10X11(), TicTacToe.Player.X, 0, 0, Result.False));
-			printTest("testChooseX01", testChoose(gameX00O10X11(), TicTacToe.Player.X, 0, 1, Result.True));
-			printTest("testChooseX02", testChoose(gameX00O10X11(), TicTacToe.Player.X, 0, 2, Result.True));
-			printTest("testChooseX10", testChoose(gameX00O10X11(), TicTacToe.Player.X, 1, 0, Result.False));
-			printTest("testChooseX11", testChoose(gameX00O10X11(), TicTacToe.Player.X, 1, 1, Result.False));
-			printTest("testChooseX12", testChoose(gameX00O10X11(), TicTacToe.Player.X, 1, 2, Result.True));
-			printTest("testChooseX20", testChoose(gameX00O10X11(), TicTacToe.Player.X, 2, 0, Result.True));
-			printTest("testChooseX21", testChoose(gameX00O10X11(), TicTacToe.Player.X, 2, 1, Result.True));
-			printTest("testChooseX22", testChoose(gameX00O10X11(), TicTacToe.Player.X, 2, 2, Result.True));
-			printTest("testChooseO00", testChoose(gameX00O10X11(), TicTacToe.Player.O, 0, 0, Result.False));
-			printTest("testChooseO01", testChoose(gameX00O10X11(), TicTacToe.Player.O, 0, 1, Result.True));
-			printTest("testChooseO02", testChoose(gameX00O10X11(), TicTacToe.Player.O, 0, 2, Result.True));
-			printTest("testChooseO10", testChoose(gameX00O10X11(), TicTacToe.Player.O, 1, 0, Result.False));
-			printTest("testChooseO11", testChoose(gameX00O10X11(), TicTacToe.Player.O, 1, 1, Result.False));
-			printTest("testChooseO12", testChoose(gameX00O10X11(), TicTacToe.Player.O, 1, 2, Result.True));
-			printTest("testChooseO20", testChoose(gameX00O10X11(), TicTacToe.Player.O, 2, 0, Result.True));
-			printTest("testChooseO21", testChoose(gameX00O10X11(), TicTacToe.Player.O, 2, 1, Result.True));
-			printTest("testChooseO22", testChoose(gameX00O10X11(), TicTacToe.Player.O, 2, 2, Result.True));
+			printTest("testChoicesX", testChoices(gameX00O10X11, TicTacToe.Player.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00O10X11, TicTacToe.Player.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -334,34 +272,20 @@ public class TicTacToeTester {
 		};
 		Point[] moves = {new Point(0,0), new Point(1,0), new Point(1,1),
 				new Point(2,2)};
+		TicTacToe.Player lastPlayer = TicTacToe.Player.O;
+		boolean gameOver = false;
 
 		String scenarioName = "testX00O10X11O22";
 		System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		totalTests += 23;
+		totalTests += 7;
 		try {
 			printTest("testNewGame", testNewGame(gameX00O10X11O22()));
 			printTest("testGameOver", testGameOver(gameX00O10X11O22(), Result.False));
 			printTest("testWinner", testWinner(gameX00O10X11O22(), Result.InProgress));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O10X11O22(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O10X11O22(), moves));
-			printTest("testChooseX00", testChoose(gameX00O10X11O22(), TicTacToe.Player.X, 0, 0, Result.False));
-			printTest("testChooseX01", testChoose(gameX00O10X11O22(), TicTacToe.Player.X, 0, 1, Result.True));
-			printTest("testChooseX02", testChoose(gameX00O10X11O22(), TicTacToe.Player.X, 0, 2, Result.True));
-			printTest("testChooseX10", testChoose(gameX00O10X11O22(), TicTacToe.Player.X, 1, 0, Result.False));
-			printTest("testChooseX11", testChoose(gameX00O10X11O22(), TicTacToe.Player.X, 1, 1, Result.False));
-			printTest("testChooseX12", testChoose(gameX00O10X11O22(), TicTacToe.Player.X, 1, 2, Result.True));
-			printTest("testChooseX20", testChoose(gameX00O10X11O22(), TicTacToe.Player.X, 2, 0, Result.True));
-			printTest("testChooseX21", testChoose(gameX00O10X11O22(), TicTacToe.Player.X, 2, 1, Result.True));
-			printTest("testChooseX22", testChoose(gameX00O10X11O22(), TicTacToe.Player.X, 2, 2, Result.False));
-			printTest("testChooseO00", testChoose(gameX00O10X11O22(), TicTacToe.Player.O, 0, 0, Result.False));
-			printTest("testChooseO01", testChoose(gameX00O10X11O22(), TicTacToe.Player.O, 0, 1, Result.True));
-			printTest("testChooseO02", testChoose(gameX00O10X11O22(), TicTacToe.Player.O, 0, 2, Result.True));
-			printTest("testChooseO10", testChoose(gameX00O10X11O22(), TicTacToe.Player.O, 1, 0, Result.False));
-			printTest("testChooseO11", testChoose(gameX00O10X11O22(), TicTacToe.Player.O, 1, 1, Result.False));
-			printTest("testChooseO12", testChoose(gameX00O10X11O22(), TicTacToe.Player.O, 1, 2, Result.True));
-			printTest("testChooseO20", testChoose(gameX00O10X11O22(), TicTacToe.Player.O, 2, 0, Result.True));
-			printTest("testChooseO21", testChoose(gameX00O10X11O22(), TicTacToe.Player.O, 2, 1, Result.True));
-			printTest("testChooseO22", testChoose(gameX00O10X11O22(), TicTacToe.Player.O, 2, 2, Result.False));
+			printTest("testChoicesX", testChoices(gameX00O10X11O22, TicTacToe.Player.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00O10X11O22, TicTacToe.Player.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -380,34 +304,20 @@ public class TicTacToeTester {
 		};
 		Point[] moves = {new Point(0,0), new Point(1,0), new Point(1,1),
 				new Point(2,2), new Point(0,2)};
+		TicTacToe.Player lastPlayer = TicTacToe.Player.X;
+		boolean gameOver = false;
 
 		String scenarioName = "testX00O10X11O22X02";
 		System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		totalTests += 23;
+		totalTests += 7;
 		try {
 			printTest("testNewGame", testNewGame(gameX00O10X11O22X02()));
 			printTest("testGameOver", testGameOver(gameX00O10X11O22X02(), Result.False));
 			printTest("testWinner", testWinner(gameX00O10X11O22X02(), Result.InProgress));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O10X11O22X02(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O10X11O22X02(), moves));
-			printTest("testChooseX00", testChoose(gameX00O10X11O22X02(), TicTacToe.Player.X, 0, 0, Result.False));
-			printTest("testChooseX01", testChoose(gameX00O10X11O22X02(), TicTacToe.Player.X, 0, 1, Result.True));
-			printTest("testChooseX02", testChoose(gameX00O10X11O22X02(), TicTacToe.Player.X, 0, 2, Result.False));
-			printTest("testChooseX10", testChoose(gameX00O10X11O22X02(), TicTacToe.Player.X, 1, 0, Result.False));
-			printTest("testChooseX11", testChoose(gameX00O10X11O22X02(), TicTacToe.Player.X, 1, 1, Result.False));
-			printTest("testChooseX12", testChoose(gameX00O10X11O22X02(), TicTacToe.Player.X, 1, 2, Result.True));
-			printTest("testChooseX20", testChoose(gameX00O10X11O22X02(), TicTacToe.Player.X, 2, 0, Result.True));
-			printTest("testChooseX21", testChoose(gameX00O10X11O22X02(), TicTacToe.Player.X, 2, 1, Result.True));
-			printTest("testChooseX22", testChoose(gameX00O10X11O22X02(), TicTacToe.Player.X, 2, 2, Result.False));
-			printTest("testChooseO00", testChoose(gameX00O10X11O22X02(), TicTacToe.Player.O, 0, 0, Result.False));
-			printTest("testChooseO01", testChoose(gameX00O10X11O22X02(), TicTacToe.Player.O, 0, 1, Result.True));
-			printTest("testChooseO02", testChoose(gameX00O10X11O22X02(), TicTacToe.Player.O, 0, 2, Result.False));
-			printTest("testChooseO10", testChoose(gameX00O10X11O22X02(), TicTacToe.Player.O, 1, 0, Result.False));
-			printTest("testChooseO11", testChoose(gameX00O10X11O22X02(), TicTacToe.Player.O, 1, 1, Result.False));
-			printTest("testChooseO12", testChoose(gameX00O10X11O22X02(), TicTacToe.Player.O, 1, 2, Result.True));
-			printTest("testChooseO20", testChoose(gameX00O10X11O22X02(), TicTacToe.Player.O, 2, 0, Result.True));
-			printTest("testChooseO21", testChoose(gameX00O10X11O22X02(), TicTacToe.Player.O, 2, 1, Result.True));
-			printTest("testChooseO22", testChoose(gameX00O10X11O22X02(), TicTacToe.Player.O, 2, 2, Result.False));
+			printTest("testChoicesX", testChoices(gameX00O10X11O22X02, TicTacToe.Player.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00O10X11O22X02, TicTacToe.Player.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -426,34 +336,20 @@ public class TicTacToeTester {
 		};
 		Point[] moves = {new Point(0,0), new Point(1,0), new Point(1,1),
 				new Point(2,2), new Point(0,2), new Point(0,1)};
+		TicTacToe.Player lastPlayer = TicTacToe.Player.O;
+		boolean gameOver = false;
 
 		String scenarioName = "testX00O10X11O22X02O01";
 		System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		totalTests += 23;
+		totalTests += 7;
 		try {
 			printTest("testNewGame", testNewGame(gameX00O10X11O22X02O01()));
 			printTest("testGameOver", testGameOver(gameX00O10X11O22X02O01(), Result.False));
 			printTest("testWinner", testWinner(gameX00O10X11O22X02O01(), Result.InProgress));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O10X11O22X02O01(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O10X11O22X02O01(), moves));
-			printTest("testChooseX00", testChoose(gameX00O10X11O22X02O01(), TicTacToe.Player.X, 0, 0, Result.False));
-			printTest("testChooseX01", testChoose(gameX00O10X11O22X02O01(), TicTacToe.Player.X, 0, 1, Result.False));
-			printTest("testChooseX02", testChoose(gameX00O10X11O22X02O01(), TicTacToe.Player.X, 0, 2, Result.False));
-			printTest("testChooseX10", testChoose(gameX00O10X11O22X02O01(), TicTacToe.Player.X, 1, 0, Result.False));
-			printTest("testChooseX11", testChoose(gameX00O10X11O22X02O01(), TicTacToe.Player.X, 1, 1, Result.False));
-			printTest("testChooseX12", testChoose(gameX00O10X11O22X02O01(), TicTacToe.Player.X, 1, 2, Result.True));
-			printTest("testChooseX20", testChoose(gameX00O10X11O22X02O01(), TicTacToe.Player.X, 2, 0, Result.True));
-			printTest("testChooseX21", testChoose(gameX00O10X11O22X02O01(), TicTacToe.Player.X, 2, 1, Result.True));
-			printTest("testChooseX22", testChoose(gameX00O10X11O22X02O01(), TicTacToe.Player.X, 2, 2, Result.False));
-			printTest("testChooseO00", testChoose(gameX00O10X11O22X02O01(), TicTacToe.Player.O, 0, 0, Result.False));
-			printTest("testChooseO01", testChoose(gameX00O10X11O22X02O01(), TicTacToe.Player.O, 0, 1, Result.False));
-			printTest("testChooseO02", testChoose(gameX00O10X11O22X02O01(), TicTacToe.Player.O, 0, 2, Result.False));
-			printTest("testChooseO10", testChoose(gameX00O10X11O22X02O01(), TicTacToe.Player.O, 1, 0, Result.False));
-			printTest("testChooseO11", testChoose(gameX00O10X11O22X02O01(), TicTacToe.Player.O, 1, 1, Result.False));
-			printTest("testChooseO12", testChoose(gameX00O10X11O22X02O01(), TicTacToe.Player.O, 1, 2, Result.True));
-			printTest("testChooseO20", testChoose(gameX00O10X11O22X02O01(), TicTacToe.Player.O, 2, 0, Result.True));
-			printTest("testChooseO21", testChoose(gameX00O10X11O22X02O01(), TicTacToe.Player.O, 2, 1, Result.True));
-			printTest("testChooseO22", testChoose(gameX00O10X11O22X02O01(), TicTacToe.Player.O, 2, 2, Result.False));
+			printTest("testChoicesX", testChoices(gameX00O10X11O22X02O01, TicTacToe.Player.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00O10X11O22X02O01, TicTacToe.Player.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -472,34 +368,20 @@ public class TicTacToeTester {
 		};
 		Point[] moves = {new Point(0,0), new Point(1,0), new Point(1,1),
 				new Point(2,2), new Point(0,2), new Point(0,1), new Point(2,1)};
+		TicTacToe.Player lastPlayer = TicTacToe.Player.X;
+		boolean gameOver = false;
 
 		String scenarioName = "testX00O10X11O22X02O01X21";
 		System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		totalTests += 23;
+		totalTests += 7;
 		try {
 			printTest("testNewGame", testNewGame(gameX00O10X11O22X02O01X21()));
 			printTest("testGameOver", testGameOver(gameX00O10X11O22X02O01X21(), Result.False));
 			printTest("testWinner", testWinner(gameX00O10X11O22X02O01X21(), Result.InProgress));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O10X11O22X02O01X21(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O10X11O22X02O01X21(), moves));
-			printTest("testChooseX00", testChoose(gameX00O10X11O22X02O01X21(), TicTacToe.Player.X, 0, 0, Result.False));
-			printTest("testChooseX01", testChoose(gameX00O10X11O22X02O01X21(), TicTacToe.Player.X, 0, 1, Result.False));
-			printTest("testChooseX02", testChoose(gameX00O10X11O22X02O01X21(), TicTacToe.Player.X, 0, 2, Result.False));
-			printTest("testChooseX10", testChoose(gameX00O10X11O22X02O01X21(), TicTacToe.Player.X, 1, 0, Result.False));
-			printTest("testChooseX11", testChoose(gameX00O10X11O22X02O01X21(), TicTacToe.Player.X, 1, 1, Result.False));
-			printTest("testChooseX12", testChoose(gameX00O10X11O22X02O01X21(), TicTacToe.Player.X, 1, 2, Result.True));
-			printTest("testChooseX20", testChoose(gameX00O10X11O22X02O01X21(), TicTacToe.Player.X, 2, 0, Result.True));
-			printTest("testChooseX21", testChoose(gameX00O10X11O22X02O01X21(), TicTacToe.Player.X, 2, 1, Result.False));
-			printTest("testChooseX22", testChoose(gameX00O10X11O22X02O01X21(), TicTacToe.Player.X, 2, 2, Result.False));
-			printTest("testChooseO00", testChoose(gameX00O10X11O22X02O01X21(), TicTacToe.Player.O, 0, 0, Result.False));
-			printTest("testChooseO01", testChoose(gameX00O10X11O22X02O01X21(), TicTacToe.Player.O, 0, 1, Result.False));
-			printTest("testChooseO02", testChoose(gameX00O10X11O22X02O01X21(), TicTacToe.Player.O, 0, 2, Result.False));
-			printTest("testChooseO10", testChoose(gameX00O10X11O22X02O01X21(), TicTacToe.Player.O, 1, 0, Result.False));
-			printTest("testChooseO11", testChoose(gameX00O10X11O22X02O01X21(), TicTacToe.Player.O, 1, 1, Result.False));
-			printTest("testChooseO12", testChoose(gameX00O10X11O22X02O01X21(), TicTacToe.Player.O, 1, 2, Result.True));
-			printTest("testChooseO20", testChoose(gameX00O10X11O22X02O01X21(), TicTacToe.Player.O, 2, 0, Result.True));
-			printTest("testChooseO21", testChoose(gameX00O10X11O22X02O01X21(), TicTacToe.Player.O, 2, 1, Result.False));
-			printTest("testChooseO22", testChoose(gameX00O10X11O22X02O01X21(), TicTacToe.Player.O, 2, 2, Result.False));
+			printTest("testChoicesX", testChoices(gameX00O10X11O22X02O01X21, TicTacToe.Player.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00O10X11O22X02O01X21, TicTacToe.Player.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -518,34 +400,20 @@ public class TicTacToeTester {
 		};
 		Point[] moves = {new Point(0,0), new Point(1,0), new Point(1,1),
 				new Point(2,2), new Point(0,2), new Point(0,1), new Point(2,1), new Point(2,0)};
+		TicTacToe.Player lastPlayer = TicTacToe.Player.O;
+		boolean gameOver = false;
 
 		String scenarioName = "testX00O10X11O22X02O01X21O20";
 		System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		totalTests += 23;
+		totalTests += 7;
 		try {
 			printTest("testNewGame", testNewGame(gameX00O10X11O22X02O01X21O20()));
 			printTest("testGameOver", testGameOver(gameX00O10X11O22X02O01X21O20(), Result.False));
 			printTest("testWinner", testWinner(gameX00O10X11O22X02O01X21O20(), Result.InProgress));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O10X11O22X02O01X21O20(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O10X11O22X02O01X21O20(), moves));
-			printTest("testChooseX00", testChoose(gameX00O10X11O22X02O01X21O20(), TicTacToe.Player.X, 0, 0, Result.False));
-			printTest("testChooseX01", testChoose(gameX00O10X11O22X02O01X21O20(), TicTacToe.Player.X, 0, 1, Result.False));
-			printTest("testChooseX02", testChoose(gameX00O10X11O22X02O01X21O20(), TicTacToe.Player.X, 0, 2, Result.False));
-			printTest("testChooseX10", testChoose(gameX00O10X11O22X02O01X21O20(), TicTacToe.Player.X, 1, 0, Result.False));
-			printTest("testChooseX11", testChoose(gameX00O10X11O22X02O01X21O20(), TicTacToe.Player.X, 1, 1, Result.False));
-			printTest("testChooseX12", testChoose(gameX00O10X11O22X02O01X21O20(), TicTacToe.Player.X, 1, 2, Result.True));
-			printTest("testChooseX20", testChoose(gameX00O10X11O22X02O01X21O20(), TicTacToe.Player.X, 2, 0, Result.False));
-			printTest("testChooseX21", testChoose(gameX00O10X11O22X02O01X21O20(), TicTacToe.Player.X, 2, 1, Result.False));
-			printTest("testChooseX22", testChoose(gameX00O10X11O22X02O01X21O20(), TicTacToe.Player.X, 2, 2, Result.False));
-			printTest("testChooseO00", testChoose(gameX00O10X11O22X02O01X21O20(), TicTacToe.Player.O, 0, 0, Result.False));
-			printTest("testChooseO01", testChoose(gameX00O10X11O22X02O01X21O20(), TicTacToe.Player.O, 0, 1, Result.False));
-			printTest("testChooseO02", testChoose(gameX00O10X11O22X02O01X21O20(), TicTacToe.Player.O, 0, 2, Result.False));
-			printTest("testChooseO10", testChoose(gameX00O10X11O22X02O01X21O20(), TicTacToe.Player.O, 1, 0, Result.False));
-			printTest("testChooseO11", testChoose(gameX00O10X11O22X02O01X21O20(), TicTacToe.Player.O, 1, 1, Result.False));
-			printTest("testChooseO12", testChoose(gameX00O10X11O22X02O01X21O20(), TicTacToe.Player.O, 1, 2, Result.True));
-			printTest("testChooseO20", testChoose(gameX00O10X11O22X02O01X21O20(), TicTacToe.Player.O, 2, 0, Result.False));
-			printTest("testChooseO21", testChoose(gameX00O10X11O22X02O01X21O20(), TicTacToe.Player.O, 2, 1, Result.False));
-			printTest("testChooseO22", testChoose(gameX00O10X11O22X02O01X21O20(), TicTacToe.Player.O, 2, 2, Result.False));
+			printTest("testChoicesX", testChoices(gameX00O10X11O22X02O01X21O20, TicTacToe.Player.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00O10X11O22X02O01X21O20, TicTacToe.Player.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -566,34 +434,20 @@ public class TicTacToeTester {
 		Point[] moves = {new Point(0,0), new Point(1,0), new Point(1,1),
 				new Point(2,2), new Point(0,2), new Point(0,1), new Point(2,1), 
 				new Point(2,0), new Point(1,2)};
+		TicTacToe.Player lastPlayer = TicTacToe.Player.X;
+		boolean gameOver = true;
 
 		String scenarioName = "testX00O10X11O22X02O01X21O20X12";
 		System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		totalTests += 23;
+		totalTests += 7;
 		try {
 			printTest("testNewGame", testNewGame(gameX00O10X11O22X02O01X21O20X12()));
 			printTest("testGameOver", testGameOver(gameX00O10X11O22X02O01X21O20X12(), Result.True));
 			printTest("testWinner", testWinner(gameX00O10X11O22X02O01X21O20X12(), Result.Tie));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O10X11O22X02O01X21O20X12(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O10X11O22X02O01X21O20X12(), moves));
-			printTest("testChooseX00", testChoose(gameX00O10X11O22X02O01X21O20X12(), TicTacToe.Player.X, 0, 0, Result.False));
-			printTest("testChooseX01", testChoose(gameX00O10X11O22X02O01X21O20X12(), TicTacToe.Player.X, 0, 1, Result.False));
-			printTest("testChooseX02", testChoose(gameX00O10X11O22X02O01X21O20X12(), TicTacToe.Player.X, 0, 2, Result.False));
-			printTest("testChooseX10", testChoose(gameX00O10X11O22X02O01X21O20X12(), TicTacToe.Player.X, 1, 0, Result.False));
-			printTest("testChooseX11", testChoose(gameX00O10X11O22X02O01X21O20X12(), TicTacToe.Player.X, 1, 1, Result.False));
-			printTest("testChooseX12", testChoose(gameX00O10X11O22X02O01X21O20X12(), TicTacToe.Player.X, 1, 2, Result.False));
-			printTest("testChooseX20", testChoose(gameX00O10X11O22X02O01X21O20X12(), TicTacToe.Player.X, 2, 0, Result.False));
-			printTest("testChooseX21", testChoose(gameX00O10X11O22X02O01X21O20X12(), TicTacToe.Player.X, 2, 1, Result.False));
-			printTest("testChooseX22", testChoose(gameX00O10X11O22X02O01X21O20X12(), TicTacToe.Player.X, 2, 2, Result.False));
-			printTest("testChooseO00", testChoose(gameX00O10X11O22X02O01X21O20X12(), TicTacToe.Player.O, 0, 0, Result.False));
-			printTest("testChooseO01", testChoose(gameX00O10X11O22X02O01X21O20X12(), TicTacToe.Player.O, 0, 1, Result.False));
-			printTest("testChooseO02", testChoose(gameX00O10X11O22X02O01X21O20X12(), TicTacToe.Player.O, 0, 2, Result.False));
-			printTest("testChooseO10", testChoose(gameX00O10X11O22X02O01X21O20X12(), TicTacToe.Player.O, 1, 0, Result.False));
-			printTest("testChooseO11", testChoose(gameX00O10X11O22X02O01X21O20X12(), TicTacToe.Player.O, 1, 1, Result.False));
-			printTest("testChooseO12", testChoose(gameX00O10X11O22X02O01X21O20X12(), TicTacToe.Player.O, 1, 2, Result.False));
-			printTest("testChooseO20", testChoose(gameX00O10X11O22X02O01X21O20X12(), TicTacToe.Player.O, 2, 0, Result.False));
-			printTest("testChooseO21", testChoose(gameX00O10X11O22X02O01X21O20X12(), TicTacToe.Player.O, 2, 1, Result.False));
-			printTest("testChooseO22", testChoose(gameX00O10X11O22X02O01X21O20X12(), TicTacToe.Player.O, 2, 2, Result.False));
+			printTest("testChoicesX", testChoices(gameX00O10X11O22X02O01X21O20X12, TicTacToe.Player.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00O10X11O22X02O01X21O20X12, TicTacToe.Player.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -615,34 +469,20 @@ public class TicTacToeTester {
 		};
 		Point[] moves = {new Point(0,2), new Point(1,0), new Point(0,0),
 				new Point(2,2), new Point(0,1)};
+		TicTacToe.Player lastPlayer = TicTacToe.Player.X;
+		boolean gameOver = true;
 
 		String scenarioName = "testX02O10X00O22X01";
 		System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		totalTests += 23;
+		totalTests += 7;
 		try {
 			printTest("testNewGame", testNewGame(gameX02O10X00O22X01()));
 			printTest("testGameOver", testGameOver(gameX02O10X00O22X01(), Result.True));
 			printTest("testWinner", testWinner(gameX02O10X00O22X01(), Result.X));
 			printTest("testGetGameGrid", testGetGameGrid(gameX02O10X00O22X01(), grid));
 			printTest("testGetMoves", testGetMoves(gameX02O10X00O22X01(), moves));
-			printTest("testChooseX00", testChoose(gameX02O10X00O22X01(), TicTacToe.Player.X, 0, 0, Result.False));
-			printTest("testChooseX01", testChoose(gameX02O10X00O22X01(), TicTacToe.Player.X, 0, 1, Result.False));
-			printTest("testChooseX02", testChoose(gameX02O10X00O22X01(), TicTacToe.Player.X, 0, 2, Result.False));
-			printTest("testChooseX10", testChoose(gameX02O10X00O22X01(), TicTacToe.Player.X, 1, 0, Result.False));
-			printTest("testChooseX11", testChoose(gameX02O10X00O22X01(), TicTacToe.Player.X, 1, 1, Result.False));
-			printTest("testChooseX12", testChoose(gameX02O10X00O22X01(), TicTacToe.Player.X, 1, 2, Result.False));
-			printTest("testChooseX20", testChoose(gameX02O10X00O22X01(), TicTacToe.Player.X, 2, 0, Result.False));
-			printTest("testChooseX21", testChoose(gameX02O10X00O22X01(), TicTacToe.Player.X, 2, 1, Result.False));
-			printTest("testChooseX22", testChoose(gameX02O10X00O22X01(), TicTacToe.Player.X, 2, 2, Result.False));
-			printTest("testChooseO00", testChoose(gameX02O10X00O22X01(), TicTacToe.Player.O, 0, 0, Result.False));
-			printTest("testChooseO01", testChoose(gameX02O10X00O22X01(), TicTacToe.Player.O, 0, 1, Result.False));
-			printTest("testChooseO02", testChoose(gameX02O10X00O22X01(), TicTacToe.Player.O, 0, 2, Result.False));
-			printTest("testChooseO10", testChoose(gameX02O10X00O22X01(), TicTacToe.Player.O, 1, 0, Result.False));
-			printTest("testChooseO11", testChoose(gameX02O10X00O22X01(), TicTacToe.Player.O, 1, 1, Result.False));
-			printTest("testChooseO12", testChoose(gameX02O10X00O22X01(), TicTacToe.Player.O, 1, 2, Result.False));
-			printTest("testChooseO20", testChoose(gameX02O10X00O22X01(), TicTacToe.Player.O, 2, 0, Result.False));
-			printTest("testChooseO21", testChoose(gameX02O10X00O22X01(), TicTacToe.Player.O, 2, 1, Result.False));
-			printTest("testChooseO22", testChoose(gameX02O10X00O22X01(), TicTacToe.Player.O, 2, 2, Result.False));
+			printTest("testChoicesX", testChoices(gameX02O10X00O22X01, TicTacToe.Player.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX02O10X00O22X01, TicTacToe.Player.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -662,34 +502,20 @@ public class TicTacToeTester {
 		};
 		Point[] moves = {new Point(1,1), new Point(0,0), new Point(1,0),
 				new Point(2,2), new Point(1,2)};
+		TicTacToe.Player lastPlayer = TicTacToe.Player.X;
+		boolean gameOver = true;
 
 		String scenarioName = "testX11O00X10O22X12";
 		System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		totalTests += 23;
+		totalTests += 7;
 		try {
 			printTest("testNewGame", testNewGame(gameX11O00X10O22X12()));
 			printTest("testGameOver", testGameOver(gameX11O00X10O22X12(), Result.True));
 			printTest("testWinner", testWinner(gameX11O00X10O22X12(), Result.X));
 			printTest("testGetGameGrid", testGetGameGrid(gameX11O00X10O22X12(), grid));
 			printTest("testGetMoves", testGetMoves(gameX11O00X10O22X12(), moves));
-			printTest("testChooseX00", testChoose(gameX11O00X10O22X12(), TicTacToe.Player.X, 0, 0, Result.False));
-			printTest("testChooseX01", testChoose(gameX11O00X10O22X12(), TicTacToe.Player.X, 0, 1, Result.False));
-			printTest("testChooseX02", testChoose(gameX11O00X10O22X12(), TicTacToe.Player.X, 0, 2, Result.False));
-			printTest("testChooseX10", testChoose(gameX11O00X10O22X12(), TicTacToe.Player.X, 1, 0, Result.False));
-			printTest("testChooseX11", testChoose(gameX11O00X10O22X12(), TicTacToe.Player.X, 1, 1, Result.False));
-			printTest("testChooseX12", testChoose(gameX11O00X10O22X12(), TicTacToe.Player.X, 1, 2, Result.False));
-			printTest("testChooseX20", testChoose(gameX11O00X10O22X12(), TicTacToe.Player.X, 2, 0, Result.False));
-			printTest("testChooseX21", testChoose(gameX11O00X10O22X12(), TicTacToe.Player.X, 2, 1, Result.False));
-			printTest("testChooseX22", testChoose(gameX11O00X10O22X12(), TicTacToe.Player.X, 2, 2, Result.False));
-			printTest("testChooseO00", testChoose(gameX11O00X10O22X12(), TicTacToe.Player.O, 0, 0, Result.False));
-			printTest("testChooseO01", testChoose(gameX11O00X10O22X12(), TicTacToe.Player.O, 0, 1, Result.False));
-			printTest("testChooseO02", testChoose(gameX11O00X10O22X12(), TicTacToe.Player.O, 0, 2, Result.False));
-			printTest("testChooseO10", testChoose(gameX11O00X10O22X12(), TicTacToe.Player.O, 1, 0, Result.False));
-			printTest("testChooseO11", testChoose(gameX11O00X10O22X12(), TicTacToe.Player.O, 1, 1, Result.False));
-			printTest("testChooseO12", testChoose(gameX11O00X10O22X12(), TicTacToe.Player.O, 1, 2, Result.False));
-			printTest("testChooseO20", testChoose(gameX11O00X10O22X12(), TicTacToe.Player.O, 2, 0, Result.False));
-			printTest("testChooseO21", testChoose(gameX11O00X10O22X12(), TicTacToe.Player.O, 2, 1, Result.False));
-			printTest("testChooseO22", testChoose(gameX11O00X10O22X12(), TicTacToe.Player.O, 2, 2, Result.False));
+			printTest("testChoicesX", testChoices(gameX11O00X10O22X12, TicTacToe.Player.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX11O00X10O22X12, TicTacToe.Player.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -709,34 +535,20 @@ public class TicTacToeTester {
 		};
 		Point[] moves = {new Point(2,2), new Point(0,0), new Point(2,0),
 				new Point(1,2), new Point(2,1)};
+		TicTacToe.Player lastPlayer = TicTacToe.Player.X;
+		boolean gameOver = true;
 
 		String scenarioName = "testX22O00X20O12X21";
 		System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		totalTests += 23;
+		totalTests += 7;
 		try {
 			printTest("testNewGame", testNewGame(gameX22O00X20O12X21()));
 			printTest("testGameOver", testGameOver(gameX22O00X20O12X21(), Result.True));
 			printTest("testWinner", testWinner(gameX22O00X20O12X21(), Result.X));
 			printTest("testGetGameGrid", testGetGameGrid(gameX22O00X20O12X21(), grid));
 			printTest("testGetMoves", testGetMoves(gameX22O00X20O12X21(), moves));
-			printTest("testChooseX00", testChoose(gameX22O00X20O12X21(), TicTacToe.Player.X, 0, 0, Result.False));
-			printTest("testChooseX01", testChoose(gameX22O00X20O12X21(), TicTacToe.Player.X, 0, 1, Result.False));
-			printTest("testChooseX02", testChoose(gameX22O00X20O12X21(), TicTacToe.Player.X, 0, 2, Result.False));
-			printTest("testChooseX10", testChoose(gameX22O00X20O12X21(), TicTacToe.Player.X, 1, 0, Result.False));
-			printTest("testChooseX11", testChoose(gameX22O00X20O12X21(), TicTacToe.Player.X, 1, 1, Result.False));
-			printTest("testChooseX12", testChoose(gameX22O00X20O12X21(), TicTacToe.Player.X, 1, 2, Result.False));
-			printTest("testChooseX20", testChoose(gameX22O00X20O12X21(), TicTacToe.Player.X, 2, 0, Result.False));
-			printTest("testChooseX21", testChoose(gameX22O00X20O12X21(), TicTacToe.Player.X, 2, 1, Result.False));
-			printTest("testChooseX22", testChoose(gameX22O00X20O12X21(), TicTacToe.Player.X, 2, 2, Result.False));
-			printTest("testChooseO00", testChoose(gameX22O00X20O12X21(), TicTacToe.Player.O, 0, 0, Result.False));
-			printTest("testChooseO01", testChoose(gameX22O00X20O12X21(), TicTacToe.Player.O, 0, 1, Result.False));
-			printTest("testChooseO02", testChoose(gameX22O00X20O12X21(), TicTacToe.Player.O, 0, 2, Result.False));
-			printTest("testChooseO10", testChoose(gameX22O00X20O12X21(), TicTacToe.Player.O, 1, 0, Result.False));
-			printTest("testChooseO11", testChoose(gameX22O00X20O12X21(), TicTacToe.Player.O, 1, 1, Result.False));
-			printTest("testChooseO12", testChoose(gameX22O00X20O12X21(), TicTacToe.Player.O, 1, 2, Result.False));
-			printTest("testChooseO20", testChoose(gameX22O00X20O12X21(), TicTacToe.Player.O, 2, 0, Result.False));
-			printTest("testChooseO21", testChoose(gameX22O00X20O12X21(), TicTacToe.Player.O, 2, 1, Result.False));
-			printTest("testChooseO22", testChoose(gameX22O00X20O12X21(), TicTacToe.Player.O, 2, 2, Result.False));
+			printTest("testChoicesX", testChoices(gameX22O00X20O12X21, TicTacToe.Player.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX22O00X20O12X21, TicTacToe.Player.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -756,34 +568,20 @@ public class TicTacToeTester {
 		};
 		Point[] moves = {new Point(0,0), new Point(1,1), new Point(2,0),
 				new Point(1,2), new Point(1,0)};
+		TicTacToe.Player lastPlayer = TicTacToe.Player.X;
+		boolean gameOver = true;
 
 		String scenarioName = "testX00O11X20O12X10";
 		System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		totalTests += 23;
+		totalTests += 7;
 		try {
 			printTest("testNewGame", testNewGame(gameX00O11X20O12X10()));
 			printTest("testGameOver", testGameOver(gameX00O11X20O12X10(), Result.True));
 			printTest("testWinner", testWinner(gameX00O11X20O12X10(), Result.X));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O11X20O12X10(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O11X20O12X10(), moves));
-			printTest("testChooseX00", testChoose(gameX00O11X20O12X10(), TicTacToe.Player.X, 0, 0, Result.False));
-			printTest("testChooseX01", testChoose(gameX00O11X20O12X10(), TicTacToe.Player.X, 0, 1, Result.False));
-			printTest("testChooseX02", testChoose(gameX00O11X20O12X10(), TicTacToe.Player.X, 0, 2, Result.False));
-			printTest("testChooseX10", testChoose(gameX00O11X20O12X10(), TicTacToe.Player.X, 1, 0, Result.False));
-			printTest("testChooseX11", testChoose(gameX00O11X20O12X10(), TicTacToe.Player.X, 1, 1, Result.False));
-			printTest("testChooseX12", testChoose(gameX00O11X20O12X10(), TicTacToe.Player.X, 1, 2, Result.False));
-			printTest("testChooseX20", testChoose(gameX00O11X20O12X10(), TicTacToe.Player.X, 2, 0, Result.False));
-			printTest("testChooseX21", testChoose(gameX00O11X20O12X10(), TicTacToe.Player.X, 2, 1, Result.False));
-			printTest("testChooseX22", testChoose(gameX00O11X20O12X10(), TicTacToe.Player.X, 2, 2, Result.False));
-			printTest("testChooseO00", testChoose(gameX00O11X20O12X10(), TicTacToe.Player.O, 0, 0, Result.False));
-			printTest("testChooseO01", testChoose(gameX00O11X20O12X10(), TicTacToe.Player.O, 0, 1, Result.False));
-			printTest("testChooseO02", testChoose(gameX00O11X20O12X10(), TicTacToe.Player.O, 0, 2, Result.False));
-			printTest("testChooseO10", testChoose(gameX00O11X20O12X10(), TicTacToe.Player.O, 1, 0, Result.False));
-			printTest("testChooseO11", testChoose(gameX00O11X20O12X10(), TicTacToe.Player.O, 1, 1, Result.False));
-			printTest("testChooseO12", testChoose(gameX00O11X20O12X10(), TicTacToe.Player.O, 1, 2, Result.False));
-			printTest("testChooseO20", testChoose(gameX00O11X20O12X10(), TicTacToe.Player.O, 2, 0, Result.False));
-			printTest("testChooseO21", testChoose(gameX00O11X20O12X10(), TicTacToe.Player.O, 2, 1, Result.False));
-			printTest("testChooseO22", testChoose(gameX00O11X20O12X10(), TicTacToe.Player.O, 2, 2, Result.False));
+			printTest("testChoicesX", testChoices(gameX00O11X20O12X10, TicTacToe.Player.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00O11X20O12X10, TicTacToe.Player.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -803,34 +601,20 @@ public class TicTacToeTester {
 		};
 		Point[] moves = {new Point(0,1), new Point(1,0), new Point(2,1),
 				new Point(1,2), new Point(1,1)};
+		TicTacToe.Player lastPlayer = TicTacToe.Player.X;
+		boolean gameOver = true;
 
 		String scenarioName = "testX01O10X21O12X11";
 		System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		totalTests += 23;
+		totalTests += 7;
 		try {
 			printTest("testNewGame", testNewGame(gameX01O10X21O12X11()));
 			printTest("testGameOver", testGameOver(gameX01O10X21O12X11(), Result.True));
 			printTest("testWinner", testWinner(gameX01O10X21O12X11(), Result.X));
 			printTest("testGetGameGrid", testGetGameGrid(gameX01O10X21O12X11(), grid));
 			printTest("testGetMoves", testGetMoves(gameX01O10X21O12X11(), moves));
-			printTest("testChooseX00", testChoose(gameX01O10X21O12X11(), TicTacToe.Player.X, 0, 0, Result.False));
-			printTest("testChooseX01", testChoose(gameX01O10X21O12X11(), TicTacToe.Player.X, 0, 1, Result.False));
-			printTest("testChooseX02", testChoose(gameX01O10X21O12X11(), TicTacToe.Player.X, 0, 2, Result.False));
-			printTest("testChooseX10", testChoose(gameX01O10X21O12X11(), TicTacToe.Player.X, 1, 0, Result.False));
-			printTest("testChooseX11", testChoose(gameX01O10X21O12X11(), TicTacToe.Player.X, 1, 1, Result.False));
-			printTest("testChooseX12", testChoose(gameX01O10X21O12X11(), TicTacToe.Player.X, 1, 2, Result.False));
-			printTest("testChooseX20", testChoose(gameX01O10X21O12X11(), TicTacToe.Player.X, 2, 0, Result.False));
-			printTest("testChooseX21", testChoose(gameX01O10X21O12X11(), TicTacToe.Player.X, 2, 1, Result.False));
-			printTest("testChooseX22", testChoose(gameX01O10X21O12X11(), TicTacToe.Player.X, 2, 2, Result.False));
-			printTest("testChooseO00", testChoose(gameX01O10X21O12X11(), TicTacToe.Player.O, 0, 0, Result.False));
-			printTest("testChooseO01", testChoose(gameX01O10X21O12X11(), TicTacToe.Player.O, 0, 1, Result.False));
-			printTest("testChooseO02", testChoose(gameX01O10X21O12X11(), TicTacToe.Player.O, 0, 2, Result.False));
-			printTest("testChooseO10", testChoose(gameX01O10X21O12X11(), TicTacToe.Player.O, 1, 0, Result.False));
-			printTest("testChooseO11", testChoose(gameX01O10X21O12X11(), TicTacToe.Player.O, 1, 1, Result.False));
-			printTest("testChooseO12", testChoose(gameX01O10X21O12X11(), TicTacToe.Player.O, 1, 2, Result.False));
-			printTest("testChooseO20", testChoose(gameX01O10X21O12X11(), TicTacToe.Player.O, 2, 0, Result.False));
-			printTest("testChooseO21", testChoose(gameX01O10X21O12X11(), TicTacToe.Player.O, 2, 1, Result.False));
-			printTest("testChooseO22", testChoose(gameX01O10X21O12X11(), TicTacToe.Player.O, 2, 2, Result.False));
+			printTest("testChoicesX", testChoices(gameX01O10X21O12X11, TicTacToe.Player.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX01O10X21O12X11, TicTacToe.Player.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -850,34 +634,20 @@ public class TicTacToeTester {
 		};
 		Point[] moves = {new Point(1,2), new Point(1,1), new Point(0,2),
 				new Point(2,1), new Point(2,2)};
+		TicTacToe.Player lastPlayer = TicTacToe.Player.X;
+		boolean gameOver = true;
 
 		String scenarioName = "testX12O11X02O21X22";
 		System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		totalTests += 23;
+		totalTests += 7;
 		try {
 			printTest("testNewGame", testNewGame(gameX12O11X02O21X22()));
 			printTest("testGameOver", testGameOver(gameX12O11X02O21X22(), Result.True));
 			printTest("testWinner", testWinner(gameX12O11X02O21X22(), Result.X));
 			printTest("testGetGameGrid", testGetGameGrid(gameX12O11X02O21X22(), grid));
 			printTest("testGetMoves", testGetMoves(gameX12O11X02O21X22(), moves));
-			printTest("testChooseX00", testChoose(gameX12O11X02O21X22(), TicTacToe.Player.X, 0, 0, Result.False));
-			printTest("testChooseX01", testChoose(gameX12O11X02O21X22(), TicTacToe.Player.X, 0, 1, Result.False));
-			printTest("testChooseX02", testChoose(gameX12O11X02O21X22(), TicTacToe.Player.X, 0, 2, Result.False));
-			printTest("testChooseX10", testChoose(gameX12O11X02O21X22(), TicTacToe.Player.X, 1, 0, Result.False));
-			printTest("testChooseX11", testChoose(gameX12O11X02O21X22(), TicTacToe.Player.X, 1, 1, Result.False));
-			printTest("testChooseX12", testChoose(gameX12O11X02O21X22(), TicTacToe.Player.X, 1, 2, Result.False));
-			printTest("testChooseX20", testChoose(gameX12O11X02O21X22(), TicTacToe.Player.X, 2, 0, Result.False));
-			printTest("testChooseX21", testChoose(gameX12O11X02O21X22(), TicTacToe.Player.X, 2, 1, Result.False));
-			printTest("testChooseX22", testChoose(gameX12O11X02O21X22(), TicTacToe.Player.X, 2, 2, Result.False));
-			printTest("testChooseO00", testChoose(gameX12O11X02O21X22(), TicTacToe.Player.O, 0, 0, Result.False));
-			printTest("testChooseO01", testChoose(gameX12O11X02O21X22(), TicTacToe.Player.O, 0, 1, Result.False));
-			printTest("testChooseO02", testChoose(gameX12O11X02O21X22(), TicTacToe.Player.O, 0, 2, Result.False));
-			printTest("testChooseO10", testChoose(gameX12O11X02O21X22(), TicTacToe.Player.O, 1, 0, Result.False));
-			printTest("testChooseO11", testChoose(gameX12O11X02O21X22(), TicTacToe.Player.O, 1, 1, Result.False));
-			printTest("testChooseO12", testChoose(gameX12O11X02O21X22(), TicTacToe.Player.O, 1, 2, Result.False));
-			printTest("testChooseO20", testChoose(gameX12O11X02O21X22(), TicTacToe.Player.O, 2, 0, Result.False));
-			printTest("testChooseO21", testChoose(gameX12O11X02O21X22(), TicTacToe.Player.O, 2, 1, Result.False));
-			printTest("testChooseO22", testChoose(gameX12O11X02O21X22(), TicTacToe.Player.O, 2, 2, Result.False));
+			printTest("testChoicesX", testChoices(gameX12O11X02O21X22, TicTacToe.Player.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX12O11X02O21X22, TicTacToe.Player.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -897,34 +667,20 @@ public class TicTacToeTester {
 		};
 		Point[] moves = {new Point(1,1), new Point(0,2), new Point(2,2),
 				new Point(1,2), new Point(0,0)};
+		TicTacToe.Player lastPlayer = TicTacToe.Player.X;
+		boolean gameOver = true;
 
 		String scenarioName = "testX11O02X22O12X00";
 		System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		totalTests += 23;
+		totalTests += 7;
 		try {
 			printTest("testNewGame", testNewGame(gameX11O02X22O12X00()));
 			printTest("testGameOver", testGameOver(gameX11O02X22O12X00(), Result.True));
 			printTest("testWinner", testWinner(gameX11O02X22O12X00(), Result.X));
 			printTest("testGetGameGrid", testGetGameGrid(gameX11O02X22O12X00(), grid));
 			printTest("testGetMoves", testGetMoves(gameX11O02X22O12X00(), moves));
-			printTest("testChooseX00", testChoose(gameX11O02X22O12X00(), TicTacToe.Player.X, 0, 0, Result.False));
-			printTest("testChooseX01", testChoose(gameX11O02X22O12X00(), TicTacToe.Player.X, 0, 1, Result.False));
-			printTest("testChooseX02", testChoose(gameX11O02X22O12X00(), TicTacToe.Player.X, 0, 2, Result.False));
-			printTest("testChooseX10", testChoose(gameX11O02X22O12X00(), TicTacToe.Player.X, 1, 0, Result.False));
-			printTest("testChooseX11", testChoose(gameX11O02X22O12X00(), TicTacToe.Player.X, 1, 1, Result.False));
-			printTest("testChooseX12", testChoose(gameX11O02X22O12X00(), TicTacToe.Player.X, 1, 2, Result.False));
-			printTest("testChooseX20", testChoose(gameX11O02X22O12X00(), TicTacToe.Player.X, 2, 0, Result.False));
-			printTest("testChooseX21", testChoose(gameX11O02X22O12X00(), TicTacToe.Player.X, 2, 1, Result.False));
-			printTest("testChooseX22", testChoose(gameX11O02X22O12X00(), TicTacToe.Player.X, 2, 2, Result.False));
-			printTest("testChooseO00", testChoose(gameX11O02X22O12X00(), TicTacToe.Player.O, 0, 0, Result.False));
-			printTest("testChooseO01", testChoose(gameX11O02X22O12X00(), TicTacToe.Player.O, 0, 1, Result.False));
-			printTest("testChooseO02", testChoose(gameX11O02X22O12X00(), TicTacToe.Player.O, 0, 2, Result.False));
-			printTest("testChooseO10", testChoose(gameX11O02X22O12X00(), TicTacToe.Player.O, 1, 0, Result.False));
-			printTest("testChooseO11", testChoose(gameX11O02X22O12X00(), TicTacToe.Player.O, 1, 1, Result.False));
-			printTest("testChooseO12", testChoose(gameX11O02X22O12X00(), TicTacToe.Player.O, 1, 2, Result.False));
-			printTest("testChooseO20", testChoose(gameX11O02X22O12X00(), TicTacToe.Player.O, 2, 0, Result.False));
-			printTest("testChooseO21", testChoose(gameX11O02X22O12X00(), TicTacToe.Player.O, 2, 1, Result.False));
-			printTest("testChooseO22", testChoose(gameX11O02X22O12X00(), TicTacToe.Player.O, 2, 2, Result.False));
+			printTest("testChoicesX", testChoices(gameX11O02X22O12X00, TicTacToe.Player.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX11O02X22O12X00, TicTacToe.Player.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -944,34 +700,20 @@ public class TicTacToeTester {
 		};
 		Point[] moves = {new Point(2,0), new Point(0,1), new Point(1,1),
 				new Point(0,0), new Point(0,2)};
+		TicTacToe.Player lastPlayer = TicTacToe.Player.X;
+		boolean gameOver = true;
 
 		String scenarioName = "testX20O01X11O00X02";
 		System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		totalTests += 23;
+		totalTests += 7;
 		try {
 			printTest("testNewGame", testNewGame(gameX20O01X11O00X02()));
 			printTest("testGameOver", testGameOver(gameX20O01X11O00X02(), Result.True));
 			printTest("testWinner", testWinner(gameX20O01X11O00X02(), Result.X));
 			printTest("testGetGameGrid", testGetGameGrid(gameX20O01X11O00X02(), grid));
 			printTest("testGetMoves", testGetMoves(gameX20O01X11O00X02(), moves));
-			printTest("testChooseX00", testChoose(gameX20O01X11O00X02(), TicTacToe.Player.X, 0, 0, Result.False));
-			printTest("testChooseX01", testChoose(gameX20O01X11O00X02(), TicTacToe.Player.X, 0, 1, Result.False));
-			printTest("testChooseX02", testChoose(gameX20O01X11O00X02(), TicTacToe.Player.X, 0, 2, Result.False));
-			printTest("testChooseX10", testChoose(gameX20O01X11O00X02(), TicTacToe.Player.X, 1, 0, Result.False));
-			printTest("testChooseX11", testChoose(gameX20O01X11O00X02(), TicTacToe.Player.X, 1, 1, Result.False));
-			printTest("testChooseX12", testChoose(gameX20O01X11O00X02(), TicTacToe.Player.X, 1, 2, Result.False));
-			printTest("testChooseX20", testChoose(gameX20O01X11O00X02(), TicTacToe.Player.X, 2, 0, Result.False));
-			printTest("testChooseX21", testChoose(gameX20O01X11O00X02(), TicTacToe.Player.X, 2, 1, Result.False));
-			printTest("testChooseX22", testChoose(gameX20O01X11O00X02(), TicTacToe.Player.X, 2, 2, Result.False));
-			printTest("testChooseO00", testChoose(gameX20O01X11O00X02(), TicTacToe.Player.O, 0, 0, Result.False));
-			printTest("testChooseO01", testChoose(gameX20O01X11O00X02(), TicTacToe.Player.O, 0, 1, Result.False));
-			printTest("testChooseO02", testChoose(gameX20O01X11O00X02(), TicTacToe.Player.O, 0, 2, Result.False));
-			printTest("testChooseO10", testChoose(gameX20O01X11O00X02(), TicTacToe.Player.O, 1, 0, Result.False));
-			printTest("testChooseO11", testChoose(gameX20O01X11O00X02(), TicTacToe.Player.O, 1, 1, Result.False));
-			printTest("testChooseO12", testChoose(gameX20O01X11O00X02(), TicTacToe.Player.O, 1, 2, Result.False));
-			printTest("testChooseO20", testChoose(gameX20O01X11O00X02(), TicTacToe.Player.O, 2, 0, Result.False));
-			printTest("testChooseO21", testChoose(gameX20O01X11O00X02(), TicTacToe.Player.O, 2, 1, Result.False));
-			printTest("testChooseO22", testChoose(gameX20O01X11O00X02(), TicTacToe.Player.O, 2, 2, Result.False));
+			printTest("testChoicesX", testChoices(gameX20O01X11O00X02, TicTacToe.Player.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX20O01X11O00X02, TicTacToe.Player.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -993,34 +735,20 @@ public class TicTacToeTester {
 		};
 		Point[] moves = {new Point(1,0), new Point(0,1), new Point(2,0),
 				new Point(0,2), new Point(1,1), new Point(0,0)};
+		TicTacToe.Player lastPlayer = TicTacToe.Player.O;
+		boolean gameOver = true;
 
 		String scenarioName = "testX10O01X20O02X11O00";
 		System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		totalTests += 23;
+		totalTests += 7;
 		try {
 			printTest("testNewGame", testNewGame(gameX10O01X20O02X11O00()));
 			printTest("testGameOver", testGameOver(gameX10O01X20O02X11O00(), Result.True));
 			printTest("testWinner", testWinner(gameX10O01X20O02X11O00(), Result.O));
 			printTest("testGetGameGrid", testGetGameGrid(gameX10O01X20O02X11O00(), grid));
 			printTest("testGetMoves", testGetMoves(gameX10O01X20O02X11O00(), moves));
-			printTest("testChooseX00", testChoose(gameX10O01X20O02X11O00(), TicTacToe.Player.X, 0, 0, Result.False));
-			printTest("testChooseX01", testChoose(gameX10O01X20O02X11O00(), TicTacToe.Player.X, 0, 1, Result.False));
-			printTest("testChooseX02", testChoose(gameX10O01X20O02X11O00(), TicTacToe.Player.X, 0, 2, Result.False));
-			printTest("testChooseX10", testChoose(gameX10O01X20O02X11O00(), TicTacToe.Player.X, 1, 0, Result.False));
-			printTest("testChooseX11", testChoose(gameX10O01X20O02X11O00(), TicTacToe.Player.X, 1, 1, Result.False));
-			printTest("testChooseX12", testChoose(gameX10O01X20O02X11O00(), TicTacToe.Player.X, 1, 2, Result.False));
-			printTest("testChooseX20", testChoose(gameX10O01X20O02X11O00(), TicTacToe.Player.X, 2, 0, Result.False));
-			printTest("testChooseX21", testChoose(gameX10O01X20O02X11O00(), TicTacToe.Player.X, 2, 1, Result.False));
-			printTest("testChooseX22", testChoose(gameX10O01X20O02X11O00(), TicTacToe.Player.X, 2, 2, Result.False));
-			printTest("testChooseO00", testChoose(gameX10O01X20O02X11O00(), TicTacToe.Player.O, 0, 0, Result.False));
-			printTest("testChooseO01", testChoose(gameX10O01X20O02X11O00(), TicTacToe.Player.O, 0, 1, Result.False));
-			printTest("testChooseO02", testChoose(gameX10O01X20O02X11O00(), TicTacToe.Player.O, 0, 2, Result.False));
-			printTest("testChooseO10", testChoose(gameX10O01X20O02X11O00(), TicTacToe.Player.O, 1, 0, Result.False));
-			printTest("testChooseO11", testChoose(gameX10O01X20O02X11O00(), TicTacToe.Player.O, 1, 1, Result.False));
-			printTest("testChooseO12", testChoose(gameX10O01X20O02X11O00(), TicTacToe.Player.O, 1, 2, Result.False));
-			printTest("testChooseO20", testChoose(gameX10O01X20O02X11O00(), TicTacToe.Player.O, 2, 0, Result.False));
-			printTest("testChooseO21", testChoose(gameX10O01X20O02X11O00(), TicTacToe.Player.O, 2, 1, Result.False));
-			printTest("testChooseO22", testChoose(gameX10O01X20O02X11O00(), TicTacToe.Player.O, 2, 2, Result.False));
+			printTest("testChoicesX", testChoices(gameX10O01X20O02X11O00, TicTacToe.Player.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX10O01X20O02X11O00, TicTacToe.Player.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -1040,34 +768,20 @@ public class TicTacToeTester {
 		};
 		Point[] moves = {new Point(0,0), new Point(1,0), new Point(2,0),
 				new Point(1,2), new Point(0,1), new Point(1,1)};
+		TicTacToe.Player lastPlayer = TicTacToe.Player.O;
+		boolean gameOver = true;
 
 		String scenarioName = "testX00O10X20O12X01O11";
 		System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		totalTests += 23;
+		totalTests += 7;
 		try {
 			printTest("testNewGame", testNewGame(gameX00O10X20O12X01O11()));
 			printTest("testGameOver", testGameOver(gameX00O10X20O12X01O11(), Result.True));
 			printTest("testWinner", testWinner(gameX00O10X20O12X01O11(), Result.O));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O10X20O12X01O11(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O10X20O12X01O11(), moves));
-			printTest("testChooseX00", testChoose(gameX00O10X20O12X01O11(), TicTacToe.Player.X, 0, 0, Result.False));
-			printTest("testChooseX01", testChoose(gameX00O10X20O12X01O11(), TicTacToe.Player.X, 0, 1, Result.False));
-			printTest("testChooseX02", testChoose(gameX00O10X20O12X01O11(), TicTacToe.Player.X, 0, 2, Result.False));
-			printTest("testChooseX10", testChoose(gameX00O10X20O12X01O11(), TicTacToe.Player.X, 1, 0, Result.False));
-			printTest("testChooseX11", testChoose(gameX00O10X20O12X01O11(), TicTacToe.Player.X, 1, 1, Result.False));
-			printTest("testChooseX12", testChoose(gameX00O10X20O12X01O11(), TicTacToe.Player.X, 1, 2, Result.False));
-			printTest("testChooseX20", testChoose(gameX00O10X20O12X01O11(), TicTacToe.Player.X, 2, 0, Result.False));
-			printTest("testChooseX21", testChoose(gameX00O10X20O12X01O11(), TicTacToe.Player.X, 2, 1, Result.False));
-			printTest("testChooseX22", testChoose(gameX00O10X20O12X01O11(), TicTacToe.Player.X, 2, 2, Result.False));
-			printTest("testChooseO00", testChoose(gameX00O10X20O12X01O11(), TicTacToe.Player.O, 0, 0, Result.False));
-			printTest("testChooseO01", testChoose(gameX00O10X20O12X01O11(), TicTacToe.Player.O, 0, 1, Result.False));
-			printTest("testChooseO02", testChoose(gameX00O10X20O12X01O11(), TicTacToe.Player.O, 0, 2, Result.False));
-			printTest("testChooseO10", testChoose(gameX00O10X20O12X01O11(), TicTacToe.Player.O, 1, 0, Result.False));
-			printTest("testChooseO11", testChoose(gameX00O10X20O12X01O11(), TicTacToe.Player.O, 1, 1, Result.False));
-			printTest("testChooseO12", testChoose(gameX00O10X20O12X01O11(), TicTacToe.Player.O, 1, 2, Result.False));
-			printTest("testChooseO20", testChoose(gameX00O10X20O12X01O11(), TicTacToe.Player.O, 2, 0, Result.False));
-			printTest("testChooseO21", testChoose(gameX00O10X20O12X01O11(), TicTacToe.Player.O, 2, 1, Result.False));
-			printTest("testChooseO22", testChoose(gameX00O10X20O12X01O11(), TicTacToe.Player.O, 2, 2, Result.False));
+			printTest("testChoicesX", testChoices(gameX00O10X20O12X01O11, TicTacToe.Player.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00O10X20O12X01O11, TicTacToe.Player.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -1087,34 +801,20 @@ public class TicTacToeTester {
 		};
 		Point[] moves = {new Point(0,0), new Point(2,1), new Point(1,0),
 				new Point(2,0), new Point(0,1), new Point(2,2)};
+		TicTacToe.Player lastPlayer = TicTacToe.Player.O;
+		boolean gameOver = true;
 
 		String scenarioName = "testX00O21X10O20X01O22";
 		System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		totalTests += 23;
+		totalTests += 7;
 		try {
 			printTest("testNewGame", testNewGame(gameX00O21X10O20X01O22()));
 			printTest("testGameOver", testGameOver(gameX00O21X10O20X01O22(), Result.True));
 			printTest("testWinner", testWinner(gameX00O21X10O20X01O22(), Result.O));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O21X10O20X01O22(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O21X10O20X01O22(), moves));
-			printTest("testChooseX00", testChoose(gameX00O21X10O20X01O22(), TicTacToe.Player.X, 0, 0, Result.False));
-			printTest("testChooseX01", testChoose(gameX00O21X10O20X01O22(), TicTacToe.Player.X, 0, 1, Result.False));
-			printTest("testChooseX02", testChoose(gameX00O21X10O20X01O22(), TicTacToe.Player.X, 0, 2, Result.False));
-			printTest("testChooseX10", testChoose(gameX00O21X10O20X01O22(), TicTacToe.Player.X, 1, 0, Result.False));
-			printTest("testChooseX11", testChoose(gameX00O21X10O20X01O22(), TicTacToe.Player.X, 1, 1, Result.False));
-			printTest("testChooseX12", testChoose(gameX00O21X10O20X01O22(), TicTacToe.Player.X, 1, 2, Result.False));
-			printTest("testChooseX20", testChoose(gameX00O21X10O20X01O22(), TicTacToe.Player.X, 2, 0, Result.False));
-			printTest("testChooseX21", testChoose(gameX00O21X10O20X01O22(), TicTacToe.Player.X, 2, 1, Result.False));
-			printTest("testChooseX22", testChoose(gameX00O21X10O20X01O22(), TicTacToe.Player.X, 2, 2, Result.False));
-			printTest("testChooseO00", testChoose(gameX00O21X10O20X01O22(), TicTacToe.Player.O, 0, 0, Result.False));
-			printTest("testChooseO01", testChoose(gameX00O21X10O20X01O22(), TicTacToe.Player.O, 0, 1, Result.False));
-			printTest("testChooseO02", testChoose(gameX00O21X10O20X01O22(), TicTacToe.Player.O, 0, 2, Result.False));
-			printTest("testChooseO10", testChoose(gameX00O21X10O20X01O22(), TicTacToe.Player.O, 1, 0, Result.False));
-			printTest("testChooseO11", testChoose(gameX00O21X10O20X01O22(), TicTacToe.Player.O, 1, 1, Result.False));
-			printTest("testChooseO12", testChoose(gameX00O21X10O20X01O22(), TicTacToe.Player.O, 1, 2, Result.False));
-			printTest("testChooseO20", testChoose(gameX00O21X10O20X01O22(), TicTacToe.Player.O, 2, 0, Result.False));
-			printTest("testChooseO21", testChoose(gameX00O21X10O20X01O22(), TicTacToe.Player.O, 2, 1, Result.False));
-			printTest("testChooseO22", testChoose(gameX00O21X10O20X01O22(), TicTacToe.Player.O, 2, 2, Result.False));
+			printTest("testChoicesX", testChoices(gameX00O21X10O20X01O22, TicTacToe.Player.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00O21X10O20X01O22, TicTacToe.Player.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -1134,34 +834,20 @@ public class TicTacToeTester {
 		};
 		Point[] moves = {new Point(2,2), new Point(1,0), new Point(1,1),
 				new Point(0,0), new Point(0,1), new Point(2,0)};
+		TicTacToe.Player lastPlayer = TicTacToe.Player.O;
+		boolean gameOver = true;
 
 		String scenarioName = "testX22O10X11O00X01O20";
 		System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		totalTests += 23;
+		totalTests += 7;
 		try {
 			printTest("testNewGame", testNewGame(gameX22O10X11O00X01O20()));
 			printTest("testGameOver", testGameOver(gameX22O10X11O00X01O20(), Result.True));
 			printTest("testWinner", testWinner(gameX22O10X11O00X01O20(), Result.O));
 			printTest("testGetGameGrid", testGetGameGrid(gameX22O10X11O00X01O20(), grid));
 			printTest("testGetMoves", testGetMoves(gameX22O10X11O00X01O20(), moves));
-			printTest("testChooseX00", testChoose(gameX22O10X11O00X01O20(), TicTacToe.Player.X, 0, 0, Result.False));
-			printTest("testChooseX01", testChoose(gameX22O10X11O00X01O20(), TicTacToe.Player.X, 0, 1, Result.False));
-			printTest("testChooseX02", testChoose(gameX22O10X11O00X01O20(), TicTacToe.Player.X, 0, 2, Result.False));
-			printTest("testChooseX10", testChoose(gameX22O10X11O00X01O20(), TicTacToe.Player.X, 1, 0, Result.False));
-			printTest("testChooseX11", testChoose(gameX22O10X11O00X01O20(), TicTacToe.Player.X, 1, 1, Result.False));
-			printTest("testChooseX12", testChoose(gameX22O10X11O00X01O20(), TicTacToe.Player.X, 1, 2, Result.False));
-			printTest("testChooseX20", testChoose(gameX22O10X11O00X01O20(), TicTacToe.Player.X, 2, 0, Result.False));
-			printTest("testChooseX21", testChoose(gameX22O10X11O00X01O20(), TicTacToe.Player.X, 2, 1, Result.False));
-			printTest("testChooseX22", testChoose(gameX22O10X11O00X01O20(), TicTacToe.Player.X, 2, 2, Result.False));
-			printTest("testChooseO00", testChoose(gameX22O10X11O00X01O20(), TicTacToe.Player.O, 0, 0, Result.False));
-			printTest("testChooseO01", testChoose(gameX22O10X11O00X01O20(), TicTacToe.Player.O, 0, 1, Result.False));
-			printTest("testChooseO02", testChoose(gameX22O10X11O00X01O20(), TicTacToe.Player.O, 0, 2, Result.False));
-			printTest("testChooseO10", testChoose(gameX22O10X11O00X01O20(), TicTacToe.Player.O, 1, 0, Result.False));
-			printTest("testChooseO11", testChoose(gameX22O10X11O00X01O20(), TicTacToe.Player.O, 1, 1, Result.False));
-			printTest("testChooseO12", testChoose(gameX22O10X11O00X01O20(), TicTacToe.Player.O, 1, 2, Result.False));
-			printTest("testChooseO20", testChoose(gameX22O10X11O00X01O20(), TicTacToe.Player.O, 2, 0, Result.False));
-			printTest("testChooseO21", testChoose(gameX22O10X11O00X01O20(), TicTacToe.Player.O, 2, 1, Result.False));
-			printTest("testChooseO22", testChoose(gameX22O10X11O00X01O20(), TicTacToe.Player.O, 2, 2, Result.False));
+			printTest("testChoicesX", testChoices(gameX22O10X11O00X01O20, TicTacToe.Player.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX22O10X11O00X01O20, TicTacToe.Player.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -1181,34 +867,20 @@ public class TicTacToeTester {
 		};
 		Point[] moves = {new Point(0,0), new Point(0,1), new Point(2,2),
 				new Point(1,1), new Point(1,0), new Point(2,1)};
+		TicTacToe.Player lastPlayer = TicTacToe.Player.O;
+		boolean gameOver = true;
 
 		String scenarioName = "testX00O01X22O11X10O21";
 		System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		totalTests += 23;
+		totalTests += 7;
 		try {
 			printTest("testNewGame", testNewGame(gameX00O01X22O11X10O21()));
 			printTest("testGameOver", testGameOver(gameX00O01X22O11X10O21(), Result.True));
 			printTest("testWinner", testWinner(gameX00O01X22O11X10O21(), Result.O));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O01X22O11X10O21(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O01X22O11X10O21(), moves));
-			printTest("testChooseX00", testChoose(gameX00O01X22O11X10O21(), TicTacToe.Player.X, 0, 0, Result.False));
-			printTest("testChooseX01", testChoose(gameX00O01X22O11X10O21(), TicTacToe.Player.X, 0, 1, Result.False));
-			printTest("testChooseX02", testChoose(gameX00O01X22O11X10O21(), TicTacToe.Player.X, 0, 2, Result.False));
-			printTest("testChooseX10", testChoose(gameX00O01X22O11X10O21(), TicTacToe.Player.X, 1, 0, Result.False));
-			printTest("testChooseX11", testChoose(gameX00O01X22O11X10O21(), TicTacToe.Player.X, 1, 1, Result.False));
-			printTest("testChooseX12", testChoose(gameX00O01X22O11X10O21(), TicTacToe.Player.X, 1, 2, Result.False));
-			printTest("testChooseX20", testChoose(gameX00O01X22O11X10O21(), TicTacToe.Player.X, 2, 0, Result.False));
-			printTest("testChooseX21", testChoose(gameX00O01X22O11X10O21(), TicTacToe.Player.X, 2, 1, Result.False));
-			printTest("testChooseX22", testChoose(gameX00O01X22O11X10O21(), TicTacToe.Player.X, 2, 2, Result.False));
-			printTest("testChooseO00", testChoose(gameX00O01X22O11X10O21(), TicTacToe.Player.O, 0, 0, Result.False));
-			printTest("testChooseO01", testChoose(gameX00O01X22O11X10O21(), TicTacToe.Player.O, 0, 1, Result.False));
-			printTest("testChooseO02", testChoose(gameX00O01X22O11X10O21(), TicTacToe.Player.O, 0, 2, Result.False));
-			printTest("testChooseO10", testChoose(gameX00O01X22O11X10O21(), TicTacToe.Player.O, 1, 0, Result.False));
-			printTest("testChooseO11", testChoose(gameX00O01X22O11X10O21(), TicTacToe.Player.O, 1, 1, Result.False));
-			printTest("testChooseO12", testChoose(gameX00O01X22O11X10O21(), TicTacToe.Player.O, 1, 2, Result.False));
-			printTest("testChooseO20", testChoose(gameX00O01X22O11X10O21(), TicTacToe.Player.O, 2, 0, Result.False));
-			printTest("testChooseO21", testChoose(gameX00O01X22O11X10O21(), TicTacToe.Player.O, 2, 1, Result.False));
-			printTest("testChooseO22", testChoose(gameX00O01X22O11X10O21(), TicTacToe.Player.O, 2, 2, Result.False));
+			printTest("testChoicesX", testChoices(gameX00O01X22O11X10O21, TicTacToe.Player.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00O01X22O11X10O21, TicTacToe.Player.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -1228,34 +900,20 @@ public class TicTacToeTester {
 		};
 		Point[] moves = {new Point(1,1), new Point(0,2), new Point(0,0),
 				new Point(2,2), new Point(1,0), new Point(1,2)};
+		TicTacToe.Player lastPlayer = TicTacToe.Player.O;
+		boolean gameOver = true;
 
 		String scenarioName = "testX11O02X00O22X10O12";
 		System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		totalTests += 23;
+		totalTests += 7;
 		try {
 			printTest("testNewGame", testNewGame(gameX11O02X00O22X10O12()));
 			printTest("testGameOver", testGameOver(gameX11O02X00O22X10O12(), Result.True));
 			printTest("testWinner", testWinner(gameX11O02X00O22X10O12(), Result.O));
 			printTest("testGetGameGrid", testGetGameGrid(gameX11O02X00O22X10O12(), grid));
 			printTest("testGetMoves", testGetMoves(gameX11O02X00O22X10O12(), moves));
-			printTest("testChooseX00", testChoose(gameX11O02X00O22X10O12(), TicTacToe.Player.X, 0, 0, Result.False));
-			printTest("testChooseX01", testChoose(gameX11O02X00O22X10O12(), TicTacToe.Player.X, 0, 1, Result.False));
-			printTest("testChooseX02", testChoose(gameX11O02X00O22X10O12(), TicTacToe.Player.X, 0, 2, Result.False));
-			printTest("testChooseX10", testChoose(gameX11O02X00O22X10O12(), TicTacToe.Player.X, 1, 0, Result.False));
-			printTest("testChooseX11", testChoose(gameX11O02X00O22X10O12(), TicTacToe.Player.X, 1, 1, Result.False));
-			printTest("testChooseX12", testChoose(gameX11O02X00O22X10O12(), TicTacToe.Player.X, 1, 2, Result.False));
-			printTest("testChooseX20", testChoose(gameX11O02X00O22X10O12(), TicTacToe.Player.X, 2, 0, Result.False));
-			printTest("testChooseX21", testChoose(gameX11O02X00O22X10O12(), TicTacToe.Player.X, 2, 1, Result.False));
-			printTest("testChooseX22", testChoose(gameX11O02X00O22X10O12(), TicTacToe.Player.X, 2, 2, Result.False));
-			printTest("testChooseO00", testChoose(gameX11O02X00O22X10O12(), TicTacToe.Player.O, 0, 0, Result.False));
-			printTest("testChooseO01", testChoose(gameX11O02X00O22X10O12(), TicTacToe.Player.O, 0, 1, Result.False));
-			printTest("testChooseO02", testChoose(gameX11O02X00O22X10O12(), TicTacToe.Player.O, 0, 2, Result.False));
-			printTest("testChooseO10", testChoose(gameX11O02X00O22X10O12(), TicTacToe.Player.O, 1, 0, Result.False));
-			printTest("testChooseO11", testChoose(gameX11O02X00O22X10O12(), TicTacToe.Player.O, 1, 1, Result.False));
-			printTest("testChooseO12", testChoose(gameX11O02X00O22X10O12(), TicTacToe.Player.O, 1, 2, Result.False));
-			printTest("testChooseO20", testChoose(gameX11O02X00O22X10O12(), TicTacToe.Player.O, 2, 0, Result.False));
-			printTest("testChooseO21", testChoose(gameX11O02X00O22X10O12(), TicTacToe.Player.O, 2, 1, Result.False));
-			printTest("testChooseO22", testChoose(gameX11O02X00O22X10O12(), TicTacToe.Player.O, 2, 2, Result.False));
+			printTest("testChoicesX", testChoices(gameX11O02X00O22X10O12, TicTacToe.Player.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX11O02X00O22X10O12, TicTacToe.Player.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -1275,34 +933,20 @@ public class TicTacToeTester {
 		};
 		Point[] moves = {new Point(0,1), new Point(0,0), new Point(1,0),
 				new Point(1,1), new Point(2,1), new Point(2,2)};
+		TicTacToe.Player lastPlayer = TicTacToe.Player.O;
+		boolean gameOver = true;
 
 		String scenarioName = "testX01O00X10O11X21O22";
 		System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		totalTests += 23;
+		totalTests += 7;
 		try {
 			printTest("testNewGame", testNewGame(gameX01O00X10O11X21O22()));
 			printTest("testGameOver", testGameOver(gameX01O00X10O11X21O22(), Result.True));
 			printTest("testWinner", testWinner(gameX01O00X10O11X21O22(), Result.O));
 			printTest("testGetGameGrid", testGetGameGrid(gameX01O00X10O11X21O22(), grid));
 			printTest("testGetMoves", testGetMoves(gameX01O00X10O11X21O22(), moves));
-			printTest("testChooseX00", testChoose(gameX01O00X10O11X21O22(), TicTacToe.Player.X, 0, 0, Result.False));
-			printTest("testChooseX01", testChoose(gameX01O00X10O11X21O22(), TicTacToe.Player.X, 0, 1, Result.False));
-			printTest("testChooseX02", testChoose(gameX01O00X10O11X21O22(), TicTacToe.Player.X, 0, 2, Result.False));
-			printTest("testChooseX10", testChoose(gameX01O00X10O11X21O22(), TicTacToe.Player.X, 1, 0, Result.False));
-			printTest("testChooseX11", testChoose(gameX01O00X10O11X21O22(), TicTacToe.Player.X, 1, 1, Result.False));
-			printTest("testChooseX12", testChoose(gameX01O00X10O11X21O22(), TicTacToe.Player.X, 1, 2, Result.False));
-			printTest("testChooseX20", testChoose(gameX01O00X10O11X21O22(), TicTacToe.Player.X, 2, 0, Result.False));
-			printTest("testChooseX21", testChoose(gameX01O00X10O11X21O22(), TicTacToe.Player.X, 2, 1, Result.False));
-			printTest("testChooseX22", testChoose(gameX01O00X10O11X21O22(), TicTacToe.Player.X, 2, 2, Result.False));
-			printTest("testChooseO00", testChoose(gameX01O00X10O11X21O22(), TicTacToe.Player.O, 0, 0, Result.False));
-			printTest("testChooseO01", testChoose(gameX01O00X10O11X21O22(), TicTacToe.Player.O, 0, 1, Result.False));
-			printTest("testChooseO02", testChoose(gameX01O00X10O11X21O22(), TicTacToe.Player.O, 0, 2, Result.False));
-			printTest("testChooseO10", testChoose(gameX01O00X10O11X21O22(), TicTacToe.Player.O, 1, 0, Result.False));
-			printTest("testChooseO11", testChoose(gameX01O00X10O11X21O22(), TicTacToe.Player.O, 1, 1, Result.False));
-			printTest("testChooseO12", testChoose(gameX01O00X10O11X21O22(), TicTacToe.Player.O, 1, 2, Result.False));
-			printTest("testChooseO20", testChoose(gameX01O00X10O11X21O22(), TicTacToe.Player.O, 2, 0, Result.False));
-			printTest("testChooseO21", testChoose(gameX01O00X10O11X21O22(), TicTacToe.Player.O, 2, 1, Result.False));
-			printTest("testChooseO22", testChoose(gameX01O00X10O11X21O22(), TicTacToe.Player.O, 2, 2, Result.False));
+			printTest("testChoicesX", testChoices(gameX01O00X10O11X21O22, TicTacToe.Player.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX01O00X10O11X21O22, TicTacToe.Player.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -1322,34 +966,20 @@ public class TicTacToeTester {
 		};
 		Point[] moves = {new Point(0,0), new Point(1,1), new Point(1,0),
 				new Point(2,0), new Point(2,1), new Point(0,2)};
+		TicTacToe.Player lastPlayer = TicTacToe.Player.O;
+		boolean gameOver = true;
 
 		String scenarioName = "testX00O11X10O20X21O02";
 		System.out.println("\nSCENARIO: " + scenarioName + "\n");
-		totalTests += 23;
+		totalTests += 7;
 		try {
 			printTest("testNewGame", testNewGame(gameX00O11X10O20X21O02()));
 			printTest("testGameOver", testGameOver(gameX00O11X10O20X21O02(), Result.True));
 			printTest("testWinner", testWinner(gameX00O11X10O20X21O02(), Result.O));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O11X10O20X21O02(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O11X10O20X21O02(), moves));
-			printTest("testChooseX00", testChoose(gameX00O11X10O20X21O02(), TicTacToe.Player.X, 0, 0, Result.False));
-			printTest("testChooseX01", testChoose(gameX00O11X10O20X21O02(), TicTacToe.Player.X, 0, 1, Result.False));
-			printTest("testChooseX02", testChoose(gameX00O11X10O20X21O02(), TicTacToe.Player.X, 0, 2, Result.False));
-			printTest("testChooseX10", testChoose(gameX00O11X10O20X21O02(), TicTacToe.Player.X, 1, 0, Result.False));
-			printTest("testChooseX11", testChoose(gameX00O11X10O20X21O02(), TicTacToe.Player.X, 1, 1, Result.False));
-			printTest("testChooseX12", testChoose(gameX00O11X10O20X21O02(), TicTacToe.Player.X, 1, 2, Result.False));
-			printTest("testChooseX20", testChoose(gameX00O11X10O20X21O02(), TicTacToe.Player.X, 2, 0, Result.False));
-			printTest("testChooseX21", testChoose(gameX00O11X10O20X21O02(), TicTacToe.Player.X, 2, 1, Result.False));
-			printTest("testChooseX22", testChoose(gameX00O11X10O20X21O02(), TicTacToe.Player.X, 2, 2, Result.False));
-			printTest("testChooseO00", testChoose(gameX00O11X10O20X21O02(), TicTacToe.Player.O, 0, 0, Result.False));
-			printTest("testChooseO01", testChoose(gameX00O11X10O20X21O02(), TicTacToe.Player.O, 0, 1, Result.False));
-			printTest("testChooseO02", testChoose(gameX00O11X10O20X21O02(), TicTacToe.Player.O, 0, 2, Result.False));
-			printTest("testChooseO10", testChoose(gameX00O11X10O20X21O02(), TicTacToe.Player.O, 1, 0, Result.False));
-			printTest("testChooseO11", testChoose(gameX00O11X10O20X21O02(), TicTacToe.Player.O, 1, 1, Result.False));
-			printTest("testChooseO12", testChoose(gameX00O11X10O20X21O02(), TicTacToe.Player.O, 1, 2, Result.False));
-			printTest("testChooseO20", testChoose(gameX00O11X10O20X21O02(), TicTacToe.Player.O, 2, 0, Result.False));
-			printTest("testChooseO21", testChoose(gameX00O11X10O20X21O02(), TicTacToe.Player.O, 2, 1, Result.False));
-			printTest("testChooseO22", testChoose(gameX00O11X10O20X21O02(), TicTacToe.Player.O, 2, 2, Result.False));
+			printTest("testChoicesX", testChoices(gameX00O11X10O20X21O02, TicTacToe.Player.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00O11X10O20X21O02, TicTacToe.Player.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -1391,6 +1021,7 @@ public class TicTacToeTester {
 	private TicTacToe newGame() {
 		return (TicTacToe)(new TicTacToeGame());
 	}
+	private Scenario newGame = () -> newGame();
 
 	/**
 	 * @return
@@ -1403,6 +1034,7 @@ public class TicTacToeTester {
 		game.choose(TicTacToe.Player.X, 0, 0);
 		return game;
 	}
+	private Scenario gameX00 = () -> gameX00();
 
 	/**
 	 * @return
@@ -1415,6 +1047,7 @@ public class TicTacToeTester {
 		game.choose(TicTacToe.Player.O, 1, 0);
 		return game;
 	}
+	private Scenario gameX00O10 = () -> gameX00O10();
 
 	/**
 	 * @return
@@ -1427,6 +1060,7 @@ public class TicTacToeTester {
 		game.choose(TicTacToe.Player.X, 1, 1);
 		return game;
 	}
+	private Scenario gameX00O10X11 = () -> gameX00O10X11();
 
 	/**
 	 * @return
@@ -1439,6 +1073,7 @@ public class TicTacToeTester {
 		game.choose(TicTacToe.Player.O, 2, 2);
 		return game;
 	}
+	private Scenario gameX00O10X11O22 = () -> gameX00O10X11O22();
 
 	/**
 	 * @return
@@ -1451,6 +1086,7 @@ public class TicTacToeTester {
 		game.choose(TicTacToe.Player.X, 0, 2);
 		return game;
 	}
+	private Scenario gameX00O10X11O22X02 = () -> gameX00O10X11O22X02();
 
 	/**
 	 * @return
@@ -1463,6 +1099,7 @@ public class TicTacToeTester {
 		game.choose(TicTacToe.Player.O, 0, 1);
 		return game;
 	}
+	private Scenario gameX00O10X11O22X02O01 = () -> gameX00O10X11O22X02O01();
 
 	/**
 	 * @return
@@ -1475,6 +1112,7 @@ public class TicTacToeTester {
 		game.choose(TicTacToe.Player.X, 2, 1);
 		return game;
 	}
+	private Scenario gameX00O10X11O22X02O01X21 = () -> gameX00O10X11O22X02O01X21();
 
 	/**
 	 * @return
@@ -1487,6 +1125,7 @@ public class TicTacToeTester {
 		game.choose(TicTacToe.Player.O, 2, 0);
 		return game;
 	}
+	private Scenario gameX00O10X11O22X02O01X21O20 = () -> gameX00O10X11O22X02O01X21O20();
 
 	// XXX Tie game
 	
@@ -1501,6 +1140,7 @@ public class TicTacToeTester {
 		game.choose(TicTacToe.Player.X, 1, 2);
 		return game;
 	}
+	private Scenario gameX00O10X11O22X02O01X21O20X12 = () -> gameX00O10X11O22X02O01X21O20X12();
 
 	// XXX X wins
 	
@@ -1519,6 +1159,7 @@ public class TicTacToeTester {
 		game.choose(TicTacToe.Player.X, 0, 1);
 		return game;
 	}
+	private Scenario gameX02O10X00O22X01 = () -> gameX02O10X00O22X01();
 	
 	/**
 	 * @return
@@ -1535,6 +1176,7 @@ public class TicTacToeTester {
 		game.choose(TicTacToe.Player.X, 1, 2);
 		return game;
 	}
+	private Scenario gameX11O00X10O22X12 = () -> gameX11O00X10O22X12();
 	
 	/**
 	 * @return
@@ -1551,6 +1193,7 @@ public class TicTacToeTester {
 		game.choose(TicTacToe.Player.X, 2, 1);
 		return game;
 	}
+	private Scenario gameX22O00X20O12X21 = () -> gameX22O00X20O12X21();
 	
 	/**
 	 * @return
@@ -1567,6 +1210,7 @@ public class TicTacToeTester {
 		game.choose(TicTacToe.Player.X, 1, 0);
 		return game;
 	}
+	private Scenario gameX00O11X20O12X10 = () -> gameX00O11X20O12X10();
 	
 	/**
 	 * @return
@@ -1583,6 +1227,7 @@ public class TicTacToeTester {
 		game.choose(TicTacToe.Player.X, 1, 1);
 		return game;
 	}
+	private Scenario gameX01O10X21O12X11 = () -> gameX01O10X21O12X11();
 	
 	/**
 	 * @return
@@ -1599,6 +1244,7 @@ public class TicTacToeTester {
 		game.choose(TicTacToe.Player.X, 2, 2);
 		return game;
 	}
+	private Scenario gameX12O11X02O21X22 = () -> gameX12O11X02O21X22();
 	
 	/**
 	 * @return
@@ -1615,6 +1261,7 @@ public class TicTacToeTester {
 		game.choose(TicTacToe.Player.X, 0, 0);
 		return game;
 	}
+	private Scenario gameX11O02X22O12X00 = () -> gameX11O02X22O12X00();
 	
 	/**
 	 * @return
@@ -1631,6 +1278,7 @@ public class TicTacToeTester {
 		game.choose(TicTacToe.Player.X, 0, 2);
 		return game;
 	}
+	private Scenario gameX20O01X11O00X02 = () -> gameX20O01X11O00X02();
 	
 	// XXX O wins
 	
@@ -1650,6 +1298,7 @@ public class TicTacToeTester {
 		game.choose(TicTacToe.Player.O, 0, 0);
 		return game;
 	}
+	private Scenario gameX10O01X20O02X11O00 = () -> gameX10O01X20O02X11O00();
 	
 	/**
 	 * @return
@@ -1667,6 +1316,7 @@ public class TicTacToeTester {
 		game.choose(TicTacToe.Player.O, 1, 1);
 		return game;
 	}
+	private Scenario gameX00O10X20O12X01O11 = () -> gameX00O10X20O12X01O11();
 	
 	/**
 	 * @return
@@ -1684,6 +1334,7 @@ public class TicTacToeTester {
 		game.choose(TicTacToe.Player.O, 2, 2);
 		return game;
 	}
+	private Scenario gameX00O21X10O20X01O22 = () -> gameX00O21X10O20X01O22();
 	
 	/**
 	 * @return
@@ -1701,6 +1352,7 @@ public class TicTacToeTester {
 		game.choose(TicTacToe.Player.O, 2, 0);
 		return game;
 	}
+	private Scenario gameX22O10X11O00X01O20 = () -> gameX22O10X11O00X01O20();
 	
 	/**
 	 * @return
@@ -1718,6 +1370,7 @@ public class TicTacToeTester {
 		game.choose(TicTacToe.Player.O, 2, 1);
 		return game;
 	}
+	private Scenario gameX00O01X22O11X10O21 = () -> gameX00O01X22O11X10O21();
 	
 	/**
 	 * @return
@@ -1735,6 +1388,7 @@ public class TicTacToeTester {
 		game.choose(TicTacToe.Player.O, 1, 2);
 		return game;
 	}
+	private Scenario gameX11O02X00O22X10O12 = () -> gameX11O02X00O22X10O12();
 	
 	/**
 	 * @return
@@ -1752,6 +1406,7 @@ public class TicTacToeTester {
 		game.choose(TicTacToe.Player.O, 2, 2);
 		return game;
 	}
+	private Scenario gameX01O00X10O11X21O22 = () -> gameX01O00X10O11X21O22();
 	
 	/**
 	 * @return
@@ -1769,6 +1424,7 @@ public class TicTacToeTester {
 		game.choose(TicTacToe.Player.O, 0, 2);
 		return game;
 	}
+	private Scenario gameX00O11X10O20X21O02 = () -> gameX00O11X10O20X21O02();
 		
 	// //////////////////////////
 	// XXX TEST METHODS
@@ -1877,27 +1533,53 @@ public class TicTacToeTester {
 		}
 		return result == Result.Pass;
 	}
-
+	
 	/**
-	 * Runs choose() method on a TicTacToe.
+	 * Runs tests on choose() method on a TicTacToe for every position.
 	 * @return test success
 	 */
-	private boolean testChoose(TicTacToe game, TicTacToe.Player player, int row, int col, Result expectedResult) {
-		Result result;
+	private boolean testChoices(Scenario gameBuilder, TicTacToe.Player player, TicTacToe.Player lastPlayer, 
+			boolean gameOver, TicTacToe.Player[][] grid) {
+		boolean result = true;
 		try {
-			if (game.choose(player, row, col)) {
-				result = Result.True;
-			} else {
-				result = Result.False;
+			if (player == lastPlayer || gameOver) { //no positions are valid
+				for (int row = 0; row < grid.length; row++) {
+					for (int col = 0; col < grid[row].length; col++) {
+						TicTacToe game = gameBuilder.setUpGame();
+						if (game.choose(player, row, col)) {
+							System.out.printf("\tchoose(%s, %d, %d) returned true, expected false\n", player, row, col);
+							result = false;
+						}
+					}
+				}
+			} else { //only open positions are valid
+				for (int row = 0; row < grid.length; row++) {
+					for (int col = 0; col < grid[row].length; col++) {
+						TicTacToe game = gameBuilder.setUpGame();
+						if (grid[row][col] == TicTacToe.Player.OPEN) {
+							if (game.choose(player, row, col) == false) {
+								System.out.printf("\tchoose(%s, %d, %d) returned false, expected true\n", player, row, col);
+								result = false;
+							}
+						} else if (game.choose(player, row, col) == true) {
+							System.out.printf("\tchoose(%s, %d, %d) returned true, expected false\n", player, row, col);
+							result = false;
+						}
+					}
+				}
 			}
 		} catch (Exception e) {
-			System.out.printf("%s caught unexpected %s\n", "testChoose", e.toString());
+			System.out.printf("%s caught unexpected %s\n", "testChoices", e.toString());
 			e.printStackTrace();
-			result = Result.UnexpectedException;
+			result = false;
 		}
-		return result == expectedResult;
+		return result;
 	}
 
+
+	/** Confirm that the getGameGrid() method does not return a reference to instance data
+	 * @return true if encapsulation has been preserved, else false
+	 */
 	private boolean testGetGameGridEncapsulation() {
 		TicTacToe.Player[][] grid = {
 				{TicTacToe.Player.OPEN, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN},
@@ -1916,6 +1598,9 @@ public class TicTacToeTester {
 		return passed;
 	}
 	
+	/** Confirm that the getMoves() method does not return a reference to instance data
+	 * @return true if encapsulation has been preserved, else false
+	 */
 	private boolean testGetMovesEncapsulation() {
 		Point[] gameMoves = {new Point(0,0)};
 		boolean passed = false;
@@ -1978,11 +1663,9 @@ public class TicTacToeTester {
 		return equivalent;
 	}
 
-	/** Get the number of failures that occurred in this test
-	 * @return number of tests that failed during testing
-	 */
-	public int getFailures() {
-		return this.failures;
+	/** Interface for builder method Lambda references used above */
+	private interface Scenario {
+		TicTacToe setUpGame();
 	}
 
 }// end class TicTacToeTester

@@ -10,10 +10,28 @@ public interface TicTacToe {
 	public static enum Winner {X, O, TIE, IN_PROGRESS};
 	
 	/**
-	 * Reset the game. It is player X's turn.
+	 * Reset the game.
+	 * All board positions are OPEN and the game is IN_PROGRESS.
 	 */
 	public void newGame();
 	
+	/**
+	 * If the choice is invalid for any reason, return false.
+	 * A choice is invalid if the game is over, the position is
+	 * already claimed, or the player made the previous choice
+	 * (no player can make two moves in a row). 
+	 * If the chosen row, column position is not already claimed
+	 * and the game is not already over, claim it for the player.
+	 * A winning move or choosing the last open position ends
+	 * the game.
+	 * 
+	 * @param player either Player.X or Player.O
+	 * @param row value from 0 to 2
+	 * @param col value from 0 to 2
+	 * @return true if the choice was a valid move, else false
+	 */
+	public boolean choose(Player player, int row, int col);
+
 	/**
 	 * Return true if either player X or O has achieved
 	 * 3-in-a-row, whether vertically, horizontally, or diagonally,
@@ -43,28 +61,14 @@ public interface TicTacToe {
 	/**
 	 * Get the sequence of moves, where even indexes correspond to the
 	 * first player's moves and odd indexes correspond to the second
-	 * player's moves. 
-	 * NOTE: Move rows are stored in the first coordinate, x, and move
-	 * columns are stored in the second coordinate, y. The length of the 
-	 * array must equal the number of moves (there are no empty/null
-	 * array elements).
+	 * player's moves.
+	 * NOTE: Move rows are stored in the first coordinate, "x", and move
+	 * columns are stored in the second coordinate, "y". While possibly
+	 * counter-intuitive, it is intentional.
 	 * Preserve encapsulation by returning a copy of the original data.
 	 * 
 	 * @return array showing the sequence of claimed positions
 	 */
 	public Point[] getMoves();
 	
-	/**
-	 * If the move is invalid for any reason, return false.
-	 * Cannot claim any position when the game is over or the
-	 * position has already been claimed.
-	 * If the chosen row, column position is not already claimed
-	 * and the game is not already over, claim it for the player.
-	 * 
-	 * @param player either Player.X or Player.O
-	 * @param row value from 0 to 2
-	 * @param col value from 0 to 2
-	 * @return true if the choice was a valid move, else false
-	 */
-	public boolean choose(Player player, int row, int col);
 }

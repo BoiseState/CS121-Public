@@ -141,13 +141,13 @@ public class TicTacToeTester {
 	////////////////////////
 	
 	private void testNewGame() {
-		TicTacToe.Player[][] grid = {
-				{TicTacToe.Player.OPEN, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.OPEN, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.OPEN, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN}
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN}
 		};
 		Point[] newGameMoves = new Point[0];
-		TicTacToe.Player lastPlayer = TicTacToe.Player.OPEN;
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.OPEN;
 		boolean gameOver = false;
 
 		String scenarioName = "testNewGame";
@@ -159,8 +159,8 @@ public class TicTacToeTester {
 			printTest("testWinner", testWinner(newGame(), Result.InProgress));
 			printTest("testGetGameGrid", testGetGameGrid(newGame(), grid));
 			printTest("testGetMoves", testGetMoves(newGame(), newGameMoves));
-			printTest("testChoicesX", testChoices(newGame, TicTacToe.Player.X, lastPlayer, gameOver, grid));
-			printTest("testChoicesO", testChoices(newGame, TicTacToe.Player.O, lastPlayer, gameOver, grid));
+			printTest("testChoicesX", testChoices(newGame, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(newGame, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -172,13 +172,13 @@ public class TicTacToeTester {
 	}
 
 	private void testX00() {
-		TicTacToe.Player[][] grid = {
-				{TicTacToe.Player.X, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.OPEN, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.OPEN, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN}
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN}
 		};
 		Point[] moves = {new Point(0,0)};
-		TicTacToe.Player lastPlayer = TicTacToe.Player.X;
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.X;
 		boolean gameOver = false;
 
 		String scenarioName = "testX00";
@@ -190,8 +190,8 @@ public class TicTacToeTester {
 			printTest("testWinner", testWinner(gameX00(), Result.InProgress));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00(), moves));
-			printTest("testChoicesX", testChoices(gameX00, TicTacToe.Player.X, lastPlayer, gameOver, grid));
-			printTest("testChoicesO", testChoices(gameX00, TicTacToe.Player.O, lastPlayer, gameOver, grid));
+			printTest("testChoicesX", testChoices(gameX00, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -203,13 +203,13 @@ public class TicTacToeTester {
 	}
 	
 	private void testX00O10() {
-		TicTacToe.Player[][] grid = {
-				{TicTacToe.Player.X, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.O, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.OPEN, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN}
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN}
 		};
 		Point[] moves = {new Point(0,0), new Point(1,0)};
-		TicTacToe.Player lastPlayer = TicTacToe.Player.O;
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.O;
 		boolean gameOver = false;
 
 		String scenarioName = "testX00O10";
@@ -221,8 +221,8 @@ public class TicTacToeTester {
 			printTest("testWinner", testWinner(gameX00O10(), Result.InProgress));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O10(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O10(), moves));
-			printTest("testChoicesX", testChoices(gameX00O10, TicTacToe.Player.X, lastPlayer, gameOver, grid));
-			printTest("testChoicesO", testChoices(gameX00O10, TicTacToe.Player.O, lastPlayer, gameOver, grid));
+			printTest("testChoicesX", testChoices(gameX00O10, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00O10, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -234,13 +234,13 @@ public class TicTacToeTester {
 	}
 
 	private void testX00O10X11() {
-		TicTacToe.Player[][] grid = {
-				{TicTacToe.Player.X, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.O, TicTacToe.Player.X, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.OPEN, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN}
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN}
 		};
 		Point[] moves = {new Point(0,0), new Point(1,0), new Point(1,1)};
-		TicTacToe.Player lastPlayer = TicTacToe.Player.X;
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.X;
 		boolean gameOver = false;
 
 		String scenarioName = "testX00O10X11";
@@ -252,8 +252,8 @@ public class TicTacToeTester {
 			printTest("testWinner", testWinner(gameX00O10X11(), Result.InProgress));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O10X11(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O10X11(), moves));
-			printTest("testChoicesX", testChoices(gameX00O10X11, TicTacToe.Player.X, lastPlayer, gameOver, grid));
-			printTest("testChoicesO", testChoices(gameX00O10X11, TicTacToe.Player.O, lastPlayer, gameOver, grid));
+			printTest("testChoicesX", testChoices(gameX00O10X11, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00O10X11, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -265,14 +265,14 @@ public class TicTacToeTester {
 	}
 	
 	private void testX00O10X11O22() {
-		TicTacToe.Player[][] grid = {
-				{TicTacToe.Player.X, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.O, TicTacToe.Player.X, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.OPEN, TicTacToe.Player.OPEN, TicTacToe.Player.O}
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.O}
 		};
 		Point[] moves = {new Point(0,0), new Point(1,0), new Point(1,1),
 				new Point(2,2)};
-		TicTacToe.Player lastPlayer = TicTacToe.Player.O;
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.O;
 		boolean gameOver = false;
 
 		String scenarioName = "testX00O10X11O22";
@@ -284,8 +284,8 @@ public class TicTacToeTester {
 			printTest("testWinner", testWinner(gameX00O10X11O22(), Result.InProgress));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O10X11O22(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O10X11O22(), moves));
-			printTest("testChoicesX", testChoices(gameX00O10X11O22, TicTacToe.Player.X, lastPlayer, gameOver, grid));
-			printTest("testChoicesO", testChoices(gameX00O10X11O22, TicTacToe.Player.O, lastPlayer, gameOver, grid));
+			printTest("testChoicesX", testChoices(gameX00O10X11O22, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00O10X11O22, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -297,14 +297,14 @@ public class TicTacToeTester {
 	}
 	
 	private void testX00O10X11O22X02() {
-		TicTacToe.Player[][] grid = {
-				{TicTacToe.Player.X, TicTacToe.Player.OPEN, TicTacToe.Player.X},
-				{TicTacToe.Player.O, TicTacToe.Player.X, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.OPEN, TicTacToe.Player.OPEN, TicTacToe.Player.O}
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.X},
+				{TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.O}
 		};
 		Point[] moves = {new Point(0,0), new Point(1,0), new Point(1,1),
 				new Point(2,2), new Point(0,2)};
-		TicTacToe.Player lastPlayer = TicTacToe.Player.X;
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.X;
 		boolean gameOver = false;
 
 		String scenarioName = "testX00O10X11O22X02";
@@ -316,8 +316,8 @@ public class TicTacToeTester {
 			printTest("testWinner", testWinner(gameX00O10X11O22X02(), Result.InProgress));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O10X11O22X02(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O10X11O22X02(), moves));
-			printTest("testChoicesX", testChoices(gameX00O10X11O22X02, TicTacToe.Player.X, lastPlayer, gameOver, grid));
-			printTest("testChoicesO", testChoices(gameX00O10X11O22X02, TicTacToe.Player.O, lastPlayer, gameOver, grid));
+			printTest("testChoicesX", testChoices(gameX00O10X11O22X02, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00O10X11O22X02, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -329,14 +329,14 @@ public class TicTacToeTester {
 	}
 	
 	private void testX00O10X11O22X02O01() {
-		TicTacToe.Player[][] grid = {
-				{TicTacToe.Player.X, TicTacToe.Player.O, TicTacToe.Player.X},
-				{TicTacToe.Player.O, TicTacToe.Player.X, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.OPEN, TicTacToe.Player.OPEN, TicTacToe.Player.O}
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.X},
+				{TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.O}
 		};
 		Point[] moves = {new Point(0,0), new Point(1,0), new Point(1,1),
 				new Point(2,2), new Point(0,2), new Point(0,1)};
-		TicTacToe.Player lastPlayer = TicTacToe.Player.O;
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.O;
 		boolean gameOver = false;
 
 		String scenarioName = "testX00O10X11O22X02O01";
@@ -348,8 +348,8 @@ public class TicTacToeTester {
 			printTest("testWinner", testWinner(gameX00O10X11O22X02O01(), Result.InProgress));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O10X11O22X02O01(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O10X11O22X02O01(), moves));
-			printTest("testChoicesX", testChoices(gameX00O10X11O22X02O01, TicTacToe.Player.X, lastPlayer, gameOver, grid));
-			printTest("testChoicesO", testChoices(gameX00O10X11O22X02O01, TicTacToe.Player.O, lastPlayer, gameOver, grid));
+			printTest("testChoicesX", testChoices(gameX00O10X11O22X02O01, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00O10X11O22X02O01, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -361,14 +361,14 @@ public class TicTacToeTester {
 	}
 	
 	private void testX00O10X11O22X02O01X21() {
-		TicTacToe.Player[][] grid = {
-				{TicTacToe.Player.X, TicTacToe.Player.O, TicTacToe.Player.X},
-				{TicTacToe.Player.O, TicTacToe.Player.X, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.OPEN, TicTacToe.Player.X, TicTacToe.Player.O}
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.X},
+				{TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.O}
 		};
 		Point[] moves = {new Point(0,0), new Point(1,0), new Point(1,1),
 				new Point(2,2), new Point(0,2), new Point(0,1), new Point(2,1)};
-		TicTacToe.Player lastPlayer = TicTacToe.Player.X;
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.X;
 		boolean gameOver = false;
 
 		String scenarioName = "testX00O10X11O22X02O01X21";
@@ -380,8 +380,8 @@ public class TicTacToeTester {
 			printTest("testWinner", testWinner(gameX00O10X11O22X02O01X21(), Result.InProgress));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O10X11O22X02O01X21(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O10X11O22X02O01X21(), moves));
-			printTest("testChoicesX", testChoices(gameX00O10X11O22X02O01X21, TicTacToe.Player.X, lastPlayer, gameOver, grid));
-			printTest("testChoicesO", testChoices(gameX00O10X11O22X02O01X21, TicTacToe.Player.O, lastPlayer, gameOver, grid));
+			printTest("testChoicesX", testChoices(gameX00O10X11O22X02O01X21, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00O10X11O22X02O01X21, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -393,14 +393,14 @@ public class TicTacToeTester {
 	}
 	
 	private void testX00O10X11O22X02O01X21O20() {
-		TicTacToe.Player[][] grid = {
-				{TicTacToe.Player.X, TicTacToe.Player.O, TicTacToe.Player.X},
-				{TicTacToe.Player.O, TicTacToe.Player.X, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.O, TicTacToe.Player.X, TicTacToe.Player.O}
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.X},
+				{TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.O}
 		};
 		Point[] moves = {new Point(0,0), new Point(1,0), new Point(1,1),
 				new Point(2,2), new Point(0,2), new Point(0,1), new Point(2,1), new Point(2,0)};
-		TicTacToe.Player lastPlayer = TicTacToe.Player.O;
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.O;
 		boolean gameOver = false;
 
 		String scenarioName = "testX00O10X11O22X02O01X21O20";
@@ -412,8 +412,8 @@ public class TicTacToeTester {
 			printTest("testWinner", testWinner(gameX00O10X11O22X02O01X21O20(), Result.InProgress));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O10X11O22X02O01X21O20(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O10X11O22X02O01X21O20(), moves));
-			printTest("testChoicesX", testChoices(gameX00O10X11O22X02O01X21O20, TicTacToe.Player.X, lastPlayer, gameOver, grid));
-			printTest("testChoicesO", testChoices(gameX00O10X11O22X02O01X21O20, TicTacToe.Player.O, lastPlayer, gameOver, grid));
+			printTest("testChoicesX", testChoices(gameX00O10X11O22X02O01X21O20, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00O10X11O22X02O01X21O20, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -426,15 +426,15 @@ public class TicTacToeTester {
 	
 	// complete tie game
 	private void testX00O10X11O22X02O01X21O20X12() {
-		TicTacToe.Player[][] grid = {
-				{TicTacToe.Player.X, TicTacToe.Player.O, TicTacToe.Player.X},
-				{TicTacToe.Player.O, TicTacToe.Player.X, TicTacToe.Player.X},
-				{TicTacToe.Player.O, TicTacToe.Player.X, TicTacToe.Player.O}
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.X},
+				{TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.X},
+				{TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.O}
 		};
 		Point[] moves = {new Point(0,0), new Point(1,0), new Point(1,1),
 				new Point(2,2), new Point(0,2), new Point(0,1), new Point(2,1), 
 				new Point(2,0), new Point(1,2)};
-		TicTacToe.Player lastPlayer = TicTacToe.Player.X;
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.X;
 		boolean gameOver = true;
 
 		String scenarioName = "testX00O10X11O22X02O01X21O20X12";
@@ -446,8 +446,8 @@ public class TicTacToeTester {
 			printTest("testWinner", testWinner(gameX00O10X11O22X02O01X21O20X12(), Result.Tie));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O10X11O22X02O01X21O20X12(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O10X11O22X02O01X21O20X12(), moves));
-			printTest("testChoicesX", testChoices(gameX00O10X11O22X02O01X21O20X12, TicTacToe.Player.X, lastPlayer, gameOver, grid));
-			printTest("testChoicesO", testChoices(gameX00O10X11O22X02O01X21O20X12, TicTacToe.Player.O, lastPlayer, gameOver, grid));
+			printTest("testChoicesX", testChoices(gameX00O10X11O22X02O01X21O20X12, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00O10X11O22X02O01X21O20X12, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -462,14 +462,14 @@ public class TicTacToeTester {
 	
 	//X wins - first row
 	private void testX02O10X00O22X01() {
-		TicTacToe.Player[][] grid = {
-				{TicTacToe.Player.X, TicTacToe.Player.X, TicTacToe.Player.X},
-				{TicTacToe.Player.O, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.OPEN, TicTacToe.Player.OPEN, TicTacToe.Player.O}
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.X},
+				{TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.O}
 		};
 		Point[] moves = {new Point(0,2), new Point(1,0), new Point(0,0),
 				new Point(2,2), new Point(0,1)};
-		TicTacToe.Player lastPlayer = TicTacToe.Player.X;
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.X;
 		boolean gameOver = true;
 
 		String scenarioName = "testX02O10X00O22X01";
@@ -481,8 +481,8 @@ public class TicTacToeTester {
 			printTest("testWinner", testWinner(gameX02O10X00O22X01(), Result.X));
 			printTest("testGetGameGrid", testGetGameGrid(gameX02O10X00O22X01(), grid));
 			printTest("testGetMoves", testGetMoves(gameX02O10X00O22X01(), moves));
-			printTest("testChoicesX", testChoices(gameX02O10X00O22X01, TicTacToe.Player.X, lastPlayer, gameOver, grid));
-			printTest("testChoicesO", testChoices(gameX02O10X00O22X01, TicTacToe.Player.O, lastPlayer, gameOver, grid));
+			printTest("testChoicesX", testChoices(gameX02O10X00O22X01, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX02O10X00O22X01, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -495,14 +495,14 @@ public class TicTacToeTester {
 	
 	//X wins - second row
 	private void testX11O00X10O22X12() {
-		TicTacToe.Player[][] grid = {
-				{TicTacToe.Player.O, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.X, TicTacToe.Player.X, TicTacToe.Player.X},
-				{TicTacToe.Player.OPEN, TicTacToe.Player.OPEN, TicTacToe.Player.O}
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.X},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.O}
 		};
 		Point[] moves = {new Point(1,1), new Point(0,0), new Point(1,0),
 				new Point(2,2), new Point(1,2)};
-		TicTacToe.Player lastPlayer = TicTacToe.Player.X;
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.X;
 		boolean gameOver = true;
 
 		String scenarioName = "testX11O00X10O22X12";
@@ -514,8 +514,8 @@ public class TicTacToeTester {
 			printTest("testWinner", testWinner(gameX11O00X10O22X12(), Result.X));
 			printTest("testGetGameGrid", testGetGameGrid(gameX11O00X10O22X12(), grid));
 			printTest("testGetMoves", testGetMoves(gameX11O00X10O22X12(), moves));
-			printTest("testChoicesX", testChoices(gameX11O00X10O22X12, TicTacToe.Player.X, lastPlayer, gameOver, grid));
-			printTest("testChoicesO", testChoices(gameX11O00X10O22X12, TicTacToe.Player.O, lastPlayer, gameOver, grid));
+			printTest("testChoicesX", testChoices(gameX11O00X10O22X12, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX11O00X10O22X12, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -528,14 +528,14 @@ public class TicTacToeTester {
 
 	//X wins - third row
 	private void testX22O00X20O12X21() {
-		TicTacToe.Player[][] grid = {
-				{TicTacToe.Player.O, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.OPEN, TicTacToe.Player.OPEN, TicTacToe.Player.O},
-				{TicTacToe.Player.X, TicTacToe.Player.X, TicTacToe.Player.X}
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.O},
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.X}
 		};
 		Point[] moves = {new Point(2,2), new Point(0,0), new Point(2,0),
 				new Point(1,2), new Point(2,1)};
-		TicTacToe.Player lastPlayer = TicTacToe.Player.X;
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.X;
 		boolean gameOver = true;
 
 		String scenarioName = "testX22O00X20O12X21";
@@ -547,8 +547,8 @@ public class TicTacToeTester {
 			printTest("testWinner", testWinner(gameX22O00X20O12X21(), Result.X));
 			printTest("testGetGameGrid", testGetGameGrid(gameX22O00X20O12X21(), grid));
 			printTest("testGetMoves", testGetMoves(gameX22O00X20O12X21(), moves));
-			printTest("testChoicesX", testChoices(gameX22O00X20O12X21, TicTacToe.Player.X, lastPlayer, gameOver, grid));
-			printTest("testChoicesO", testChoices(gameX22O00X20O12X21, TicTacToe.Player.O, lastPlayer, gameOver, grid));
+			printTest("testChoicesX", testChoices(gameX22O00X20O12X21, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX22O00X20O12X21, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -561,14 +561,14 @@ public class TicTacToeTester {
 	
 	//X wins - first col
 	private void testX00O11X20O12X10() {
-		TicTacToe.Player[][] grid = {
-				{TicTacToe.Player.X, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.X, TicTacToe.Player.O, TicTacToe.Player.O},
-				{TicTacToe.Player.X, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN}
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.O},
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN}
 		};
 		Point[] moves = {new Point(0,0), new Point(1,1), new Point(2,0),
 				new Point(1,2), new Point(1,0)};
-		TicTacToe.Player lastPlayer = TicTacToe.Player.X;
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.X;
 		boolean gameOver = true;
 
 		String scenarioName = "testX00O11X20O12X10";
@@ -580,8 +580,8 @@ public class TicTacToeTester {
 			printTest("testWinner", testWinner(gameX00O11X20O12X10(), Result.X));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O11X20O12X10(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O11X20O12X10(), moves));
-			printTest("testChoicesX", testChoices(gameX00O11X20O12X10, TicTacToe.Player.X, lastPlayer, gameOver, grid));
-			printTest("testChoicesO", testChoices(gameX00O11X20O12X10, TicTacToe.Player.O, lastPlayer, gameOver, grid));
+			printTest("testChoicesX", testChoices(gameX00O11X20O12X10, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00O11X20O12X10, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -594,14 +594,14 @@ public class TicTacToeTester {
 	
 	//X wins - second col
 	private void testX01O10X21O12X11() {
-		TicTacToe.Player[][] grid = {
-				{TicTacToe.Player.OPEN, TicTacToe.Player.X, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.O, TicTacToe.Player.X, TicTacToe.Player.O},
-				{TicTacToe.Player.OPEN, TicTacToe.Player.X, TicTacToe.Player.OPEN}
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.O},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN}
 		};
 		Point[] moves = {new Point(0,1), new Point(1,0), new Point(2,1),
 				new Point(1,2), new Point(1,1)};
-		TicTacToe.Player lastPlayer = TicTacToe.Player.X;
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.X;
 		boolean gameOver = true;
 
 		String scenarioName = "testX01O10X21O12X11";
@@ -613,8 +613,8 @@ public class TicTacToeTester {
 			printTest("testWinner", testWinner(gameX01O10X21O12X11(), Result.X));
 			printTest("testGetGameGrid", testGetGameGrid(gameX01O10X21O12X11(), grid));
 			printTest("testGetMoves", testGetMoves(gameX01O10X21O12X11(), moves));
-			printTest("testChoicesX", testChoices(gameX01O10X21O12X11, TicTacToe.Player.X, lastPlayer, gameOver, grid));
-			printTest("testChoicesO", testChoices(gameX01O10X21O12X11, TicTacToe.Player.O, lastPlayer, gameOver, grid));
+			printTest("testChoicesX", testChoices(gameX01O10X21O12X11, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX01O10X21O12X11, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -627,14 +627,14 @@ public class TicTacToeTester {
 	
 	//X wins - third col
 	private void testX12O11X02O21X22() {
-		TicTacToe.Player[][] grid = {
-				{TicTacToe.Player.OPEN, TicTacToe.Player.OPEN, TicTacToe.Player.X},
-				{TicTacToe.Player.OPEN, TicTacToe.Player.O, TicTacToe.Player.X},
-				{TicTacToe.Player.OPEN, TicTacToe.Player.O, TicTacToe.Player.X}
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.X},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.X},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.X}
 		};
 		Point[] moves = {new Point(1,2), new Point(1,1), new Point(0,2),
 				new Point(2,1), new Point(2,2)};
-		TicTacToe.Player lastPlayer = TicTacToe.Player.X;
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.X;
 		boolean gameOver = true;
 
 		String scenarioName = "testX12O11X02O21X22";
@@ -646,8 +646,8 @@ public class TicTacToeTester {
 			printTest("testWinner", testWinner(gameX12O11X02O21X22(), Result.X));
 			printTest("testGetGameGrid", testGetGameGrid(gameX12O11X02O21X22(), grid));
 			printTest("testGetMoves", testGetMoves(gameX12O11X02O21X22(), moves));
-			printTest("testChoicesX", testChoices(gameX12O11X02O21X22, TicTacToe.Player.X, lastPlayer, gameOver, grid));
-			printTest("testChoicesO", testChoices(gameX12O11X02O21X22, TicTacToe.Player.O, lastPlayer, gameOver, grid));
+			printTest("testChoicesX", testChoices(gameX12O11X02O21X22, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX12O11X02O21X22, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -660,14 +660,14 @@ public class TicTacToeTester {
 	
 	//X wins - first diagonal
 	private void testX11O02X22O12X00() {
-		TicTacToe.Player[][] grid = {
-				{TicTacToe.Player.X, TicTacToe.Player.OPEN, TicTacToe.Player.O},
-				{TicTacToe.Player.OPEN, TicTacToe.Player.X, TicTacToe.Player.O},
-				{TicTacToe.Player.OPEN, TicTacToe.Player.OPEN, TicTacToe.Player.X}
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.O},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.O},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.X}
 		};
 		Point[] moves = {new Point(1,1), new Point(0,2), new Point(2,2),
 				new Point(1,2), new Point(0,0)};
-		TicTacToe.Player lastPlayer = TicTacToe.Player.X;
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.X;
 		boolean gameOver = true;
 
 		String scenarioName = "testX11O02X22O12X00";
@@ -679,8 +679,8 @@ public class TicTacToeTester {
 			printTest("testWinner", testWinner(gameX11O02X22O12X00(), Result.X));
 			printTest("testGetGameGrid", testGetGameGrid(gameX11O02X22O12X00(), grid));
 			printTest("testGetMoves", testGetMoves(gameX11O02X22O12X00(), moves));
-			printTest("testChoicesX", testChoices(gameX11O02X22O12X00, TicTacToe.Player.X, lastPlayer, gameOver, grid));
-			printTest("testChoicesO", testChoices(gameX11O02X22O12X00, TicTacToe.Player.O, lastPlayer, gameOver, grid));
+			printTest("testChoicesX", testChoices(gameX11O02X22O12X00, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX11O02X22O12X00, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -693,14 +693,14 @@ public class TicTacToeTester {
 	
 	//X wins - second diagonal
 	private void testX20O01X11O00X02() {
-		TicTacToe.Player[][] grid = {
-				{TicTacToe.Player.O, TicTacToe.Player.O, TicTacToe.Player.X},
-				{TicTacToe.Player.OPEN, TicTacToe.Player.X, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.X, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN}
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.X},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN}
 		};
 		Point[] moves = {new Point(2,0), new Point(0,1), new Point(1,1),
 				new Point(0,0), new Point(0,2)};
-		TicTacToe.Player lastPlayer = TicTacToe.Player.X;
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.X;
 		boolean gameOver = true;
 
 		String scenarioName = "testX20O01X11O00X02";
@@ -712,8 +712,8 @@ public class TicTacToeTester {
 			printTest("testWinner", testWinner(gameX20O01X11O00X02(), Result.X));
 			printTest("testGetGameGrid", testGetGameGrid(gameX20O01X11O00X02(), grid));
 			printTest("testGetMoves", testGetMoves(gameX20O01X11O00X02(), moves));
-			printTest("testChoicesX", testChoices(gameX20O01X11O00X02, TicTacToe.Player.X, lastPlayer, gameOver, grid));
-			printTest("testChoicesO", testChoices(gameX20O01X11O00X02, TicTacToe.Player.O, lastPlayer, gameOver, grid));
+			printTest("testChoicesX", testChoices(gameX20O01X11O00X02, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX20O01X11O00X02, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -728,14 +728,14 @@ public class TicTacToeTester {
 	
 	//O wins - first row
 	private void testX10O01X20O02X11O00() {
-		TicTacToe.Player[][] grid = {
-				{TicTacToe.Player.O, TicTacToe.Player.O, TicTacToe.Player.O},
-				{TicTacToe.Player.X, TicTacToe.Player.X, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.X, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN}
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.O},
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN}
 		};
 		Point[] moves = {new Point(1,0), new Point(0,1), new Point(2,0),
 				new Point(0,2), new Point(1,1), new Point(0,0)};
-		TicTacToe.Player lastPlayer = TicTacToe.Player.O;
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.O;
 		boolean gameOver = true;
 
 		String scenarioName = "testX10O01X20O02X11O00";
@@ -747,8 +747,8 @@ public class TicTacToeTester {
 			printTest("testWinner", testWinner(gameX10O01X20O02X11O00(), Result.O));
 			printTest("testGetGameGrid", testGetGameGrid(gameX10O01X20O02X11O00(), grid));
 			printTest("testGetMoves", testGetMoves(gameX10O01X20O02X11O00(), moves));
-			printTest("testChoicesX", testChoices(gameX10O01X20O02X11O00, TicTacToe.Player.X, lastPlayer, gameOver, grid));
-			printTest("testChoicesO", testChoices(gameX10O01X20O02X11O00, TicTacToe.Player.O, lastPlayer, gameOver, grid));
+			printTest("testChoicesX", testChoices(gameX10O01X20O02X11O00, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX10O01X20O02X11O00, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -761,14 +761,14 @@ public class TicTacToeTester {
 	
 	//O wins - second row
 	private void testX00O10X20O12X01O11() {
-		TicTacToe.Player[][] grid = {
-				{TicTacToe.Player.X, TicTacToe.Player.X, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.O, TicTacToe.Player.O, TicTacToe.Player.O},
-				{TicTacToe.Player.X, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN}
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.O},
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN}
 		};
 		Point[] moves = {new Point(0,0), new Point(1,0), new Point(2,0),
 				new Point(1,2), new Point(0,1), new Point(1,1)};
-		TicTacToe.Player lastPlayer = TicTacToe.Player.O;
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.O;
 		boolean gameOver = true;
 
 		String scenarioName = "testX00O10X20O12X01O11";
@@ -780,8 +780,8 @@ public class TicTacToeTester {
 			printTest("testWinner", testWinner(gameX00O10X20O12X01O11(), Result.O));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O10X20O12X01O11(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O10X20O12X01O11(), moves));
-			printTest("testChoicesX", testChoices(gameX00O10X20O12X01O11, TicTacToe.Player.X, lastPlayer, gameOver, grid));
-			printTest("testChoicesO", testChoices(gameX00O10X20O12X01O11, TicTacToe.Player.O, lastPlayer, gameOver, grid));
+			printTest("testChoicesX", testChoices(gameX00O10X20O12X01O11, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00O10X20O12X01O11, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -794,14 +794,14 @@ public class TicTacToeTester {
 	
 	//O wins - third row
 	private void testX00O21X10O20X01O22() {
-		TicTacToe.Player[][] grid = {
-				{TicTacToe.Player.X, TicTacToe.Player.X, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.X, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.O, TicTacToe.Player.O, TicTacToe.Player.O}
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.O}
 		};
 		Point[] moves = {new Point(0,0), new Point(2,1), new Point(1,0),
 				new Point(2,0), new Point(0,1), new Point(2,2)};
-		TicTacToe.Player lastPlayer = TicTacToe.Player.O;
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.O;
 		boolean gameOver = true;
 
 		String scenarioName = "testX00O21X10O20X01O22";
@@ -813,8 +813,8 @@ public class TicTacToeTester {
 			printTest("testWinner", testWinner(gameX00O21X10O20X01O22(), Result.O));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O21X10O20X01O22(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O21X10O20X01O22(), moves));
-			printTest("testChoicesX", testChoices(gameX00O21X10O20X01O22, TicTacToe.Player.X, lastPlayer, gameOver, grid));
-			printTest("testChoicesO", testChoices(gameX00O21X10O20X01O22, TicTacToe.Player.O, lastPlayer, gameOver, grid));
+			printTest("testChoicesX", testChoices(gameX00O21X10O20X01O22, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00O21X10O20X01O22, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -827,14 +827,14 @@ public class TicTacToeTester {
 	
 	//O wins - first col
 	private void testX22O10X11O00X01O20() {
-		TicTacToe.Player[][] grid = {
-				{TicTacToe.Player.O, TicTacToe.Player.X, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.O, TicTacToe.Player.X, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.O, TicTacToe.Player.OPEN, TicTacToe.Player.X}
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.X}
 		};
 		Point[] moves = {new Point(2,2), new Point(1,0), new Point(1,1),
 				new Point(0,0), new Point(0,1), new Point(2,0)};
-		TicTacToe.Player lastPlayer = TicTacToe.Player.O;
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.O;
 		boolean gameOver = true;
 
 		String scenarioName = "testX22O10X11O00X01O20";
@@ -846,8 +846,8 @@ public class TicTacToeTester {
 			printTest("testWinner", testWinner(gameX22O10X11O00X01O20(), Result.O));
 			printTest("testGetGameGrid", testGetGameGrid(gameX22O10X11O00X01O20(), grid));
 			printTest("testGetMoves", testGetMoves(gameX22O10X11O00X01O20(), moves));
-			printTest("testChoicesX", testChoices(gameX22O10X11O00X01O20, TicTacToe.Player.X, lastPlayer, gameOver, grid));
-			printTest("testChoicesO", testChoices(gameX22O10X11O00X01O20, TicTacToe.Player.O, lastPlayer, gameOver, grid));
+			printTest("testChoicesX", testChoices(gameX22O10X11O00X01O20, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX22O10X11O00X01O20, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -860,14 +860,14 @@ public class TicTacToeTester {
 	
 	//O wins - second col
 	private void testX00O01X22O11X10O21() {
-		TicTacToe.Player[][] grid = {
-				{TicTacToe.Player.X, TicTacToe.Player.O, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.X, TicTacToe.Player.O, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.OPEN, TicTacToe.Player.O, TicTacToe.Player.X}
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.X}
 		};
 		Point[] moves = {new Point(0,0), new Point(0,1), new Point(2,2),
 				new Point(1,1), new Point(1,0), new Point(2,1)};
-		TicTacToe.Player lastPlayer = TicTacToe.Player.O;
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.O;
 		boolean gameOver = true;
 
 		String scenarioName = "testX00O01X22O11X10O21";
@@ -879,8 +879,8 @@ public class TicTacToeTester {
 			printTest("testWinner", testWinner(gameX00O01X22O11X10O21(), Result.O));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O01X22O11X10O21(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O01X22O11X10O21(), moves));
-			printTest("testChoicesX", testChoices(gameX00O01X22O11X10O21, TicTacToe.Player.X, lastPlayer, gameOver, grid));
-			printTest("testChoicesO", testChoices(gameX00O01X22O11X10O21, TicTacToe.Player.O, lastPlayer, gameOver, grid));
+			printTest("testChoicesX", testChoices(gameX00O01X22O11X10O21, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00O01X22O11X10O21, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -893,14 +893,14 @@ public class TicTacToeTester {
 	
 	//O wins - third col
 	private void testX11O02X00O22X10O12() {
-		TicTacToe.Player[][] grid = {
-				{TicTacToe.Player.X, TicTacToe.Player.OPEN, TicTacToe.Player.O},
-				{TicTacToe.Player.X, TicTacToe.Player.X, TicTacToe.Player.O},
-				{TicTacToe.Player.OPEN, TicTacToe.Player.OPEN, TicTacToe.Player.O}
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.O},
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.O},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.O}
 		};
 		Point[] moves = {new Point(1,1), new Point(0,2), new Point(0,0),
 				new Point(2,2), new Point(1,0), new Point(1,2)};
-		TicTacToe.Player lastPlayer = TicTacToe.Player.O;
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.O;
 		boolean gameOver = true;
 
 		String scenarioName = "testX11O02X00O22X10O12";
@@ -912,8 +912,8 @@ public class TicTacToeTester {
 			printTest("testWinner", testWinner(gameX11O02X00O22X10O12(), Result.O));
 			printTest("testGetGameGrid", testGetGameGrid(gameX11O02X00O22X10O12(), grid));
 			printTest("testGetMoves", testGetMoves(gameX11O02X00O22X10O12(), moves));
-			printTest("testChoicesX", testChoices(gameX11O02X00O22X10O12, TicTacToe.Player.X, lastPlayer, gameOver, grid));
-			printTest("testChoicesO", testChoices(gameX11O02X00O22X10O12, TicTacToe.Player.O, lastPlayer, gameOver, grid));
+			printTest("testChoicesX", testChoices(gameX11O02X00O22X10O12, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX11O02X00O22X10O12, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -926,14 +926,14 @@ public class TicTacToeTester {
 	
 	//O wins - first diagonal
 	private void testX01O00X10O11X21O22() {
-		TicTacToe.Player[][] grid = {
-				{TicTacToe.Player.O, TicTacToe.Player.X, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.X, TicTacToe.Player.O, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.OPEN, TicTacToe.Player.X, TicTacToe.Player.O}
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.O}
 		};
 		Point[] moves = {new Point(0,1), new Point(0,0), new Point(1,0),
 				new Point(1,1), new Point(2,1), new Point(2,2)};
-		TicTacToe.Player lastPlayer = TicTacToe.Player.O;
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.O;
 		boolean gameOver = true;
 
 		String scenarioName = "testX01O00X10O11X21O22";
@@ -945,8 +945,8 @@ public class TicTacToeTester {
 			printTest("testWinner", testWinner(gameX01O00X10O11X21O22(), Result.O));
 			printTest("testGetGameGrid", testGetGameGrid(gameX01O00X10O11X21O22(), grid));
 			printTest("testGetMoves", testGetMoves(gameX01O00X10O11X21O22(), moves));
-			printTest("testChoicesX", testChoices(gameX01O00X10O11X21O22, TicTacToe.Player.X, lastPlayer, gameOver, grid));
-			printTest("testChoicesO", testChoices(gameX01O00X10O11X21O22, TicTacToe.Player.O, lastPlayer, gameOver, grid));
+			printTest("testChoicesX", testChoices(gameX01O00X10O11X21O22, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX01O00X10O11X21O22, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -959,14 +959,14 @@ public class TicTacToeTester {
 	
 	//O wins - second diagonal
 	private void testX00O11X10O20X21O02() {
-		TicTacToe.Player[][] grid = {
-				{TicTacToe.Player.X, TicTacToe.Player.OPEN, TicTacToe.Player.O},
-				{TicTacToe.Player.X, TicTacToe.Player.O, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.O, TicTacToe.Player.X, TicTacToe.Player.OPEN}
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.O},
+				{TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.O, TicTacToe.BoardChoice.X, TicTacToe.BoardChoice.OPEN}
 		};
 		Point[] moves = {new Point(0,0), new Point(1,1), new Point(1,0),
 				new Point(2,0), new Point(2,1), new Point(0,2)};
-		TicTacToe.Player lastPlayer = TicTacToe.Player.O;
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.O;
 		boolean gameOver = true;
 
 		String scenarioName = "testX00O11X10O20X21O02";
@@ -978,8 +978,8 @@ public class TicTacToeTester {
 			printTest("testWinner", testWinner(gameX00O11X10O20X21O02(), Result.O));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O11X10O20X21O02(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O11X10O20X21O02(), moves));
-			printTest("testChoicesX", testChoices(gameX00O11X10O20X21O02, TicTacToe.Player.X, lastPlayer, gameOver, grid));
-			printTest("testChoicesO", testChoices(gameX00O11X10O20X21O02, TicTacToe.Player.O, lastPlayer, gameOver, grid));
+			printTest("testChoicesX", testChoices(gameX00O11X10O20X21O02, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00O11X10O20X21O02, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
 		} catch (Exception e) {
 			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
 			e.printStackTrace();
@@ -1031,7 +1031,7 @@ public class TicTacToeTester {
 	 */
 	private TicTacToe gameX00() {
 		TicTacToe game = newGame();
-		game.choose(TicTacToe.Player.X, 0, 0);
+		game.choose(TicTacToe.BoardChoice.X, 0, 0);
 		return game;
 	}
 	private Scenario gameX00 = () -> gameX00();
@@ -1044,7 +1044,7 @@ public class TicTacToeTester {
 	 */
 	private TicTacToe gameX00O10() {
 		TicTacToe game = gameX00();
-		game.choose(TicTacToe.Player.O, 1, 0);
+		game.choose(TicTacToe.BoardChoice.O, 1, 0);
 		return game;
 	}
 	private Scenario gameX00O10 = () -> gameX00O10();
@@ -1057,7 +1057,7 @@ public class TicTacToeTester {
 	 */
 	private TicTacToe gameX00O10X11() {
 		TicTacToe game = gameX00O10();
-		game.choose(TicTacToe.Player.X, 1, 1);
+		game.choose(TicTacToe.BoardChoice.X, 1, 1);
 		return game;
 	}
 	private Scenario gameX00O10X11 = () -> gameX00O10X11();
@@ -1070,7 +1070,7 @@ public class TicTacToeTester {
 	 */
 	private TicTacToe gameX00O10X11O22() {
 		TicTacToe game = gameX00O10X11();
-		game.choose(TicTacToe.Player.O, 2, 2);
+		game.choose(TicTacToe.BoardChoice.O, 2, 2);
 		return game;
 	}
 	private Scenario gameX00O10X11O22 = () -> gameX00O10X11O22();
@@ -1083,7 +1083,7 @@ public class TicTacToeTester {
 	 */
 	private TicTacToe gameX00O10X11O22X02() {
 		TicTacToe game = gameX00O10X11O22();
-		game.choose(TicTacToe.Player.X, 0, 2);
+		game.choose(TicTacToe.BoardChoice.X, 0, 2);
 		return game;
 	}
 	private Scenario gameX00O10X11O22X02 = () -> gameX00O10X11O22X02();
@@ -1096,7 +1096,7 @@ public class TicTacToeTester {
 	 */
 	private TicTacToe gameX00O10X11O22X02O01() {
 		TicTacToe game = gameX00O10X11O22X02();
-		game.choose(TicTacToe.Player.O, 0, 1);
+		game.choose(TicTacToe.BoardChoice.O, 0, 1);
 		return game;
 	}
 	private Scenario gameX00O10X11O22X02O01 = () -> gameX00O10X11O22X02O01();
@@ -1109,7 +1109,7 @@ public class TicTacToeTester {
 	 */
 	private TicTacToe gameX00O10X11O22X02O01X21() {
 		TicTacToe game = gameX00O10X11O22X02O01();
-		game.choose(TicTacToe.Player.X, 2, 1);
+		game.choose(TicTacToe.BoardChoice.X, 2, 1);
 		return game;
 	}
 	private Scenario gameX00O10X11O22X02O01X21 = () -> gameX00O10X11O22X02O01X21();
@@ -1122,7 +1122,7 @@ public class TicTacToeTester {
 	 */
 	private TicTacToe gameX00O10X11O22X02O01X21O20() {
 		TicTacToe game = gameX00O10X11O22X02O01X21();
-		game.choose(TicTacToe.Player.O, 2, 0);
+		game.choose(TicTacToe.BoardChoice.O, 2, 0);
 		return game;
 	}
 	private Scenario gameX00O10X11O22X02O01X21O20 = () -> gameX00O10X11O22X02O01X21O20();
@@ -1137,7 +1137,7 @@ public class TicTacToeTester {
 	 */
 	private TicTacToe gameX00O10X11O22X02O01X21O20X12() {
 		TicTacToe game = gameX00O10X11O22X02O01X21O20();
-		game.choose(TicTacToe.Player.X, 1, 2);
+		game.choose(TicTacToe.BoardChoice.X, 1, 2);
 		return game;
 	}
 	private Scenario gameX00O10X11O22X02O01X21O20X12 = () -> gameX00O10X11O22X02O01X21O20X12();
@@ -1152,11 +1152,11 @@ public class TicTacToeTester {
 	 */
 	private TicTacToe gameX02O10X00O22X01() {
 		TicTacToe game = newGame();
-		game.choose(TicTacToe.Player.X, 0, 2);
-		game.choose(TicTacToe.Player.O, 1, 0);
-		game.choose(TicTacToe.Player.X, 0, 0);
-		game.choose(TicTacToe.Player.O, 2, 2);
-		game.choose(TicTacToe.Player.X, 0, 1);
+		game.choose(TicTacToe.BoardChoice.X, 0, 2);
+		game.choose(TicTacToe.BoardChoice.O, 1, 0);
+		game.choose(TicTacToe.BoardChoice.X, 0, 0);
+		game.choose(TicTacToe.BoardChoice.O, 2, 2);
+		game.choose(TicTacToe.BoardChoice.X, 0, 1);
 		return game;
 	}
 	private Scenario gameX02O10X00O22X01 = () -> gameX02O10X00O22X01();
@@ -1169,11 +1169,11 @@ public class TicTacToeTester {
 	 */
 	private TicTacToe gameX11O00X10O22X12() {
 		TicTacToe game = newGame();
-		game.choose(TicTacToe.Player.X, 1, 1);
-		game.choose(TicTacToe.Player.O, 0, 0);
-		game.choose(TicTacToe.Player.X, 1, 0);
-		game.choose(TicTacToe.Player.O, 2, 2);
-		game.choose(TicTacToe.Player.X, 1, 2);
+		game.choose(TicTacToe.BoardChoice.X, 1, 1);
+		game.choose(TicTacToe.BoardChoice.O, 0, 0);
+		game.choose(TicTacToe.BoardChoice.X, 1, 0);
+		game.choose(TicTacToe.BoardChoice.O, 2, 2);
+		game.choose(TicTacToe.BoardChoice.X, 1, 2);
 		return game;
 	}
 	private Scenario gameX11O00X10O22X12 = () -> gameX11O00X10O22X12();
@@ -1186,11 +1186,11 @@ public class TicTacToeTester {
 	 */
 	private TicTacToe gameX22O00X20O12X21() {
 		TicTacToe game = newGame();
-		game.choose(TicTacToe.Player.X, 2, 2);
-		game.choose(TicTacToe.Player.O, 0, 0);
-		game.choose(TicTacToe.Player.X, 2, 0);
-		game.choose(TicTacToe.Player.O, 1, 2);
-		game.choose(TicTacToe.Player.X, 2, 1);
+		game.choose(TicTacToe.BoardChoice.X, 2, 2);
+		game.choose(TicTacToe.BoardChoice.O, 0, 0);
+		game.choose(TicTacToe.BoardChoice.X, 2, 0);
+		game.choose(TicTacToe.BoardChoice.O, 1, 2);
+		game.choose(TicTacToe.BoardChoice.X, 2, 1);
 		return game;
 	}
 	private Scenario gameX22O00X20O12X21 = () -> gameX22O00X20O12X21();
@@ -1203,11 +1203,11 @@ public class TicTacToeTester {
 	 */
 	private TicTacToe gameX00O11X20O12X10() {
 		TicTacToe game = newGame();
-		game.choose(TicTacToe.Player.X, 0, 0);
-		game.choose(TicTacToe.Player.O, 1, 1);
-		game.choose(TicTacToe.Player.X, 2, 0);
-		game.choose(TicTacToe.Player.O, 1, 2);
-		game.choose(TicTacToe.Player.X, 1, 0);
+		game.choose(TicTacToe.BoardChoice.X, 0, 0);
+		game.choose(TicTacToe.BoardChoice.O, 1, 1);
+		game.choose(TicTacToe.BoardChoice.X, 2, 0);
+		game.choose(TicTacToe.BoardChoice.O, 1, 2);
+		game.choose(TicTacToe.BoardChoice.X, 1, 0);
 		return game;
 	}
 	private Scenario gameX00O11X20O12X10 = () -> gameX00O11X20O12X10();
@@ -1220,11 +1220,11 @@ public class TicTacToeTester {
 	 */
 	private TicTacToe gameX01O10X21O12X11() {
 		TicTacToe game = newGame();
-		game.choose(TicTacToe.Player.X, 0, 1);
-		game.choose(TicTacToe.Player.O, 1, 0);
-		game.choose(TicTacToe.Player.X, 2, 1);
-		game.choose(TicTacToe.Player.O, 1, 2);
-		game.choose(TicTacToe.Player.X, 1, 1);
+		game.choose(TicTacToe.BoardChoice.X, 0, 1);
+		game.choose(TicTacToe.BoardChoice.O, 1, 0);
+		game.choose(TicTacToe.BoardChoice.X, 2, 1);
+		game.choose(TicTacToe.BoardChoice.O, 1, 2);
+		game.choose(TicTacToe.BoardChoice.X, 1, 1);
 		return game;
 	}
 	private Scenario gameX01O10X21O12X11 = () -> gameX01O10X21O12X11();
@@ -1237,11 +1237,11 @@ public class TicTacToeTester {
 	 */
 	private TicTacToe gameX12O11X02O21X22() {
 		TicTacToe game = newGame();
-		game.choose(TicTacToe.Player.X, 1, 2);
-		game.choose(TicTacToe.Player.O, 1, 1);
-		game.choose(TicTacToe.Player.X, 0, 2);
-		game.choose(TicTacToe.Player.O, 2, 1);
-		game.choose(TicTacToe.Player.X, 2, 2);
+		game.choose(TicTacToe.BoardChoice.X, 1, 2);
+		game.choose(TicTacToe.BoardChoice.O, 1, 1);
+		game.choose(TicTacToe.BoardChoice.X, 0, 2);
+		game.choose(TicTacToe.BoardChoice.O, 2, 1);
+		game.choose(TicTacToe.BoardChoice.X, 2, 2);
 		return game;
 	}
 	private Scenario gameX12O11X02O21X22 = () -> gameX12O11X02O21X22();
@@ -1254,11 +1254,11 @@ public class TicTacToeTester {
 	 */
 	private TicTacToe gameX11O02X22O12X00() {
 		TicTacToe game = newGame();
-		game.choose(TicTacToe.Player.X, 1, 1);
-		game.choose(TicTacToe.Player.O, 0, 2);
-		game.choose(TicTacToe.Player.X, 2, 2);
-		game.choose(TicTacToe.Player.O, 1, 2);
-		game.choose(TicTacToe.Player.X, 0, 0);
+		game.choose(TicTacToe.BoardChoice.X, 1, 1);
+		game.choose(TicTacToe.BoardChoice.O, 0, 2);
+		game.choose(TicTacToe.BoardChoice.X, 2, 2);
+		game.choose(TicTacToe.BoardChoice.O, 1, 2);
+		game.choose(TicTacToe.BoardChoice.X, 0, 0);
 		return game;
 	}
 	private Scenario gameX11O02X22O12X00 = () -> gameX11O02X22O12X00();
@@ -1271,11 +1271,11 @@ public class TicTacToeTester {
 	 */
 	private TicTacToe gameX20O01X11O00X02() {
 		TicTacToe game = newGame();
-		game.choose(TicTacToe.Player.X, 2, 0);
-		game.choose(TicTacToe.Player.O, 0, 1);
-		game.choose(TicTacToe.Player.X, 1, 1);
-		game.choose(TicTacToe.Player.O, 0, 0);
-		game.choose(TicTacToe.Player.X, 0, 2);
+		game.choose(TicTacToe.BoardChoice.X, 2, 0);
+		game.choose(TicTacToe.BoardChoice.O, 0, 1);
+		game.choose(TicTacToe.BoardChoice.X, 1, 1);
+		game.choose(TicTacToe.BoardChoice.O, 0, 0);
+		game.choose(TicTacToe.BoardChoice.X, 0, 2);
 		return game;
 	}
 	private Scenario gameX20O01X11O00X02 = () -> gameX20O01X11O00X02();
@@ -1290,12 +1290,12 @@ public class TicTacToeTester {
 	 */
 	private TicTacToe gameX10O01X20O02X11O00() {
 		TicTacToe game = newGame();
-		game.choose(TicTacToe.Player.X, 1, 0);
-		game.choose(TicTacToe.Player.O, 0, 1);
-		game.choose(TicTacToe.Player.X, 2, 0);
-		game.choose(TicTacToe.Player.O, 0, 2);
-		game.choose(TicTacToe.Player.X, 1, 1);
-		game.choose(TicTacToe.Player.O, 0, 0);
+		game.choose(TicTacToe.BoardChoice.X, 1, 0);
+		game.choose(TicTacToe.BoardChoice.O, 0, 1);
+		game.choose(TicTacToe.BoardChoice.X, 2, 0);
+		game.choose(TicTacToe.BoardChoice.O, 0, 2);
+		game.choose(TicTacToe.BoardChoice.X, 1, 1);
+		game.choose(TicTacToe.BoardChoice.O, 0, 0);
 		return game;
 	}
 	private Scenario gameX10O01X20O02X11O00 = () -> gameX10O01X20O02X11O00();
@@ -1308,12 +1308,12 @@ public class TicTacToeTester {
 	 */
 	private TicTacToe gameX00O10X20O12X01O11() {
 		TicTacToe game = newGame();
-		game.choose(TicTacToe.Player.X, 0, 0);
-		game.choose(TicTacToe.Player.O, 1, 0);
-		game.choose(TicTacToe.Player.X, 2, 0);
-		game.choose(TicTacToe.Player.O, 1, 2);
-		game.choose(TicTacToe.Player.X, 0, 1);
-		game.choose(TicTacToe.Player.O, 1, 1);
+		game.choose(TicTacToe.BoardChoice.X, 0, 0);
+		game.choose(TicTacToe.BoardChoice.O, 1, 0);
+		game.choose(TicTacToe.BoardChoice.X, 2, 0);
+		game.choose(TicTacToe.BoardChoice.O, 1, 2);
+		game.choose(TicTacToe.BoardChoice.X, 0, 1);
+		game.choose(TicTacToe.BoardChoice.O, 1, 1);
 		return game;
 	}
 	private Scenario gameX00O10X20O12X01O11 = () -> gameX00O10X20O12X01O11();
@@ -1326,12 +1326,12 @@ public class TicTacToeTester {
 	 */
 	private TicTacToe gameX00O21X10O20X01O22() {
 		TicTacToe game = newGame();
-		game.choose(TicTacToe.Player.X, 0, 0);
-		game.choose(TicTacToe.Player.O, 2, 1);
-		game.choose(TicTacToe.Player.X, 1, 0);
-		game.choose(TicTacToe.Player.O, 2, 0);
-		game.choose(TicTacToe.Player.X, 0, 1);
-		game.choose(TicTacToe.Player.O, 2, 2);
+		game.choose(TicTacToe.BoardChoice.X, 0, 0);
+		game.choose(TicTacToe.BoardChoice.O, 2, 1);
+		game.choose(TicTacToe.BoardChoice.X, 1, 0);
+		game.choose(TicTacToe.BoardChoice.O, 2, 0);
+		game.choose(TicTacToe.BoardChoice.X, 0, 1);
+		game.choose(TicTacToe.BoardChoice.O, 2, 2);
 		return game;
 	}
 	private Scenario gameX00O21X10O20X01O22 = () -> gameX00O21X10O20X01O22();
@@ -1344,12 +1344,12 @@ public class TicTacToeTester {
 	 */
 	private TicTacToe gameX22O10X11O00X01O20() {
 		TicTacToe game = newGame();
-		game.choose(TicTacToe.Player.X, 2, 2);
-		game.choose(TicTacToe.Player.O, 1, 0);
-		game.choose(TicTacToe.Player.X, 1, 1);
-		game.choose(TicTacToe.Player.O, 0, 0);
-		game.choose(TicTacToe.Player.X, 0, 1);
-		game.choose(TicTacToe.Player.O, 2, 0);
+		game.choose(TicTacToe.BoardChoice.X, 2, 2);
+		game.choose(TicTacToe.BoardChoice.O, 1, 0);
+		game.choose(TicTacToe.BoardChoice.X, 1, 1);
+		game.choose(TicTacToe.BoardChoice.O, 0, 0);
+		game.choose(TicTacToe.BoardChoice.X, 0, 1);
+		game.choose(TicTacToe.BoardChoice.O, 2, 0);
 		return game;
 	}
 	private Scenario gameX22O10X11O00X01O20 = () -> gameX22O10X11O00X01O20();
@@ -1362,12 +1362,12 @@ public class TicTacToeTester {
 	 */
 	private TicTacToe gameX00O01X22O11X10O21() {
 		TicTacToe game = newGame();
-		game.choose(TicTacToe.Player.X, 0, 0);
-		game.choose(TicTacToe.Player.O, 0, 1);
-		game.choose(TicTacToe.Player.X, 2, 2);
-		game.choose(TicTacToe.Player.O, 1, 1);
-		game.choose(TicTacToe.Player.X, 1, 0);
-		game.choose(TicTacToe.Player.O, 2, 1);
+		game.choose(TicTacToe.BoardChoice.X, 0, 0);
+		game.choose(TicTacToe.BoardChoice.O, 0, 1);
+		game.choose(TicTacToe.BoardChoice.X, 2, 2);
+		game.choose(TicTacToe.BoardChoice.O, 1, 1);
+		game.choose(TicTacToe.BoardChoice.X, 1, 0);
+		game.choose(TicTacToe.BoardChoice.O, 2, 1);
 		return game;
 	}
 	private Scenario gameX00O01X22O11X10O21 = () -> gameX00O01X22O11X10O21();
@@ -1380,12 +1380,12 @@ public class TicTacToeTester {
 	 */
 	private TicTacToe gameX11O02X00O22X10O12() {
 		TicTacToe game = newGame();
-		game.choose(TicTacToe.Player.X, 1, 1);
-		game.choose(TicTacToe.Player.O, 0, 2);
-		game.choose(TicTacToe.Player.X, 0, 0);
-		game.choose(TicTacToe.Player.O, 2, 2);
-		game.choose(TicTacToe.Player.X, 1, 0);
-		game.choose(TicTacToe.Player.O, 1, 2);
+		game.choose(TicTacToe.BoardChoice.X, 1, 1);
+		game.choose(TicTacToe.BoardChoice.O, 0, 2);
+		game.choose(TicTacToe.BoardChoice.X, 0, 0);
+		game.choose(TicTacToe.BoardChoice.O, 2, 2);
+		game.choose(TicTacToe.BoardChoice.X, 1, 0);
+		game.choose(TicTacToe.BoardChoice.O, 1, 2);
 		return game;
 	}
 	private Scenario gameX11O02X00O22X10O12 = () -> gameX11O02X00O22X10O12();
@@ -1398,12 +1398,12 @@ public class TicTacToeTester {
 	 */
 	private TicTacToe gameX01O00X10O11X21O22() {
 		TicTacToe game = newGame();
-		game.choose(TicTacToe.Player.X, 0, 1);
-		game.choose(TicTacToe.Player.O, 0, 0);
-		game.choose(TicTacToe.Player.X, 1, 0);
-		game.choose(TicTacToe.Player.O, 1, 1);
-		game.choose(TicTacToe.Player.X, 2, 1);
-		game.choose(TicTacToe.Player.O, 2, 2);
+		game.choose(TicTacToe.BoardChoice.X, 0, 1);
+		game.choose(TicTacToe.BoardChoice.O, 0, 0);
+		game.choose(TicTacToe.BoardChoice.X, 1, 0);
+		game.choose(TicTacToe.BoardChoice.O, 1, 1);
+		game.choose(TicTacToe.BoardChoice.X, 2, 1);
+		game.choose(TicTacToe.BoardChoice.O, 2, 2);
 		return game;
 	}
 	private Scenario gameX01O00X10O11X21O22 = () -> gameX01O00X10O11X21O22();
@@ -1416,12 +1416,12 @@ public class TicTacToeTester {
 	 */
 	private TicTacToe gameX00O11X10O20X21O02() {
 		TicTacToe game = newGame();
-		game.choose(TicTacToe.Player.X, 0, 0);
-		game.choose(TicTacToe.Player.O, 1, 1);
-		game.choose(TicTacToe.Player.X, 1, 0);
-		game.choose(TicTacToe.Player.O, 2, 0);
-		game.choose(TicTacToe.Player.X, 2, 1);
-		game.choose(TicTacToe.Player.O, 0, 2);
+		game.choose(TicTacToe.BoardChoice.X, 0, 0);
+		game.choose(TicTacToe.BoardChoice.O, 1, 1);
+		game.choose(TicTacToe.BoardChoice.X, 1, 0);
+		game.choose(TicTacToe.BoardChoice.O, 2, 0);
+		game.choose(TicTacToe.BoardChoice.X, 2, 1);
+		game.choose(TicTacToe.BoardChoice.O, 0, 2);
 		return game;
 	}
 	private Scenario gameX00O11X10O20X21O02 = () -> gameX00O11X10O20X21O02();
@@ -1473,13 +1473,13 @@ public class TicTacToeTester {
 	private boolean testWinner(TicTacToe game, Result expectedResult) {
 		Result result;
 		try {
-			if (game.winner() == TicTacToe.Winner.IN_PROGRESS) {
+			if (game.getGameState() == TicTacToe.GameState.IN_PROGRESS) {
 				result = Result.InProgress;
-			} else if (game.winner() == TicTacToe.Winner.TIE) {
+			} else if (game.getGameState() == TicTacToe.GameState.TIE) {
 				result = Result.Tie;
-			} else if (game.winner() == TicTacToe.Winner.X) {
+			} else if (game.getGameState() == TicTacToe.GameState.X_WON) {
 				result = Result.X;
-			} else if (game.winner() == TicTacToe.Winner.O) {
+			} else if (game.getGameState() == TicTacToe.GameState.O_WON) {
 				result = Result.O;
 			} else {
 				result = Result.Fail;
@@ -1496,10 +1496,10 @@ public class TicTacToeTester {
 	 * Runs getGameGrid() method on a TicTacToe.
 	 * @return test success
 	 */
-	private boolean testGetGameGrid(TicTacToe game, TicTacToe.Player[][] expectedGrid) {
+	private boolean testGetGameGrid(TicTacToe game, TicTacToe.BoardChoice[][] expectedGrid) {
 		Result result;
 		try {
-			TicTacToe.Player[][] returnedGrid = game.getGameGrid();
+			TicTacToe.BoardChoice[][] returnedGrid = game.getGameGrid();
 			if (equivalentArrays(returnedGrid, expectedGrid)) {
 				result = Result.Pass;
 			} else {
@@ -1538,8 +1538,8 @@ public class TicTacToeTester {
 	 * Runs tests on choose() method on a TicTacToe for every position.
 	 * @return test success
 	 */
-	private boolean testChoices(Scenario gameBuilder, TicTacToe.Player player, TicTacToe.Player lastPlayer, 
-			boolean gameOver, TicTacToe.Player[][] grid) {
+	private boolean testChoices(Scenario gameBuilder, TicTacToe.BoardChoice player, TicTacToe.BoardChoice lastPlayer, 
+			boolean gameOver, TicTacToe.BoardChoice[][] grid) {
 		boolean result = true;
 		try {
 			if (player == lastPlayer || gameOver) { //no positions are valid
@@ -1556,7 +1556,7 @@ public class TicTacToeTester {
 				for (int row = 0; row < grid.length; row++) {
 					for (int col = 0; col < grid[row].length; col++) {
 						TicTacToe game = gameBuilder.setUpGame();
-						if (grid[row][col] == TicTacToe.Player.OPEN) {
+						if (grid[row][col] == TicTacToe.BoardChoice.OPEN) {
 							if (game.choose(player, row, col) == false) {
 								System.out.printf("\tchoose(%s, %d, %d) returned false, expected true\n", player, row, col);
 								result = false;
@@ -1576,20 +1576,39 @@ public class TicTacToeTester {
 		return result;
 	}
 
+//	/**
+//	 * Runs choose() method on a TicTacToe. Replaced by superior testChoices() tests.
+//	 * @return test success
+//	 */
+//	private boolean testChoose(TicTacToe game, TicTacToe.Player player, int row, int col, Result expectedResult) {
+//		Result result;
+//		try {
+//			if (game.choose(player, row, col)) {
+//				result = Result.True;
+//			} else {
+//				result = Result.False;
+//			}
+//		} catch (Exception e) {
+//			System.out.printf("%s caught unexpected %s\n", "testChoose", e.toString());
+//			e.printStackTrace();
+//			result = Result.UnexpectedException;
+//		}
+//		return result == expectedResult;
+//	}
 
 	/** Confirm that the getGameGrid() method does not return a reference to instance data
 	 * @return true if encapsulation has been preserved, else false
 	 */
 	private boolean testGetGameGridEncapsulation() {
-		TicTacToe.Player[][] grid = {
-				{TicTacToe.Player.OPEN, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.OPEN, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN},
-				{TicTacToe.Player.OPEN, TicTacToe.Player.OPEN, TicTacToe.Player.OPEN}
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN}
 		};
 		boolean passed = false;
 		try {
 			TicTacToe game = newGame();			
-			game.getGameGrid()[0][0] = TicTacToe.Player.X;
+			game.getGameGrid()[0][0] = TicTacToe.BoardChoice.X;
 			passed = equivalentArrays(grid, game.getGameGrid());
 		} catch (Exception e) {
 			System.out.printf("%s caught unexpected %s\n", "testGetGameGridEncapsulation", e.toString());
@@ -1624,7 +1643,7 @@ public class TicTacToeTester {
 	 * @param a2 second Player[][]
 	 * @return true if all values in a1 and a2 are the same, else false
 	 */
-	private boolean equivalentArrays(TicTacToe.Player[][] a1, TicTacToe.Player[][] a2) {
+	private boolean equivalentArrays(TicTacToe.BoardChoice[][] a1, TicTacToe.BoardChoice[][] a2) {
 		boolean equivalent = true;
 		if (a1.length != a2.length || (a1.length > 1 && a1[0].length != a2[0].length)) {
 			equivalent = false;

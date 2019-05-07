@@ -16,6 +16,7 @@ import javax.swing.JTextArea;
 
 /**
  * GUI for playing a TicTacToeGame.
+ * 
  * @author mvail
  */
 public class TicTacToeGUI extends JPanel {
@@ -23,7 +24,7 @@ public class TicTacToeGUI extends JPanel {
 	private final String PLAYER = "X";
 	private final String COMPUTER = "O";
 	private final String OPEN = "";
-	private final String TIE = "T";
+//	private final String TIE = "T";
 	private final int DIM = 3;
 	private JButton[][] gameGrid;
 	private JTextArea movesTextArea;
@@ -113,11 +114,11 @@ public class TicTacToeGUI extends JPanel {
 			}
 			movesTextArea.append("row " + moves[i].x + ", col " + moves[i].y + "\n"); 
 		}
-		if (game.winner() == TicTacToe.Winner.TIE) {
+		if (game.getGameState() == TicTacToe.GameState.TIE) {
 			movesTextArea.append("NO WINNER\n");
-		} else if (game.winner() == TicTacToe.Winner.X) {
+		} else if (game.getGameState() == TicTacToe.GameState.X_WON) {
 			movesTextArea.append("Winner: X\n");
-		} else if (game.winner() == TicTacToe.Winner.O) {
+		} else if (game.getGameState() == TicTacToe.GameState.O_WON) {
 			movesTextArea.append("Winner: O\n");
 		} else {
 			movesTextArea.append("ERROR\n");
@@ -157,7 +158,7 @@ public class TicTacToeGUI extends JPanel {
 						for (int col = 0; col < DIM; col++) {
 							if (button == gameGrid[row][col]) {
 								//if the position is successfully claimed
-								if (game.choose(TicTacToe.Player.X, row, col)) {
+								if (game.choose(TicTacToe.BoardChoice.X, row, col)) {
 									button.setText(PLAYER);
 									if (game.gameOver()) { //did the player just win?
 										endGame();
@@ -167,7 +168,7 @@ public class TicTacToeGUI extends JPanel {
 										while (!done) {
 											int cRow = rand.nextInt(DIM);
 											int cCol = rand.nextInt(DIM);
-											if (game.choose(TicTacToe.Player.O, cRow, cCol)) {
+											if (game.choose(TicTacToe.BoardChoice.O, cRow, cCol)) {
 												gameGrid[cRow][cCol].setText(COMPUTER);
 												done = true;
 											}

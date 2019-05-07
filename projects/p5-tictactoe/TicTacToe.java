@@ -6,8 +6,8 @@ import java.awt.Point;
  * @author mvail
  */
 public interface TicTacToe {
-	public static enum Player {X, O, OPEN};
-	public static enum Winner {X, O, TIE, IN_PROGRESS};
+	public static enum BoardChoice {X, O, OPEN};
+	public static enum GameState {X_WON, O_WON, TIE, IN_PROGRESS};
 	
 	/**
 	 * Reset the game.
@@ -25,12 +25,12 @@ public interface TicTacToe {
 	 * A winning move or choosing the last open position ends
 	 * the game.
 	 * 
-	 * @param player either Player.X or Player.O
-	 * @param row value from 0 to 2
-	 * @param col value from 0 to 2
+	 * @param player expecting either BoardChoice.X or BoardChoice.O
+	 * @param row row to claim - value from 0 to 2
+	 * @param col column to claim - value from 0 to 2
 	 * @return true if the choice was a valid move, else false
 	 */
-	public boolean choose(Player player, int row, int col);
+	public boolean choose(BoardChoice player, int row, int col);
 
 	/**
 	 * Return true if either player X or O has achieved
@@ -42,12 +42,12 @@ public interface TicTacToe {
 	public boolean gameOver();
 	
 	/**
-	 * Return the Winner (X, O, or TIE) if the game is over, or
+	 * Return the winner (X, O, or TIE) if the game is over, or
 	 * IN_PROGRESS if the game is not over.
 	 * 
 	 * @return the winner of a completed game or IN_PROGRESS
 	 */
-	public Winner winner();
+	public GameState getGameState();
 	
 	/**
 	 * Get the current game board with each position marked as
@@ -56,7 +56,7 @@ public interface TicTacToe {
 	 * 
 	 * @return array showing the current game board
 	 */
-	public Player[][] getGameGrid();
+	public BoardChoice[][] getGameGrid();
 	
 	/**
 	 * Get the sequence of moves, where even indexes correspond to the

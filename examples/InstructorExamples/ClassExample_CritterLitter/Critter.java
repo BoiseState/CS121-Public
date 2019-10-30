@@ -1,17 +1,15 @@
 import java.util.Random;
 
 /**
- * A Critter is a creature that is born knowing its own name
- *  and possessing some cookies that it likes to share.
+ * A Critter is a creature that is born knowing its own name and 
+ * possessing some cookies that it likes to share.
  *  
- * This special kind of comment is a "Javadoc". There should
- * be a good, descriptive Javadoc with appropriate tags, like
- * the author tag, below, before every class and method.
- * Typically, author tags are only included in class Javadocs,
- * but they can be in method Javadocs if there's a compelling
- * reason to specify who wrote a particular method. You can
- * list multiple authors after one tag or have separate tags
- * for every author.  
+ * This special kind of comment is a "Javadoc". There should be a good, 
+ * descriptive Javadoc with appropriate tags before every class and method.
+ * Typically, author tags, as seen in this Javadoc, are only included in 
+ * class Javadocs, but they can be in method Javadocs if there's a 
+ * compelling reason to specify who wrote a particular method. You can list 
+ * multiple authors after one tag or have separate tags for every author.  
  *  
  * @author mvail
  */
@@ -131,9 +129,9 @@ public class Critter {
 	 * inherit from a parent class called Object.
 	 * 
 	 * This comment is a regular block comment. The number of
-	 * asterisks in the open delimiter determines if the comment
-	 * is a Javadoc or a regular block comment. This method does
-	 * not need a Javadoc because it inherits the Javadoc from
+	 * asterisks in the open delimiter (/** or /*) determines if the
+	 * comment is a Javadoc or a regular block comment. This method
+	 * does not need a Javadoc because it inherits the Javadoc from
 	 * the original implementation of the method. The (non-Javadoc)
 	 * information, below, indicates where to look for the
 	 * inherited method and its documentation.

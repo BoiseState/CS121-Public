@@ -23,7 +23,7 @@ To run, use the command:
  $ java CritterLitter  
 ```
 
-# Design and Concepts
+## Design and Concepts
 
 CritterLitter generates 10 Critter objects and adds them to an ArrayList, a linear data structure, so all Critters are side-by-side in a line. Critters at either end of the list have only one neighbor, but most Critters have two neighbors.
 

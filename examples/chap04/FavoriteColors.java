@@ -18,7 +18,6 @@ public class FavoriteColors
 		// Now, convert input to a value of the enum.
 		switch (input.toUpperCase()) // convert to upper case so we can handle lower case input
 		{
-			case "TEAL":
 			case "BLUE":
 				countBlue++;
 				break;
@@ -29,7 +28,6 @@ public class FavoriteColors
 				countPurple++;
 				break;
 			case "ORANGE":
-			case "RUST":
 				countOrange++;
 				break;
 			default:

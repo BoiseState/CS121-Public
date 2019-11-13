@@ -1,3 +1,5 @@
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 
 /**
@@ -21,5 +23,6 @@ public class PushCounter
 
       frame.pack();
       frame.setVisible(true);
+      frame.setMinimumSize(new Dimension(300, 200));
    }
 }

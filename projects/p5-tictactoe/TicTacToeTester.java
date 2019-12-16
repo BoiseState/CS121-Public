@@ -40,6 +40,13 @@ public class TicTacToeTester {
 		// to avoid every method being static
 		TicTacToeTester tester = new TicTacToeTester(args);
 		tester.runTests();
+
+		/* Set a non-zero exit status if failures occurred during testing */
+		if ( tester.getFailures() != 0 ) {
+			System.exit(1);
+		}
+
+		System.exit(0);
 	}
 
 	/** tester constructor
@@ -52,6 +59,14 @@ public class TicTacToeTester {
 		}
 		EXPECTED_TOTAL_TESTS = 184;
 		totalTests = 0;
+	}
+
+	/** Accessor method to check if failures 
+         *   occurred during testing.
+         * @return The total number of failures
+         */
+	public int getFailures() {
+		return this.failures;
 	}
 
 	/** Print test results in a consistent format

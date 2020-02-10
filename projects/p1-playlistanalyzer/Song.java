@@ -1,8 +1,3 @@
-import java.applet.AudioClip;
-import java.applet.Applet;
-import java.io.File;
-import java.net.URL;
-
 /**
  * The <code>Song</code> class represents a song. Each song has a title, artist,
  * play time, and file path.
@@ -10,7 +5,7 @@ import java.net.URL;
  * Here is an example of how a song can be created.
  * 
  * <pre>
- * Song song = new Song("Amsterdam", "Paul Oakenfold", 318, "sounds/Amsterdam.mp3");
+ * Song song = new Song("Amsterdam", "Paul Oakenfold", "A Lively Mind", 318);
  * </pre>
  *
  * Here is an example of how a song can be used.
@@ -21,17 +16,15 @@ import java.net.URL;
  * </pre>
  *
  * @author CS121 Instructors
+ * @version Spring 2020
  */
 public class Song
 {
-	private AudioClip clip; // Used to play the song.
-
 	private String title;
 	private String artist;
+	private String album;
 	private int playTime; // in seconds
-	private String filePath;
-	private int playCount;
-
+	
 	/**
 	 * Constructor: Builds a song using the given parameters.
 	 * 
@@ -39,29 +32,18 @@ public class Song
 	 *            song's title
 	 * @param artist
 	 *            song's artist
+	 * @param album
+	 *            song's album
 	 * @param playTime
 	 *            song's length in seconds
-	 * @param filePath
-	 *            song file to load
+
 	 */
-	public Song(String title, String artist, int playTime, String filePath)
+	public Song(String title, String artist, String album, int playTime)
 	{
 		this.title = title;
 		this.artist = artist;
+		this.album = album;
 		this.playTime = playTime;
-		this.filePath = filePath;
-		this.playCount = 0;
-
-		String fullPath = new File(filePath).getAbsolutePath();
-		try
-		{
-			this.clip = Applet.newAudioClip(new URL("file:" + fullPath));
-		}
-		catch (Exception e)
-		{
-			System.out.println("Error loading sound clip for " + fullPath);
-			System.out.println(e.getMessage());
-		}
 	}
 	
 	/**
@@ -103,6 +85,24 @@ public class Song
 	{
 		this.artist = artist;
 	}
+	
+	/**
+	 * Returns the album of this <code>Song</code>.
+	 * 
+	 * @return the album
+	 */
+	public String getAlbum() {
+		return album;
+	}
+
+	/**
+	 * Sets the album of this <code>Song</code>.
+	 * 
+	 * @param album the album to set
+	 */
+	public void setAlbum(String album) {
+		this.album = album;
+	}
 
 	/**
 	 * Returns the play time of this <code>Song</code> in seconds.
@@ -124,59 +124,6 @@ public class Song
 		this.playTime = seconds;
 	}
 
-	/**
-	 * Returns the file path of this <code>Song</code>.
-	 * 
-	 * @return the filePath
-	 */
-	public String getFilePath()
-	{
-		return filePath;
-	}
-	
-	/**
-	 * Sets the file path of this <code>Song</code>.
-	 * 
-	 * @param path The new path of the song.
-	 */
-	public void setFilePath(String path)
-	{
-		this.filePath = path;
-	}
-
-	/**
-	 * Returns the number of times this song has been played.
-	 * 
-	 * @return the count
-	 */
-	public int getPlayCount()
-	{
-		return playCount;
-	}
-	
-	/**
-	 * Plays this song asynchronously.
-	 */
-	public void play()
-	{
-		if (clip != null)
-		{
-			clip.play();
-			playCount++;
-		}
-	}
-
-	/**
-	 * Stops this song from playing.
-	 */
-	public void stop()
-	{
-		if (clip != null)
-		{
-			clip.stop();
-		}
-	}
-
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -185,6 +132,10 @@ public class Song
 	@Override
 	public String toString()
 	{
-		return String.format("%-20s %-20s %-25s %10d", title, artist, filePath, playTime);
+		String output = String.format("%-30s %-20s %-30s %5d", (title.length()<30?title:title.substring(0, 27) + "..."),
+				(artist.length()<20?artist:artist.substring(0, 17) + "..."),
+				(album.length()<30?album:album.substring(0, 27) + "..."), 
+				playTime);
+		return output;
 	}
 }

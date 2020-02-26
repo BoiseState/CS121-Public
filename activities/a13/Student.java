@@ -110,7 +110,7 @@ public class Student {
 		String output = "";
 		
 		String letter = this.getLetterGrade();
-		output += this.firstName + " " + this.lastName + " has " + (letter.equals("A")?"an ":"a ") + letter + ".";
+		output += this.firstName + " " + this.lastName + " has " + ((letter.equals("A")||letter.equals("F"))?"an ":"a ") + letter + ".";
 		
 		return output;		
 	}

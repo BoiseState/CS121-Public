@@ -16,8 +16,8 @@ import java.util.Random;
 @SuppressWarnings("serial")
 public class RandomBoxes extends JPanel
 {
-	private final int NUM_BOXES = 50, THICKNESS = 5, MAX_SIDE = 50;
-	private final int MAX_X = 350, MAX_Y = 250;
+	private final int NUM_BOXES = 500, THICKNESS = 5, MAX_SIDE = 50;
+	private int max_x = 350, max_y = 250;
 	private Random generator;
 
 	/**
@@ -39,11 +39,13 @@ public class RandomBoxes extends JPanel
 		// Paints boxes of random width and height in a random location.
 		// Narrow or short boxes are highlighted with a fill color.
 
+		max_x = getWidth() - MAX_SIDE;
+		max_y = getHeight() - MAX_SIDE;
 		int x, y, width, height;
 
 		for (int count = 0; count < NUM_BOXES; count++) {
-			x = generator.nextInt(MAX_X) + 1;
-			y = generator.nextInt(MAX_Y) + 1;
+			x = generator.nextInt(max_x) + 1;
+			y = generator.nextInt(max_y) + 1;
 
 			width = generator.nextInt(MAX_SIDE) + 1;
 			height = generator.nextInt(MAX_SIDE) + 1;

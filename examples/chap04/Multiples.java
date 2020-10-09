@@ -13,7 +13,7 @@ public class Multiples
     */
    public static void main (String[] args)
    {
-      final int PER_LINE = 8;
+      final int PER_LINE = 10;
       int value, limit, count = 0;
 
       Scanner scan = new Scanner (System.in);

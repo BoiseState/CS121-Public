@@ -3,7 +3,7 @@ import java.util.ArrayList;
 /**
  * Demonstrates the use of an ArrayList object.
  * 
- * @author Lewis/Loftus/amit
+ * @author Lewis, Loftus, amit
  * 
  */
 public class Beatles

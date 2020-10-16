@@ -3,67 +3,73 @@ import java.util.Random;
 /**
  * Die.java
  *
- * Represents one die (singular of dice) with faces showing values
- * between 1 and 6.
+ * Represents one n-sided die (singular of dice) with faces showing values
+ * between 1 and n.
  *
  * @author Java Foundations
- * @author CS121 Instructors (modified a few things from book)
+ * @author CS121 Instructors (modified a few things from the book)
  */
-public class Die
-{
-   private final int MAX = 6;  // maximum face value
-   private int faceValue;  // current value showing on the die
-   private Random rand;
+public class Die {
+	private final int DEFAULT_FACES = 6; // default number of sides
+	private int faceValue; // current value showing on the die
+	private int numSides;
+	private Random rand = new Random();
 
-   /**
-    * Constructor: Sets the initial face value of this die.
-    */
-   public Die()
-   {
-      rand = new Random();
-      faceValue = 1;
-   }
+	/**
+	 * Constructor: Sets the initial face value of this die.
+	 */
+	public Die() {
+		numSides = DEFAULT_FACES;
+		faceValue = 1;
+	}
 
-   /**
-    * Computes a new face value for this die and returns the result.
-    * @return The new face value.
-    */
-   public int roll()
-   {
-      //faceValue = (int)(Math.random() * MAX) + 1;
-      faceValue = rand.nextInt(MAX) + 1;
-      return faceValue;
-   }
+	/**
+	 * Constructor: Sets the number of sides and initial face value.
+	 * 
+	 * @param numSides
+	 */
+	public Die(int numSides) {
+		this.numSides = numSides;
+		faceValue = 1;
+	}
 
-   /**
-    * Face value mutator. The face value is not modified if the
-    * specified value is not valid.
-    *
-    * @param value The new face value. Must be between 1 and max face
-    * value.
-    */
-   public void setFaceValue (int value)
-   {
-      if (value > 0 && value <= MAX) {
-         faceValue = value;
-      }
-   }
+	/**
+	 * Computes a new face value for this die and returns the result.
+	 * 
+	 * @return The new face value.
+	 */
+	public int roll() {
+		// faceValue = (int)(Math.random() * numSides) + 1;
+		faceValue = rand.nextInt(numSides) + 1;
+		return faceValue;
+	}
 
-   /**
-    * Face value accessor.
-    * @return The current face value.
-    */
-   public int getFaceValue()
-   {
-       return faceValue;
-   }
+	/**
+	 * Face value mutator. The face value is not modified if the specified value is
+	 * not valid.
+	 *
+	 * @param value The new face value. Must be between 1 and max face value.
+	 */
+	public void setFaceValue(int value) {
+		if (value > 0 && value <= numSides) {
+			faceValue = value;
+		}
+	}
 
-   /**
-    * Returns a string representation of this die.
-    */
-   public String toString()
-   {
-      String result = "Die [faceValue = " + faceValue + "]";
-      return result;
-   }
+	/**
+	 * Face value accessor.
+	 * 
+	 * @return The current face value.
+	 */
+	public int getFaceValue() {
+		return faceValue;
+	}
+
+	/**
+	 * Returns a string representation of this die.
+	 */
+	public String toString() {
+		String result = "NSidedDie [numberOfSides = " + numSides + ", faceValue = " + faceValue + "]";
+		return result;
+	}
 }

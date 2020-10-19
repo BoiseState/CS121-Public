@@ -15,6 +15,12 @@ There were parts of this that were really challenging, particularly reading
 the input from the users. Once I figured that out, I really enjoyed showing
 the marshmallow!
 
+Write a two paragraph reflection describing your experience with this 
+project.  Talk about what worked well and what was challenging.  
+Did you run into an issue that took some time to figure out?  
+Tell us about it. What did you enjoy, what was less desirable? Feel
+free to add other items (within the two paragraph limit).
+
 ## Compiling and Using
 
 To compile, execute the following command in the main project directory:

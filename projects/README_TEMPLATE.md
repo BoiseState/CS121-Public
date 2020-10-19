@@ -11,6 +11,13 @@ sentences, you're going too far. Generally you should be pulling this
 right from the project specification. I don't want you to just cut and
 paste, but paraphrase what is stated in the project specification.
 
+## Reflection
+
+Thoroughly describe your experience with this project in at least two
+but not more than three paragraphs. You could describe what went well,
+what was challenging, what you enjoyed, what was least desirable, and 
+more.
+
 ## Compiling and Using
 
 This section should tell the user how to compile your code.  It is

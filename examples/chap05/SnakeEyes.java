@@ -12,7 +12,7 @@ public class SnakeEyes
     */
    public static void main (String[] args)
    {
-      final int ROLLS = 500;
+      final int ROLLS = 100000;
       int num1, num2, count = 0;
 
       Die die1 = new Die();

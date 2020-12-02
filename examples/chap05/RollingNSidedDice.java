@@ -15,7 +15,7 @@ public class RollingNSidedDice
 		int sum;
 
 		die1 = new Die(); //default is a 6-sided die
-		die2 = new Die(20); //a 20-sided die, try a 1000000!
+		die2 = new Die(1000000); //a 20-sided die, try a 1000000!
 		System.out.println("Die 1: " + die1);
 		System.out.println("Die 2: " + die2);
 

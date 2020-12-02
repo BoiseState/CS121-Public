@@ -11,8 +11,10 @@ import java.util.Random;
  */
 public class Die {
 	private final int DEFAULT_FACES = 6; // default number of sides
+	
 	private int faceValue; // current value showing on the die
 	private int numSides;
+	
 	private Random rand = new Random();
 
 	/**
@@ -40,6 +42,7 @@ public class Die {
 	 */
 	public int roll() {
 		// faceValue = (int)(Math.random() * numSides) + 1;
+		
 		faceValue = rand.nextInt(numSides) + 1;
 		return faceValue;
 	}
@@ -53,7 +56,10 @@ public class Die {
 	public void setFaceValue(int value) {
 		if (value > 0 && value <= numSides) {
 			faceValue = value;
-		}
+		} 
+		//else {
+		//	throw new IllegalArgumentException("value must be between 1 and " + numSides);
+		//}
 	}
 
 	/**
@@ -69,7 +75,7 @@ public class Die {
 	 * Returns a string representation of this die.
 	 */
 	public String toString() {
-		String result = "NSidedDie [numberOfSides = " + numSides + ", faceValue = " + faceValue + "]";
+		String result = "Die [numberOfSides = " + numSides + ", faceValue = " + faceValue + "]";
 		return result;
 	}
 }

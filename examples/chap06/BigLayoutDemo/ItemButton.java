@@ -1,3 +1,5 @@
+package BigLayoutDemo;
+
 import javax.swing.JButton;
 
 /** A JButton with an associated Item object.

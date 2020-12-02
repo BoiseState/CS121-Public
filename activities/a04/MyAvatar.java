@@ -26,6 +26,8 @@ public class MyAvatar extends JPanel
 	 */
 	public void paintComponent (Graphics g)
 	{
+		super.paintComponent(g);
+
 		/* Store the height and width of the panel at the time
 		 * the paintComponent() method is called.
 		 */
@@ -90,8 +92,8 @@ public class MyAvatar extends JPanel
 	 */
 	public MyAvatar()
 	{
-		this.setBackground(Color.white);
-		this.setPreferredSize(new Dimension(INITIAL_WIDTH, INITIAL_HEIGHT));
+		setBackground(Color.white);
+		setPreferredSize(new Dimension(INITIAL_WIDTH, INITIAL_HEIGHT));
 	}
 
 	/**

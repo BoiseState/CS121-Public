@@ -55,7 +55,7 @@ public class StuckDance
 		System.out.println("i am so stuck." + "\n");
 
 		// \u00A9 is hexadecimal unicode for the copyright symbol
-		// same as the decimal number 169 printed as a chacracter
+		// same as the decimal number 169 printed as a character
 		System.out.println("\n" + "\u00a9" + "  Amit Jain");
 	}
 }

@@ -1,3 +1,6 @@
+package BigLayoutDemo;
+
+
 /** Dummy class to hold a piece of information.
  * @author mvail
  */

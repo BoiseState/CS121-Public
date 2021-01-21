@@ -17,7 +17,7 @@ public class ColorChooser
    {
       JFrame frame = new JFrame("Color Chooser");
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      frame.setPreferredSize(new Dimension(500, 400));
+      frame.setPreferredSize(new Dimension(500, 150));
 
       // If we want to add something, we must get the contentPanel and add to it.
       frame.getContentPane().add(new ColorChooserPanel());

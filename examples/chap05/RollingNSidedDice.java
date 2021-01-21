@@ -11,11 +11,11 @@ public class RollingNSidedDice
 	*/
 	public static void main (String[] args)
 	{
-		NSidedDie die1, die2;
+		Die die1, die2;
 		int sum;
 
-		die1 = new NSidedDie(); //default is 6-sided die
-		die2 = new NSidedDie(1000000); //a 20-sided die, try a 1000000!
+		die1 = new Die(); //default is a 6-sided die
+		die2 = new Die(1000000); //a 20-sided die, try a 1000000!
 		System.out.println("Die 1: " + die1);
 		System.out.println("Die 2: " + die2);
 

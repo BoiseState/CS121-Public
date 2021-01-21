@@ -25,8 +25,8 @@ public class FlipRace
          System.out.println ("Coin 1: " + coin1 + "\tCoin 2: " + coin2);
 
          // Increment or reset the counters
-         count1 = (coin1.isHeads()) ? count1+1 : 0;
-         count2 = (coin2.isHeads()) ? count2+1 : 0;
+         count1 = (coin1.isHeads()) ? count1 + 1 : 0;
+         count2 = (coin2.isHeads()) ? count2 + 1 : 0;
       }
 
       if (count1 < GOAL)

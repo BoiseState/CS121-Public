@@ -1,36 +1,60 @@
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  * Represents a Kennel with several Dogs.
  * @author 
  */
 public class Kennel {
+	
+	public static void howl(ArrayList<DogInterface> kennel) {
+		for (DogInterface d: kennel) {
+			System.out.println(d.bark());
+		}
+	}
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		//make some dogs
-		Dog d1, d2, d3;
 		
-		d1 = new Dog("Bufford", 3);
-		d2 = new Dog("Rosco", 4);
-		d3 = new Dog("Princess Sophia", 2);
+		ArrayList<DogInterface> kennel = new ArrayList<DogInterface>();
 		
-		//check some values
-		System.out.println("d1: " + d1); //implicitly calls d1.toString()
-		System.out.println("d2: " + d2.toString()); //explicitly calls d2.toString()
-		System.out.println("d3: " + d3);
+		Scanner keyboard = new Scanner(System.in);
+		System.out.println("Enter data file name: ");
+		String fileName = keyboard.nextLine();
+		keyboard.close();
 		
-		System.out.println("d1 age: " + d1.getAge());
-		System.out.println("d2 name: " + d2.getName());
-		System.out.println("d3 age in dog years: " + d3.getDogYears());
+		File dataFile = new File(fileName);
+		try {
+			Scanner fileScan = new Scanner(dataFile);
+			
+			while (fileScan.hasNextLine()) {
+				
+				String line = fileScan.nextLine();
+				Scanner lineScan = new Scanner(line);
+				lineScan.useDelimiter(",");
+				
+				String name = lineScan.next();
+				String breed = lineScan.next();
+				int age = lineScan.nextInt();
+				String gender = lineScan.next();
+				Dog newDog = new Dog(name, age, breed, gender);
+							
+				kennel.add(newDog);
+				System.out.println(newDog);
+				
+				lineScan.close();
+			}
+			fileScan.close();
+		} catch (IOException e) {
+			System.out.println("Error in processing date file" + fileName);
+			System.out.println(e);
+		}
 		
-		//change some values
-		d1.setAge(d1.getAge() + 1); //the dog had a birthday
-		d3.setName("Prince"); //"Princess Sophia wasn't a princess after all
-		
-		//check results
-		System.out.println("d1: " + d1); //implicitly calls d1.toString()
-		System.out.println("d2: " + d2.toString()); //explicitly calls d2.toString()
-		System.out.println("d3: " + d3);
+		howl(kennel);
 	}
 }

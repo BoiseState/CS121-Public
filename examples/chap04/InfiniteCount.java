@@ -12,11 +12,11 @@ public class InfiniteCount
 	public static void main(String[] args)
 	{
 		int count = 1;
-		while (count <= 5) {
+		while (true) {
 			if (count % 10000 == 0) System.out.println(count);
-			count--;
+			count++;
 		}
-		System.out.println(count);
+		//System.out.println(count);
 	}
 
 }

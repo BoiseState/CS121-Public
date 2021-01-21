@@ -48,5 +48,11 @@ public class ArrayListColors
 		}
 		
 		System.out.println("Maximum red color is: " + maxRed);
+		
+		for (Color c: myColors) {
+			if (c.equals(Color.red)) {
+				System.out.println("Found pure red!");
+			}
+		}
 	}
 }

@@ -22,8 +22,8 @@ public class ImageAvatar extends JPanel
 		// Draw the image on the page. Note that this does not
 		// scale. You will need to change the values of the
 		// width and height to make it scale.
-		ImageIcon avatar = new ImageIcon("amitAvatar.png");
-		//ImageIcon avatar = new ImageIcon("myAvatar.png");
+		//ImageIcon avatar = new ImageIcon("amitAvatar.png");
+		ImageIcon avatar = new ImageIcon("myAvatar.png");
 		page.drawImage(avatar.getImage(), 50, 50, 200, 200, null);
 	}
 

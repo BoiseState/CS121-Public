@@ -26,7 +26,7 @@ public class SimpleAnimationScaled extends JPanel
 	// a faster refresh rate than this
 	private final int DELAY = 100; //milliseconds
 	//anchor coordinate for drawing / animating
-	private int xOffset = 0;
+	private int xOffset = -50;
 	//pixels added to x each time paintComponent() is called
 	private int stepSize = 10;
 
@@ -62,6 +62,7 @@ public class SimpleAnimationScaled extends JPanel
 		int circleX = squareX + circleDiameter/2; // to center it, we need to offset square's x by the radius of the circle
 		int circleY = squareY - circleDiameter; // we need to move it above the square.
 		canvas.fillOval(circleX, circleY, circleDiameter, circleDiameter);
+		
 		Toolkit.getDefaultToolkit().sync();
 	}
 

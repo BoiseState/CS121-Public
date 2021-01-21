@@ -1,13 +1,31 @@
+import java.util.ArrayList;
+
 /**
  * A class to store information about a dog.
  * @author 
  *
  */
-public class Dog {
+/**
+ * @author amit
+ *
+ */
+
+public class Dog implements DogInterface, Comparable<Dog> {
 
 	//instance data / properties / all together = "state"
+	public final String DEFAULT_GENDER = "unknown";
+	public final String DEFAULT_BREED = "mutt";
+	
 	private String name;
 	private int age;
+	private String breed;
+	private String gender;
+	private String temperament;
+	private long id;
+	private boolean isHungry = true;
+	
+//	private ArrayList<String> treats;
+//	private ArrayList<String> activities;
 	
 	/**
 	 * Constructor. Creates a Dog with the given name and age.
@@ -18,8 +36,26 @@ public class Dog {
 	{
 		this.name = name;
 		this.age = age;
+		this.id = (long) (Math.random() * Long.MAX_VALUE);
+		this.breed = DEFAULT_BREED;
+		this.gender = DEFAULT_GENDER;
 	}
 	
+	/**
+	 * Constructor. Create a dog with given name, age, breed and gender.
+	 * @param name
+	 * @param age
+	 * @param breed
+	 * @param gender
+	 */
+	public Dog(String name, int age, String breed, String gender) {
+		this.name = name;
+		this.age = age;
+		this.breed = breed;
+		this.gender = gender;
+		this.id = (long) (Math.random() * Long.MAX_VALUE);
+	}
+
 	//getters
 	/**
 	 * Returns the Dog's name.
@@ -31,6 +67,14 @@ public class Dog {
 	}
 	
 	/**
+	 * Returns the Dog's unique id
+	 * @return
+	 */
+	public long getId() {
+		return id;
+	}
+	
+	/**
 	 * Returns the Dog's age in human years.
 	 * @return the age.
 	 */
@@ -39,6 +83,28 @@ public class Dog {
 		return age;
 	}
 	
+	
+	/**
+	 * @return the breed
+	 */
+	public String getBreed() {
+		return breed;
+	}
+
+	/**
+	 * @return the gender
+	 */
+	public String getGender() {
+		return gender;
+	}
+
+	/**
+	 * @return the temperament
+	 */
+	public String getTemperament() {
+		return temperament;
+	}
+
 	//setters
 	/**
 	 * Sets the Dog's name.
@@ -48,6 +114,7 @@ public class Dog {
 	{
 		name = newName;
 	}
+	
 	/**
 	 * Sets the Dog's age.
 	 * @param newAge
@@ -66,10 +133,55 @@ public class Dog {
 	{
 		return age * 7;
 	}
+
 	
-	//toString()
-	public String toString()
-	{
-		return "Dog: [name: " + name + " age: " + age + "]";
+	
+	@Override
+	public String toString() {
+		return "Dog [name=" + name + ", age=" + age + ", breed=" + breed + ", gender=" + gender + ", temperament="
+				+ temperament + ", id=" + id + "]";
 	}
+
+	/**
+	 * Compare two dogs by id
+	 */
+	public boolean equals (Object obj) {
+		Dog otherDog = (Dog) obj;
+		return (this.id == otherDog.id);
+	}
+
+	@Override
+	public int compareTo(Dog otherDog) {
+		// TODO Auto-generated method stub
+		
+		if (this.age < otherDog.getAge())
+			return -1;
+		else if (this.age > otherDog.getAge())
+			return +1;
+		else
+			return 0;
+	}
+
+	@Override
+	public String bark() {
+		// TODO Auto-generated method stub
+		
+		return "woof woof";
+	}
+
+	@Override
+	public boolean isWaggingTail() {
+		// TODO Auto-generated method stub
+		if (!isHungry)
+			return true;
+		return false;
+	}
+
+	@Override
+	public boolean isHungry() {
+		// TODO Auto-generated method stub
+		return isHungry;
+	}
+	
+	
 }

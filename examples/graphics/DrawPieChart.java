@@ -16,29 +16,33 @@ public class DrawPieChart extends JPanel
 {
 	public void paintComponent (Graphics page)
 	{
+		
+		int width = getWidth();
+		int height = getHeight();
+		
 		page.setColor(Color.blue);
-		page.fillArc(0,0,100,100,0,45);
+		page.fillArc(0,0,width,height,0,45);
 
 		page.setColor(Color.yellow);
-		page.fillArc(0,0,100,100,45,45);
+		page.fillArc(0,0,width,height,45,45);
 
 		page.setColor(Color.green);
-		page.fillArc(0,0,100,100,90,45);
+		page.fillArc(0,0,width,height,90,45);
 
 		page.setColor(Color.red);
-		page.fillArc(0,0,100,100,135,45);
+		page.fillArc(0,0,width,height,135,45);
 
 		page.setColor(Color.orange);
-		page.fillArc(0,0,100,100,180,45);
+		page.fillArc(0,0,width,height,180,45);
 
 		page.setColor(Color.lightGray);
-		page.fillArc(0,0,100,100,225,45);
+		page.fillArc(0,0,width,height,225,45);
 
 		page.setColor(Color.cyan);
-		page.fillArc(0,0,100,100,270,45);
+		page.fillArc(0,0,width,height,270,45);
 
 		page.setColor(Color.pink);
-		page.fillArc(0,0,100,100,315,45);
+		page.fillArc(0,0,width,height,315,45);
 	}
 
 

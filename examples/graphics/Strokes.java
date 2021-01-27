@@ -16,15 +16,15 @@ public class Strokes extends JPanel
 {
 	/**
 	 * Draw with different line thicknesses
-	 * @param g object on which to paint
+	 * @param page object on which to paint
 	 */
-	public void paintComponent(Graphics g)
+	public void paintComponent(Graphics page)
 	{
 		//clear panel (instead of calling fillRect...)
-		super.paintComponent(g);
+		super.paintComponent(page);
 
 		//"cast" Graphics reference to Graphics2D to access setStroke() functionality
-		Graphics2D g2d = (Graphics2D) g;
+		Graphics2D g2d = (Graphics2D) page;
 
 		//draw
 		g2d.setColor(new Color(255, 0, 255));

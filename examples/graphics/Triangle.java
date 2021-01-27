@@ -19,26 +19,26 @@ public class Triangle extends JPanel
 
 	/**
 	 * Draw the picture in the panel.
-	 * @param g Graphics context
+	 * @param page Graphics context
 	 * @return none
 	 */
-	public void paintComponent(Graphics g)
+	public void paintComponent(Graphics page)
 	{
-		super.paintComponent(g);
+		super.paintComponent(page);
 
-		g.drawString( "some text ...", 20, 20);
-		g.setColor(Color.red);
+		page.drawString( "some text ...", 20, 20);
+		page.setColor(Color.red);
 		/*g.drawPolygon( p1x, p1y, 3);*/
 		int xlast = p1x[2];
 		int ylast = p1y[2];
 		for(int i=0; i<3; i++) {
-			g.drawLine( xlast, ylast, p1x[i], p1y[i]);
+			page.drawLine( xlast, ylast, p1x[i], p1y[i]);
 			xlast = p1x[i];
 			ylast = p1y[i];
 		}
 
-		g.setColor(Color.yellow);
-		g.fillPolygon( p2x, p2y, 3);
+		page.setColor(Color.yellow);
+		page.fillPolygon( p2x, p2y, 3);
 	}
 
 

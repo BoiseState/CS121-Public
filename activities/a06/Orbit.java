@@ -46,9 +46,9 @@ public class Orbit extends JPanel
 
 	/**
 	 * Display the square at a new location.
-	 * @param g Graphics context
+	 * @param page Graphics context
 	 */
-	public void paintComponent(Graphics g)
+	public void paintComponent(Graphics page)
 	{
 		int width = getWidth();
 		int height = getHeight();
@@ -63,7 +63,7 @@ public class Orbit extends JPanel
 		// window each time paintComponent() is called.
 		
 		// Draw earth
-		g.drawImage(EARTH_ICON.getImage(), earthX - earthRadius, earthY - earthRadius, 
+		page.drawImage(EARTH_ICON.getImage(), earthX - earthRadius, earthY - earthRadius, 
 				    earthRadius * 2, earthRadius * 2, null);
 		
 		// TODO: Define orbit radius

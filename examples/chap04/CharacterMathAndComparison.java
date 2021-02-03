@@ -23,7 +23,7 @@ public class CharacterMathAndComparison {
 							" is letter " + position + 
 							" in the alphabet.");
 		
-		System.out.print("Enter a lower-case letter: ");
+		System.out.print("Enter a lowercase letter: ");
 		input = kbd.nextLine();
 		lowerLetter = input.charAt(0);
 		//long way

@@ -26,7 +26,7 @@ public class CircleStatsDecimalFormat
 		circumference = 2 * Math.PI * radius;
 
 		// Round the output to three decimal places
-		DecimalFormat fmt = new DecimalFormat("0.###");
+		DecimalFormat fmt = new DecimalFormat("0.00");
 
 		System.out.println("The circle's area: " + fmt.format(area));
 		System.out.println("The circle's circumference: " + fmt.format(circumference));

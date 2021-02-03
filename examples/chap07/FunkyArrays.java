@@ -33,10 +33,6 @@ public class FunkyArrays
 			triangleArray[i] = new int[i + 1];
 		}
 
-		// initialize it to all 1's
-//		for (int i = 0; i < n; i++)
-//			for (int j = 0; j <= i; j++)
-//				triangleArray[i][j] = 1;
 
 		for (int i=0; i < triangleArray.length; i++) 
 			for (int j=0; j < triangleArray[i].length; j++) 
@@ -76,7 +72,7 @@ public class FunkyArrays
 	{
 		// create a radically shaped array
 		int[][] radArray = new int[n][];
-		for (int i = 0; i < n; i++) {
+		for (int i = 0; i < radArray.length; i++) {
 			radArray[i] = new int[(int) (Math.random() * n) + 1];
 		}
 

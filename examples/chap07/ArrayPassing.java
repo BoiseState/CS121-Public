@@ -13,7 +13,7 @@ public class ArrayPassing
 	 */
 	private static void changeArray(int[] a)
 	{
-		for (int i = 0; i<a.length; i++)
+		for (int i = 0; i < a.length; i++)
 			a[i] = 2*a[i];
 	}
 

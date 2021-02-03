@@ -23,19 +23,19 @@ public class AnimatedDigitalClock extends JPanel
 	 *   @param g Graphics context
 	 *   @return none
 	 */
-	public void paintComponent(Graphics canvas)
+	public void paintComponent(Graphics page)
 	{
-		canvas.setColor(Color.black);
-		canvas.fillRect(0, 0, getWidth(), getHeight());
-		canvas.setColor(Color.green);
+		page.setColor(Color.black);
+		page.fillRect(0, 0, getWidth(), getHeight());
+		page.setColor(Color.green);
 
 		Calendar rightNow = Calendar.getInstance();
 		int hour = rightNow.get(Calendar.HOUR_OF_DAY);
 		int minute = rightNow.get(Calendar.MINUTE);
 		int second = rightNow.get(Calendar.SECOND);
 
-		canvas.setFont (new Font("Arial", Font.BOLD, 64));
-		canvas.drawString(hour + ":" + minute + ":" + second, 60, 60);
+		page.setFont (new Font("Arial", Font.BOLD, 64));
+		page.drawString(hour + ":" + minute + ":" + second, 60, 60);
 		Toolkit.getDefaultToolkit().sync();
 	}
 

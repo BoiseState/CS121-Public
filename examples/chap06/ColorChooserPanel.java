@@ -36,9 +36,10 @@ public class ColorChooserPanel extends JPanel
 			colorButtons[i].setBackground(COLORS[i]);
 			colorButtons[i].addActionListener(listener);
 			colorButtons[i].setPreferredSize(new Dimension(50, 50));
+			colorButtons[i].setOpaque(true); //needed for MacOs
+			colorButtons[i].setBorderPainted(false); //needed for MacOS
 			this.add(colorButtons[i]);
 		}
-		// create our preview panel and add it to this panel
 		previewPanel = new JPanel();
 		previewPanel.setPreferredSize(new Dimension(200, 100));
 		previewPanel.setBackground(Color.BLACK);

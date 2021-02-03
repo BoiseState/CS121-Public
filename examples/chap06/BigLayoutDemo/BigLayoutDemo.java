@@ -1,3 +1,5 @@
+package BigLayoutDemo;
+
 import javax.swing.JFrame;
 
 /**Sample GUI layout project

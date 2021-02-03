@@ -51,7 +51,8 @@ public class ArrayListIntegers
 			
 			/* Now remove the even numbers */
 			System.out.println("Removing even numbers!");
-			for(int i = myIntList.size() - 1; i >= 0; i--)
+			//for(int i = myIntList.size() - 1; i >= 0; i--)
+			for(int i = 0; i < myIntList.size(); i++)
 			{
 				if(myIntList.get(i) % 2 == 0)
 				{

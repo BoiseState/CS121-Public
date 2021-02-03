@@ -1,5 +1,5 @@
 /**
- * Represents a mailing address. Modelled after Amazon address book.
+ * Represents a mailing address. Modeled after Amazon address book.
  * @author CS121 Instructors
  */
 public class AmazonAddress

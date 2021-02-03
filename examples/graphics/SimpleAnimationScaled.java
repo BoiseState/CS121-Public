@@ -26,7 +26,7 @@ public class SimpleAnimationScaled extends JPanel
 	// a faster refresh rate than this
 	private final int DELAY = 100; //milliseconds
 	//anchor coordinate for drawing / animating
-	private int xOffset = 0;
+	private int xOffset = -50;
 	//pixels added to x each time paintComponent() is called
 	private int stepSize = 10;
 
@@ -36,32 +36,33 @@ public class SimpleAnimationScaled extends JPanel
 	 * (non-Javadoc)
 	 * @see java.awt.Container#paint(java.awt.Graphics)
 	 */
-	public void paintComponent(Graphics canvas)
+	public void paintComponent(Graphics page)
 	{
 		//account for changes to window size
 		int width = getWidth(); // panel width
 		int height = getHeight(); // panel height
 
 		//Fill the canvas with the background color
-		canvas.setColor(getBackground());
-		canvas.fillRect(0, 0, width, height);
+		page.setColor(getBackground());
+		page.fillRect(0, 0, width, height);
 
 		//Calculate the new position
 		xOffset = (xOffset + stepSize) % width;
 
 		//Draw scaled square
-		canvas.setColor(Color.DARK_GRAY);
+		page.setColor(Color.DARK_GRAY);
 		int squareWidth = Math.min(width, height)/5; // square is 1/5th of the screen width or height.
 		int squareX = xOffset; // square edge is always following x offset
 		int squareY = height/2 - squareWidth/2; // square is in the middle of the y axis
-		canvas.fillRect(squareX, squareY, squareWidth, squareWidth);
+		page.fillRect(squareX, squareY, squareWidth, squareWidth);
 
 		//Draw scaled circle on top of square
-		canvas.setColor(Color.RED);
+		page.setColor(Color.RED);
 		int circleDiameter = squareWidth/2; // circle is half as wide as square
 		int circleX = squareX + circleDiameter/2; // to center it, we need to offset square's x by the radius of the circle
 		int circleY = squareY - circleDiameter; // we need to move it above the square.
-		canvas.fillOval(circleX, circleY, circleDiameter, circleDiameter);
+		page.fillOval(circleX, circleY, circleDiameter, circleDiameter);
+		
 		Toolkit.getDefaultToolkit().sync();
 	}
 

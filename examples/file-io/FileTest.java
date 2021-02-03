@@ -16,9 +16,9 @@ public class FileTest
 	 * @param args
 	 * @throws IOException
 	 */
-	public static void main(String[] args) throws IOException
+	public static void main(String[] args) 
 	{
-		String name = "input.txt";
+		String name = "input1.txt";
 		File file = new File(name);
 		if (file.exists()) {
 			System.out.println(file + " found!");

@@ -38,6 +38,9 @@ public class RandomMovement extends JPanel
 		// Calculate random x, y coordinates
 		int kittyX = rand.nextInt(width - icon.getIconWidth());
 		int kittyY = rand.nextInt(height - icon.getIconHeight());
+		
+//		int kittyX = rand.nextInt(width);
+//		int kittyY = rand.nextInt(height);
 
 		// Draw image
 		g.drawImage(icon.getImage(), kittyX, kittyY, null);

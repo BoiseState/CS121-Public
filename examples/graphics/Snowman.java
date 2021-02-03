@@ -14,9 +14,11 @@ public class Snowman extends JPanel
    	 */
    	public void paintComponent(Graphics page)
 	{
-		final int MID = 300;
+		int mid = 300;
 		final int TOP = 100;
 		final Color GROUND_COLOR = new Color(127, 0, 64);
+		
+		mid = mid  - 20;
 		
 		int pageWidth = getWidth();
 		int pageHeight = getHeight();
@@ -28,24 +30,26 @@ public class Snowman extends JPanel
 		page.fillRect(0, 350, 600, 100);  // ground
 
 		page.setColor(Color.yellow);
-		page.fillOval(-80, -80, 160, 160); // sun
+		page.fillOval(pageWidth - 80, -80, 160, 160); // sun
 
 		page.setColor(Color.white);
-		page.fillOval(MID - 40, TOP, 80, 80);      // head
-		page.fillOval(MID - 70, TOP + 70, 140, 100);   // upper torso
-		page.fillOval(MID - 100, TOP + 160, 200, 120);  // lower torso
+		page.fillOval(mid - 40, TOP, 80, 80);      // head
+		page.fillOval(mid - 70, TOP + 70, 140, 100);   // upper torso
+		page.fillOval(mid - 100, TOP + 160, 200, 120);  // lower torso
 
 		page.setColor(Color.black);
-		page.fillOval(MID - 20, TOP + 20, 10, 10);   // left eye
-		page.fillOval(MID + 10, TOP + 20, 10, 10);    // right eye
+		page.fillOval(mid - 20, TOP + 20, 10, 10);   // left eye
+		page.fillOval(mid + 10, TOP + 20, 10, 10);    // right eye
 
-		page.drawArc(MID - 20, TOP + 40, 40, 20, 190, 160);   // smile
+		page.drawArc(mid - 20, TOP + 40, 40, 20, 190, 160);   // smile
 
-		page.drawLine(MID - 50, TOP + 120, MID - 100, TOP + 80);  // left arm
-		page.drawLine(MID + 50, TOP + 120, MID + 110, TOP + 120);  // right arm
+		page.drawLine(mid - 50, TOP + 120, mid - 100, TOP + 80);  // left arm
+		page.drawLine(mid + 50, TOP + 120, mid + 110, TOP + 120);  // right arm
 
-		page.drawLine(MID - 40, TOP + 10, MID + 40, TOP + 10);  // brim of hat
-		page.fillRect(MID - 30, TOP - 40, 60, 50);        // top of hat
+		page.drawLine(mid - 40, TOP + 10, mid + 40, TOP + 10);  // brim of hat
+		page.fillRect(mid - 30, TOP - 40, 60, 50);        // top of hat
+		
+		page.drawString("Tauros", 20, 20);
    	}
 
 

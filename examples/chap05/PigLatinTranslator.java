@@ -81,8 +81,8 @@ public class PigLatinTranslator
    }
 
    /**
-    *  Determines if the specified word begins with a particular
-    *  two-character consonant blend.
+    * Determines if the specified word begins with a particular
+    * two-character consonant blend.
     * @param word The word to check.
     * @return true if the word begins with a consonant blend, false
     * otherwise.

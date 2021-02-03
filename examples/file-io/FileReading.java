@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 public class FileReading
 {
-	public static void main(String[] args) throws FileNotFoundException 
+	public static void main(String[] args) 
 	{
 		Scanner keyboard = new Scanner(System.in);
 		System.out.print("Enter filename: ");
@@ -17,19 +17,23 @@ public class FileReading
 		keyboard.close();
 	
 		File file = new File(fileName);
-		Scanner fileScan = new Scanner(file);
-
-		int count = 0;
-		while (fileScan.hasNextLine()) {
-			String line = fileScan.nextLine();
-			//System.out.printf("line %3d: %s\n", count, line);
-			Scanner lineScan = new Scanner(line);
-			while (lineScan.hasNext()) {
-				String token = lineScan.next();
-				System.out.println(token);
+		Scanner fileScan;
+		try {
+			fileScan = new Scanner(file);
+			int count = 0;
+			while (fileScan.hasNextLine()) {
+				String line = fileScan.nextLine();
+				System.out.println(line);
+				count++;
 			}
-			count++;
+			fileScan.close();
+			System.out.println(fileName +  " has " + count + " lines");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println(fileName + ": File not found!");
+			//e.printStackTrace();
 		}
-		fileScan.close();
+
+		
 	}
 }

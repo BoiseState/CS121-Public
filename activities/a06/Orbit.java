@@ -63,7 +63,8 @@ public class Orbit extends JPanel
 		//       is called.
 		
 		// Draw earth
-		g.drawImage(EARTH_ICON.getImage(), earthX-earthRadius, earthY-earthRadius, earthRadius*2, earthRadius*2, null);
+		g.drawImage(EARTH_ICON.getImage(), earthX - earthRadius, earthY - earthRadius, 
+				    earthRadius * 2, earthRadius * 2, null);
 		
 		// TODO: Define orbit radius
 		// HINT: What is the different between radius and diameter?

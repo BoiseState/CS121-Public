@@ -54,7 +54,7 @@ public class KeyboardScannerExample {
 		//spaces, tabs, or newlines. When parsing a String that you got from
 		//nextLine(), you are free to use the next___() methods to get data
 		//because you are only looking at one line with no newlines.
-		System.out.print("Enter your name and as many digits of PI as you remember: ");
+		System.out.print("Enter your first name and as many digits of PI as you remember: ");
 		input = kbd.nextLine();
 		Scanner lineScan = new Scanner(input); //second Scanner to read the line
 		String name = lineScan.next();

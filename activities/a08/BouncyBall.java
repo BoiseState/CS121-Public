@@ -60,7 +60,7 @@ public class BouncyBall extends JPanel
 		
 		// Paint the ball at the calculated anchor point
 		g.setColor(color);
-		g.fillOval(x-radius, y-radius, 2*radius, 2*radius);
+		g.fillOval(x - radius, y - radius, 2 * radius, 2 * radius);
 
 		// Makes the animation smoother
 		Toolkit.getDefaultToolkit().sync();

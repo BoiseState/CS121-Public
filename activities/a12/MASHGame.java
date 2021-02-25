@@ -51,7 +51,7 @@ public class MASHGame {
 		}
 		System.out.println();
 		
-		/* TODO: 6. Print the items in pouseList1 using the ArrayList toString() method */
+		/* TODO: 6. Print the items in spouseList1 using the ArrayList toString() method */
 		
 		
 		/* TODO: 7. Print the items in spouseList2 using a for loop (IE: use indexes to print items ) */

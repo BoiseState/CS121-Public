@@ -16,8 +16,8 @@ public class MASHGame {
 
 		/* Define list of options */
 		ArrayList<String> homeList = new ArrayList<String>();
-		ArrayList<String> femaleSpouseList = new ArrayList<String>();
-		ArrayList<String> maleSpouseList = new ArrayList<String>();
+		ArrayList<String> spouseList1 = new ArrayList<String>();
+		ArrayList<String> spouseList2 = new ArrayList<String>();
 		ArrayList<String> occupationList = new ArrayList<String>();
 		ArrayList<String> transportationList = new ArrayList<String>();
 		ArrayList<String> hometownList = new ArrayList<String>();
@@ -28,10 +28,10 @@ public class MASHGame {
 		homeList.add("shack");
 		homeList.add("house");
 
-		/* TODO: 1. Add items to femaleSpouseList */
+		/* TODO: 1. Add items to spouseList1 */
 
 
-		/* TODO: 2. Add items to maleSpouseList */
+		/* TODO: 2. Add items to spouseList2 */
 
 
 		/* TODO: 3. Add items to occupationList */
@@ -51,10 +51,10 @@ public class MASHGame {
 		}
 		System.out.println();
 		
-		/* TODO: 6. Print the items in the femaleSpouseList using the ArrayList toString() method */
+		/* TODO: 6. Print the items in pouseList1 using the ArrayList toString() method */
 		
 		
-		/* TODO: 7. Print the items in the maleSpouseList using a for loop (IE: use indexes to print items ) */
+		/* TODO: 7. Print the items in spouseList2 using a for loop (IE: use indexes to print items ) */
 
 		
 		/* TODO: 8. Print the items in the occupationList using the ArrayList iterator and a while loop */
@@ -88,7 +88,7 @@ public class MASHGame {
 		String transportation = "?";
 		String hometown = "?";
 		
-		/* TODO: 12. Use the coin to determine whether player's spouse is male or female, 
+		/* TODO: 12. Use the coin to determine whether player's spouse comes from spouseList1 or spouseList2, 
 		 * then randomly select spouse from the cooresponding list.
 		 */
 		boolean coin = rand.nextBoolean();

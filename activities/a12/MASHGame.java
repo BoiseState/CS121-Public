@@ -97,22 +97,11 @@ public class MASHGame {
 		/* Randomly choose number of years player will be married */
 		int yearsOfMarriage = rand.nextInt(30) + 1;
 
-
 		/* Print the player's future*/
 		System.out.println("Welcome "+ name + ", this is your future...");
 		System.out.println("You will marry " + spouse + " and live in a " + firstHome + ".");
 		System.out.println("After " + yearsOfMarriage + (yearsOfMarriage == 1?" year":" years") +" of marriage, you will finally get your dream job of being a " + occupation + ".");
 		System.out.println("Your family will move to a " + secondHome + " in " + hometown + " where you will " + transportation + " to work each day.");
-
-
-
-
-
-
-
-
-
-
 
 	}
 

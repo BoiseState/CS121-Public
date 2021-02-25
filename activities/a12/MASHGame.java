@@ -78,11 +78,11 @@ public class MASHGame {
 		
 		/* Randomly choose items from each List */
 		Random rand = new Random();
-		String firstHome = homeList.get(rand.nextInt(homeList.size()));	
 		
 		/* TODO: 11. Use rand object to select each of the following future 
 		 * components from above lists. 
 		 * */
+		String firstHome = homeList.get(rand.nextInt(homeList.size()));	
 		String secondHome = "?";
 		String occupation = "?";
 		String transportation = "?";

@@ -24,7 +24,13 @@ public class HigherLower
 		System.out.print("I'm thinking of a number between 1 and " + MAX + ". ");
 		System.out.print("Guess what it is: ");
 		
-		guess = scan.nextInt();
+//		guess = scan.nextInt(); //Warning! Using nextInt() will screw up your ability
+					//to read anything other than ints later on!
+		guess = Integer.parseInt(scan.nextLine());	//THIS is how you should read
+								//a line of input when an int
+								//is expected and you still want
+								//to be able to read something
+								//else later.
 		
 		if(guess == answer)
 		{

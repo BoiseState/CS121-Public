@@ -1,6 +1,7 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Color;
 
@@ -13,11 +14,14 @@ public class BasicShapes extends JPanel
 {
 	public void paintComponent(Graphics page)
 	{
-		page.drawRect(50, 50, 40, 40);    // square
-		page.drawRect(60, 80, 225, 30);   // rectangle
+		page.drawRect(50, 50, 100, 100);    // square
+		page.drawRect(60, 80, 300, 30);   // rectangle
 		page.drawOval(75, 65, 20, 20);    // circle
 		page.drawLine(35, 60, 100, 120);  // line
 
+		Font myFont = new Font("Arial", Font.ITALIC, 20);
+		page.setFont(myFont);
+		
 		page.drawString("I read poetry to save time.", 110, 70);
 		page.drawString("--Marilyn Monroe", 130, 100);
 	}

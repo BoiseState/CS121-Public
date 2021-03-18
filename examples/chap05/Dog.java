@@ -1,11 +1,7 @@
-import java.util.ArrayList;
+
 
 /**
  * A class to store information about a dog.
- * @author 
- *
- */
-/**
  * @author amit
  *
  */
@@ -41,6 +37,7 @@ public class Dog implements DogInterface, Comparable<Dog> {
 		this.gender = DEFAULT_GENDER;
 	}
 	
+	
 	/**
 	 * Constructor. Create a dog with given name, age, breed and gender.
 	 * @param name
@@ -55,6 +52,7 @@ public class Dog implements DogInterface, Comparable<Dog> {
 		this.gender = gender;
 		this.id = (long) (Math.random() * Long.MAX_VALUE);
 	}
+	
 
 	//getters
 	/**
@@ -66,6 +64,7 @@ public class Dog implements DogInterface, Comparable<Dog> {
 		return name;
 	}
 	
+	
 	/**
 	 * Returns the Dog's unique id
 	 * @return
@@ -73,6 +72,7 @@ public class Dog implements DogInterface, Comparable<Dog> {
 	public long getId() {
 		return id;
 	}
+	
 	
 	/**
 	 * Returns the Dog's age in human years.
@@ -91,6 +91,7 @@ public class Dog implements DogInterface, Comparable<Dog> {
 		return breed;
 	}
 
+	
 	/**
 	 * @return the gender
 	 */
@@ -98,6 +99,7 @@ public class Dog implements DogInterface, Comparable<Dog> {
 		return gender;
 	}
 
+	
 	/**
 	 * @return the temperament
 	 */
@@ -105,6 +107,7 @@ public class Dog implements DogInterface, Comparable<Dog> {
 		return temperament;
 	}
 
+	
 	//setters
 	/**
 	 * Sets the Dog's name.
@@ -114,6 +117,7 @@ public class Dog implements DogInterface, Comparable<Dog> {
 	{
 		name = newName;
 	}
+
 	
 	/**
 	 * Sets the Dog's age.
@@ -124,7 +128,7 @@ public class Dog implements DogInterface, Comparable<Dog> {
 		age = newAge;
 	}
 	
-	//getDogYears()
+	
 	/**
 	 * Calculates and returns the Dog's age in dog years.
 	 * @return The age in "dog years".
@@ -135,12 +139,12 @@ public class Dog implements DogInterface, Comparable<Dog> {
 	}
 
 	
-	
 	@Override
 	public String toString() {
 		return "Dog [name=" + name + ", age=" + age + ", breed=" + breed + ", gender=" + gender + ", temperament="
 				+ temperament + ", id=" + id + "]";
 	}
+	
 
 	/**
 	 * Compare two dogs by id
@@ -149,10 +153,10 @@ public class Dog implements DogInterface, Comparable<Dog> {
 		Dog otherDog = (Dog) obj;
 		return (this.id == otherDog.id);
 	}
+	
 
 	@Override
 	public int compareTo(Dog otherDog) {
-		// TODO Auto-generated method stub
 		
 		if (this.age < otherDog.getAge())
 			return -1;
@@ -161,27 +165,25 @@ public class Dog implements DogInterface, Comparable<Dog> {
 		else
 			return 0;
 	}
+	
 
 	@Override
-	public String bark() {
-		// TODO Auto-generated method stub
-		
+	public String bark() {		
 		return "woof woof";
 	}
 
+	
 	@Override
 	public boolean isWaggingTail() {
-		// TODO Auto-generated method stub
 		if (!isHungry)
 			return true;
 		return false;
 	}
+	
 
 	@Override
 	public boolean isHungry() {
-		// TODO Auto-generated method stub
 		return isHungry;
 	}
-	
 	
 }

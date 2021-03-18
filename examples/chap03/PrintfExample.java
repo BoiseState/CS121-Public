@@ -40,6 +40,7 @@ public class PrintfExample
 
 		// Run-time errors (Exceptions) can be thrown when the format string causes
 		// an unsupported conversion. Uncomment the line below to try it out.
-		System.out.printf(" num3 = %d \n", num3);
+		//System.out.printf(" num3 = %d \n", num3);
+
 	}
 }

@@ -30,7 +30,7 @@ public class Snowman extends JPanel
 		page.fillRect(0, 350, 600, 100);  // ground
 
 		page.setColor(Color.yellow);
-		page.fillOval(pageWidth - 80, -80, 160, 160); // sun
+		page.fillOval(-80, -80, 160, 160); // sun
 
 		page.setColor(Color.white);
 		page.fillOval(mid - 40, TOP, 80, 80);      // head
@@ -41,7 +41,7 @@ public class Snowman extends JPanel
 		page.fillOval(mid - 20, TOP + 20, 10, 10);   // left eye
 		page.fillOval(mid + 10, TOP + 20, 10, 10);    // right eye
 
-		page.drawArc(mid - 20, TOP + 40, 40, 20, 190, 160);   // smile
+		page.drawArc(mid - 20, TOP + 40, 40, 20, 10, 160);   // frown
 
 		page.drawLine(mid - 50, TOP + 120, mid - 100, TOP + 80);  // left arm
 		page.drawLine(mid + 50, TOP + 120, mid + 110, TOP + 120);  // right arm

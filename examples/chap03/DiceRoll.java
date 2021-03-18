@@ -17,8 +17,8 @@ public class DiceRoll
 		// Try it with a seed:  new Random(12345);
 		Random generator = new Random();
 
-		int roll1 = generator.nextInt(SIDES)+1;
-		int roll2 = generator.nextInt(SIDES)+1;
+		int roll1 = generator.nextInt(SIDES) + 1;
+		int roll2 = generator.nextInt(SIDES) + 1;
 
 		System.out.println("Roll 1: " + roll1);
 		System.out.println("Roll 2: " + roll2);

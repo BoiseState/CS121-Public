@@ -7,7 +7,8 @@ import java.util.Scanner;
  */
 public class CharacterMathAndComparison {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		Scanner kbd = new Scanner(System.in);
 		String input;
 		char upperLetter;
@@ -18,6 +19,14 @@ public class CharacterMathAndComparison {
 		System.out.print("Enter a single capital letter: ");
 		input = kbd.nextLine();
 		upperLetter = input.charAt(0);
+		
+		if ((upperLetter >= 'A') && (upperLetter <= 'Z'))
+			System.out.println(upperLetter + " is uppercase");
+		else if ((upperLetter >= 'a') && (upperLetter <= 'z'))
+			System.out.println(upperLetter + " is lowercase");
+		else 
+			System.out.println("It is not a letter!");
+
 		position = (upperLetter - 'A') + 1;
 		System.out.println("\'" + upperLetter + "\'" +
 							" is letter " + position + 

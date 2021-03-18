@@ -18,7 +18,7 @@ public class FileTest
 	 */
 	public static void main(String[] args) 
 	{
-		String name = "input1.txt";
+		String name = "input.txt";
 		File file = new File(name);
 		if (file.exists()) {
 			System.out.println(file + " found!");

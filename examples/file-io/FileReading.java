@@ -28,10 +28,10 @@ public class FileReading
 			}
 			fileScan.close();
 			System.out.println(fileName +  " has " + count + " lines");
-		} catch (FileNotFoundException e) {
+		} catch (FileNotFoundException hotPotato) {
 			// TODO Auto-generated catch block
 			System.out.println(fileName + ": File not found!");
-			//e.printStackTrace();
+			//hotPotao.printStackTrace();
 		}
 
 		

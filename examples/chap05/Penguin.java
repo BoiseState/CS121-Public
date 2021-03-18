@@ -1,71 +1,91 @@
-/**
- * 
- */
 
-/**
- * @author amit
- *
- */
-public class Penguin
-{
+public class Penguin implements Comparable<Penguin>, PenguinInterface {
+
 	private String name;
-	private int age;
-	private double height;
+	private int height; //inches
+	private double age; //years
+	private int id; 
+	private static int nextId = 0;
 	
-	/**
-	 * @param newName
-	 * @param newAge
-	 * @param newHeight
-	 */
-	public Penguin(String newName, int newAge, double newHeight) 
-	{
-		name = newName;
-		age = newAge;
-		height = newHeight;
+	public Penguin(String name, int height, double age) {
+		this.name = name;
+		this.height = height;
+		this.age = age;
+		nextId++;
+		id = nextId;
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
+	public Penguin(String name, int height) {
+		this.name = name;
+		this.height = height;
+		this.age = 0;
+		nextId++;
+		id = nextId;
+	}
+	
+	public boolean equals(Penguin other) {
+		return id == other.getId();
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
 	public String getName() {
 		return name;
 	}
 	
-	/**
-	 * @return
-	 */
-	public int getAge() {
-		return age;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
-	/**
-	 * @return
-	 */
-	public double getHeight() {
+	public int getHeight() {
 		return height;
 	}
 	
-	/**
-	 * @param newAge
-	 */
-	public void setAge(int newAge) {
-		if (newAge < 0) {
-			System.out.println("Penguin: Invalid age, must be positive");
-		}
-		age = newAge;
+	public void setHeight(int height) {
+		this.height = height;
 	}
 	
-	/**
-	 * @param newHeight
-	 */
-	public void setHeight(double newHeight) {
-		height = newHeight;
+	public double getAge() {
+		return age;
+	}
+	
+	public void setAge(double age) {
+		this.age = age;
 	}
 	
 	public String toString() {
-		return "Penguin[" + "name = " + name + ", age = " + age + ", height = " + height + "]";
+		String output = ""; //empty string
+		output +=  "Penguin[id = " + id + ", name = " + name + ", height = " + height + ", ";
+
+		if (age == 0) {
+			output += "age = unknown]";
+		} else {
+			output += "age = " + age + "]";
+		}
+		return output;
+	}
+
+	@Override
+	public int compareTo(Penguin other) {		
+		if (height < other.getHeight())
+			return -1;
+		else if (height == other.getHeight())
+			return 0;
+		else
+			return +1;
+	}
+
+	public void waddle() {
+		// TODO Auto-generated method stub
+		System.out.println(name + ":" + " waddle waddle");
+	}
+
+	public void swim() {
+		// TODO Auto-generated method stub
+		System.out.println(name + ":" + " swim swim with my flippers");
 	}
 	
-
+	
 }

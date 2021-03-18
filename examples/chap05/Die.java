@@ -9,6 +9,10 @@ import java.util.Random;
  * @author Java Foundations
  * @author CS121 Instructors (modified a few things from the book)
  */
+/**
+ * @author amit
+ *
+ */
 public class Die {
 	private final int DEFAULT_FACES = 6; // default number of sides
 	
@@ -47,19 +51,20 @@ public class Die {
 		return faceValue;
 	}
 
+	
 	/**
 	 * Face value mutator. The face value is not modified if the specified value is
 	 * not valid.
-	 *
-	 * @param value The new face value. Must be between 1 and max face value.
+	 * 
+	 * @param value
 	 */
 	public void setFaceValue(int value) {
 		if (value > 0 && value <= numSides) {
 			faceValue = value;
 		} 
-		//else {
-		//	throw new IllegalArgumentException("value must be between 1 and " + numSides);
-		//}
+		else {
+			throw new IllegalArgumentException("value must be between 1 and " + numSides);
+		}
 	}
 
 	/**

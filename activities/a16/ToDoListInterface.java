@@ -17,13 +17,13 @@ public interface ToDoListInterface
 	public String getName();
 
 	/**
-	 * Adds the given task to this list.
+	 * Adds the given task to this list if no duplicate task is already in the list.
 	 * @param task The task to add.
 	 */
 	public void addTask(Task task);
 
 	/**
-	 * Adds a task with the given description to this list.
+	 * Adds a task with the given description to this list if no duplicate task is already in the list.
 	 * @param description Description of the task to add.
 	 */
         public void addTask(String description);

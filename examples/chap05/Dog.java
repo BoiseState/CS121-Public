@@ -158,18 +158,20 @@ public class Dog implements DogInterface, Comparable<Dog> {
 	@Override
 	public int compareTo(Dog otherDog) {
 		
-		if (this.age < otherDog.getAge())
-			return -1;
-		else if (this.age > otherDog.getAge())
-			return +1;
-		else
-			return 0;
+//		if (this.age < otherDog.getAge())
+//			return -1;
+//		else if (this.age > otherDog.getAge())
+//			return +1;
+//		else
+//			return 0;
+		
+		return this.age - otherDog.getAge();
 	}
 	
 
 	@Override
 	public String bark() {		
-		return "woof woof";
+		return name + ": woof woof";
 	}
 
 	

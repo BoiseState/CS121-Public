@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  * @author Java Foundations
  */
 @SuppressWarnings("serial")
-public class PushCounterPanel extends JPanel {
+public class PushCounterPanelVersion2 extends JPanel {
 	private static final Color LIGHT_GREEN = new Color(206, 255, 199);
 
 	private MyButton incrementButton;
@@ -26,7 +26,7 @@ public class PushCounterPanel extends JPanel {
 	/**
 	 * Constructor: Sets up the GUI panel
 	 */
-	public PushCounterPanel() {
+	public PushCounterPanelVersion2() {
 		// TODO: Set background color and add border to panel.
 		// this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		this.setLayout(new BorderLayout());

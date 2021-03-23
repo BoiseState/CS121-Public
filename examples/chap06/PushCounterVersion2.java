@@ -7,7 +7,7 @@ import javax.swing.JFrame;
  * 
  * @author Java Foundations
  */
-public class PushCounter
+public class PushCounterVersion2
 {
    /**
     * Creates and displays the main program frame.
@@ -18,7 +18,7 @@ public class PushCounter
       JFrame frame = new JFrame("Push Counter");
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-      PushCounterPanel panel = new PushCounterPanel();
+      PushCounterPanelVersion2 panel = new PushCounterPanelVersion2();
       frame.getContentPane().add(panel);
 
       frame.pack();

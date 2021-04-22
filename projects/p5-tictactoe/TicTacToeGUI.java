@@ -6,7 +6,6 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
-
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,7 +15,6 @@ import javax.swing.JTextArea;
 
 /**
  * GUI for playing a TicTacToeGame.
- * 
  * @author mvail
  */
 public class TicTacToeGUI extends JPanel {
@@ -24,9 +22,8 @@ public class TicTacToeGUI extends JPanel {
 	private final String PLAYER = "X";
 	private final String COMPUTER = "O";
 	private final String OPEN = "";
-//	private final String TIE = "T";
 	private final int DIM = 3;
-	private JButton[][] gameGrid;
+	private GridButton[][] gameGrid;
 	private JTextArea movesTextArea;
 	private JButton newGameButton;
 	private TicTacToeGame game;
@@ -36,11 +33,11 @@ public class TicTacToeGUI extends JPanel {
 		game = new TicTacToeGame();
 		Font bigFont = new Font("Serif", Font.PLAIN, 48);
 		Font smallFont = new Font("Serif", Font.PLAIN, 36);
-		gameGrid = new JButton[DIM][DIM];
-		ButtonListener buttonListener = new ButtonListener();
+		gameGrid = new GridButton[DIM][DIM];
+		GridButtonListener buttonListener = new GridButtonListener();
 		for (int row = 0; row < DIM; row++) {
 			for (int col = 0; col < DIM; col++) {
-				gameGrid[row][col] = new JButton(OPEN);
+				gameGrid[row][col] = new GridButton(OPEN, row, col);
 				gameGrid[row][col].addActionListener(buttonListener);
 				gameGrid[row][col].setPreferredSize(new Dimension(128,128));
 				gameGrid[row][col].setFont(bigFont);
@@ -52,7 +49,7 @@ public class TicTacToeGUI extends JPanel {
 		JPanel controlsPanel = new JPanel(); //default FlowLayout
 		newGameButton = new JButton("New Game");
 		newGameButton.setFont(bigFont);
-		newGameButton.addActionListener(buttonListener);
+		newGameButton.addActionListener(new NewGameButtonListener());
 		controlsPanel.add(newGameButton);
 		this.add(controlsPanel, BorderLayout.SOUTH);
 		
@@ -137,52 +134,79 @@ public class TicTacToeGUI extends JPanel {
 	}
 	
 	/**
-	 * Private inner class to respond to game button clicks.
+	 * Private inner class to respond to newGameButton clicks.
+	 */
+	private class NewGameButtonListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			resetGame();
+		}
+	}
+	
+	/**
+	 * Private inner class to respond to grid button clicks.
 	 * Update 'gameGrid' if the button is not already claimed.
 	 * Make a computer move after player moves.
 	 * Check for game over conditions.
 	 */
-	private class ButtonListener implements ActionListener {
-
+	private class GridButtonListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			JButton button = (JButton)(arg0.getSource());
-			if (button == newGameButton) {
-				resetGame();
-			} else {
-				if (game.gameOver()) {
-					endGame();
-				} else {
-					//call choose(X, row, col) corresponding to clicked button
-					for (int row = 0; row < DIM; row++) {
-						for (int col = 0; col < DIM; col++) {
-							if (button == gameGrid[row][col]) {
-								//if the position is successfully claimed
-								if (game.choose(TicTacToe.BoardChoice.X, row, col)) {
-									button.setText(PLAYER);
-									if (game.gameOver()) { //did the player just win?
-										endGame();
-									} else { //make a random move for the computer
-										Random rand = new Random();
-										boolean done = false;
-										while (!done) {
-											int cRow = rand.nextInt(DIM);
-											int cCol = rand.nextInt(DIM);
-											if (game.choose(TicTacToe.BoardChoice.O, cRow, cCol)) {
-												gameGrid[cRow][cCol].setText(COMPUTER);
-												done = true;
-											}
-										}
-										if (game.gameOver()) { //did the computer just win?
-											endGame();
-										}
-									}
-								}//if player clicked an unclaimed position
-							}//if this is the button that was pressed
-						}//for col
-					}//for row
-				}//if game not over
-			}//if game board button pressed
+			GridButton button = (GridButton)(arg0.getSource());
+			if (!game.gameOver()) {
+				//call choose(X, row, col) corresponding to clicked button
+				//  if the position is successfully claimed
+				if (game.choose(TicTacToe.BoardChoice.X, button.getRow(), button.getCol())) {
+					button.setText(PLAYER);
+					if (game.gameOver()) { //did the player just win?
+						endGame();
+					} else { //make a random move for the computer
+						Random rand = new Random();
+						boolean done = false;
+						while (!done) {
+							int cRow = rand.nextInt(DIM);
+							int cCol = rand.nextInt(DIM);
+							if (game.choose(TicTacToe.BoardChoice.O, cRow, cCol)) {
+								gameGrid[cRow][cCol].setText(COMPUTER);
+								done = true;
+							}
+						}
+						if (game.gameOver()) { //did the computer just win?
+							endGame();
+						}
+					}
+				}//if player clicked an unclaimed position
+			}//if game not over
 		}//actionPerformed()
-	}//ButtonListener
-}
+	}//GridButtonListener
+	
+	/**
+	 * A button that knows its row,col coordinates
+	 */
+	private class GridButton extends JButton {
+		private static final long serialVersionUID = 1L;
+		private int row;
+		private int col;
+		
+		/**
+		 * Create this button with given text and coordinates.
+		 * @param row row coordinate for this button
+		 * @param column column coordinate for this button
+		 */
+		public GridButton(String text, int row, int column) {
+			super(text);
+			this.row = row;
+			this.col = column;
+		}
+
+		/** @return the row */
+		public int getRow() {
+			return row;
+		}
+
+		/** @return the col */
+		public int getCol() {
+			return col;
+		}
+	} //GridButton
+} //TicTacToeGUI

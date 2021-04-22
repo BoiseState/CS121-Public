@@ -1,6 +1,7 @@
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 
 /**
@@ -33,26 +34,38 @@ public class ArrayListColors
 			
 			Color tempColor = new Color(r, g, b);
 			myColors.add(tempColor);
-			System.out.printf("Added color with values (%d, %d, %d)\n", r, g, b);
+			//System.out.printf("Added color with values (%d, %d, %d)\n", r, g, b);
 		}
+		
+		Color maxBlue = myColors.get(0);
+		for (Color c: myColors) {
+			if (c.getBlue() > maxBlue.getBlue())
+				maxBlue = c;
+		}
+		System.out.println("Bluest random color: " + maxBlue);
+		
+		maxBlue = myColors.get(0);
+		for (int i = 1; i < myColors.size(); i++) {
+			if (myColors.get(i).getBlue() > maxBlue.getBlue())
+				maxBlue = myColors.get(i);
+		}
+		System.out.println("Bluest random color: " + maxBlue);
+		
+		maxBlue = myColors.get(0);
+		Iterator<Color> iter = myColors.iterator();
+		while (iter.hasNext()) {
+			Color c = iter.next();
+			if (c.getBlue() > maxBlue.getBlue())
+				maxBlue = c;
+		}
+		System.out.println("Bluest random color: " + maxBlue);
+
+		
+//		for (Color c: myColors) {
+//			System.out.println(c);
+//		}
 		
 		/* Find the color with the biggest red value and print it */
-		int maxRed = 0;
-		for(Color colorIndex : myColors)
-		{
-			if(colorIndex.getRed() > maxRed)
-			{
-				maxRed = colorIndex.getRed();
-				System.out.println("Updating max red value to: " + maxRed);
-			}
-		}
 		
-		System.out.println("Maximum red color is: " + maxRed);
-		
-		for (Color c: myColors) {
-			if (c.equals(Color.red)) {
-				System.out.println("Found pure red!");
-			}
-		}
 	}
 }

@@ -22,7 +22,7 @@ public class DrawPieChartScalable extends JPanel
 		int midy = height/2;
 
 		// Set the radius to be 1/4th of the smaller of width and height.
-		int radius = Math.min(width, height)/4;
+		int radius = Math.min(width, height)/2;
 
 		page.setColor(Color.blue);
 		page.fillArc(midx - radius, midy - radius, 2 * radius, 2 * radius, 0, 45);

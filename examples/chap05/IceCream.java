@@ -5,27 +5,15 @@
  */
 public class IceCream
 {
-	public enum Flavor
-	{
-		VANILLA,
-		CHOCOLATE,
-		STRAWBERRY,
-		FUDGE_RIPPLE,
-		COFFEE,
-		ROCKY_ROAD,
-		MINT_CHOCOLATE_CHIP,
-		COOKIE_DOUGH
-	}
-
 	/**
 	 * Creates and uses variables of the Flavor type.
 	 */
 	public static void main(String[] args) {
 
-		Flavor cone1, cone2, cone3;
+		IceCreamFlavor cone1, cone2, cone3;
 
-		cone1 = Flavor.ROCKY_ROAD;
-		cone2 = Flavor.CHOCOLATE;
+		cone1 = IceCreamFlavor.ROCKY_ROAD;
+		cone2 = IceCreamFlavor.CHOCOLATE;
 
 		System.out.println("cone1 value: " + cone1);
 		System.out.println("cone1 ordinal: " + cone1.ordinal());

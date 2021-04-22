@@ -16,7 +16,7 @@ import java.util.Random;
 @SuppressWarnings("serial")
 public class RandomBoxes extends JPanel
 {
-	private final int NUM_BOXES = 500, THICKNESS = 5, MAX_SIDE = 50;
+	private final int NUM_BOXES = 5000, THICKNESS = 5, MAX_SIDE = 50;
 	private int max_x = 350, max_y = 250;
 	private Random generator;
 

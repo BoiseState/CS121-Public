@@ -16,7 +16,7 @@ public class CommandLineValidation
         // validate there are 2 arguments
         if (args.length != 2)
         {
-            System.err.println("Usage: CommandLineValidation <filename> <num_chars_per_line>");
+            System.err.println("Usage: java CommandLineValidation <filename> <num_chars_per_line>");
             System.exit(1);
         }
         

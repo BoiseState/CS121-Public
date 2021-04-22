@@ -17,12 +17,12 @@ public class Countdown
 		System.out.println("Liftoff!"); // appears on first output line
 
 		System.out.println("To infinity and beyond!");
-	  	System.out.println("C");
-	  	System.out.println(" r");
-	  	System.out.println("  a");
-	  	System.out.println("   s");
-	  	System.out.println("    h...");
+//	  	System.out.println("C");
+//	  	System.out.println(" r");
+//	  	System.out.println("  a");
+//	  	System.out.println("   s");
+//	  	System.out.println("    h...");
 	  	/* The following line has the same effect at the five lines above */
-		/*System.out.println ("C\n r\n  a\n   s\n    h...");*/
+		System.out.println ("C\n r\n  a\n   s\n    h...");
    	}
 }

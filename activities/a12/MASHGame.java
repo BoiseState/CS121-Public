@@ -47,7 +47,7 @@ public class MASHGame {
 		System.out.println("--------------------- Future Possibilities Database ------------------------");
 		System.out.print("Home List: ");
 		for (String item: homeList) {
-			System.out.print(item + " ");
+			System.out.print(item + ", ");
 		}
 		System.out.println();
 		

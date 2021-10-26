@@ -311,7 +311,7 @@ public class TextBookUnitTester {
 		String author = "Ada Lovelace";
 		String text = "I am much pleased to find how very well I stand work and how my powers of attention and continued effort increase.";
 		long   postID = 100100100;
-		String filename = "posts/Post-100100100.txt";
+		String filename = "posts/Post-100100100.dat";
 		
 		Post goodPost = new Post(text,author);
 		goodPost.setPostID(postID);
@@ -323,7 +323,7 @@ public class TextBookUnitTester {
 		String author = "Grace Hopper";
 		String text = "One accurate measurement is worth a thousand expert opinions.";
 		long   postID = 100100101;
-		String filename = "posts/Post-100100101.txt";
+		String filename = "posts/Post-100100101.dat";
 		
 		Post goodPost = new Post(text,author);
 		goodPost.setPostID(postID);
@@ -335,7 +335,7 @@ public class TextBookUnitTester {
 		String author = "Katherine Johnson";
 		String text = "Girls are capable of doing everything men are capable of doing. Sometimes they have more imagination than men.";
 		long   postID = 100100102;
-		String filename = "posts/Post-100100102.txt";
+		String filename = "posts/Post-100100102.dat";
 		
 		Post goodPost = new Post(text,author);
 		goodPost.setPostID(postID);

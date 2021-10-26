@@ -18,7 +18,7 @@ public class PostUnitTester
 		testSettersAndGetters();
 		testIsValidMethod();
 		testToStringMethod();
-		testGetCommentsMethod();
+		testGetTextMethod();
 		
 		System.exit(status);
 	}
@@ -60,7 +60,7 @@ public class PostUnitTester
 		String author = "Ada Lovelace";
 		String text = "I am much pleased to find how very well I stand work and how my powers of attention and continued effort increase.";
 		long   postID = 100100100;
-		String filename = "posts/Post-100100100.txt";
+		String filename = "posts/Post-100100100.dat";
 		String testName = "testSettersAndGetters";
 		
 		boolean testPassed = true;
@@ -139,7 +139,7 @@ public class PostUnitTester
 		String author = "Ada Lovelace";
 		String text = "I am much pleased to find how very well I stand work and how my powers of attention and continued effort increase.";
 		long   postID = 100100100;
-		String filename = "posts/Post-100100100.txt";
+		String filename = "posts/Post-100100100.dat";
 		String testName = "testIsValidMethod";
 		
 		boolean testPassed = true;
@@ -222,7 +222,7 @@ public class PostUnitTester
 		String author = "Ada Lovelace";
 		String text = "I am much pleased to find how very well I stand work and how my powers of attention and continued effort increase.";
 		long   postID = 100100100;
-		String filename = "posts/Post-100100100.txt";
+		String filename = "posts/Post-100100100.dat";
 		String testName = "testToStringMethod";
 		
 		boolean testPassed = true;
@@ -263,25 +263,24 @@ public class PostUnitTester
 		}
 	}
 	
-	private static void testGetCommentsMethod()
+	private static void testGetTextMethod()
 	{
 		/* Define variables for the test */
 		String author = "Ada Lovelace";
 		String text = "I am much pleased to find how very well I stand work and how my powers of attention and continued effort increase.";
 		long   postID = 100100100;
-		String filename = "posts/Post-100100100.txt";
-		String testName = "testGetCommentsMethod";
+		String filename = "posts/Post-100100100.dat";
+		String testName = "testGetTextMethod";
 		
 		boolean testPassed = true;
 		String testResults = "";
 		try
 		{
-			String subtest = testName + " - Check line count";
+			String subtest = testName + " - Check line count ";
 			PostInterface goodPost = new Post(text,author);
 			goodPost.setPostID(postID);
 			
 			String comments = goodPost.getComments();
-			testResults += "Trying with file: " + goodPost.getCommentsFilename();
 			Scanner postScanner = new Scanner(comments);
 			int numLines = 0;
 			while (postScanner.hasNext()) {

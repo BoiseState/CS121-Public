@@ -1,8 +1,10 @@
 import java.util.ArrayList;
 
 /**
+ * This interface defines how the TextBook social media site works for text
+ * posts and comments.
+ * 
  * @author jerryfails
- *
  */
 public interface TextBookInterface {
 	

@@ -53,7 +53,8 @@ public interface PostInterface {
 	public void setPostID(long postID);
 	
 	/**
-	 * Adds a comment to this post.
+	 * Adds a comment to this post, this can just append the comment
+	 * to the posts comment file.
 	 * @param author the author of the comment being added
 	 * @param comment the text of the comment being added
 	 */

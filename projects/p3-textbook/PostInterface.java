@@ -78,9 +78,9 @@ public interface PostInterface {
 	public String getComments();
 	
 	/**
-	 * Return a String containing the Title, Author and Genre of the book, 
-	 *    but not the filepath.
-	 * @return String with book details
+	 * Return a String containing the date, text, author, and file location for comments.
+	 * For example: "2021-10-25 14:35:31 - CS 121 is the best class ever (even though it is challenging). (Jerry; posts/Post-100100200.txt)"
+	 * @return String with post details
 	 */
 	public String toString();
 

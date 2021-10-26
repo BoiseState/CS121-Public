@@ -16,7 +16,7 @@ public interface TextBookInterface {
 	/**
 	 * Takes a Post object as a parameter and adds it to the internal 
 	 * ArrayList of posts.
-	 * @param newPost Book to add to Library
+	 * @param newPost Post to add to TextBook
 	 */
 	public void addPost(Post newPost);
 	

@@ -269,7 +269,7 @@ public class PostUnitTester
 			goodPost.addComment("Katherine Johnson", comment3);
 			goodPost.addComment("Katherine Johnson", comment4);
 			
-			String comments = goodPost.getComments();
+			String comments = goodPost.getFileContents();
 			testResults += "Trying with file: " + goodPost.getPostFilename();
 			Scanner postScanner = new Scanner(comments);
 			int numLinesComments = 0;

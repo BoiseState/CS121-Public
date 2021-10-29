@@ -1,1 +1,2 @@
-2021-10-28 20:27:15: null (Ada Lovelace; posts/Post-100100204.txt)
+2021-10-28 20:32:16: One accurate measurement is worth a thousand expert opinions. (Grace Hopper; posts/Post-100100204.txt)
+2021-10-28 20:32:16: Thus not only the mental and the material but the theoretical and the practical in the mathematical world, are brought into more intimate and effective connection with each other. (Ada Lovelace)

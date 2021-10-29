@@ -65,7 +65,7 @@ public interface PostInterface {
 	 * to be opened.
 	 * @return String containing text contents of book
 	 */
-	public String getComments();
+	public String getFileContents();
 	
 	/**
 	 * Return a String containing the date, text, author, and file location for comments.

@@ -17,6 +17,7 @@ public interface PostInterface {
 	 * @return the text for this post.
 	 */
 	public String getText();
+	
 	/**
 	 * Sets the text for this post.
 	 * @param text the new text for this post.
@@ -34,6 +35,7 @@ public interface PostInterface {
 	 * @return the author of this post.
 	 */
 	public String getAuthor();
+	
 	/**
 	 * Sets the author for this post.
 	 * @param author the new author name for this post.
@@ -46,6 +48,7 @@ public interface PostInterface {
 	 * @return
 	 */
 	public String getCommentsFilename();
+	
 	/**
 	 * Sets the id of this post.
 	 * @param postID the new id for this post.

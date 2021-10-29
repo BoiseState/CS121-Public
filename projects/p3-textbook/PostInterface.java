@@ -36,7 +36,6 @@ public interface PostInterface {
 	 * @return
 	 */
 	public String getPostFilename();
-
 	/**
 	 * Gets the id of this post.
 	 */

@@ -63,7 +63,7 @@ public interface PostInterface {
 	 * the FileNotFoundException. If this Exception is raised, 
 	 * simply return a String stating that the file was not able 
 	 * to be opened.
-	 * @return String containing text contents of book
+	 * @return String containing text contents of post file
 	 */
 	public String getFileContents();
 	

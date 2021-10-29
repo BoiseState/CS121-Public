@@ -23,13 +23,15 @@ public interface TextBookInterface {
 	public void addPost(Post newPost);
 	
 	/**
-	 * Remove the Post at the specified index from the ArrayList of Posts
+	 * Remove the Post at the specified index from the ArrayList of Posts.
+	 * Checks the index to make sure it is valid (>=0 and <size).
 	 * @param index Index of post to remove from the social media site
 	 */
 	public void removePost(int index);
 	
 	/**
 	 * Return a reference to the post at the specified index.
+	 * Checks the index to make sure it is valid (>=0 and <size).
 	 * @param index Index of post to retrieve from social media site 
 	 * @return Reference to the specified post, null if index is out of bounds.
 	 */
@@ -42,8 +44,5 @@ public interface TextBookInterface {
 	 * @return String with indexed post list
 	 */
 	public String toString();
-	
-	
-		
 
 }

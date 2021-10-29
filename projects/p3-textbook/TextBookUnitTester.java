@@ -53,9 +53,9 @@ public class TextBookUnitTester {
 	private static void testAddGetPostMethods()
 	{
 		/* Define variables for the test */
-		Post alice = getAdaPost();
-		Post gettysburg = getGracePost();
-		Post leaves = getKatherinePost();		
+		Post adaPost = getAdaPost();
+		Post gracePost = getGracePost();
+		Post katherinePost = getKatherinePost();		
 
 		String testName = "testAddGetPostMethods";		
 		boolean testPassed = true;
@@ -67,36 +67,36 @@ public class TextBookUnitTester {
 			
 			/* Test add/get single Post */ 
 			String subtest = testName + " - add/get single Post";
-			littleTextBook.addPost(alice);
+			littleTextBook.addPost(adaPost);
 			Post value = littleTextBook.getPost(0);
-			if (value.equals(alice)){
+			if (value.equals(adaPost)){
 					testResults += subTestPass(subtest);		
 			} else {
-				testResults += subTestFailure(subtest, alice.toString(), value.toString());
+				testResults += subTestFailure(subtest, adaPost.toString(), value.toString());
 				testPassed = false;
 			}
 			
 			/* Test add/get second Post */
 			subtest = testName + " - add/get second Post";
-			littleTextBook.addPost(leaves);
+			littleTextBook.addPost(katherinePost);
 			value = littleTextBook.getPost(1);
-			if (value.equals(leaves)){
+			if (value.equals(katherinePost)){
 				value = littleTextBook.getPost(0);
-				if(value.equals(alice)) {
+				if(value.equals(adaPost)) {
 					testResults += subTestPass(subtest);
 				} else {
-					testResults += subTestFailure(subtest, alice.toString(), value.toString());
+					testResults += subTestFailure(subtest, adaPost.toString(), value.toString());
 					testPassed = false;
 				}
 			} else {
-				testResults += subTestFailure(subtest, leaves.toString(), value.toString());
+				testResults += subTestFailure(subtest, katherinePost.toString(), value.toString());
 				testPassed = false;
 			}
 			
 			/* Test get invalid index */ 
 			subtest = testName + " - Get invalid index";
 			littleTextBook = new TextBook();
-			littleTextBook.addPost(alice);
+			littleTextBook.addPost(adaPost);
 			
 			value = littleTextBook.getPost(1);
 			if (value == null) {
@@ -254,9 +254,9 @@ public class TextBookUnitTester {
 	private static void testToStringMethod()
 	{
 		/* Define variables for the test */
-		Post alice = getAdaPost();
-		Post gettysburg = getGracePost();
-		Post leaves = getKatherinePost();		
+		Post adaPost = getAdaPost();
+		Post gracePost = getGracePost();
+		Post katherinePost = getKatherinePost();		
 
 		String testName = "testToStringMethod";		
 		boolean testPassed = true;
@@ -268,27 +268,34 @@ public class TextBookUnitTester {
 			
 			/* Test adding 3 Posts and check number of Posts is 3 */ 
 			
-			littleTextBook.addPost(alice);
-			littleTextBook.addPost(gettysburg);
+			littleTextBook.addPost(adaPost);
+			littleTextBook.addPost(gracePost);
+			littleTextBook.addPost(katherinePost);
 			
 			String value = littleTextBook.toString();
 			String subtest = testName + " - toString() includes first Post";
-			if (value.contains(alice.toString())){
+			if (value.contains(adaPost.toString())){
 					testResults += subTestPass(subtest);		
 			} else {
-				testResults += subTestFailure(subtest, alice.toString(), value);
+				testResults += subTestFailure(subtest, adaPost.toString(), value);
 				testPassed = false;
 			}
 			
 			subtest = testName + " - toString() includes second Post";
-			if (value.contains(gettysburg.toString())){
+			if (value.contains(gracePost.toString())){
 					testResults += subTestPass(subtest);		
 			} else {
-				testResults += subTestFailure(subtest, gettysburg.toString(), value);
+				testResults += subTestFailure(subtest, gracePost.toString(), value);
 				testPassed = false;
 			}
 			
-
+			subtest = testName + " - toString() includes third Post";
+			if (value.contains(katherinePost.toString())){
+					testResults += subTestPass(subtest);		
+			} else {
+				testResults += subTestFailure(subtest, katherinePost.toString(), value);
+				testPassed = false;
+			}
 		}
 		catch (Exception e)
 		{
@@ -310,23 +317,18 @@ public class TextBookUnitTester {
 	private static Post getAdaPost() {
 		String author = "Ada Lovelace";
 		String text = "I am much pleased to find how very well I stand work and how my powers of attention and continued effort increase.";
-		long   postID = 100100100;
-		String filename = "posts/Post-100100100.txt";
-		
 		Post goodPost = new Post(text,author);
-		goodPost.setPostID(postID);
-		
+		goodPost.addComment("Grace Hopper", "The only phrase I've ever disliked is, 'Why, we've always done it that way.' I always tell young people, 'Go ahead and do it. You can always apologize later.'");
+		goodPost.addComment("Katherine Jones", "I like to learn. That's an art and a science.");
+
 		return goodPost;
 	}
 	
 	private static Post getGracePost() {
 		String author = "Grace Hopper";
 		String text = "One accurate measurement is worth a thousand expert opinions.";
-		long   postID = 100100101;
-		String filename = "posts/Post-100100101.txt";
-		
 		Post goodPost = new Post(text,author);
-		goodPost.setPostID(postID);
+		goodPost.addComment("Ada Lovelace", "Thus not only the mental and the material but the theoretical and the practical in the mathematical world, are brought into more intimate and effective connection with each other.");
 		
 		return goodPost;
 	}
@@ -334,11 +336,7 @@ public class TextBookUnitTester {
 	private static Post getKatherinePost() {
 		String author = "Katherine Johnson";
 		String text = "Girls are capable of doing everything men are capable of doing. Sometimes they have more imagination than men.";
-		long   postID = 100100102;
-		String filename = "posts/Post-100100102.txt";
-		
 		Post goodPost = new Post(text,author);
-		goodPost.setPostID(postID);
 		
 		return goodPost;
 	}

@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 /**
@@ -14,15 +17,24 @@ public class PostUnitTester
 	
 	public static void main(String[] args)
 	{
+		checkPostFolder();
+		
 		testConstructor();
 		testSettersAndGetters();
 		testIsValidMethod();
 		testToStringMethod();
-		testGetCommentsMethod();
+		testAddAndGetCommentsMethods();
 		
 		System.exit(status);
 	}
 	
+	private static void checkPostFolder()
+	{
+		File f = new File("./posts/");
+		if (!f.exists())
+			f.mkdirs();
+	}
+
 	private static void testConstructor()
 	{
 		String author = "Ada Lovelace";
@@ -59,8 +71,6 @@ public class PostUnitTester
 		/* Define variables for the test */
 		String author = "Ada Lovelace";
 		String text = "I am much pleased to find how very well I stand work and how my powers of attention and continued effort increase.";
-		long   postID = 100100100;
-		String filename = "posts/Post-100100100.txt";
 		String testName = "testSettersAndGetters";
 		
 		boolean testPassed = true;
@@ -70,50 +80,34 @@ public class PostUnitTester
 			/* Create a new Post object */
 			PostInterface goodPost = new Post(text,author);
 			
-			/* Test setAuthor() and getAuthor() */ 
-			String subtest = testName + " - author";
+			/* Test getAuthor() */ 
+			String subtest = testName + " - getAuthor";
 			String value = goodPost.getAuthor();
 			if (value.equals(author)){
-				String newAuthor="Aviva CSStudent";
-				goodPost.setAuthor(newAuthor);
-				value = goodPost.getAuthor();
-				if (value.equals(newAuthor)) {
-					testResults += subTestPass(subtest);
-				} else {
-					testResults += subTestFailure(subtest,"Author should be " + newAuthor, "Author returned is " + value);
-					testPassed = false;
-				}			
+				testResults += subTestPass(subtest);
 			} else {
 				testResults += subTestFailure(subtest,"Author should be " + author, "Author returned is " + value);
 				testPassed = false;
 			}
 			
-			/* Test setText() and getText() */
-			subtest = testName + " - text";
+			/* Test getText() */
+			subtest = testName + " - getText";
 			value = goodPost.getText();
 			if (value.equals(text)){
-				String newtext="I just went to the most amazing class!";
-				goodPost.setText(newtext);
 				value = goodPost.getText();
-				if (value.equals(newtext)) {
-					testResults += subTestPass(subtest);
-				} else {
-					testResults += subTestFailure(subtest,"text should be " + newtext, "text returned is " + value);
-					testPassed = false;
-				}			
 			} else {
 				testResults += subTestFailure(subtest,"text should be " + text, "text returned is " + value);
 				testPassed = false;
 			}
 			
-			/* Test setPostID() and getPostFilename() */
-			subtest = testName + " - setPostID / getPostFilename";
-			goodPost.setPostID(postID);
-			value = goodPost.getCommentsFilename();
-			if (value.equals(filename)){
+			/* Test getPostID() and getPostFilename() */
+			subtest = testName + " - getPostID / getPostFilename";
+			value = goodPost.getPostFilename();
+			String postIDStr = Long.toString(goodPost.getPostID());
+			if (value.contains(postIDStr)){
 				testResults += subTestPass(subtest);		
 			} else {
-				testResults += subTestFailure(subtest,"Filename should be " + filename, "Filename returned is " + value);
+				testResults += subTestFailure(subtest, "Filename should have " + postIDStr, "Filename returned is " + value);
 				testPassed = false;
 			}
 
@@ -138,8 +132,6 @@ public class PostUnitTester
 		/* Define variables for the test */
 		String author = "Ada Lovelace";
 		String text = "I am much pleased to find how very well I stand work and how my powers of attention and continued effort increase.";
-		long   postID = 100100100;
-		String filename = "posts/Post-100100100.txt";
 		String testName = "testIsValidMethod";
 		
 		boolean testPassed = true;
@@ -148,7 +140,14 @@ public class PostUnitTester
 		{
 			String subtest = testName + " - Post is valid ";
 			PostInterface goodPost = new Post(text,author);
-			goodPost.setPostID(postID);
+			String filenameStr = goodPost.getPostFilename();
+			// creating directory and file to test isValid is true
+			File f = new File(filenameStr);
+			f.mkdirs();
+			try {
+				PrintWriter pw = new PrintWriter(f);
+				pw.close();
+			} catch (FileNotFoundException fnfe) { }
 			if (goodPost.isValid()) {
 				testResults += subTestPass(subtest);
 			} else {
@@ -158,7 +157,6 @@ public class PostUnitTester
 			
 			subtest = testName + " - Post not valid (author = null)";
 			goodPost = new Post(text,null);
-			goodPost.setPostID(postID);
 			
 			if (goodPost.isValid()) {
 				testResults += subTestFailure(subtest, "isValid() == false", "isValid() == true");
@@ -169,7 +167,6 @@ public class PostUnitTester
 			
 			subtest = testName + " - Post not valid (text = null)";
 			goodPost = new Post(null,author);
-			goodPost.setPostID(postID);
 			
 			if (goodPost.isValid()) {
 				testResults += subTestFailure(subtest, "isValid() == false", "isValid() == true");
@@ -177,29 +174,6 @@ public class PostUnitTester
 			} else {
 				testResults += subTestPass(subtest);
 			}
-			
-			subtest = testName + " - Post not valid (invalid Post ID)";
-			goodPost = new Post(text,author);
-			goodPost.setPostID(0);
-			
-			if (goodPost.isValid()) {
-				testResults += subTestFailure(subtest, "isValid() == false", "isValid() == true");
-				testPassed = false;
-			} else {
-				testResults += subTestPass(subtest);
-			}
-			
-			subtest = testName + " - Post not valid (file does not exist)";
-			goodPost = new Post(text,author);
-			goodPost.setPostID(1);
-			
-			if (goodPost.isValid()) {
-				testResults += subTestFailure(subtest, "isValid() == false", "isValid() == true");
-				testPassed = false;
-			} else {
-				testResults += subTestPass(subtest);
-			}
-			
 			
 		} catch (Exception e)
 		{
@@ -221,8 +195,6 @@ public class PostUnitTester
 		/* Define variables for the test */
 		String author = "Ada Lovelace";
 		String text = "I am much pleased to find how very well I stand work and how my powers of attention and continued effort increase.";
-		long   postID = 100100100;
-		String filename = "posts/Post-100100100.txt";
 		String testName = "testToStringMethod";
 		
 		boolean testPassed = true;
@@ -231,7 +203,6 @@ public class PostUnitTester
 		{
 			String subtest = testName + " - toString() includes author ";
 			PostInterface goodPost = new Post(text,author);
-			goodPost.setPostID(postID);
 			String value = goodPost.toString();
 			if (value.contains(author)) {
 				testResults += subTestPass(subtest);
@@ -247,6 +218,15 @@ public class PostUnitTester
 				testResults += subTestFailure(subtest, text, value);
 				testPassed = false;
 			}
+
+			subtest = testName + " - toString() includes postID ";
+			if (value.contains(Long.toString(goodPost.getPostID()))) {
+				testResults += subTestPass(subtest);
+			} else {
+				testResults += subTestFailure(subtest, text, value);
+				testPassed = false;
+			}
+
 			
 		} catch (Exception e)
 		{
@@ -263,42 +243,65 @@ public class PostUnitTester
 		}
 	}
 	
-	private static void testGetCommentsMethod()
+	private static void testAddAndGetCommentsMethods()
 	{
 		/* Define variables for the test */
 		String author = "Ada Lovelace";
 		String text = "I am much pleased to find how very well I stand work and how my powers of attention and continued effort increase.";
-		long   postID = 100100100;
-		String filename = "posts/Post-100100100.txt";
 		String testName = "testGetCommentsMethod";
+
+		String comment1 = "Like what you do, and then you will do your best.";
+		String comment2 = "I don't have a feeling of inferiority. Never had. I'm as good as anybody, but no better.";
+		String comment3 = "You are no better than anyone else, and no one is better than you.";
+		String comment4 = "I like to learn. That�s an art and a science.";
 		
 		boolean testPassed = true;
 		String testResults = "";
 		try
 		{
-			String subtest = testName + " - Check line count";
+			// add comments
+			String subtest = testName + " - addComment & Check line count";
 			PostInterface goodPost = new Post(text,author);
-			goodPost.setPostID(postID);
+
+			testResults += "FILE="+goodPost.getPostFilename();
+			goodPost.addComment("Katherine Johnson", comment1);
+			goodPost.addComment("Katherine Johnson", comment2);
+			goodPost.addComment("Katherine Johnson", comment3);
+			goodPost.addComment("Katherine Johnson", comment4);
 			
 			String comments = goodPost.getComments();
-			testResults += "Trying with file: " + goodPost.getCommentsFilename();
+			testResults += "Trying with file: " + goodPost.getPostFilename();
 			Scanner postScanner = new Scanner(comments);
-			int numLines = 0;
-			while (postScanner.hasNext()) {
+			int numLinesComments = 0;
+			while (postScanner.hasNextLine()) {
 				postScanner.nextLine();
-				numLines++;
+				numLinesComments++;
 			}
-			
 			postScanner.close();
 			
-			if (numLines == 4) {
+			postScanner = new Scanner(new File(goodPost.getPostFilename()));
+			int numLinesFile = 0;
+			while (postScanner.hasNextLine()) {
+				postScanner.nextLine();
+				numLinesFile++;
+			}
+
+			if (numLinesComments == numLinesFile) {
 				testResults += subTestPass(subtest);
 			} else {
-				testResults += subTestFailure(subtest, "4 lines of text", numLines + " lines of text");
+				testResults += subTestFailure(subtest, "Comment lines ("+numLinesComments+") == File line (" + numLinesFile + ")", "Comment lines ("+numLinesComments+") == File line (" + numLinesFile + ")");
 				testPassed = false;
 			}
 			
-			
+			subtest = testName + " - original comments included in what was read from file";
+			if (comments.contains(comment1) && comments.contains(comment2) && comments.contains(comment3) && comments.contains(comment4)) {
+				testResults += subTestPass(subtest);
+			} else {
+				testResults += subTestFailure(subtest, "All comments to be in the comments", "Not all comments were in the retrieved info from the file");
+				testPassed = false;
+			}
+
+
 		} catch (Exception e)
 		{
 			testResults += subTestFailure(testName, "Test Execution", "Exception thrown. ");

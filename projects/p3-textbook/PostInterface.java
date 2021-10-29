@@ -17,11 +17,6 @@ public interface PostInterface {
 	 * @return the text for this post.
 	 */
 	public String getText();
-	/**
-	 * Sets the text for this post.
-	 * @param text the new text for this post.
-	 */
-	public void setText(String text);
 	
 	/**
 	 * Returns the date/time this post was created.
@@ -34,26 +29,20 @@ public interface PostInterface {
 	 * @return the author of this post.
 	 */
 	public String getAuthor();
-	/**
-	 * Sets the author for this post.
-	 * @param author the new author name for this post.
-	 */
-	public void setAuthor(String author);
 
 	/**
 	 * Returns the name of the file the comments are being stored in.
 	 * For example this could be: "posts/Post-100100100.txt"
 	 * @return
 	 */
-	public String getCommentsFilename();
+	public String getPostFilename();
 	/**
-	 * Sets the id of this post.
-	 * @param postID the new id for this post.
+	 * Gets the id of this post.
 	 */
-	public void setPostID(long postID);
+	public long getPostID();
 	
 	/**
-	 * Adds a comment to this post, this can just append the comment
+	 * Adds a comment to this post by appending the comment
 	 * to the posts comment file.
 	 * @param author the author of the comment being added
 	 * @param comment the text of the comment being added

@@ -35,8 +35,8 @@ public interface PostInterface {
 	 * For example this could be: "posts/Post-100100100.txt"
 	 * @return
 	 */
-
 	public String getPostFilename();
+
 	/**
 	 * Gets the id of this post.
 	 */

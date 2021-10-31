@@ -59,7 +59,7 @@ public interface PostInterface {
 	
 	/**
 	 * Return a String that contains the text contents of the 
-	 * file referenced by the getFileContentsFilename method. Since this 
+	 * file referenced by the getPostFilename method. Since this 
 	 * method will need to open a file it will need to catch 
 	 * the FileNotFoundException. If this Exception is raised, 
 	 * simply return a String stating that the file was not able 

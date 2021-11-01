@@ -5,7 +5,7 @@ import java.util.Date;
  * Essentially, a Post stores its text, the author, when it was created,
  * and a unique ID. A getter method, getCommentFilename, returns the file 
  * location where comments are stored when it is added to this post.
- * It also provides a mechanism via getFileContents to read all of the comments
+ * It also provides a mechanism via getComments to read all of the comments
  * from that file.
  * 
  * @author jerryfails
@@ -36,7 +36,6 @@ public interface PostInterface {
 	 * @return
 	 */
 	public String getPostFilename();
-	
 	/**
 	 * Gets the id of this post.
 	 */
@@ -59,7 +58,7 @@ public interface PostInterface {
 	
 	/**
 	 * Return a String that contains the text contents of the 
-	 * file referenced by the getFileContentsFilename method. Since this 
+	 * file referenced by the getCommentsFilename method. Since this 
 	 * method will need to open a file it will need to catch 
 	 * the FileNotFoundException. If this Exception is raised, 
 	 * simply return a String stating that the file was not able 

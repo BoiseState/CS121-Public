@@ -143,7 +143,6 @@ public class PostUnitTester
 			String filenameStr = goodPost.getPostFilename();
 			// creating directory and file to test isValid is true
 			File f = new File(filenameStr);
-			f.mkdirs();
 			try {
 				PrintWriter pw = new PrintWriter(f);
 				pw.close();

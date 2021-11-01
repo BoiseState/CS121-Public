@@ -23,7 +23,7 @@ public class PostUnitTester
 		testSettersAndGetters();
 		testIsValidMethod();
 		testToStringMethod();
-		testAddAndGetCommentsMethods();
+		testAddAndGetFileContentsMethods();
 		
 		System.exit(status);
 	}
@@ -242,7 +242,7 @@ public class PostUnitTester
 		}
 	}
 	
-	private static void testAddAndGetCommentsMethods()
+	private static void testAddAndGetFileContentsMethods()
 	{
 		/* Define variables for the test */
 		String author = "Ada Lovelace";
@@ -262,7 +262,6 @@ public class PostUnitTester
 			String subtest = testName + " - addComment & Check line count";
 			PostInterface goodPost = new Post(text,author);
 
-			testResults += "FILE="+goodPost.getPostFilename();
 			goodPost.addComment("Katherine Johnson", comment1);
 			goodPost.addComment("Katherine Johnson", comment2);
 			goodPost.addComment("Katherine Johnson", comment3);

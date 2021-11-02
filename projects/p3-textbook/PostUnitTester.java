@@ -247,7 +247,7 @@ public class PostUnitTester
 		/* Define variables for the test */
 		String author = "Ada Lovelace";
 		String text = "I am much pleased to find how very well I stand work and how my powers of attention and continued effort increase.";
-		String testName = "testGetCommentsMethod";
+		String testName = "testGetFileContentsMethod";
 
 		String comment1 = "Like what you do, and then you will do your best.";
 		String comment2 = "I don't have a feeling of inferiority. Never had. I'm as good as anybody, but no better.";
@@ -287,7 +287,7 @@ public class PostUnitTester
 			if (numLinesComments == numLinesFile) {
 				testResults += subTestPass(subtest);
 			} else {
-				testResults += subTestFailure(subtest, "Comment lines ("+numLinesComments+") == File line (" + numLinesFile + ")", "Comment lines ("+numLinesComments+") == File line (" + numLinesFile + ")");
+				testResults += subTestFailure(subtest, "Lines from getFileContents() (" + numLinesComments + ") == Lines from " + goodPost.getPostFilename() + "(" + numLinesFile + ")", "Lines from getFileContents() (" + numLinesComments + ") == Lines from " + goodPost.getPostFilename() + " (" + numLinesFile + ")");
 				testPassed = false;
 			}
 			

@@ -287,7 +287,8 @@ public class PostUnitTester
 			if (numLinesComments == numLinesFile) {
 				testResults += subTestPass(subtest);
 			} else {
-				testResults += subTestFailure(subtest, "Lines from getFileContents() (" + numLinesComments + ") == Lines from " + goodPost.getPostFilename() + "(" + numLinesFile + ")", "Lines from getFileContents() (" + numLinesComments + ") == Lines from " + goodPost.getPostFilename() + " (" + numLinesFile + ")");
+				testResults += subTestFailure(subtest, "Lines from getFileContents() == Lines from " + goodPost.getPostFilename(), "Lines from getFileContents(): (" + numLinesComments + "), Lines from " + goodPost.getPostFilename() + ": (" + numLinesFile + ")");
+
 				testPassed = false;
 			}
 			

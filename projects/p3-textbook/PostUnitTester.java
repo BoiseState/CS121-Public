@@ -296,7 +296,7 @@ public class PostUnitTester
 			if (comments.contains(comment1) && comments.contains(comment2) && comments.contains(comment3) && comments.contains(comment4)) {
 				testResults += subTestPass(subtest);
 			} else {
-				testResults += subTestFailure(subtest, "All comments to be in the comments", "Not all comments were in the retrieved info from the file");
+				testResults += subTestFailure(subtest, "All comments found in the post file", "Not all comments were in the retrieved file");
 				testPassed = false;
 			}
 

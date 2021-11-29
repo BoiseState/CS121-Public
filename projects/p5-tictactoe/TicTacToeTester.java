@@ -32,7 +32,6 @@ public class TicTacToeTester {
 	/**
 	 * Valid command line args include:
 	 *  -a : print results from all tests (default is to print failed tests, only)
-	 *  -s : hide Strings from toString() tests
 	 *  -m : hide section summaries in output
 	 * @param args not used
 	 */
@@ -174,7 +173,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(newGame()));
 			printTest("testGameOver", testGameOver(newGame(), Result.False));
-			printTest("testWinner", testWinner(newGame(), Result.InProgress));
+			printTest("testGameState", testGameState(newGame(), Result.InProgress));
 			printTest("testGetGameGrid", testGetGameGrid(newGame(), grid));
 			printTest("testGetMoves", testGetMoves(newGame(), newGameMoves));
 			printTest("testChoicesX", testChoices(newGame, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -205,7 +204,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(gameX00()));
 			printTest("testGameOver", testGameOver(gameX00(), Result.False));
-			printTest("testWinner", testWinner(gameX00(), Result.InProgress));
+			printTest("testGameState", testGameState(gameX00(), Result.InProgress));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00(), moves));
 			printTest("testChoicesX", testChoices(gameX00, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -236,7 +235,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(gameX00O10()));
 			printTest("testGameOver", testGameOver(gameX00O10(), Result.False));
-			printTest("testWinner", testWinner(gameX00O10(), Result.InProgress));
+			printTest("testGameState", testGameState(gameX00O10(), Result.InProgress));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O10(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O10(), moves));
 			printTest("testChoicesX", testChoices(gameX00O10, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -267,7 +266,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(gameX00O10X11()));
 			printTest("testGameOver", testGameOver(gameX00O10X11(), Result.False));
-			printTest("testWinner", testWinner(gameX00O10X11(), Result.InProgress));
+			printTest("testGameState", testGameState(gameX00O10X11(), Result.InProgress));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O10X11(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O10X11(), moves));
 			printTest("testChoicesX", testChoices(gameX00O10X11, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -299,7 +298,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(gameX00O10X11O22()));
 			printTest("testGameOver", testGameOver(gameX00O10X11O22(), Result.False));
-			printTest("testWinner", testWinner(gameX00O10X11O22(), Result.InProgress));
+			printTest("testGameState", testGameState(gameX00O10X11O22(), Result.InProgress));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O10X11O22(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O10X11O22(), moves));
 			printTest("testChoicesX", testChoices(gameX00O10X11O22, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -331,7 +330,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(gameX00O10X11O22X02()));
 			printTest("testGameOver", testGameOver(gameX00O10X11O22X02(), Result.False));
-			printTest("testWinner", testWinner(gameX00O10X11O22X02(), Result.InProgress));
+			printTest("testGameState", testGameState(gameX00O10X11O22X02(), Result.InProgress));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O10X11O22X02(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O10X11O22X02(), moves));
 			printTest("testChoicesX", testChoices(gameX00O10X11O22X02, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -363,7 +362,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(gameX00O10X11O22X02O01()));
 			printTest("testGameOver", testGameOver(gameX00O10X11O22X02O01(), Result.False));
-			printTest("testWinner", testWinner(gameX00O10X11O22X02O01(), Result.InProgress));
+			printTest("testGameState", testGameState(gameX00O10X11O22X02O01(), Result.InProgress));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O10X11O22X02O01(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O10X11O22X02O01(), moves));
 			printTest("testChoicesX", testChoices(gameX00O10X11O22X02O01, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -395,7 +394,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(gameX00O10X11O22X02O01X21()));
 			printTest("testGameOver", testGameOver(gameX00O10X11O22X02O01X21(), Result.False));
-			printTest("testWinner", testWinner(gameX00O10X11O22X02O01X21(), Result.InProgress));
+			printTest("testGameState", testGameState(gameX00O10X11O22X02O01X21(), Result.InProgress));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O10X11O22X02O01X21(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O10X11O22X02O01X21(), moves));
 			printTest("testChoicesX", testChoices(gameX00O10X11O22X02O01X21, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -427,7 +426,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(gameX00O10X11O22X02O01X21O20()));
 			printTest("testGameOver", testGameOver(gameX00O10X11O22X02O01X21O20(), Result.False));
-			printTest("testWinner", testWinner(gameX00O10X11O22X02O01X21O20(), Result.InProgress));
+			printTest("testGameState", testGameState(gameX00O10X11O22X02O01X21O20(), Result.InProgress));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O10X11O22X02O01X21O20(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O10X11O22X02O01X21O20(), moves));
 			printTest("testChoicesX", testChoices(gameX00O10X11O22X02O01X21O20, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -461,7 +460,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(gameX00O10X11O22X02O01X21O20X12()));
 			printTest("testGameOver", testGameOver(gameX00O10X11O22X02O01X21O20X12(), Result.True));
-			printTest("testWinner", testWinner(gameX00O10X11O22X02O01X21O20X12(), Result.Tie));
+			printTest("testGameState", testGameState(gameX00O10X11O22X02O01X21O20X12(), Result.Tie));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O10X11O22X02O01X21O20X12(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O10X11O22X02O01X21O20X12(), moves));
 			printTest("testChoicesX", testChoices(gameX00O10X11O22X02O01X21O20X12, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -496,7 +495,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(gameX02O10X00O22X01()));
 			printTest("testGameOver", testGameOver(gameX02O10X00O22X01(), Result.True));
-			printTest("testWinner", testWinner(gameX02O10X00O22X01(), Result.X));
+			printTest("testGameState", testGameState(gameX02O10X00O22X01(), Result.X));
 			printTest("testGetGameGrid", testGetGameGrid(gameX02O10X00O22X01(), grid));
 			printTest("testGetMoves", testGetMoves(gameX02O10X00O22X01(), moves));
 			printTest("testChoicesX", testChoices(gameX02O10X00O22X01, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -529,7 +528,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(gameX11O00X10O22X12()));
 			printTest("testGameOver", testGameOver(gameX11O00X10O22X12(), Result.True));
-			printTest("testWinner", testWinner(gameX11O00X10O22X12(), Result.X));
+			printTest("testGameState", testGameState(gameX11O00X10O22X12(), Result.X));
 			printTest("testGetGameGrid", testGetGameGrid(gameX11O00X10O22X12(), grid));
 			printTest("testGetMoves", testGetMoves(gameX11O00X10O22X12(), moves));
 			printTest("testChoicesX", testChoices(gameX11O00X10O22X12, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -562,7 +561,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(gameX22O00X20O12X21()));
 			printTest("testGameOver", testGameOver(gameX22O00X20O12X21(), Result.True));
-			printTest("testWinner", testWinner(gameX22O00X20O12X21(), Result.X));
+			printTest("testGameState", testGameState(gameX22O00X20O12X21(), Result.X));
 			printTest("testGetGameGrid", testGetGameGrid(gameX22O00X20O12X21(), grid));
 			printTest("testGetMoves", testGetMoves(gameX22O00X20O12X21(), moves));
 			printTest("testChoicesX", testChoices(gameX22O00X20O12X21, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -595,7 +594,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(gameX00O11X20O12X10()));
 			printTest("testGameOver", testGameOver(gameX00O11X20O12X10(), Result.True));
-			printTest("testWinner", testWinner(gameX00O11X20O12X10(), Result.X));
+			printTest("testGameState", testGameState(gameX00O11X20O12X10(), Result.X));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O11X20O12X10(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O11X20O12X10(), moves));
 			printTest("testChoicesX", testChoices(gameX00O11X20O12X10, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -628,7 +627,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(gameX01O10X21O12X11()));
 			printTest("testGameOver", testGameOver(gameX01O10X21O12X11(), Result.True));
-			printTest("testWinner", testWinner(gameX01O10X21O12X11(), Result.X));
+			printTest("testGameState", testGameState(gameX01O10X21O12X11(), Result.X));
 			printTest("testGetGameGrid", testGetGameGrid(gameX01O10X21O12X11(), grid));
 			printTest("testGetMoves", testGetMoves(gameX01O10X21O12X11(), moves));
 			printTest("testChoicesX", testChoices(gameX01O10X21O12X11, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -661,7 +660,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(gameX12O11X02O21X22()));
 			printTest("testGameOver", testGameOver(gameX12O11X02O21X22(), Result.True));
-			printTest("testWinner", testWinner(gameX12O11X02O21X22(), Result.X));
+			printTest("testGameState", testGameState(gameX12O11X02O21X22(), Result.X));
 			printTest("testGetGameGrid", testGetGameGrid(gameX12O11X02O21X22(), grid));
 			printTest("testGetMoves", testGetMoves(gameX12O11X02O21X22(), moves));
 			printTest("testChoicesX", testChoices(gameX12O11X02O21X22, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -694,7 +693,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(gameX11O02X22O12X00()));
 			printTest("testGameOver", testGameOver(gameX11O02X22O12X00(), Result.True));
-			printTest("testWinner", testWinner(gameX11O02X22O12X00(), Result.X));
+			printTest("testGameState", testGameState(gameX11O02X22O12X00(), Result.X));
 			printTest("testGetGameGrid", testGetGameGrid(gameX11O02X22O12X00(), grid));
 			printTest("testGetMoves", testGetMoves(gameX11O02X22O12X00(), moves));
 			printTest("testChoicesX", testChoices(gameX11O02X22O12X00, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -727,7 +726,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(gameX20O01X11O00X02()));
 			printTest("testGameOver", testGameOver(gameX20O01X11O00X02(), Result.True));
-			printTest("testWinner", testWinner(gameX20O01X11O00X02(), Result.X));
+			printTest("testGameState", testGameState(gameX20O01X11O00X02(), Result.X));
 			printTest("testGetGameGrid", testGetGameGrid(gameX20O01X11O00X02(), grid));
 			printTest("testGetMoves", testGetMoves(gameX20O01X11O00X02(), moves));
 			printTest("testChoicesX", testChoices(gameX20O01X11O00X02, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -761,7 +760,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(gameX01O12X00O02X10O20X11O21X22()));
 			printTest("testGameOver", testGameOver(gameX01O12X00O02X10O20X11O21X22(), Result.True));
-			printTest("testWinner", testWinner(gameX01O12X00O02X10O20X11O21X22(), Result.X));
+			printTest("testGameState", testGameState(gameX01O12X00O02X10O20X11O21X22(), Result.X));
 			printTest("testGetGameGrid", testGetGameGrid(gameX01O12X00O02X10O20X11O21X22(), grid));
 			printTest("testGetMoves", testGetMoves(gameX01O12X00O02X10O20X11O21X22(), moves));
 			printTest("testChoicesX", testChoices(gameX01O12X00O02X10O20X11O21X22, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -796,7 +795,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(gameX10O01X20O02X11O00()));
 			printTest("testGameOver", testGameOver(gameX10O01X20O02X11O00(), Result.True));
-			printTest("testWinner", testWinner(gameX10O01X20O02X11O00(), Result.O));
+			printTest("testGameState", testGameState(gameX10O01X20O02X11O00(), Result.O));
 			printTest("testGetGameGrid", testGetGameGrid(gameX10O01X20O02X11O00(), grid));
 			printTest("testGetMoves", testGetMoves(gameX10O01X20O02X11O00(), moves));
 			printTest("testChoicesX", testChoices(gameX10O01X20O02X11O00, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -829,7 +828,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(gameX00O10X20O12X01O11()));
 			printTest("testGameOver", testGameOver(gameX00O10X20O12X01O11(), Result.True));
-			printTest("testWinner", testWinner(gameX00O10X20O12X01O11(), Result.O));
+			printTest("testGameState", testGameState(gameX00O10X20O12X01O11(), Result.O));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O10X20O12X01O11(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O10X20O12X01O11(), moves));
 			printTest("testChoicesX", testChoices(gameX00O10X20O12X01O11, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -862,7 +861,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(gameX00O21X10O20X01O22()));
 			printTest("testGameOver", testGameOver(gameX00O21X10O20X01O22(), Result.True));
-			printTest("testWinner", testWinner(gameX00O21X10O20X01O22(), Result.O));
+			printTest("testGameState", testGameState(gameX00O21X10O20X01O22(), Result.O));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O21X10O20X01O22(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O21X10O20X01O22(), moves));
 			printTest("testChoicesX", testChoices(gameX00O21X10O20X01O22, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -895,7 +894,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(gameX22O10X11O00X01O20()));
 			printTest("testGameOver", testGameOver(gameX22O10X11O00X01O20(), Result.True));
-			printTest("testWinner", testWinner(gameX22O10X11O00X01O20(), Result.O));
+			printTest("testGameState", testGameState(gameX22O10X11O00X01O20(), Result.O));
 			printTest("testGetGameGrid", testGetGameGrid(gameX22O10X11O00X01O20(), grid));
 			printTest("testGetMoves", testGetMoves(gameX22O10X11O00X01O20(), moves));
 			printTest("testChoicesX", testChoices(gameX22O10X11O00X01O20, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -928,7 +927,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(gameX00O01X22O11X10O21()));
 			printTest("testGameOver", testGameOver(gameX00O01X22O11X10O21(), Result.True));
-			printTest("testWinner", testWinner(gameX00O01X22O11X10O21(), Result.O));
+			printTest("testGameState", testGameState(gameX00O01X22O11X10O21(), Result.O));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O01X22O11X10O21(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O01X22O11X10O21(), moves));
 			printTest("testChoicesX", testChoices(gameX00O01X22O11X10O21, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -961,7 +960,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(gameX11O02X00O22X10O12()));
 			printTest("testGameOver", testGameOver(gameX11O02X00O22X10O12(), Result.True));
-			printTest("testWinner", testWinner(gameX11O02X00O22X10O12(), Result.O));
+			printTest("testGameState", testGameState(gameX11O02X00O22X10O12(), Result.O));
 			printTest("testGetGameGrid", testGetGameGrid(gameX11O02X00O22X10O12(), grid));
 			printTest("testGetMoves", testGetMoves(gameX11O02X00O22X10O12(), moves));
 			printTest("testChoicesX", testChoices(gameX11O02X00O22X10O12, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -994,7 +993,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(gameX01O00X10O11X21O22()));
 			printTest("testGameOver", testGameOver(gameX01O00X10O11X21O22(), Result.True));
-			printTest("testWinner", testWinner(gameX01O00X10O11X21O22(), Result.O));
+			printTest("testGameState", testGameState(gameX01O00X10O11X21O22(), Result.O));
 			printTest("testGetGameGrid", testGetGameGrid(gameX01O00X10O11X21O22(), grid));
 			printTest("testGetMoves", testGetMoves(gameX01O00X10O11X21O22(), moves));
 			printTest("testChoicesX", testChoices(gameX01O00X10O11X21O22, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -1027,7 +1026,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(gameX00O11X10O20X21O02()));
 			printTest("testGameOver", testGameOver(gameX00O11X10O20X21O02(), Result.True));
-			printTest("testWinner", testWinner(gameX00O11X10O20X21O02(), Result.O));
+			printTest("testGameState", testGameState(gameX00O11X10O20X21O02(), Result.O));
 			printTest("testGetGameGrid", testGetGameGrid(gameX00O11X10O20X21O02(), grid));
 			printTest("testGetMoves", testGetMoves(gameX00O11X10O20X21O02(), moves));
 			printTest("testChoicesX", testChoices(gameX00O11X10O20X21O02, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -1061,7 +1060,7 @@ public class TicTacToeTester {
 		try {
 			printTest("testNewGame", testNewGame(gameO01X12O00X02O10X20O11X21O22()));
 			printTest("testGameOver", testGameOver(gameO01X12O00X02O10X20O11X21O22(), Result.True));
-			printTest("testWinner", testWinner(gameO01X12O00X02O10X20O11X21O22(), Result.O));
+			printTest("testGameState", testGameState(gameO01X12O00X02O10X20O11X21O22(), Result.O));
 			printTest("testGetGameGrid", testGetGameGrid(gameO01X12O00X02O10X20O11X21O22(), grid));
 			printTest("testGetMoves", testGetMoves(gameO01X12O00X02O10X20O11X21O22(), moves));
 			printTest("testChoicesX", testChoices(gameO01X12O00X02O10X20O11X21O22, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
@@ -1596,10 +1595,10 @@ public class TicTacToeTester {
 	}
 
 	/**
-	 * Runs winner() method on a TicTacToe.
+	 * Runs getGameState() method on a TicTacToe.
 	 * @return test success
 	 */
-	private boolean testWinner(TicTacToe game, Result expectedResult) {
+	private boolean testGameState(TicTacToe game, Result expectedResult) {
 		Result result;
 		try {
 			if (game.getGameState() == TicTacToe.GameState.IN_PROGRESS) {
@@ -1614,7 +1613,7 @@ public class TicTacToeTester {
 				result = Result.Fail;
 			}
 		} catch (Exception e) {
-			System.out.printf("%s caught unexpected %s\n", "testWinner", e.toString());
+			System.out.printf("%s caught unexpected %s\n", "testGameState", e.toString());
 			e.printStackTrace();
 			result = Result.UnexpectedException;
 		}

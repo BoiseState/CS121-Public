@@ -1,347 +1,818 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.time.Instant;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 /**
- * Tests Posts general functionality.
+ * Tests Post class functionality.
+ * DO NOT MODIFY THIS TESTER - It is the responsibility of your Post class to
+ * pass the tests as written by functioning as defined in PostInterface.java.
  * 
  * @author mvail
  * @author marissa
  * @author lhindman
  * @author jerryfails
  */
-public class PostUnitTester
-{	
+public class PostUnitTester {
 	private static int status = 0;
-	
-	public static void main(String[] args)
-	{
-		checkPostFolder();
-		
-		testConstructor();
-		testSettersAndGetters();
+
+	public static void main(String[] args) {
+		testConstructors();
+		testGetFilename();
+		testGetPostID();
+		testGetAuthor();
+		testGetText();
+		testGetTimestamp();
 		testIsValidMethod();
-		testToStringMethod();
-		testAddAndGetFileContentsMethods();
-		
+		testAddComment();
+		testToStringPostOnly();
+		testToString();
+
 		System.exit(status);
 	}
-	
-	private static void checkPostFolder()
-	{
-		File f = new File("./posts/");
-		if (!f.exists())
-			f.mkdirs();
-	}
 
-	private static void testConstructor()
-	{
-		String author = "Ada Lovelace";
+	/**
+	 * Simple constructor tests pass as long as constructors do not throw any
+	 * exceptions and expected file is created by new Post constructor.
+	 */
+	private static void testConstructors() {
+		String author = "AdaLovelace";
 		String text = "I've created something special";
-		
-		String testName = "testConstructor";
-		
+		int id = 42;
+
+		String testName = "testConstructorNewPost";
+
 		boolean testPassed = true;
 		String testResults = "";
-		try
-		{
-			String subtest = testName + " - new Post(\"" + text +",\"" + author + "\")";
-			PostInterface goodPost = new Post(text,author);
-
+		try {
+			//Create a new Post with given id, author, and text.
+			String subtest = testName + " - new Post(" + id + ",\"" + author + "\",\"" + text + "\")";
+			boolean subtestPassed = true;
+			String filenameStr = "Post-00042.txt";
+			File file = new File(filenameStr); //delete any prior file with same ID
+			if (file.exists()) {
+				file.delete();
+			}
+			PostInterface newPost = new Post(id, author, text);
+			//A well-formatted Post-00042.txt file should have been written when
+			//Post's new post constructor was used.
+			file = new File(filenameStr);
+			if (!file.exists()) {
+				testResults += subTestFailure(subtest, filenameStr + " exists after constructor", filenameStr + "does not exist");
+				testPassed = false;
+				subtestPassed = false;
+			}
+			Scanner fileScan = new Scanner(file);
+			String line = fileScan.nextLine();
+			if (!line.contains(author)) {
+				testResults += subTestFailure(subtest, filenameStr + " contains author " + author, line);
+				testPassed = false;
+				subtestPassed = false;				
+			}
+			if (!line.contains(text)) {
+				testResults += subTestFailure(subtest, filenameStr + " contains text \"" + text + "\"", line);
+				testPassed = false;
+				subtestPassed = false;				
+			}
+			if (fileScan.hasNextLine()) {
+				testResults += subTestFailure(subtest, filenameStr + " contains only 1 line with Post data", filenameStr + " contains more than 1 line");
+				testPassed = false;
+				subtestPassed = false;								
+			}
+			if (subtestPassed) {
+				testResults += subTestPass(subtest);
+			}
+			fileScan.close();
+			
+			//Attempt to recreate that Post from file.
+			subtest = testName + " - recover valid Post(" + id + ")";
+			PostInterface recoveredPost = new Post(id);
 			testResults += subTestPass(subtest);
-
-		} catch (Exception e)
-		{
-			testResults += subTestFailure(testName, "Test Execution", "Exception thrown. ");
+			//Recovery constructor should not throw an exception if given ID is
+			//invalid. Expectation is that isValid() will return false, tested
+			//elsewhere.
+			subtest = testName + " - recover invalid Post(" + Integer.MAX_VALUE + ")";
+			recoveredPost = new Post(Integer.MAX_VALUE);
+			testResults += subTestPass(subtest);
+		} catch (Exception e) {
+			testResults += subTestFailure(testName, "Test Execution", "Exception thrown.");
 			testResults += e.toString();
 			testPassed = false;
 			e.printStackTrace();
 		}
-		
+
 		if (testPassed) {
-			pass(testName,testResults);
+			pass(testName, testResults);
 		} else {
-			fail(testName,testResults);
+			fail(testName, testResults);
 		}
 	}
 	
-	private static void testSettersAndGetters()
-	{
+	/**
+	 * Confirms that a Post returns the expected associated filename.
+	 */
+	private static void testGetFilename() {
 		/* Define variables for the test */
-		String author = "Ada Lovelace";
+		String author = "AdaLovelace";
 		String text = "I am much pleased to find how very well I stand work and how my powers of attention and continued effort increase.";
-		String testName = "testSettersAndGetters";
-		
+		int id = 42;
+		String testName = "testGetFilename";
+
 		boolean testPassed = true;
 		String testResults = "";
-		try
-		{
-			/* Create a new Post object */
-			PostInterface goodPost = new Post(text,author);
-			
-			/* Test getAuthor() */ 
-			String subtest = testName + " - getAuthor";
-			String value = goodPost.getAuthor();
-			if (value.equals(author)){
+		try {
+			String subtest = testName + " - matches expected filename";
+			String expectedFilename = "Post-00042.txt";
+			PostInterface thePost = new Post(id, author, text);
+			String filename = thePost.getFilename();
+			if (filename.equals(expectedFilename)) {
 				testResults += subTestPass(subtest);
 			} else {
-				testResults += subTestFailure(subtest,"Author should be " + author, "Author returned is " + value);
-				testPassed = false;
+				testResults += subTestFailure(subtest, "Expected filename: " + expectedFilename,
+				"Returned filename: " + filename);
+				testPassed = false;				
 			}
-			
-			/* Test getText() */
-			subtest = testName + " - getText";
-			value = goodPost.getText();
-			if (value.equals(text)){
-				value = goodPost.getText();
-			} else {
-				testResults += subTestFailure(subtest,"text should be " + text, "text returned is " + value);
-				testPassed = false;
-			}
-			
-			/* Test getPostID() and getPostFilename() */
-			subtest = testName + " - getPostID / getPostFilename";
-			value = goodPost.getPostFilename();
-			String postIDStr = Long.toString(goodPost.getPostID());
-			if (value.contains(postIDStr)){
-				testResults += subTestPass(subtest);		
-			} else {
-				testResults += subTestFailure(subtest, "Filename should have " + postIDStr, "Filename returned is " + value);
-				testPassed = false;
-			}
-
-		}
-		catch (Exception e)
-		{
-			testResults += subTestFailure(testName, "Test Execution", "Exception thrown. ");
+		} catch (Exception e) {
+			testResults += subTestFailure(testName, "No exceptions.", "Exception thrown.");
 			testResults += e.toString();
 			testPassed = false;
 			e.printStackTrace();
 		}
-		
+
 		if (testPassed) {
-			pass(testName,testResults);
+			pass(testName, testResults);
 		} else {
-			fail(testName,testResults);
-		}
+			fail(testName, testResults);
+		}		
 	}
 
-	private static void testIsValidMethod()
-	{
+	/**
+	 * Confirms that a Post returns its expected ID.
+	 */
+	private static void testGetPostID() {
 		/* Define variables for the test */
-		String author = "Ada Lovelace";
+		String author = "AdaLovelace";
 		String text = "I am much pleased to find how very well I stand work and how my powers of attention and continued effort increase.";
-		String testName = "testIsValidMethod";
-		
+		int id = 42;
+		String testName = "testGetPostID";
+
 		boolean testPassed = true;
 		String testResults = "";
-		try
-		{
-			String subtest = testName + " - Post is valid ";
-			PostInterface goodPost = new Post(text,author);
-			String filenameStr = goodPost.getPostFilename();
-			// creating directory and file to test isValid is true
-			File f = new File(filenameStr);
-			try {
-				PrintWriter pw = new PrintWriter(f);
-				pw.close();
-			} catch (FileNotFoundException fnfe) { }
-			if (goodPost.isValid()) {
+		try {
+			String subtest = testName + " - matches post ID";
+			PostInterface thePost = new Post(id, author, text);
+			int returnedID = thePost.getPostID();
+			if (id == returnedID) {
+				testResults += subTestPass(subtest);
+			} else {
+				testResults += subTestFailure(subtest, "Expected ID: " + id,
+				"Returned ID: " + returnedID);
+				testPassed = false;				
+			}
+		} catch (Exception e) {
+			testResults += subTestFailure(testName, "No exceptions.", "Exception thrown.");
+			testResults += e.toString();
+			testPassed = false;
+			e.printStackTrace();
+		}
+
+		if (testPassed) {
+			pass(testName, testResults);
+		} else {
+			fail(testName, testResults);
+		}		
+	}
+
+	/**
+	 * Confirms that a Post returns its expected author.
+	 */
+	private static void testGetAuthor() {
+		/* Define variables for the test */
+		String author = "AdaLovelace";
+		String text = "I am much pleased to find how very well I stand work and how my powers of attention and continued effort increase.";
+		int id = 42;
+		String testName = "testGetAuthor";
+
+		boolean testPassed = true;
+		String testResults = "";
+		try {
+			String subtest = testName + " - matches post author";
+			PostInterface thePost = new Post(id, author, text);
+			String returnedAuthor = thePost.getAuthor();
+			if (author.equals(returnedAuthor)) {
+				testResults += subTestPass(subtest);
+			} else {
+				testResults += subTestFailure(subtest, "Expected author: " + author,
+				"Returned author: " + returnedAuthor);
+				testPassed = false;				
+			}
+		} catch (Exception e) {
+			testResults += subTestFailure(testName, "No exceptions.", "Exception thrown.");
+			testResults += e.toString();
+			testPassed = false;
+			e.printStackTrace();
+		}
+
+		if (testPassed) {
+			pass(testName, testResults);
+		} else {
+			fail(testName, testResults);
+		}		
+	}
+
+	/**
+	 * Confirms that a Post returns its expected text.
+	 */
+	private static void testGetText() {
+		/* Define variables for the test */
+		String author = "AdaLovelace";
+		String text = "I am much pleased to find how very well I stand work and how my powers of attention and continued effort increase.";
+		int id = 42;
+		String testName = "testGetText";
+
+		boolean testPassed = true;
+		String testResults = "";
+		try {
+			String subtest = testName + " - matches post text";
+			PostInterface thePost = new Post(id, author, text);
+			String returnedText = thePost.getText();
+			if (text.equals(returnedText)) {
+				testResults += subTestPass(subtest);
+			} else {
+				testResults += subTestFailure(subtest, "Expected text: " + text,
+				"Returned text: " + returnedText);
+				testPassed = false;				
+			}
+		} catch (Exception e) {
+			testResults += subTestFailure(testName, "No exceptions.", "Exception thrown.");
+			testResults += e.toString();
+			testPassed = false;
+			e.printStackTrace();
+		}
+
+		if (testPassed) {
+			pass(testName, testResults);
+		} else {
+			fail(testName, testResults);
+		}		
+	}
+
+	/**
+	 * Confirms that a valid Instant is returned and attempts to confirm that
+	 * the returned timestamp is very close to the expected timestamp.
+	 */
+	private static void testGetTimestamp() {
+		/* Define variables for the test */
+		String author = "AdaLovelace";
+		String text = "I am much pleased to find how very well I stand work and how my powers of attention and continued effort increase.";
+		int id = 42;
+		String testName = "testGetTimestamp";
+
+		boolean testPassed = true;
+		String testResults = "";
+		try {
+			String subtest = testName + " - valid ISO-8601 timestamp";
+			Instant now = Instant.now();
+			PostInterface thePost = new Post(id, author, text);
+			Instant returnedTimestamp = thePost.getTimestamp();
+			//within 2 seconds?
+			if (Math.abs(returnedTimestamp.getEpochSecond() - now.getEpochSecond()) < 2) {
+				testResults += subTestPass(subtest);
+			} else {
+				testResults += subTestFailure(subtest, "Timestamp within 2 seconds of calling constructor.",
+				"Reference timestamp: " + now + ", Returned timestamp: " + returnedTimestamp);
+				testPassed = false;				
+			}
+		} catch (Exception e) {
+			testResults += subTestFailure(testName, "No exceptions.", "Exception thrown.");
+			testResults += e.toString();
+			testPassed = false;
+			e.printStackTrace();
+		}
+
+		if (testPassed) {
+			pass(testName, testResults);
+		} else {
+			fail(testName, testResults);
+		}		
+	}
+
+	/**
+	 * Confirms that isValid() returns true when a Post has been initialized with
+	 * author, text, and ID. Confirms that isValid() returns false when Post was
+	 * missing values during instantiation.
+	 */
+	private static void testIsValidMethod() {
+		/* Define variables for the test */
+		String author = "AdaLovelace";
+		String text = "I am much pleased to find how very well I stand work and how my powers of attention and continued effort increase.";
+		int id = 42;
+		String filename = "Post-00042.txt";
+		String testName = "testIsValid";
+
+		boolean testPassed = true;
+		String testResults = "";
+		try {
+			//testing where isValid() is expected to be true
+			String subtest = testName + " - Post is valid";
+			File file = new File(filename); //delete any prior file with same ID
+			if (file.exists()) {
+				file.delete();
+			}
+			PostInterface thePost = new Post(id, author, text);
+			if (thePost.isValid()) {
 				testResults += subTestPass(subtest);
 			} else {
 				testResults += subTestFailure(subtest, "isValid() == true", "isValid() == false");
 				testPassed = false;
-			}
-			
-			subtest = testName + " - Post not valid (author = null)";
-			goodPost = new Post(text,null);
-			
-			if (goodPost.isValid()) {
+			}			
+			//testing where isValid() is expected to be false, author == null
+			subtest = testName + " - Post not valid when author = null";
+			thePost = new Post(id, null, text);
+			if (thePost.isValid()) {
 				testResults += subTestFailure(subtest, "isValid() == false", "isValid() == true");
 				testPassed = false;
 			} else {
 				testResults += subTestPass(subtest);
 			}
-			
-			subtest = testName + " - Post not valid (text = null)";
-			goodPost = new Post(null,author);
-			
-			if (goodPost.isValid()) {
+			//testing where isValid() is expected to be false, text == null
+			subtest = testName + " - Post not valid when text = null";
+			file = new File(filename); //delete any prior file with same ID
+			if (file.exists()) {
+				file.delete();
+			}
+			thePost = new Post(id, author, null);
+			if (thePost.isValid()) {
 				testResults += subTestFailure(subtest, "isValid() == false", "isValid() == true");
 				testPassed = false;
 			} else {
 				testResults += subTestPass(subtest);
 			}
-			
-		} catch (Exception e)
-		{
-			testResults += subTestFailure(testName, "Test Execution", "Exception thrown. ");
+			//testing where isValid() is expected to be false after failure to
+			//recover a Post from an invalid ID.
+			subtest = testName + " - Post not valid when recovered from invalid ID";
+			file = new File(filename); //delete any prior file with same ID
+			if (file.exists()) {
+				file.delete();
+			}
+			thePost = new Post(Integer.MAX_VALUE);
+			if (thePost.isValid()) {
+				testResults += subTestFailure(subtest, "isValid() == false", "isValid() == true");
+				testPassed = false;
+			} else {
+				testResults += subTestPass(subtest);
+			}
+		} catch (Exception e) {
+			testResults += subTestFailure(testName, "No exceptions.", "Exception thrown.");
 			testResults += e.toString();
 			testPassed = false;
 			e.printStackTrace();
 		}
-		
+
 		if (testPassed) {
-			pass(testName,testResults);
+			pass(testName, testResults);
 		} else {
-			fail(testName,testResults);
+			fail(testName, testResults);
 		}
 	}
-	
-	private static void testToStringMethod()
-	{
-		/* Define variables for the test */
-		String author = "Ada Lovelace";
+
+	/**
+	 * Confirms that no exceptions are thrown when addComment() is called and
+	 * all comments appear in Post file.
+	 * Evidence of successfully-added comments is also tested with toString().
+	 */
+	private static void testAddComment() {
+		String author = "AdaLovelace";
 		String text = "I am much pleased to find how very well I stand work and how my powers of attention and continued effort increase.";
-		String testName = "testToStringMethod";
-		
-		boolean testPassed = true;
-		String testResults = "";
-		try
-		{
-			String subtest = testName + " - toString() includes author ";
-			PostInterface goodPost = new Post(text,author);
-			String value = goodPost.toString();
-			if (value.contains(author)) {
-				testResults += subTestPass(subtest);
-			} else {
-				testResults += subTestFailure(subtest, author, value);
-				testPassed = false;
-			}
-			
-			subtest = testName + " - toString() includes text ";
-			if (value.contains(text)) {
-				testResults += subTestPass(subtest);
-			} else {
-				testResults += subTestFailure(subtest, text, value);
-				testPassed = false;
-			}
-
-			subtest = testName + " - toString() includes postID ";
-			if (value.contains(Long.toString(goodPost.getPostID()))) {
-				testResults += subTestPass(subtest);
-			} else {
-				testResults += subTestFailure(subtest, text, value);
-				testPassed = false;
-			}
-
-			
-		} catch (Exception e)
-		{
-			testResults += subTestFailure(testName, "Test Execution", "Exception thrown. ");
-			testResults += e.toString();
-			testPassed = false;
-			e.printStackTrace();
-		}
-		
-		if (testPassed) {
-			pass(testName,testResults);
-		} else {
-			fail(testName,testResults);
-		}
-	}
-	
-	private static void testAddAndGetFileContentsMethods()
-	{
-		/* Define variables for the test */
-		String author = "Ada Lovelace";
-		String text = "I am much pleased to find how very well I stand work and how my powers of attention and continued effort increase.";
-		String testName = "testGetFileContentsMethod";
-
+		int id = 42;
+		String filename = "Post-00042.txt";
+		String author2 = "KatherineJohnson";
 		String comment1 = "Like what you do, and then you will do your best.";
 		String comment2 = "I don't have a feeling of inferiority. Never had. I'm as good as anybody, but no better.";
 		String comment3 = "You are no better than anyone else, and no one is better than you.";
 		String comment4 = "I like to learn. That�s an art and a science.";
-		
+
+		String testName = "testAddComment";
+
 		boolean testPassed = true;
 		String testResults = "";
-		try
-		{
-			// add comments
-			String subtest = testName + " - addComment & Check line count";
-			PostInterface goodPost = new Post(text,author);
-
-			goodPost.addComment("Katherine Johnson", comment1);
-			goodPost.addComment("Katherine Johnson", comment2);
-			goodPost.addComment("Katherine Johnson", comment3);
-			goodPost.addComment("Katherine Johnson", comment4);
-			
-			String comments = goodPost.getFileContents();
-			testResults += "Trying with file: " + goodPost.getPostFilename() + "\n";
-			Scanner postScanner = new Scanner(comments);
-			int numLinesComments = 0;
-			while (postScanner.hasNextLine()) {
-				postScanner.nextLine();
-				numLinesComments++;
+		try {
+			String subtest = testName + " - no exceptions when adding comments";
+			File file = new File(filename); //delete any prior file with same ID
+			if (file.exists()) {
+				file.delete();
 			}
-			postScanner.close();
-			
-			postScanner = new Scanner(new File(goodPost.getPostFilename()));
-			int numLinesFile = 0;
-			while (postScanner.hasNextLine()) {
-				postScanner.nextLine();
-				numLinesFile++;
-			}
+			PostInterface thePost = new Post(id, author, text);
+			thePost.addComment(author2, comment1);
+			thePost.addComment(author2, comment2);
+			thePost.addComment(author2, comment3);
+			thePost.addComment(author2, comment4);
+			testResults += subTestPass(subtest);
 
-			if (numLinesComments == numLinesFile) {
-				testResults += subTestPass(subtest);
-			} else {
-				testResults += subTestFailure(subtest, "Lines from getFileContents() == Lines from " + goodPost.getPostFilename(), "Lines from getFileContents(): (" + numLinesComments + "), Lines from " + goodPost.getPostFilename() + ": (" + numLinesFile + ")");
-
+			subtest = testName + " - comments appear in Post file";
+			boolean subtestPassed = true;
+			Scanner fileScan = new Scanner(new File(filename));
+			String line = fileScan.nextLine(); //post line
+			line = fileScan.nextLine(); //should be first comment line
+			if (!line.contains(author2)) {
+				testResults += subTestFailure(subtest, "First comment line in " + filename + " contains " + author2, line);
 				testPassed = false;
+				subtestPassed = false;
 			}
-			
-			subtest = testName + " - original comments included in what was read from file";
-			if (comments.contains(comment1) && comments.contains(comment2) && comments.contains(comment3) && comments.contains(comment4)) {
-				testResults += subTestPass(subtest);
-			} else {
-				testResults += subTestFailure(subtest, "All comments found in the post file", "Not all comments were in the retrieved file");
+			if (!line.contains(comment1)) {
+				testResults += subTestFailure(subtest, "First comment line in " + filename + " contains \"" + comment1 + "\"", line);
 				testPassed = false;
+				subtestPassed = false;
 			}
-
-
-		} catch (Exception e)
-		{
-			testResults += subTestFailure(testName, "Test Execution", "Exception thrown. ");
+			line = fileScan.nextLine(); //should be second comment line
+			if (!line.contains(author2)) {
+				testResults += subTestFailure(subtest, "Second comment line in " + filename + " contains " + author2, line);
+				testPassed = false;
+				subtestPassed = false;
+			}
+			if (!line.contains(comment2)) {
+				testResults += subTestFailure(subtest, "Second comment line in " + filename + " contains \"" + comment2 + "\"", line);
+				testPassed = false;
+				subtestPassed = false;
+			}
+			line = fileScan.nextLine(); //should be third comment line
+			if (!line.contains(author2)) {
+				testResults += subTestFailure(subtest, "Third comment line in " + filename + " contains " + author2, line);
+				testPassed = false;
+				subtestPassed = false;
+			}
+			if (!line.contains(comment3)) {
+				testResults += subTestFailure(subtest, "Third comment line in " + filename + " contains \"" + comment3 + "\"", line);
+				testPassed = false;
+				subtestPassed = false;
+			}
+			line = fileScan.nextLine(); //should be fourth comment line
+			if (!line.contains(author2)) {
+				testResults += subTestFailure(subtest, "Fourth comment line in " + filename + " contains " + author2, line);
+				testPassed = false;
+				subtestPassed = false;
+			}
+			if (!line.contains(comment4)) {
+				testResults += subTestFailure(subtest, "Fourth comment line in " + filename + " contains \"" + comment4 + "\"", line);
+				testPassed = false;
+				subtestPassed = false;
+			}
+			fileScan.close();
+			if (subtestPassed) {
+				testResults += subTestPass(subtest);
+			}
+		} catch (Exception e) {
+			testResults += subTestFailure(testName, "No exceptions.", "Exception thrown.");
 			testResults += e.toString();
 			testPassed = false;
 			e.printStackTrace();
 		}
-		
+
 		if (testPassed) {
-			pass(testName,testResults);
+			pass(testName, testResults);
 		} else {
-			fail(testName,testResults);
+			fail(testName, testResults);
 		}
 	}
-	
-	
-	private static String subTestFailure(String testName, String expected, String actual)
-	{
+
+	/**
+	 * Confirms expected post format and content from toStringPostOnly().
+	 */
+	private static void testToStringPostOnly() {
+		String author = "AdaLovelace";
+		String text = "I am much pleased to find how very well I stand work and how my powers of attention and continued effort increase.";
+		int id = 42;
+		String testName = "testToStringPostOnly";
+
+		boolean testPassed = true;
+		String testResults = "";
+		try {
+			PostInterface thePost = new Post(id, author, text);
+			String returnedString = thePost.toStringPostOnly();
+			String[] lines = returnedString.split("\n");
+			String[] tokens = returnedString.split("\\s+");
+
+			String subtest = testName + " - returns a single line";
+			if (lines.length != 1) {
+				testResults += subTestFailure(subtest, "Lines returned: 1", "Lines returned: " + lines.length);
+				testPassed = false;
+			} else {
+				testResults += subTestPass(subtest);
+			}
+			
+			subtest = testName + " - includes postID as first value";
+			try {
+				if (tokens[0].length() != 5) {
+					testResults += subTestFailure(subtest, "post ID formatted to 5 digits", tokens[0]);
+					testPassed = false;					
+				} else if (Integer.parseInt(tokens[0]) != id) {
+					testResults += subTestFailure(subtest, Integer.toString(id), Integer.toString(Integer.parseInt(tokens[0])));
+					testPassed = false;
+				} else {
+					testResults += subTestPass(subtest);
+				}
+			} catch (NumberFormatException e) {
+				testResults += subTestFailure(subtest, "First value can be read as an integer matching " + id, tokens[0]);
+				testPassed = false;				
+			}
+
+			subtest = testName + " - includes ISO-8601 timestamp as second value";
+			try {
+				Instant timestamp = Instant.parse(tokens[2]);
+				testResults += subTestPass(subtest);
+			} catch (DateTimeParseException e) {
+				testResults += subTestFailure(subtest, "ISO-8601 formatted timestamp", tokens[2]);
+				testPassed = false;
+			}
+			
+			subtest = testName + " - includes author as third value";
+			if (tokens[4].equals(author)) {
+				testResults += subTestPass(subtest);
+			} else {
+				testResults += subTestFailure(subtest, author, tokens[4]);
+				testPassed = false;
+			}
+
+			subtest = testName + " - includes post text";
+			if (returnedString.contains(text)) { //can't use tokens because words are separated
+				testResults += subTestPass(subtest);
+			} else {
+				testResults += subTestFailure(subtest, "Includes \"" + text + "\"", returnedString);
+				testPassed = false;
+			}
+			
+			subtest = testName + " - values separated by dashes";
+			if (!tokens[1].equals("-")
+				|| !tokens[3].equals("-")
+				|| !tokens[5].equals("-")
+			) {
+				testResults += subTestFailure(subtest, "Values separated by dashes", returnedString);
+				testPassed = false;
+			} else {
+				testResults += subTestPass(subtest);
+			}
+		} catch (Exception e) {
+			testResults += subTestFailure(testName, "No exceptions.", "Exception thrown.");
+			testResults += e.toString();
+			testPassed = false;
+			e.printStackTrace();
+		}
+
+		if (testPassed) {
+			pass(testName, testResults);
+		} else {
+			fail(testName, testResults);
+		}
+	}
+
+	/**
+	 * Confirms expected post and comment formatting and content from toString().
+	 */
+	private static void testToString() {
+		String author = "AdaLovelace";
+		String text = "I am much pleased to find how very well I stand work and how my powers of attention and continued effort increase.";
+		int id = 42;
+		String author2 = "KatherineJohnson";
+		String comment1 = "Like what you do, and then you will do your best.";
+		String comment2 = "I don't have a feeling of inferiority. Never had. I'm as good as anybody, but no better.";
+		String comment3 = "You are no better than anyone else, and no one is better than you.";
+		String comment4 = "I like to learn. That�s an art and a science.";
+
+		String testName = "testToString";
+
+		boolean testPassed = true;
+		String testResults = "";
+		try {
+			PostInterface thePost = new Post(id, author, text);
+			thePost.addComment(author2, comment1);
+			thePost.addComment(author2, comment2);
+			thePost.addComment(author2, comment3);
+			thePost.addComment(author2, comment4);
+
+			String retString = thePost.toString();
+			String[] lines = retString.split("\n");
+
+			String subtest = testName + " - expected line count";
+			if (lines.length != 5) {
+				testResults += subTestFailure(subtest, "Lines returned: 5", "Lines returned: " + lines.length);
+				testPassed = false;
+			} else {
+				testResults += subTestPass(subtest);
+			}
+			
+			subtest = testName + " - first line contains dash-separated post values";
+			String[] lineTokens = lines[0].split(" - ");
+			boolean subtestResult = true;
+			try {
+				if (Integer.parseInt(lineTokens[0]) != id) {
+					testResults += subTestFailure(subtest, "First post value matches postID " + id, lineTokens[0]);
+					testPassed = false;
+					subtestResult = false;
+				}
+			} catch (NumberFormatException e) {
+				testResults += subTestFailure(subtest, "First post value integer " + id, lineTokens[0]);
+				testPassed = false;
+				subtestResult = false;
+			}
+			try {
+				Instant timestamp = Instant.parse(lineTokens[1]);
+			} catch (DateTimeParseException e) {
+				testResults += subTestFailure(subtest, "Second post value ISO-8601 timestamp", lineTokens[1]);
+				testPassed = false;
+				subtestResult = false;				
+			}
+			if (!lineTokens[2].equals(author)) {
+				testResults += subTestFailure(subtest, "Third post value matches " + author, lineTokens[2]);
+				testPassed = false;
+				subtestResult = false;				
+			}
+			if (!lines[0].contains(text)) {
+				testResults += subTestFailure(subtest, "Post line contains \"" + text + "\"", lines[0]);
+				testPassed = false;
+				subtestResult = false;				
+			}
+			if (subtestResult) {
+				testResults += subTestPass(subtest);
+			}
+			
+			// first comment
+			subtest = testName + " - second line matches first comment";
+			lineTokens = lines[1].split(" - ");
+			subtestResult = true;
+			if (lineTokens[0].charAt(0) != '\t') {
+				testResults += subTestFailure(subtest, "Comment line starts with tab", "No leading tab");
+				testPassed = false;
+				subtestResult = false;
+			}
+			try {
+				Instant timestamp = Instant.parse(lineTokens[0].trim());
+			} catch (DateTimeParseException e) {
+				testResults += subTestFailure(subtest, "First comment value ISO-8601 timestamp", lineTokens[0].trim());
+				testPassed = false;
+				subtestResult = false;
+			}
+			if (!lineTokens[1].equals(author2)) {
+				testResults += subTestFailure(subtest, "Second comment value author " + author2, lineTokens[1]);
+				testPassed = false;
+				subtestResult = false;
+			}
+			if (!lines[1].contains(comment1)) {
+				testResults += subTestFailure(subtest, "Second line includes comment text \"" + comment1 + "\"", lines[1].trim());
+				testPassed = false;
+				subtestResult = false;
+			}
+			if (subtestResult) {
+				testResults += subTestPass(subtest);
+			}
+			
+			// second comment
+			subtest = testName + " - third line matches second comment";
+			lineTokens = lines[2].split(" - ");
+			subtestResult = true;
+			if (lineTokens[0].charAt(0) != '\t') {
+				testResults += subTestFailure(subtest, "Comment line starts with tab", "No leading tab");
+				testPassed = false;
+				subtestResult = false;
+			}
+			try {
+				Instant timestamp = Instant.parse(lineTokens[0].trim());
+			} catch (DateTimeParseException e) {
+				testResults += subTestFailure(subtest, "First comment value ISO-8601 timestamp", lineTokens[0].trim());
+				testPassed = false;
+				subtestResult = false;
+			}
+			if (!lineTokens[1].equals(author2)) {
+				testResults += subTestFailure(subtest, "Second comment value author " + author2, lineTokens[1]);
+				testPassed = false;
+				subtestResult = false;
+			}
+			if (!lines[2].contains(comment2)) {
+				testResults += subTestFailure(subtest, "Third line includes comment text \"" + comment2 + "\"", lines[2].trim());
+				testPassed = false;
+				subtestResult = false;
+			}
+			if (subtestResult) {
+				testResults += subTestPass(subtest);
+			}
+			
+			// third comment
+			subtest = testName + " - fourth line matches third comment";
+			lineTokens = lines[3].split(" - ");
+			subtestResult = true;
+			if (lineTokens[0].charAt(0) != '\t') {
+				testResults += subTestFailure(subtest, "Comment line starts with tab", "No leading tab");
+				testPassed = false;
+				subtestResult = false;
+			}
+			try {
+				Instant timestamp = Instant.parse(lineTokens[0].trim());
+			} catch (DateTimeParseException e) {
+				testResults += subTestFailure(subtest, "First comment value ISO-8601 timestamp", lineTokens[0].trim());
+				testPassed = false;
+				subtestResult = false;
+			}
+			if (!lineTokens[1].equals(author2)) {
+				testResults += subTestFailure(subtest, "Second comment value author " + author2, lineTokens[1]);
+				testPassed = false;
+				subtestResult = false;
+			}
+			if (!lines[3].contains(comment3)) {
+				testResults += subTestFailure(subtest, "Fourth line includes comment text \"" + comment3 + "\"", lines[3].trim());
+				testPassed = false;
+				subtestResult = false;
+			}
+			if (subtestResult) {
+				testResults += subTestPass(subtest);
+			}
+
+			// fourth comment
+			subtest = testName + " - fifth line matches fourth comment";
+			lineTokens = lines[4].split(" - ");
+			subtestResult = true;
+			if (lineTokens[0].charAt(0) != '\t') {
+				testResults += subTestFailure(subtest, "Comment line starts with tab", "No leading tab");
+				testPassed = false;
+				subtestResult = false;
+			}
+			try {
+				Instant timestamp = Instant.parse(lineTokens[0].trim());
+			} catch (DateTimeParseException e) {
+				testResults += subTestFailure(subtest, "First comment value ISO-8601 timestamp", lineTokens[0].trim());
+				testPassed = false;
+				subtestResult = false;
+			}
+			if (!lineTokens[1].equals(author2)) {
+				testResults += subTestFailure(subtest, "Second comment value author " + author2, lineTokens[1]);
+				testPassed = false;
+				subtestResult = false;
+			}
+			if (!lines[4].contains(comment4)) {
+				testResults += subTestFailure(subtest, "Fifth line includes comment text \"" + comment4 + "\"", lines[4].trim());
+				testPassed = false;
+				subtestResult = false;
+			}
+			if (subtestResult) {
+				testResults += subTestPass(subtest);
+			}
+		} catch (Exception e) {
+			testResults += subTestFailure(testName, "No exceptions.", "Exception thrown.");
+			testResults += e.toString();
+			testPassed = false;
+			e.printStackTrace();
+		}
+
+		if (testPassed) {
+			pass(testName, testResults);
+		} else {
+			fail(testName, testResults);
+		}
+	}
+
+	/**
+	 * Format test output for a failed subtest.
+	 * @param testName name of failed subtest
+	 * @param expected description of expected result
+	 * @param actual description of actual result
+	 * @return formatted String with test output
+	 */
+	private static String subTestFailure(String testName, String expected, String actual) {
 		String output = "    (error): " + testName + "\n";
 		output += "        --> expected: " + expected + "\n";
 		output += "        -->   actual: " + actual + "\n";
-		
+
 		return output;
 	}
-	
+
+	/**
+	 * Format test output for a passed subtest.
+	 * @param testName name of passed subtest
+	 * @return formatted String with test output
+	 */
 	private static String subTestPass(String testName) {
 		return "    " + testName + "\n";
 	}
-	
-	private static void fail(String testName, String message)
-	{
+
+	/**
+	 * Format test output for a failed test.
+	 * @param testName name of failed test
+	 * @param message description of the cause of test failure
+	 */
+	private static void fail(String testName, String message) {
 		System.err.println("FAILED: " + testName);
 		System.err.println("    " + message.trim());
 		status = 1;
 	}
 
-	private static void pass(String testName, String message)
-	{
+	/**
+	 * Format test output for a passed test.
+	 * @param testName name of passed test
+	 * @param message description to elaborate on test result
+	 */
+	private static void pass(String testName, String message) {
 		System.out.println("PASSED: " + testName);
 		System.out.println("    " + message.trim());
 	}
 
 }
-

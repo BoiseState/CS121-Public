@@ -392,7 +392,7 @@ public class PostUnitTester {
 		String comment1 = "Like what you do, and then you will do your best.";
 		String comment2 = "I don't have a feeling of inferiority. Never had. I'm as good as anybody, but no better.";
 		String comment3 = "You are no better than anyone else, and no one is better than you.";
-		String comment4 = "I like to learn. That�s an art and a science.";
+		String comment4 = "I like to learn. That's an art and a science.";
 
 		String testName = "testAddComment";
 
@@ -578,7 +578,7 @@ public class PostUnitTester {
 		String comment1 = "Like what you do, and then you will do your best.";
 		String comment2 = "I don't have a feeling of inferiority. Never had. I'm as good as anybody, but no better.";
 		String comment3 = "You are no better than anyone else, and no one is better than you.";
-		String comment4 = "I like to learn. That�s an art and a science.";
+		String comment4 = "I like to learn. That's an art and a science.";
 
 		String testName = "testToString";
 

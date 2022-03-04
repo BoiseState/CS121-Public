@@ -520,18 +520,18 @@ public class PostUnitTester {
 
 			subtest = testName + " - includes ISO-8601 timestamp as second value";
 			try {
-				Instant timestamp = Instant.parse(tokens[2]);
+				Instant timestamp = Instant.parse(tokens[1]);
 				testResults += subTestPass(subtest);
 			} catch (DateTimeParseException e) {
-				testResults += subTestFailure(subtest, "ISO-8601 formatted timestamp", tokens[2]);
+				testResults += subTestFailure(subtest, "ISO-8601 formatted timestamp", tokens[1]);
 				testPassed = false;
 			}
 			
 			subtest = testName + " - includes author as third value";
-			if (tokens[4].equals(author)) {
+			if (tokens[2].equals(author)) {
 				testResults += subTestPass(subtest);
 			} else {
-				testResults += subTestFailure(subtest, author, tokens[4]);
+				testResults += subTestFailure(subtest, author, tokens[2]);
 				testPassed = false;
 			}
 
@@ -541,18 +541,7 @@ public class PostUnitTester {
 			} else {
 				testResults += subTestFailure(subtest, "Includes \"" + text + "\"", returnedString);
 				testPassed = false;
-			}
-			
-			subtest = testName + " - values separated by dashes";
-			if (!tokens[1].equals("-")
-				|| !tokens[3].equals("-")
-				|| !tokens[5].equals("-")
-			) {
-				testResults += subTestFailure(subtest, "Values separated by dashes", returnedString);
-				testPassed = false;
-			} else {
-				testResults += subTestPass(subtest);
-			}
+			}			
 		} catch (Exception e) {
 			testResults += subTestFailure(testName, "No exceptions.", "Exception thrown.");
 			testResults += e.toString();
@@ -602,29 +591,34 @@ public class PostUnitTester {
 				testResults += subTestPass(subtest);
 			}
 			
-			subtest = testName + " - first line contains dash-separated post values";
-			String[] lineTokens = lines[0].split(" - ");
+			subtest = testName + " - first line contains well-formmated whitespace-separated post values";
+			String[] tokens = lines[0].split("\\s+"); 
 			boolean subtestResult = true;
-			try {
-				if (Integer.parseInt(lineTokens[0]) != id) {
-					testResults += subTestFailure(subtest, "First post value matches postID " + id, lineTokens[0]);
-					testPassed = false;
-					subtestResult = false;
-				}
-			} catch (NumberFormatException e) {
-				testResults += subTestFailure(subtest, "First post value integer " + id, lineTokens[0]);
+			if (tokens[0].length() != 5) {
+				testResults += subTestFailure(subtest, "First post value formatted to 5 digits", tokens[0]);
 				testPassed = false;
 				subtestResult = false;
 			}
 			try {
-				Instant timestamp = Instant.parse(lineTokens[1]);
+				if (Integer.parseInt(tokens[0]) != id) {
+					testResults += subTestFailure(subtest, "First post value matches postID " + id, tokens[0]);
+					testPassed = false;
+					subtestResult = false;
+				}
+			} catch (NumberFormatException e) {
+				testResults += subTestFailure(subtest, "First post value matches integer " + id, tokens[0]);
+				testPassed = false;
+				subtestResult = false;
+			}
+			try {
+				Instant timestamp = Instant.parse(tokens[1]);
 			} catch (DateTimeParseException e) {
-				testResults += subTestFailure(subtest, "Second post value ISO-8601 timestamp", lineTokens[1]);
+				testResults += subTestFailure(subtest, "Second post value ISO-8601 timestamp", tokens[1]);
 				testPassed = false;
 				subtestResult = false;				
 			}
-			if (!lineTokens[2].equals(author)) {
-				testResults += subTestFailure(subtest, "Third post value matches " + author, lineTokens[2]);
+			if (!tokens[2].equals(author)) {
+				testResults += subTestFailure(subtest, "Third post value matches " + author, tokens[2]);
 				testPassed = false;
 				subtestResult = false;				
 			}
@@ -639,27 +633,27 @@ public class PostUnitTester {
 			
 			// first comment
 			subtest = testName + " - second line matches first comment";
-			lineTokens = lines[1].split(" - ");
+			tokens = lines[1].trim().split("\\s+");
 			subtestResult = true;
-			if (lineTokens[0].charAt(0) != '\t') {
+			if (lines[1].charAt(0) != '\t') {
 				testResults += subTestFailure(subtest, "Comment line starts with tab", "No leading tab");
 				testPassed = false;
 				subtestResult = false;
 			}
 			try {
-				Instant timestamp = Instant.parse(lineTokens[0].trim());
+				Instant timestamp = Instant.parse(tokens[0]);
 			} catch (DateTimeParseException e) {
-				testResults += subTestFailure(subtest, "First comment value ISO-8601 timestamp", lineTokens[0].trim());
+				testResults += subTestFailure(subtest, "First comment ISO-8601 timestamp", tokens[0]);
 				testPassed = false;
 				subtestResult = false;
 			}
-			if (!lineTokens[1].equals(author2)) {
-				testResults += subTestFailure(subtest, "Second comment value author " + author2, lineTokens[1]);
+			if (!tokens[1].equals(author2)) {
+				testResults += subTestFailure(subtest, "First comment author " + author2, tokens[1]);
 				testPassed = false;
 				subtestResult = false;
 			}
 			if (!lines[1].contains(comment1)) {
-				testResults += subTestFailure(subtest, "Second line includes comment text \"" + comment1 + "\"", lines[1].trim());
+				testResults += subTestFailure(subtest, "First comment contains \"" + comment1 + "\"", lines[1].trim());
 				testPassed = false;
 				subtestResult = false;
 			}
@@ -669,27 +663,27 @@ public class PostUnitTester {
 			
 			// second comment
 			subtest = testName + " - third line matches second comment";
-			lineTokens = lines[2].split(" - ");
+			tokens = lines[2].trim().split("\\s+");
 			subtestResult = true;
-			if (lineTokens[0].charAt(0) != '\t') {
+			if (lines[2].charAt(0) != '\t') {
 				testResults += subTestFailure(subtest, "Comment line starts with tab", "No leading tab");
 				testPassed = false;
 				subtestResult = false;
 			}
 			try {
-				Instant timestamp = Instant.parse(lineTokens[0].trim());
+				Instant timestamp = Instant.parse(tokens[0]);
 			} catch (DateTimeParseException e) {
-				testResults += subTestFailure(subtest, "First comment value ISO-8601 timestamp", lineTokens[0].trim());
+				testResults += subTestFailure(subtest, "Second comment ISO-8601 timestamp", tokens[0]);
 				testPassed = false;
 				subtestResult = false;
 			}
-			if (!lineTokens[1].equals(author2)) {
-				testResults += subTestFailure(subtest, "Second comment value author " + author2, lineTokens[1]);
+			if (!tokens[1].equals(author2)) {
+				testResults += subTestFailure(subtest, "Second comment author " + author2, tokens[1]);
 				testPassed = false;
 				subtestResult = false;
 			}
 			if (!lines[2].contains(comment2)) {
-				testResults += subTestFailure(subtest, "Third line includes comment text \"" + comment2 + "\"", lines[2].trim());
+				testResults += subTestFailure(subtest, "Second comment contains \"" + comment2 + "\"", lines[2].trim());
 				testPassed = false;
 				subtestResult = false;
 			}
@@ -699,27 +693,27 @@ public class PostUnitTester {
 			
 			// third comment
 			subtest = testName + " - fourth line matches third comment";
-			lineTokens = lines[3].split(" - ");
+			tokens = lines[3].trim().split("\\s+");
 			subtestResult = true;
-			if (lineTokens[0].charAt(0) != '\t') {
+			if (lines[3].charAt(0) != '\t') {
 				testResults += subTestFailure(subtest, "Comment line starts with tab", "No leading tab");
 				testPassed = false;
 				subtestResult = false;
 			}
 			try {
-				Instant timestamp = Instant.parse(lineTokens[0].trim());
+				Instant timestamp = Instant.parse(tokens[0]);
 			} catch (DateTimeParseException e) {
-				testResults += subTestFailure(subtest, "First comment value ISO-8601 timestamp", lineTokens[0].trim());
+				testResults += subTestFailure(subtest, "Third comment ISO-8601 timestamp", tokens[0]);
 				testPassed = false;
 				subtestResult = false;
 			}
-			if (!lineTokens[1].equals(author2)) {
-				testResults += subTestFailure(subtest, "Second comment value author " + author2, lineTokens[1]);
+			if (!tokens[1].equals(author2)) {
+				testResults += subTestFailure(subtest, "Third comment author " + author2, tokens[1]);
 				testPassed = false;
 				subtestResult = false;
 			}
 			if (!lines[3].contains(comment3)) {
-				testResults += subTestFailure(subtest, "Fourth line includes comment text \"" + comment3 + "\"", lines[3].trim());
+				testResults += subTestFailure(subtest, "Third comment contains \"" + comment3 + "\"", lines[3].trim());
 				testPassed = false;
 				subtestResult = false;
 			}
@@ -729,27 +723,27 @@ public class PostUnitTester {
 
 			// fourth comment
 			subtest = testName + " - fifth line matches fourth comment";
-			lineTokens = lines[4].split(" - ");
+			tokens = lines[4].trim().split("\\s+");
 			subtestResult = true;
-			if (lineTokens[0].charAt(0) != '\t') {
+			if (lines[4].charAt(0) != '\t') {
 				testResults += subTestFailure(subtest, "Comment line starts with tab", "No leading tab");
 				testPassed = false;
 				subtestResult = false;
 			}
 			try {
-				Instant timestamp = Instant.parse(lineTokens[0].trim());
+				Instant timestamp = Instant.parse(tokens[0]);
 			} catch (DateTimeParseException e) {
-				testResults += subTestFailure(subtest, "First comment value ISO-8601 timestamp", lineTokens[0].trim());
+				testResults += subTestFailure(subtest, "Fourth comment ISO-8601 timestamp", tokens[0]);
 				testPassed = false;
 				subtestResult = false;
 			}
-			if (!lineTokens[1].equals(author2)) {
-				testResults += subTestFailure(subtest, "Second comment value author " + author2, lineTokens[1]);
+			if (!tokens[1].equals(author2)) {
+				testResults += subTestFailure(subtest, "Fourth comment value author " + author2, tokens[1]);
 				testPassed = false;
 				subtestResult = false;
 			}
 			if (!lines[4].contains(comment4)) {
-				testResults += subTestFailure(subtest, "Fifth line includes comment text \"" + comment4 + "\"", lines[4].trim());
+				testResults += subTestFailure(subtest, "Fourth comment contains \"" + comment4 + "\"", lines[4].trim());
 				testPassed = false;
 				subtestResult = false;
 			}

@@ -27,7 +27,7 @@ public interface PostInterface {
 	 * Appends comment timestamp, author, and text to Post's associated file.
 	 * (Optionally adds new Comment object to a comments list.)
 	 *
-	 * @param author one-word name of the author, e.g. "AdaLovelace"
+	 * @param author one-word username of the author, e.g. "AdaLovelace"
 	 * @param text complete post text
 	 */
 	public void addComment(String author, String text);
@@ -48,9 +48,9 @@ public interface PostInterface {
 	 * ISO-8601 standard as returned by an Instant's toString(). Comment lines
 	 * should be indented with a tab.
 	 * Example:
-	 * 	"00010 - 2021-11-30T23:38:23.085Z - Mason - Did stuff.
-	 * 		2021-12-01T08:18:21.055Z - Luke - It's late...
-	 * 		2021-12-01T09:22:03.142Z - Kathryn - And it wasn't the right stuff." 
+	 * 	"00010 2021-11-30T23:38:23.085Z Mason Did stuff.
+	 * 		2021-12-01T08:18:21.055Z Luke It's late...
+	 * 		2021-12-01T09:22:03.142Z Kathryn And it wasn't the right stuff." 
 	 * 
 	 * @return a well-formatted String including post and all comments 
 	 */
@@ -61,7 +61,7 @@ public interface PostInterface {
 	 * the original post, exactly as shown in the first line of toString() output.
 	 * Intended for use when a list of posts is printed to console.
 	 * Example:
-	 * 	"00010 - 2021-11-30T23:38:23.085Z - Mason - Did stuff"
+	 * 	"00010 2021-11-30T23:38:23.085Z Mason Did stuff"
 	 * 
 	 * @return well-formatted String including id, date, author, and post text only
 	 */

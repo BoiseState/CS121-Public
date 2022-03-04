@@ -77,8 +77,8 @@ public interface TextBookInterface {
 	 * and each post is on its own line as shown in the example.
 	 * Example:
 	 *  	"TextBook contains 2 posts:
-	 *		0 - 00010 - 2021-11-02T12:20:59.122Z - Mason - Did stuff.
-	 *		1 - 00011 - 2021-11-02T12:45:52.023Z - Luke - Heckled Mason."
+	 *		0 - 00010 2021-11-02T12:20:59.122Z Mason Did stuff.
+	 *		1 - 00011 2021-11-02T12:45:52.023Z Luke Heckled Mason."
 	 * @return well-formatted String with post count and indexed posts
 	 */
 	public String toString();	

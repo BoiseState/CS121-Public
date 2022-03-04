@@ -916,13 +916,13 @@ public class TextBookUnitTester {
 				subtestPassed = false;
 			}
 			try {
-				Instant timestamp = Instant.parse(lineTokens[4]);
+				Instant timestamp = Instant.parse(lineTokens[3]);
 			} catch (DateTimeParseException e) {
 				testResults += subTestFailure(subtest, "first post timestamp follows post id", lines[1]);
 				testPassed = false;
 				subtestPassed = false;
 			}
-			if (!lineTokens[6].equals(ADA_POST_AUTHOR)) {
+			if (!lineTokens[4].equals(ADA_POST_AUTHOR)) {
 				testResults += subTestFailure(subtest, "first post author is " + ADA_POST_AUTHOR + " and follows timestamp", lines[1]);
 				testPassed = false;
 				subtestPassed = false;				
@@ -932,11 +932,8 @@ public class TextBookUnitTester {
 				testPassed = false;
 				subtestPassed = false;				
 			}
-			if (!lineTokens[1].equals("-") 
-					|| !lineTokens[3].equals("-") 
-					|| !lineTokens[5].equals("-")
-					|| !lineTokens[7].equals("-")) {
-				testResults += subTestFailure(subtest, "dashes ('-') between all values", lines[1]);
+			if (!lineTokens[1].equals("-")) {
+				testResults += subTestFailure(subtest, "dash ('-') between index and post", lines[2]);
 				testPassed = false;
 				subtestPassed = false;
 			}
@@ -965,13 +962,13 @@ public class TextBookUnitTester {
 				subtestPassed = false;
 			}
 			try {
-				Instant timestamp = Instant.parse(lineTokens[4]);
+				Instant timestamp = Instant.parse(lineTokens[3]);
 			} catch (DateTimeParseException e) {
 				testResults += subTestFailure(subtest, "second post timestamp follows post id", lines[2]);
 				testPassed = false;
 				subtestPassed = false;
 			}
-			if (!lineTokens[6].equals(GRACE_POST_AUTHOR)) {
+			if (!lineTokens[4].equals(GRACE_POST_AUTHOR)) {
 				testResults += subTestFailure(subtest, "second post author is " + GRACE_POST_AUTHOR + " and follows timestamp", lines[2]);
 				testPassed = false;
 				subtestPassed = false;				
@@ -981,11 +978,8 @@ public class TextBookUnitTester {
 				testPassed = false;
 				subtestPassed = false;				
 			}
-			if (!lineTokens[1].equals("-") 
-					|| !lineTokens[3].equals("-") 
-					|| !lineTokens[5].equals("-")
-					|| !lineTokens[7].equals("-")) {
-				testResults += subTestFailure(subtest, "dashes ('-') between all values", lines[2]);
+			if (!lineTokens[1].equals("-")) {
+				testResults += subTestFailure(subtest, "dash ('-') between index and post", lines[2]);
 				testPassed = false;
 				subtestPassed = false;
 			}

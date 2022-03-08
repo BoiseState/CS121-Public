@@ -447,8 +447,16 @@ public class PostUnitTester {
 			Scanner fileScan = new Scanner(new File(filename));
 			String line = fileScan.nextLine(); //post line
 			line = fileScan.nextLine(); //should be first comment line
-			if (!line.contains(author2)) {
-				testResults += subTestFailure(subtest, "First comment line in " + filename + " contains " + author2, line);
+			String[] lineTokens = line.split("\\s+");
+			try {
+				Instant time = Instant.parse(lineTokens[0]);
+			} catch (DateTimeParseException e) {
+				testResults += subTestFailure(subtest, "First comment line in " + filename + " begins with valid timestamp", line);
+				testPassed = false;
+				subtestPassed = false;
+			}
+			if (!lineTokens[1].equals(author2)) {
+				testResults += subTestFailure(subtest, "First comment line in " + filename + " has second value " + author2, line);
 				testPassed = false;
 				subtestPassed = false;
 			}
@@ -458,8 +466,16 @@ public class PostUnitTester {
 				subtestPassed = false;
 			}
 			line = fileScan.nextLine(); //should be second comment line
-			if (!line.contains(author2)) {
-				testResults += subTestFailure(subtest, "Second comment line in " + filename + " contains " + author2, line);
+			lineTokens = line.split("\\s+");
+			try {
+				Instant time = Instant.parse(lineTokens[0]);
+			} catch (DateTimeParseException e) {
+				testResults += subTestFailure(subtest, "Second comment line in " + filename + " begins with valid timestamp", line);
+				testPassed = false;
+				subtestPassed = false;
+			}			
+			if (!lineTokens[1].equals(author2)) {
+				testResults += subTestFailure(subtest, "Second comment line in " + filename + " has second value " + author2, line);
 				testPassed = false;
 				subtestPassed = false;
 			}
@@ -469,8 +485,16 @@ public class PostUnitTester {
 				subtestPassed = false;
 			}
 			line = fileScan.nextLine(); //should be third comment line
-			if (!line.contains(author2)) {
-				testResults += subTestFailure(subtest, "Third comment line in " + filename + " contains " + author2, line);
+			lineTokens = line.split("\\s+");
+			try {
+				Instant time = Instant.parse(lineTokens[0]);
+			} catch (DateTimeParseException e) {
+				testResults += subTestFailure(subtest, "Third comment line in " + filename + " begins with valid timestamp", line);
+				testPassed = false;
+				subtestPassed = false;
+			}			
+			if (!lineTokens[1].equals(author2)) {
+				testResults += subTestFailure(subtest, "Third comment line in " + filename + " has second value " + author2, line);
 				testPassed = false;
 				subtestPassed = false;
 			}
@@ -480,8 +504,16 @@ public class PostUnitTester {
 				subtestPassed = false;
 			}
 			line = fileScan.nextLine(); //should be fourth comment line
-			if (!line.contains(author2)) {
-				testResults += subTestFailure(subtest, "Fourth comment line in " + filename + " contains " + author2, line);
+			lineTokens = line.split("\\s+");
+			try {
+				Instant time = Instant.parse(lineTokens[0]);
+			} catch (DateTimeParseException e) {
+				testResults += subTestFailure(subtest, "Fourth comment line in " + filename + " begins with valid timestamp", line);
+				testPassed = false;
+				subtestPassed = false;
+			}			
+			if (!lineTokens[1].equals(author2)) {
+				testResults += subTestFailure(subtest, "Fourth comment line in " + filename + " has second value " + author2, line);
 				testPassed = false;
 				subtestPassed = false;
 			}

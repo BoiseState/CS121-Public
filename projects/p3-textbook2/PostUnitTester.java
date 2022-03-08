@@ -66,8 +66,16 @@ public class PostUnitTester {
 			}
 			Scanner fileScan = new Scanner(file);
 			String line = fileScan.nextLine();
-			if (!line.contains(author)) {
-				testResults += subTestFailure(subtest, filenameStr + " contains author " + author, line);
+			String[] lineTokens = line.split("\\s+");
+			try {
+				Instant time = Instant.parse(lineTokens[0]);
+			} catch (DateTimeParseException e) {
+				testResults += subTestFailure(subtest, filenameStr + " 1st token is a valid timestamp", line);
+				testPassed = false;
+				subtestPassed = false;				
+			}
+			if (!lineTokens[1].equals(author)) {
+				testResults += subTestFailure(subtest, filenameStr + " 2nd token author " + author, line);
 				testPassed = false;
 				subtestPassed = false;				
 			}
@@ -89,7 +97,30 @@ public class PostUnitTester {
 			//Attempt to recreate that Post from file.
 			subtest = testName + " - recover valid Post(" + id + ")";
 			PostInterface recoveredPost = new Post(id);
-			testResults += subTestPass(subtest);
+			if (newPost.getPostID() != recoveredPost.getPostID()) {
+				testResults += subTestFailure(subtest, "recovered post id " + newPost.getPostID(), "recovered post id " + recoveredPost.getPostID());
+				testPassed = false;
+				subtestPassed = false;
+			} else if (!newPost.getAuthor().equals(recoveredPost.getAuthor())) {
+				testResults += subTestFailure(subtest, "recovered author " + newPost.getAuthor(), "recovered author " + recoveredPost.getAuthor());
+				testPassed = false;
+				subtestPassed = false;
+			} else if (!newPost.getFilename().equals(recoveredPost.getFilename())) {
+				testResults += subTestFailure(subtest, "recovered filename " + newPost.getFilename(), "recovered filename " + recoveredPost.getFilename());
+				testPassed = false;
+				subtestPassed = false;
+			} else if (!newPost.getTimestamp().equals(recoveredPost.getTimestamp())) {
+				testResults += subTestFailure(subtest, "recovered timestamp " + newPost.getTimestamp(), "recovered timestamp " + recoveredPost.getTimestamp());
+				testPassed = false;
+				subtestPassed = false;
+			} else if (!newPost.getText().equals(recoveredPost.getText())) {
+				testResults += subTestFailure(subtest, "recovered text " + newPost.getText(), "recovered text " + recoveredPost.getText());
+				testPassed = false;
+				subtestPassed = false;
+			} else {
+				testResults += subTestPass(subtest);
+			}
+			
 			//Recovery constructor should not throw an exception if given ID is
 			//invalid. Expectation is that isValid() will return false, tested
 			//elsewhere.

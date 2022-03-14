@@ -1,10 +1,10 @@
-import java.util.Date;
+import java.time.Instant;
 
 public interface TransactionInterface 
 {
 	enum Type {Withdraw, Deposit, Debit, None};
 
-	public Date getDate();
+	public Instant getDate();
 	public float getAmount();
 	public Type getType();
 	public String getDescription();

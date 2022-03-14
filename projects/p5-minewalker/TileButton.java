@@ -87,7 +87,7 @@ public class TileButton extends JButton {
 	 * @return true if hidden, false if revealed 
 	 */
 	public boolean isHidden() {
-		return isHidden();
+		return isHidden;
 	}
 	
 	/**

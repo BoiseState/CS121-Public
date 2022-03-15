@@ -67,15 +67,20 @@ public class PostUnitTester {
 			Scanner fileScan = new Scanner(file);
 			String line = fileScan.nextLine();
 			String[] lineTokens = line.split("\\s+");
-			try {
-				Instant time = Instant.parse(lineTokens[0]);
-			} catch (DateTimeParseException e) {
-				testResults += subTestFailure(subtest, filenameStr + " 1st token is a valid timestamp", line);
+			if (!lineTokens[0].equals("00042")) {
+				testResults += subTestFailure(subtest, filenameStr + " 1st token is post ID 00042", line);
 				testPassed = false;
 				subtestPassed = false;				
 			}
-			if (!lineTokens[1].equals(author)) {
-				testResults += subTestFailure(subtest, filenameStr + " 2nd token author " + author, line);
+			try {
+				Instant time = Instant.parse(lineTokens[1]);
+			} catch (DateTimeParseException e) {
+				testResults += subTestFailure(subtest, filenameStr + " 2nd token is a valid timestamp", line);
+				testPassed = false;
+				subtestPassed = false;				
+			}
+			if (!lineTokens[2].equals(author)) {
+				testResults += subTestFailure(subtest, filenameStr + " 3rd token author " + author, line);
 				testPassed = false;
 				subtestPassed = false;				
 			}
@@ -93,7 +98,7 @@ public class PostUnitTester {
 				testResults += subTestPass(subtest);
 			}
 			fileScan.close();
-			
+
 			//Attempt to recreate that Post from file.
 			subtest = testName + " - recover valid Post(" + id + ")";
 			PostInterface recoveredPost = new Post(id);
@@ -120,7 +125,7 @@ public class PostUnitTester {
 			} else {
 				testResults += subTestPass(subtest);
 			}
-			
+
 			//Recovery constructor should not throw an exception if given ID is
 			//invalid. Expectation is that isValid() will return false, tested
 			//elsewhere.
@@ -140,7 +145,7 @@ public class PostUnitTester {
 			fail(testName, testResults);
 		}
 	}
-	
+
 	/**
 	 * Confirms that a Post returns the expected associated filename.
 	 */
@@ -162,7 +167,7 @@ public class PostUnitTester {
 				testResults += subTestPass(subtest);
 			} else {
 				testResults += subTestFailure(subtest, "Expected filename: " + expectedFilename,
-				"Returned filename: " + filename);
+						"Returned filename: " + filename);
 				testPassed = false;				
 			}
 		} catch (Exception e) {
@@ -199,7 +204,7 @@ public class PostUnitTester {
 				testResults += subTestPass(subtest);
 			} else {
 				testResults += subTestFailure(subtest, "Expected ID: " + id,
-				"Returned ID: " + returnedID);
+						"Returned ID: " + returnedID);
 				testPassed = false;				
 			}
 		} catch (Exception e) {
@@ -236,7 +241,7 @@ public class PostUnitTester {
 				testResults += subTestPass(subtest);
 			} else {
 				testResults += subTestFailure(subtest, "Expected author: " + author,
-				"Returned author: " + returnedAuthor);
+						"Returned author: " + returnedAuthor);
 				testPassed = false;				
 			}
 		} catch (Exception e) {
@@ -273,7 +278,7 @@ public class PostUnitTester {
 				testResults += subTestPass(subtest);
 			} else {
 				testResults += subTestFailure(subtest, "Expected text: " + text,
-				"Returned text: " + returnedText);
+						"Returned text: " + returnedText);
 				testPassed = false;				
 			}
 		} catch (Exception e) {
@@ -313,7 +318,7 @@ public class PostUnitTester {
 				testResults += subTestPass(subtest);
 			} else {
 				testResults += subTestFailure(subtest, "Timestamp within 2 seconds of calling constructor.",
-				"Reference timestamp: " + now + ", Returned timestamp: " + returnedTimestamp);
+						"Reference timestamp: " + now + ", Returned timestamp: " + returnedTimestamp);
 				testPassed = false;				
 			}
 		} catch (Exception e) {
@@ -564,7 +569,7 @@ public class PostUnitTester {
 			} else {
 				testResults += subTestPass(subtest);
 			}
-			
+
 			subtest = testName + " - includes postID as first value";
 			try {
 				if (tokens[0].length() != 5) {
@@ -589,7 +594,7 @@ public class PostUnitTester {
 				testResults += subTestFailure(subtest, "ISO-8601 formatted timestamp", tokens[1]);
 				testPassed = false;
 			}
-			
+
 			subtest = testName + " - includes author as third value";
 			if (tokens[2].equals(author)) {
 				testResults += subTestPass(subtest);
@@ -653,7 +658,7 @@ public class PostUnitTester {
 			} else {
 				testResults += subTestPass(subtest);
 			}
-			
+
 			subtest = testName + " - first line contains well-formmated whitespace-separated post values";
 			String[] tokens = lines[0].split("\\s+"); 
 			boolean subtestResult = true;
@@ -693,7 +698,7 @@ public class PostUnitTester {
 			if (subtestResult) {
 				testResults += subTestPass(subtest);
 			}
-			
+
 			// first comment
 			subtest = testName + " - second line matches first comment";
 			tokens = lines[1].trim().split("\\s+");
@@ -723,7 +728,7 @@ public class PostUnitTester {
 			if (subtestResult) {
 				testResults += subTestPass(subtest);
 			}
-			
+
 			// second comment
 			subtest = testName + " - third line matches second comment";
 			tokens = lines[2].trim().split("\\s+");
@@ -753,7 +758,7 @@ public class PostUnitTester {
 			if (subtestResult) {
 				testResults += subTestPass(subtest);
 			}
-			
+
 			// third comment
 			subtest = testName + " - fourth line matches third comment";
 			tokens = lines[3].trim().split("\\s+");

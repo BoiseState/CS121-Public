@@ -1,5 +1,4 @@
 import java.time.Instant;
-import java.util.ArrayList;
 
 /**
  * DO NOT MODIFY THIS INTERFACE - It is the responsibility of your Post class to

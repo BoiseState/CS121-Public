@@ -1,6 +1,4 @@
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.time.Instant;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
@@ -73,6 +71,7 @@ public class PostUnitTester {
 				subtestPassed = false;				
 			}
 			try {
+				@SuppressWarnings("unused")
 				Instant time = Instant.parse(lineTokens[1]);
 			} catch (DateTimeParseException e) {
 				testResults += subTestFailure(subtest, filenameStr + " 2nd token is a valid timestamp", line);
@@ -454,6 +453,7 @@ public class PostUnitTester {
 			line = fileScan.nextLine(); //should be first comment line
 			String[] lineTokens = line.split("\\s+");
 			try {
+				@SuppressWarnings("unused")
 				Instant time = Instant.parse(lineTokens[0]);
 			} catch (DateTimeParseException e) {
 				testResults += subTestFailure(subtest, "First comment line in " + filename + " begins with valid timestamp", line);
@@ -473,6 +473,7 @@ public class PostUnitTester {
 			line = fileScan.nextLine(); //should be second comment line
 			lineTokens = line.split("\\s+");
 			try {
+				@SuppressWarnings("unused")
 				Instant time = Instant.parse(lineTokens[0]);
 			} catch (DateTimeParseException e) {
 				testResults += subTestFailure(subtest, "Second comment line in " + filename + " begins with valid timestamp", line);
@@ -492,6 +493,7 @@ public class PostUnitTester {
 			line = fileScan.nextLine(); //should be third comment line
 			lineTokens = line.split("\\s+");
 			try {
+				@SuppressWarnings("unused")
 				Instant time = Instant.parse(lineTokens[0]);
 			} catch (DateTimeParseException e) {
 				testResults += subTestFailure(subtest, "Third comment line in " + filename + " begins with valid timestamp", line);
@@ -511,6 +513,7 @@ public class PostUnitTester {
 			line = fileScan.nextLine(); //should be fourth comment line
 			lineTokens = line.split("\\s+");
 			try {
+				@SuppressWarnings("unused")
 				Instant time = Instant.parse(lineTokens[0]);
 			} catch (DateTimeParseException e) {
 				testResults += subTestFailure(subtest, "Fourth comment line in " + filename + " begins with valid timestamp", line);
@@ -588,6 +591,7 @@ public class PostUnitTester {
 
 			subtest = testName + " - includes ISO-8601 timestamp as second value";
 			try {
+				@SuppressWarnings("unused")
 				Instant timestamp = Instant.parse(tokens[1]);
 				testResults += subTestPass(subtest);
 			} catch (DateTimeParseException e) {
@@ -679,6 +683,7 @@ public class PostUnitTester {
 				subtestResult = false;
 			}
 			try {
+				@SuppressWarnings("unused")
 				Instant timestamp = Instant.parse(tokens[1]);
 			} catch (DateTimeParseException e) {
 				testResults += subTestFailure(subtest, "Second post value ISO-8601 timestamp", tokens[1]);
@@ -709,6 +714,7 @@ public class PostUnitTester {
 				subtestResult = false;
 			}
 			try {
+				@SuppressWarnings("unused")
 				Instant timestamp = Instant.parse(tokens[0]);
 			} catch (DateTimeParseException e) {
 				testResults += subTestFailure(subtest, "First comment ISO-8601 timestamp", tokens[0]);
@@ -739,6 +745,7 @@ public class PostUnitTester {
 				subtestResult = false;
 			}
 			try {
+				@SuppressWarnings("unused")
 				Instant timestamp = Instant.parse(tokens[0]);
 			} catch (DateTimeParseException e) {
 				testResults += subTestFailure(subtest, "Second comment ISO-8601 timestamp", tokens[0]);
@@ -769,6 +776,7 @@ public class PostUnitTester {
 				subtestResult = false;
 			}
 			try {
+				@SuppressWarnings("unused")
 				Instant timestamp = Instant.parse(tokens[0]);
 			} catch (DateTimeParseException e) {
 				testResults += subTestFailure(subtest, "Third comment ISO-8601 timestamp", tokens[0]);
@@ -799,6 +807,7 @@ public class PostUnitTester {
 				subtestResult = false;
 			}
 			try {
+				@SuppressWarnings("unused")
 				Instant timestamp = Instant.parse(tokens[0]);
 			} catch (DateTimeParseException e) {
 				testResults += subTestFailure(subtest, "Fourth comment ISO-8601 timestamp", tokens[0]);

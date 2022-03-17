@@ -626,14 +626,14 @@ public class TextBookUnitTester {
 
 			try {
 				subtest = testName + " - valid index 0 (first post)";
-				String postString = theTextBook.getPostString(0);
 				boolean subtestPassed = true;
-				String[] lines = postString.split("\n");
+				String postString = theTextBook.getPostString(0);
 				if (postString == null) {
 					testResults += subTestFailure(subtest, "getPostString() returns non-null reference", "getPostString() returned null");
 					testPassed = false;		
 					subtestPassed = false;
 				}
+				String[] lines = postString.split("\n");
 				if (lines.length != 3) {
 					testResults += subTestFailure(subtest, "getPostString() has 3 lines - post and two comments", postString);
 					testPassed = false;		
@@ -681,14 +681,14 @@ public class TextBookUnitTester {
 
 			try {
 				subtest = testName + " - valid index 1 (second post)";
-				String postString = theTextBook.getPostString(1);
 				boolean subtestPassed = true;
-				String[] lines = postString.split("\n");
+				String postString = theTextBook.getPostString(1);
 				if (postString == null) {
 					testResults += subTestFailure(subtest, "getPostString() returns non-null reference", "getPostString() returned null");
 					testPassed = false;		
 					subtestPassed = false;
 				}
+				String[] lines = postString.split("\n");
 				if (lines.length != 1) {
 					testResults += subTestFailure(subtest, "getPostString() has 1 line - post", postString);
 					testPassed = false;		
@@ -716,14 +716,14 @@ public class TextBookUnitTester {
 
 			try {
 				subtest = testName + " - valid index 2 (third post)";
-				String postString = theTextBook.getPostString(2);
 				boolean subtestPassed = true;
-				String[] lines = postString.split("\n");
+				String postString = theTextBook.getPostString(2);
 				if (postString == null) {
 					testResults += subTestFailure(subtest, "getPostString() returns non-null reference", "getPostString() returned null");
 					testPassed = false;		
 					subtestPassed = false;
 				}
+				String[] lines = postString.split("\n");
 				if (lines.length != 2) {
 					testResults += subTestFailure(subtest, "getPostString() has 3 lines - post and one comment", postString);
 					testPassed = false;		
@@ -909,6 +909,7 @@ public class TextBookUnitTester {
 				subtestPassed = false;
 			}
 			try {
+				@SuppressWarnings("unused")
 				int id = Integer.parseInt(lineTokens[2]);
 			} catch (NumberFormatException e) {
 				testResults += subTestFailure(subtest, "first post id follows index", lines[1]);
@@ -916,6 +917,7 @@ public class TextBookUnitTester {
 				subtestPassed = false;
 			}
 			try {
+				@SuppressWarnings("unused")
 				Instant timestamp = Instant.parse(lineTokens[3]);
 			} catch (DateTimeParseException e) {
 				testResults += subTestFailure(subtest, "first post timestamp follows post id", lines[1]);
@@ -955,6 +957,7 @@ public class TextBookUnitTester {
 				subtestPassed = false;
 			}
 			try {
+				@SuppressWarnings("unused")
 				int id = Integer.parseInt(lineTokens[2]);
 			} catch (NumberFormatException e) {
 				testResults += subTestFailure(subtest, "second post id follows index", lines[2]);
@@ -962,6 +965,7 @@ public class TextBookUnitTester {
 				subtestPassed = false;
 			}
 			try {
+				@SuppressWarnings("unused")
 				Instant timestamp = Instant.parse(lineTokens[3]);
 			} catch (DateTimeParseException e) {
 				testResults += subTestFailure(subtest, "second post timestamp follows post id", lines[2]);

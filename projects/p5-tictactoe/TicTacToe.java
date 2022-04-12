@@ -11,17 +11,17 @@ public interface TicTacToe {
 	
 	/**
 	 * Reset the game.
-	 * All board positions are OPEN and the game is IN_PROGRESS.
+	 * All board positions are OPEN, no moves have been made, and the game
+	 *  is IN_PROGRESS.
 	 */
 	public void newGame();
 	
 	/**
-	 * If the choice is invalid for any reason, return false.
 	 * A choice is invalid if the game is over, the position is
-	 * already claimed, or the player made the previous choice
-	 * (no player can make two moves in a row). 
-	 * If the chosen row, column position is not already claimed
-	 * and the game is not already over, claim it for the player.
+	 * out of bounds, the position is already claimed, or the 
+	 * player made the previous choice (no player can make two 
+	 * moves in a row).
+	 * If the move is valid, claim it for the player.
 	 * A winning move or choosing the last open position ends
 	 * the game.
 	 * 
@@ -42,8 +42,8 @@ public interface TicTacToe {
 	public boolean gameOver();
 	
 	/**
-	 * Return the winner (X, O, or TIE) if the game is over, or
-	 * IN_PROGRESS if the game is not over.
+	 * Return the winner (X_WON, O_WON, or TIE) if the game is over,
+	 * or IN_PROGRESS if the game is not over.
 	 * 
 	 * @return the winner of a completed game or IN_PROGRESS
 	 */
@@ -67,7 +67,8 @@ public interface TicTacToe {
 	 * counter-intuitive, it is intentional.
 	 * Preserve encapsulation by returning a copy of the original data.
 	 * 
-	 * @return array showing the sequence of claimed positions
+	 * @return array containing only the sequence of claimed positions 
+	 * 	- i.e. the size of the returned array will match the number of moves
 	 */
 	public Point[] getMoves();
 	

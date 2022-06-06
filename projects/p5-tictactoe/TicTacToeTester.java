@@ -56,7 +56,7 @@ public class TicTacToeTester {
 			if (arg.equalsIgnoreCase("-a")) printFailuresOnly = false;
 			if (arg.equalsIgnoreCase("-m"))	printSectionSummaries = false;
 		}
-		EXPECTED_TOTAL_TESTS = 198;
+		EXPECTED_TOTAL_TESTS = 219;
 		totalTests = 0;
 	}
 
@@ -146,6 +146,10 @@ public class TicTacToeTester {
 		//last move (9th move) is a winning move
 		testX01O12X00O02X10O20X11O21X22(); //X wins
 		testO01X12O00X02O10X20O11X21O22(); //O wins
+		//reset game
+		testX00O10X11NewGame(); //new game after partial game
+		testX01O12X00O02X10O20X11O21X22NewGame(); //new game after X win
+		testO01X12O00X02O10X20O11X21O22NewGame(); //new game after O win
 		//encapsulation tests
 		testEncapsulation();
 
@@ -1077,6 +1081,107 @@ public class TicTacToeTester {
 	}
 	
 	/////////////////////////////
+	// XXX Reset using New Game
+	/////////////////////////////
+	
+	// newGame after partial game
+	private void testX00O10X11NewGame() {
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN}
+		};
+		Point[] moves = {};
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.OPEN;
+		boolean gameOver = false;
+
+		String scenarioName = "testX00O10X11NewGame";
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
+		totalTests += 7;
+		try {
+			printTest("testNewGame", testNewGame(gameX00O10X11NewGame()));
+			printTest("testGameOver", testGameOver(gameX00O10X11NewGame(), Result.False));
+			printTest("testGameState", testGameState(gameX00O10X11NewGame(), Result.InProgress));
+			printTest("testGetGameGrid", testGetGameGrid(gameX00O10X11NewGame(), grid));
+			printTest("testGetMoves", testGetMoves(gameX00O10X11NewGame(), moves));
+			printTest("testChoicesX", testChoices(gameX00O10X11NewGame, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX00O10X11NewGame, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
+		} catch (Exception e) {
+			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
+			e.printStackTrace();
+		} finally {
+			if (printSectionSummaries) {
+				printSectionSummary("Section");
+			}
+		}
+	}
+	
+	// newGame after X wins in 9th move
+	private void testX01O12X00O02X10O20X11O21X22NewGame() {
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN}
+		};
+		Point[] moves = {};
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.OPEN;
+		boolean gameOver = false;
+
+		String scenarioName = "testX01O12X00O02X10O20X11O21X22NewGame";
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
+		totalTests += 7;
+		try {
+			printTest("testNewGame", testNewGame(gameX01O12X00O02X10O20X11O21X22NewGame()));
+			printTest("testGameOver", testGameOver(gameX01O12X00O02X10O20X11O21X22NewGame(), Result.False));
+			printTest("testGameState", testGameState(gameX01O12X00O02X10O20X11O21X22NewGame(), Result.InProgress));
+			printTest("testGetGameGrid", testGetGameGrid(gameX01O12X00O02X10O20X11O21X22NewGame(), grid));
+			printTest("testGetMoves", testGetMoves(gameX01O12X00O02X10O20X11O21X22NewGame(), moves));
+			printTest("testChoicesX", testChoices(gameX01O12X00O02X10O20X11O21X22NewGame, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameX01O12X00O02X10O20X11O21X22NewGame, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
+		} catch (Exception e) {
+			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
+			e.printStackTrace();
+		} finally {
+			if (printSectionSummaries) {
+				printSectionSummary("Section");
+			}
+		}
+	}
+
+	// newGame after O wins in 9th move
+	private void testO01X12O00X02O10X20O11X21O22NewGame() {
+		TicTacToe.BoardChoice[][] grid = {
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN},
+				{TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN, TicTacToe.BoardChoice.OPEN}
+		};
+		Point[] moves = {};
+		TicTacToe.BoardChoice lastPlayer = TicTacToe.BoardChoice.OPEN;
+		boolean gameOver = false;
+
+		String scenarioName = "testO01X12O00X02O10X20O11X21O22NewGame";
+		System.out.println("\nSCENARIO: " + scenarioName + "\n");
+		totalTests += 7;
+		try {
+			printTest("testNewGame", testNewGame(gameO01X12O00X02O10X20O11X21O22NewGame()));
+			printTest("testGameOver", testGameOver(gameO01X12O00X02O10X20O11X21O22NewGame(), Result.False));
+			printTest("testGameState", testGameState(gameO01X12O00X02O10X20O11X21O22NewGame(), Result.InProgress));
+			printTest("testGetGameGrid", testGetGameGrid(gameO01X12O00X02O10X20O11X21O22NewGame(), grid));
+			printTest("testGetMoves", testGetMoves(gameO01X12O00X02O10X20O11X21O22NewGame(), moves));
+			printTest("testChoicesX", testChoices(gameO01X12O00X02O10X20O11X21O22NewGame, TicTacToe.BoardChoice.X, lastPlayer, gameOver, grid));
+			printTest("testChoicesO", testChoices(gameO01X12O00X02O10X20O11X21O22NewGame, TicTacToe.BoardChoice.O, lastPlayer, gameOver, grid));
+		} catch (Exception e) {
+			System.out.printf("***UNABLE TO RUN/COMPLETE %s***\n", scenarioName + " TESTS");
+			e.printStackTrace();
+		} finally {
+			if (printSectionSummaries) {
+				printSectionSummary("Section");
+			}
+		}
+		
+	}
+	
+	/////////////////////////////
 	// XXX Encapsulation Tests
 	/////////////////////////////
 	
@@ -1147,6 +1252,19 @@ public class TicTacToeTester {
 		return game;
 	}
 	private Scenario gameX00O10X11 = () -> gameX00O10X11();
+
+	/** New Game resets a game in progress
+	 * @return
+	 * ---
+	 * ---
+	 * ---
+	 */
+	private TicTacToe gameX00O10X11NewGame() {
+		TicTacToe game = gameX00O10X11();
+		game.newGame();
+		return game;
+	}
+	private Scenario gameX00O10X11NewGame = () -> gameX00O10X11NewGame();
 
 	/**
 	 * @return
@@ -1387,6 +1505,28 @@ public class TicTacToeTester {
 	}
 	private Scenario gameX01O12X00O02X10O20X11O21X22 = () -> gameX01O12X00O02X10O20X11O21X22();
 	
+	/** New Game after X wins
+	 * @return
+	 * --- 
+	 * ---
+	 * ---
+	 */
+	private TicTacToe gameX01O12X00O02X10O20X11O21X22NewGame() {
+		TicTacToe game = newGame();
+		game.choose(TicTacToe.BoardChoice.X, 0, 1);
+		game.choose(TicTacToe.BoardChoice.O, 1, 2);
+		game.choose(TicTacToe.BoardChoice.X, 0, 0);
+		game.choose(TicTacToe.BoardChoice.O, 0, 2);
+		game.choose(TicTacToe.BoardChoice.X, 1, 0);
+		game.choose(TicTacToe.BoardChoice.O, 2, 0);
+		game.choose(TicTacToe.BoardChoice.X, 1, 1);
+		game.choose(TicTacToe.BoardChoice.O, 2, 1);
+		game.choose(TicTacToe.BoardChoice.X, 2, 2);
+		game.newGame();
+		return game;
+	}
+	private Scenario gameX01O12X00O02X10O20X11O21X22NewGame = () -> gameX01O12X00O02X10O20X11O21X22NewGame();
+
 	// XXX O wins
 	
 	/**
@@ -1553,6 +1693,28 @@ public class TicTacToeTester {
 		return game;
 	}
 	private Scenario gameO01X12O00X02O10X20O11X21O22 = () -> gameO01X12O00X02O10X20O11X21O22();
+
+	/**
+	 * @return
+	 * OOX 
+	 * OOX
+	 * XXO
+	 */
+	private TicTacToe gameO01X12O00X02O10X20O11X21O22NewGame() {
+		TicTacToe game = newGame();
+		game.choose(TicTacToe.BoardChoice.O, 0, 1);
+		game.choose(TicTacToe.BoardChoice.X, 1, 2);
+		game.choose(TicTacToe.BoardChoice.O, 0, 0);
+		game.choose(TicTacToe.BoardChoice.X, 0, 2);
+		game.choose(TicTacToe.BoardChoice.O, 1, 0);
+		game.choose(TicTacToe.BoardChoice.X, 2, 0);
+		game.choose(TicTacToe.BoardChoice.O, 1, 1);
+		game.choose(TicTacToe.BoardChoice.X, 2, 1);
+		game.choose(TicTacToe.BoardChoice.O, 2, 2);
+		game.newGame();
+		return game;
+	}
+	private Scenario gameO01X12O00X02O10X20O11X21O22NewGame = () -> gameO01X12O00X02O10X20O11X21O22NewGame();
 
 	// //////////////////////////
 	// XXX TEST METHODS

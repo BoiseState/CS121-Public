@@ -3,6 +3,19 @@ README.md
 This directory contains examples for the concepts introduced in Module 1.  Below indicates which
 concepts are commented on in each example
 
+Addition.java
+	- Concatenation vs. Addition
+
+BlankOrDark.java
+	- Escape sequences
+
+Geometry.java 
+	- Variable declaration and initialization
+	- Assignment operator
+
+FloatingTest.java
+	- Demonstrates limits of floating point precision
+
 Multiples1.java
 	- javadocs
 	- block comment

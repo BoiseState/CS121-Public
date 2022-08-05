@@ -37,7 +37,7 @@ public interface SnakeInterface
 	public int getNumLocationsVisited();
 
 	/**
-	 * Moves the snake after changing the specified direction.
+	 * Changes the direction to the specified direction.
 	 * @param direction The direction to change to
 	 */
 	public void changeDirection(Direction direction);

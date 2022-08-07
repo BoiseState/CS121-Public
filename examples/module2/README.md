@@ -22,6 +22,9 @@ OrderOfOperations.java
 - Effect of the order of operations on evaluation of expressions
 - Increment and decrement operators
 
+ParseInput.java
+- Parsing integers and doubles from a string
+
 Pet.java and PetDriver.java
 	- Example of a non-primitive data type Pet
 	- The Pet object is defined in Pet.java and used by PetDriver.java

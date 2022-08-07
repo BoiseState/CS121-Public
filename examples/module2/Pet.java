@@ -9,8 +9,8 @@
 
 public class Pet{
 	// Instance variables
-	String name, type;
-	int age;
+	private String name, type;
+	private int age;
 	
 	// constructor methods
 	// Notice: constructor name is the same as the class name

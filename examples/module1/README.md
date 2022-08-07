@@ -9,6 +9,9 @@ Addition.java
 BlankOrDark.java
 	- Escape sequences
 
+CookieSharing.java
+- Modulo, primitive types, casting
+
 Geometry.java 
 	- Variable declaration and initialization
 	- Assignment operator
@@ -27,6 +30,8 @@ Multiples1.java
 	- reusing variables
 	- escape sequences
 	- print/println statements
+	- parameter
+	- literals
 	
 Multiples2.java
 	- create a scanner
@@ -34,3 +39,4 @@ Multiples2.java
 	- use next() to get String input
 	- use nextInt() to get int input
 	- more examples of building strings
+

@@ -1,7 +1,7 @@
 /** 
 * Multiples1.java 
 * Demonstrates basics introduced in Module 1: strings, print, println, escape sequences,
-* 	concatenation, variables, constants
+* 	concatenation, variables, constants, argument in method call, literals
 * @author sfrost  
 * @version Summer 2022
 * 
@@ -29,17 +29,25 @@ public class Multiples1 {
 
 		// declare and initialize constants
 		// Remember constant names should be all caps
+		// The values used to intialize these constants are literals
 		final String GREETING = "Welcome to this example!";
-		final int MULT = 10;
+		final int MULT = 10; 
 		
 		// declares and initializes variable of type int
+		// remember variables are named using camelCase
 		int sum = 0;
+		int sumTwo = 0; //sumTwo is not used in this program.  Notice the warning message
 		
 		// declares but does not initialize a variable of type int
 		int start;
 		
 		//prints GREETING to the display
 		System.out.println(GREETING);
+
+		// Note in the above command that println is a method located in the System.out
+		// package.  The println method takes a parameter which it will output to the 
+		// console and add a new line character.  The parameter in the above line is the 
+		// string GREETING.
 		
 		//prints the first three multiples of 10
 		// METHOD 1: hardcoded

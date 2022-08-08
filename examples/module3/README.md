@@ -17,9 +17,9 @@ Random Class
 - RandomNumbers.java
 - RollTheDice.java
 
-Strings and String Comparisons
+Strings
 - StringPlay.java
-- StringComparisons.java
+
 
 Math Class
 - TrigDemo.java

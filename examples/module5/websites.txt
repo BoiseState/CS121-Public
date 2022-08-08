@@ -1,0 +1,5 @@
+www.google.com
+docs.oracle.com/javase/8/docs/api/
+www.linux.org/info/gnu.html
+duke.csc.villanova.edu/lewis/
+www.csc.villanova.edu/academics/index.jsp

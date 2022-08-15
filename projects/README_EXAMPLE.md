@@ -2,7 +2,7 @@
 
 * Author: Grace Hopper
 * Class: CS121 Section 2
-* Semester: Fall 2018 
+* Semester: Fall 2022 
 
 ## Overview
 
@@ -11,15 +11,21 @@ user input specifying sponginess, color, sugar density, and burn resistance.
 
 ## Reflection
 
-There were parts of this that were really challenging, particularly reading 
-the input from the users. Once I figured that out, I really enjoyed showing
-the marshmallow!
+There were parts of this that were really challenging, particularly figuring 
+out which variables to use and how to do write the code to do the math I 
+wanted it to do. Once I figured that out, I really enjoyed adding some cool
+visuals, like the flying marshmallow!
 
-Write a two paragraph reflection describing your experience with this 
-project. Talk about what worked well and what was challenging.  
-Did you run into an issue that took some time to figure out?  
-Tell us about it. What did you enjoy, what was less desirable? Feel
-free to add other items (within the two paragraph limit).
+- What worked well and what was a struggle? 
+  - Problem solving the math was a challenge.
+- What concepts still aren't quite clear?
+  - I still need to better understand the order of operations.
+- What techniques did you use to make your code easy to debug and modify?
+  - I put a lot of comments in my code and used print statements to show values of computations.
+- What would you change about your design process?
+  - Draw it on a piece of paper and figure out the ratios before starting to code.
+- If you could go back in time, what would you tell yourself about doing this project?
+  - Start early, and if I encounter a problem, ask for help early.
 
 ## Compiling and Using
 

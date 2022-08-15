@@ -2,22 +2,24 @@
 
 * Author: Your Name
 * Class: CS121 Section #
-* Semester: Fall 2018
+* Semester: Fall 2022
 
 ## Overview
 
 Concisely explain what the program does. If this exceeds a couple of
 sentences, you're going too far. Generally you should be pulling this
-right from the project specification. I don't want you to just cut and
+right from the project specification. Please don't just cut and
 paste, but paraphrase what is stated in the project specification.
 
 ## Reflection
 
-Write a two paragraph reflection describing your experience with this 
-project. Talk about what worked well and what was challenging.  
-Did you run into an issue that took some time to figure out?  
-Tell us about it. What did you enjoy, what was less desirable? Feel
-free to add other items (within the two paragraph limit).
+Write a brief (2-3 paragraph) reflection describing your experience with this 
+project. Answer the following questions (but feel free to add other insights): 
+- What worked well and what was a struggle?
+- What concepts still aren't quite clear?
+- What techniques did you use to make your code easy to debug and modify?
+- What would you change about your design process?
+- If you could go back in time, what would you tell yourself about doing this project?
 
 ## Compiling and Using
 

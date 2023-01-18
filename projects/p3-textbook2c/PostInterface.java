@@ -57,7 +57,7 @@ public interface PostInterface {
 	 * the original post, exactly as shown in the first line of the associated post
 	 * file and in toString() output for the post.
 	 * Intended for use when a list of posts is printed to console and for writing
-	 * the first line to the first line of a new Post's associated file.
+	 * the first line of a new Post's associated file.
 	 * Example:
 	 * 	00010 2021-11-30T23:38:23.085Z Mason Did stuff
 	 * 

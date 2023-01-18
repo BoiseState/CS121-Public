@@ -6,15 +6,15 @@ import java.time.Instant;
  * 
  * A Post represents a single text post in a TextBook social media site along with
  * its associated comments. A Post must implement this interface as follows:
- * 	 public class Post implements PostInterface
+ * 	public class Post implements PostInterface
  * 
  * In addition to the methods listed for this interface, a Post is expected to
  * have two constructors, one used to create a new Post and the other to recover 
  * the post and any comments from an associated text file.
  * The new Post constructor must have the following signature:
- * 	 public Post(int id, String author, String text)
+ * 	public Post(int id, String author, String text)
  * The recovery constructor must have the following signature:
- *   public Post(int id)
+ * 	public Post(int id)
  * 
  * @author mvail, jerryfails
  */
@@ -22,7 +22,7 @@ public interface PostInterface {
 	
 	/**
 	 * Adds a comment with the given values and the current timestamp to this Post.
-	 * Appends comment timestamp, author, and text to the Post's associated file.
+	 * Also appends comment timestamp, author, and text to the Post's associated file.
 	 * Example file contents with a post and two comments:
 	 *   00012 2010-08-30T13:38:23.085Z Sam Pondering the meaning of static.
 	 *   2010-08-30T15:21:43.055Z Pat Don’t get too existential.
@@ -35,11 +35,12 @@ public interface PostInterface {
 
 	/**
 	 * Returns a well-formatted String including the original post and all comments, 
-	 * each on their own lines. Intended for use when a specific post and all of its 
-	 * associated comments should be printed to console. Note that post ID should
-	 * be formatted to 5-digits as shown in the example. The timestamp conforms to
-	 * ISO-8601 standard as returned by an Instant's toString(). Note: "Comments:"
-	 * header should always be displayed, even if there are no comments on the post.
+	 * each on their own lines and under header labels. Intended for use when a 
+	 * specific post and all of its associated comments should be printed to console.
+	 * Note that post ID should be formatted to 5-digits as shown in the example. The
+	 * timestamp conforms to ISO-8601 standard as returned by an Instant's toString().
+	 * Note: "Comments:" header should always be displayed, even if there are no 
+	 * comments on the post.
 	 * Example:
 	 * 	 Post:
 	 *   00010 2021-11-30T23:38:23.085Z Mason Did stuff.
@@ -53,11 +54,12 @@ public interface PostInterface {
 	
 	/**
 	 * Returns a well-formatted String including post ID, date, author, and text of 
-	 * the original post, exactly as shown in the first line of toString() output.
+	 * the original post, exactly as shown in the first line of the associated post
+	 * file and in toString() output for the post.
 	 * Intended for use when a list of posts is printed to console and for writing
 	 * the first line to the first line of a new Post's associated file.
 	 * Example:
-	 * 	 00010 2021-11-30T23:38:23.085Z Mason Did stuff
+	 * 	00010 2021-11-30T23:38:23.085Z Mason Did stuff
 	 * 
 	 * @return well-formatted String including id, date, author, and post text only
 	 */

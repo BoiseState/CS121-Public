@@ -26,7 +26,7 @@ public interface TextBookInterface {
 	public static final String POST_LIST_FILENAME = "posts.txt";
 	
 	/**
-	 * Return the last post ID assigned to a Post in TextBook. If TextBook has
+	 * Return the last Post ID assigned to a Post in TextBook. If TextBook has
 	 * just been loaded, this number corresponds to the last ID read from file 
 	 * POST_LIST_FILENAME or 0 if the file was not found.
 	 * 
@@ -52,9 +52,8 @@ public interface TextBookInterface {
 	
 	/**
 	 * Increments the value of last ID. This becomes the ID for the new Post.
-	 * Adds a new Post with the given author and text and the new ID to the
-	 * collection of Posts.
-	 * Appends the new Post ID to file POST_LIST_FILENAME.
+	 * Adds a new Post with the given author and text to the TextBook and appends
+	 * the new ID to file POST_LIST_FILENAME.
 	 * 
 	 * @param author name of the new Post's author
 	 * @param text text of the new Post
@@ -64,8 +63,8 @@ public interface TextBookInterface {
 	
 	/**
 	 * Removes and returns the Post at the given index or returns null if index is 
-	 * invalid. If the index is valid, rewrites the file with name POST_LIST_FILENAME 
-	 * to include only the Posts still in the collection.
+	 * invalid. If the index is valid, rewrites file POST_LIST_FILENAME to include
+	 * only the IDs of Posts still in the collection.
 	 * 
 	 * @param index the index of a Post in TextBook's collection
 	 * @return removed Post or null if index was invalid
@@ -86,7 +85,7 @@ public interface TextBookInterface {
 	/**
 	 * Returns a well-formatted String with the current number of Posts and a list 
 	 * of Posts where each Post's toStringPostOnly() is preceded by its index in the 
-	 * collection and each post is on its own line as shown in the example.
+	 * collection and each Post is on its own line as shown in the example.
 	 * Example:
 	 *   "TextBook contains 2 posts:
 	 *   0 - 00010 2021-11-02T12:20:59.122Z Mason Did stuff.

@@ -42,11 +42,11 @@ public interface PostInterface {
 	 * Note: "Comments:" header should always be displayed, even if there are no 
 	 * comments on the post.
 	 * Example:
-	 * 	 Post:
+	 *   Post:
 	 *   00010 2021-11-30T23:38:23.085Z Mason Did stuff.
 	 *   Comments:
-	 * 	 2021-12-01T08:18:21.055Z Luke It's late...
-	 * 	 2021-12-01T09:22:03.142Z Kathryn And it wasn't the right stuff. 
+	 *   2021-12-01T08:18:21.055Z Luke It's late...
+	 *   2021-12-01T09:22:03.142Z Kathryn And it wasn't the right stuff. 
 	 * 
 	 * @return a well-formatted String including post and all comments 
 	 */

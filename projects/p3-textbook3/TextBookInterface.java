@@ -46,7 +46,7 @@ public interface TextBookInterface {
 	 * itself and its comments.
 	 * 
 	 * @param index index of Post
-	 * @return toString() from Post at given index or null if invalid index
+	 * @return toString() from Post at given index
 	 */
 	public String getPostString(int index);
 	
@@ -65,7 +65,7 @@ public interface TextBookInterface {
 	 * POST_LIST_FILENAME to include only the IDs of Posts still in the collection.
 	 * 
 	 * @param index the index of a Post in TextBook's collection
-	 * @return removed Post or null if index was invalid
+	 * @return removed Post
 	 */
 	public Post removePost(int index);
 	

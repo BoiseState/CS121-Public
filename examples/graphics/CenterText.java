@@ -24,7 +24,8 @@ public class CenterText extends JPanel
 
 		String str = "Hello World!";
 
-		canvas.setFont(new Font("Serif", Font.BOLD, 36));
+		int fontPoint = Math.round(Math.min(height, width) / 14);
+		canvas.setFont(new Font("Serif", Font.BOLD, fontPoint));
 
 		// Get Font's metrics to allows us to figure out it's size
 		FontMetrics metrics = canvas.getFontMetrics();
